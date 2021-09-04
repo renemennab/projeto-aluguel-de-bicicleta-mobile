@@ -1,46 +1,33 @@
 # Introdução
 
-Texto descritivo com a visão geral do projeto abordado. Inclui o contexto, o problema, os objetivos, a justificativa e o público-alvo do projeto.
+<span style='font-size: 30px'>125 MILHÕES</span>
+
+Esse é o [número de brasileiros que se encontram em situação de insegurança alimentar em 2021](https://www1.folha.uol.com.br/equilibrioesaude/2021/04/mais-de-125-milhoes-de-brasileiros-sofreram-inseguranca-alimentar-na-pandemia-revela-estudo.shtml). Recentemente, a inflação fez com que o salário mínimo se equiparasse ao valor da [cesta básica](https://exame.com/economia/valor-da-cesta-basica-quase-empata-com-salario-minimo/amp/?__twitter_impression=true). Mais da metade do país não sabe quantas refeições conseguirá fazer em um dia, pois não conseguem se alimentar e cumprir com as outras despesas. Quase [30% da população se encontra na pobreza e quase 10% na extrema pobreza](https://www.correiobraziliense.com.br/economia/2021/06/4929384-apesar-do-crescimento-do-pib-dados-mostram-que-brasil-nunca-foi-tao-desigual.html). A situação é ainda mais assustadora quando nos deparamos com uma taxa de desocupação recorde, de 14,7% da população ativa, segundo o IBGE. Mais de 14 milhões de brasileiros são privados de emprego e com isso de renda.
+
+A pandemia já seria um grande desafio por si só, mas devido a um governo [negacionista](https://istoe.com.br/governo-bolsonaro-omisso-incapaz-mentiroso-negacionista-e-homicida/), que se [esforçou ativamente](https://www.correiobraziliense.com.br/politica/2021/05/4922949-bolsonaro-cumpriu-um-papel-de-disseminar-o-virus-diz-humberto-costa.html) para prolongar e espalhar o vírus, [ignorando as vidas perdidas](https://congressoemfoco.uol.com.br/governo/bolsonaro-ignora-mortes-por-covid-e-posa-para-foto-com-placa-cpf-cancelado/), na esperança de uma imunidade de rebanho [sem base nenhuma na ciência](https://brasil.elpais.com/ciencia/2020-10-15/a-imunidade-de-rebanho-e-uma-perigosa-falacia-sem-respaldo-cientifico.html), estamos em uma situação de extremo sofrimento das camadas mais vulneráveis. 
 
 ## Problema
-Nesse momento você deve apresentar o problema que a sua aplicação deve  resolver. No entanto, não é a hora de comentar sobre a aplicação.
 
-Descreva também o contexto em que essa aplicação será usada, se  houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de  fato existir, pois ainda não é a hora de apresentar requisitos  detalhados ou projetos.
-
-Nesse momento, o grupo pode optar por fazer uso  de ferramentas como Design Thinking, que permite um olhar de ponta a ponta para o problema.
-
-> **Links Úteis**:
-> - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz Certezas, Suposições e Dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
+Com seu acesso a recursos restrito, ou até inexistente, muitas famílias não tem como sobreviver sem recorrerem a doações. Cientes disso, muitos brasileiros se sentem impotentes ao querer ajudar, mas não sabem como. Isso se torna mais difícil ainda levando em consideração que por segurança própria e coletiva ainda não é seguro se aglomerar, ainda mais com o avanço de variantes como a delta. Com isso, fica difícil encontrar pessoas em dificuldade e ainda mais de se organizar para ajudá-las.
 
 ## Objetivos
 
-Aqui você deve descrever os objetivos do trabalho indicando que o objetivo geral é desenvolver um software para solucionar o problema apresentado acima. 
+Com esse problema em mente, criaremos uma plataforma web onde qualquer cidadão consiga ver os pontos de coleta de doações mais perto de sua residência. Assim, facilitaremos o contato entre organizações ou empresas que coletam doações e pessoas interessadas em ajudar. 
 
-Apresente também alguns (pelo menos 2) objetivos específicos dependendo de onde você vai querer concentrar a sua prática investigativa, ou como você vai aprofundar no seu trabalho.
+Queremos um lugar onde:
+
+- Usuários conseguem ver pontos de coleta relativos a sua localização
+- Instituições consigam cadastrar campanhas de coleta para aumentar o número de doações.
  
-> **Links Úteis**:
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
 
 ## Justificativa
 
-Descreva a importância ou a motivação para trabalhar com esta aplicação que você escolheu. Indique as razões pelas quais você escolheu seus objetivos específicos ou as razões para aprofundar em certos aspectos do software.
-
-O grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos, que podem ser apresentados, com o objetivo de esclarecer detalhes do problema que será abordado pelo grupo.
-
-> **Links Úteis**:
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+O que motivou a realização deste trabalho foi a necessidade de amenizar os efeitos do descaso do governo com a pandemia e seus efeitos na quantidade de pessoas que passam por dificuldades. Também fomos inspirados pelas ações do Padre Júlio Lancellotti que vem nos mostrando a importância e o impacto positivo que o cuidado com o próximo pode trazer. 
 
 ## Público-Alvo
 
-Descreva quem serão as pessoas que usarão a sua aplicação indicando os diferentes perfis. O objetivo aqui não é definir quem serão os clientes ou quais serão os papéis dos usuários na aplicação. A ideia é, dentro do possível, conhecer um pouco mais sobre o perfil dos usuários: conhecimentos prévios, relação com a tecnologia, relações
-hierárquicas, etc.
+O projeto prevê 2 principais públicos-alvo, todos em âmbito nacional.
 
-Adicione informações sobre o público-alvo por meio de uma descrição textual, diagramas de personas e mapa de stakeholders.
+- Instituições que organizam coletas de doações
 
-> **Links Úteis**:
-> - [Público-alvo](https://blog.hotmart.com/pt-br/publico-alvo/)
-> - [Como definir o público alvo](https://exame.com/pme/5-dicas-essenciais-para-definir-o-publico-alvo-do-seu-negocio/)
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-> - [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
+- Cidadãos interessados em ajudar, mas com mobilidade reduzida ou que não sabem a quem recorrer ou como ajudar
