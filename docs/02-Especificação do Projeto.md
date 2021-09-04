@@ -80,10 +80,10 @@ Com base na análise das personas foram identificadas as seguintes histórias de
 
 |EU COMO... `PERSONA`| QUERO/PRECISO ... `FUNCIONALIDADE` |PARA ... `MOTIVO/VALOR`                 |
 |--------------------|------------------------------------|----------------------------------------|
-|João Mendes  | criar um cadastro   | acessar a plataforma              |
+|João Mendes  | criar um cadastro como coletor  | acessar a plataforma              |
 |João Mendes  | registrar um ponto de coleta   | atingir mais doadores             |
 |João Mendes  | registrar o tipo de produtos que recebe   | evitar doações de produtos que não tem um distribuidor definido             |
-|Anita Camões  | criar um cadastro   | acessar a plataforma              |
+|Anita Camões  | criar um cadastro como coletora   | acessar a plataforma              |
 |Anita Camões  | registrar um ponto de coleta   | atingir mais doadores             |
 |Anita Camões  | registrar a data da próxima distribuição   | conseguir ajuda de mais voluntários             |
 |Camila Themes  | encontrar pontos de coleta perto de sua residência   | marcar a coleta da doação            |
@@ -99,20 +99,26 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 ### Requisitos Funcionais
 
 |ID    | Descrição do Requisito  | Prioridade |
-|------|-----------------------------------------|----|
-|RF-001| Permitir que o usuário cadastre seu perfil | ALTA | 
-|RF-002| Permitir que o usuário efetue login | ALTA | 
-|RF-003| Permitir que o usuário efetue logout | ALTA | 
-|RF-004| Permitir que o usuário instituição cadastre o tipo de produto que recebe | ALTA | 
-|RF-005| Permitir que o usuário procure por estabelecimentos próximos de sua localização | ALTA | 
-|RF-006| Permitir que o usuário instituição cadastre a data da próxima coleta | MÉDIA | 
-|RF-007| Permitir que o usuário envie mensagem para uma instituição  | BAIXA |   
-|RF-007| Permitir que o usuário filtre as instituições pelo tipo de doação que deseja fazer  | BAIXA |   
+|------|-----------------------------------------|---------|
+|RF-001​​ | Permitir que o usuário crie cadastro como coletor​ | ALTA​​ |
+|RF-002 | Permitir que o usuário crie cadastro como doador​ | ALTA​​ |
+|RF-003​ | Permitir que o usuário efetue login​​ | ALTA​​ |
+|RF-004​​ | Permitir que o usuário efetue logout​​ | ALTA​​ |
+|RF-005​​ | Permitir que o usuário visualize um ponto de coleta​​ | ALTA |​​
+|RF-006​​ | Permitir que o usuário coletor cadastre um ponto de coleta​​ | ALTA​​ |
+|RF-007​​ | Permitir que o usuário coletor edite um ponto de coleta​​ | ALTA​ |​
+|RF-008​​ | Permitir que o usuário coletor delete um ponto de coleta​​ | ALTA |​​
+|RF-009​​ | Permitir que o usuário coletor cadastre um novo tipo de produto que recebe​​ | ALTA​​ |
+|RF-010​​ | Permitir que o usuário procure por estabelecimentos próximos de sua localização​​ | ALTA |
+|RF-011​​ | Permitir que o usuário envie mensagem para um ponto de coleta​​ | BAIXA​​ |
+|RF-012​​ | Permitir que o usuário filtre os pontos de coleta pelo tipo de doação que deseja fazer​​ | BAIXA​​ |
+|RF-013​ | Permitir que o usuário doador favorite pontos de coleta​ | BAIXA |​
+
 
 ### Requisitos não Funcionais
 
 |ID     | Descrição do Requisito  |Prioridade |
-|-------|-------------------------|----|
+|-------|-------------------------|-----------|
 |RNF-001| O sistema deve focado para o uso em mobile (mobile-first) | ALTO | 
 |RNF-002| O sistema deve funcionar nos principais browsers para mobile (chrome e safari) | ALTO | 
 |RNF-003| O sistema deve ser responsivo para rodar em um dispositivos móvel e web | MÉDIA | 
@@ -137,3 +143,28 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 |06| O projeto deve seguir as regras de acessibilidade da w3c        |
 |07| A quantidade de trabalho deve caber na rotina compartilhada com família e trabalho        |
 |08| A organização do projeto deve possibilitar o trabalho assíncrono        |
+
+<br><br>
+
+## Descrição dos Casos de Uso
+
+| Caso de Uso     | Descrição      |  
+|:----------------|:---------------|
+| Gerenciar Ponto de Coleta | <p> Permite que o usuário Coletor cadastre, altere ou delete um ponto de coleta.|
+| Manter Doador | <p> Permite que o usuário Doador se cadastre, altere ou delete perifl.|
+| Cadastrar um Tipo de Produto | <p> Permite que o usuário Coletor cadastre um novo tipo de produto que aceita<br> ou está apto a realizar doação.|
+| Visualizar um Ponto de Coleta | <p> Permite que o usuário Doador visualize um ponto de coleta.|
+| Contatar um Ponto de Coleta pelo Whatsapp  | <p> Permite que o usuário Doador envie uma mensagem via whatsapp <br>para o ponto de coleta selecionado.|
+| Manter Ponto de Coleta Favorito | <p> Permite ao usuário Doador favoritar e desfavoritar pontos de coleta e listar favoritos.|
+| Buscar Ponto de Coleta |<p> Permite que o usuário busque pontos de coleta por localização, nome ou<br> tipos de produtos que aceitam.|
+
+<br>
+
+## Definição dos Atores
+
+
+|    Ator         |  Definição     |  
+|:----------------|:---------------|
+| Coletor | Cidadão que recebe doações para encaminhá-las a pessoas necessitadas<br> ou intermediar doações à uma instiutição|
+| Doador  | Cidadão que deseja realizar uma doação |
+| Sistema | Sistema que mantém cadastro de pontos de coleta de doações diversas |

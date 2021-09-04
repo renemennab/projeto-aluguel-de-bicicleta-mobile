@@ -49,19 +49,19 @@ Scrum Master : Amanda Salles Monteiro
 Project Owner: Renê Boaventura Neto
 
 Desenvolvedores:
-- Renê Boaventura Neto - Main
-- Amanda Salles Monteiro - Reviewer
+- Renê Boaventura Neto 
+- Amanda Salles Monteiro 
 
 Designers: 
-- Amanda Salles Monteiro - Main
-- Renê Boaventura Neto - Reviewer
+- Amanda Salles Monteiro
+- Renê Boaventura Neto 
 
 ### Processo
 
 Para dividir nossos processos vamos utilizar a metodologia Scrum.
 Nossas sprints tem uma semana sendo a divisão das tarefas feitas no Sábado e baseada na entrega semanal ao cliente que deve ser feita geralmente na Terça-Feira às 20hs. 
 
-[Link para o kanban](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2021-1-e1-proj-web-t2-doacaodealimentos/projects/2)
+[Link para o kanban](https://github.com/adnamamonteiro/projeto-doacoes/projects/2)
 
 #### Backlog
 No início do nosso processo levantamos os requisitos necessários para a próxima entrega e colocamos no kanban do projeto na aba To Do para que cada integrante escolha suas tarefas. 
@@ -102,13 +102,14 @@ As ferramentas empregadas no projeto são:
 
 |Função    | Plataforma  | Link de Acesso |
 |------|-----------------------------------------|----|
-| Ferramentas de comunicação | Microsoft Teams| [teams.com](https://teams.microsoft.com/_#/school/conversations/Grupo%2004%20-%20Doa%C3%A7%C3%A3o%20de%20alimentos?groupId=f3eea540-4f48-4502-97be-5c1864eecd76&threadId=19:2c749bce7ac14388aa8710cfe5551d46@thread.tacv2&ctx=channel)
-| Apresentação | Power Point 365 + Teams| [teams.com](https://teams.microsoft.com/_#/school/conversations/Grupo%2004%20-%20Doa%C3%A7%C3%A3o%20de%20alimentos?groupId=f3eea540-4f48-4502-97be-5c1864eecd76&threadId=19:2c749bce7ac14388aa8710cfe5551d46@thread.tacv2&ctx=channel)
-| Documentos do projeto | Teams| [teams.com](https://teams.microsoft.com/_#/school/conversations/Grupo%2004%20-%20Doa%C3%A7%C3%A3o%20de%20alimentos?groupId=f3eea540-4f48-4502-97be-5c1864eecd76&threadId=19:2c749bce7ac14388aa8710cfe5551d46@thread.tacv2&ctx=channel)
-| Repositório | Github | [github/cozinhaamiga](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2021-1-e1-proj-web-t2-doacaodealimentos) |
-| Organização de tarefas | Kanban Github| [github/projects](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2021-1-e1-proj-web-t2-doacaodealimentos/projects/1)
-| Editor de código | Visual Studio Code| [visualstudio.com](https://code.visualstudio.com/)
-| Ferramentas de diagramação e projeto de interfaces | Figma| [figma.com/cozinhaamiga](https://www.figma.com/file/kJm66Xw2RDGCbqpeIvepLn/Design-para-doa%C3%A7%C3%A3o-de-alimentos)
+| Ferramentas de comunicação | Microsoft Teams| [teams.com](https://teams.microsoft.com/l/channel/19%3a8b1cc63b1dd348d2b074fd1da5068805%40thread.tacv2/Grupo%2520Ter%25C3%25A7a%252020h50%2520-%2520Projeto%2520Doa%25C3%25A7%25C3%25B5es?groupId=18d77840-33bd-47d2-910b-0f5c42a4de5c&tenantId=14cbd5a7-ec94-46ba-b314-cc0fc972a161)|
+| Apresentação | Power Point 365 | [office.com](https://sgapucminasbr-my.sharepoint.com/:p:/g/personal/1328929_sga_pucminas_br/EWYwcjw4R89Pk_dK-oFA8h8B4Al0dZfswmKdRSrDXkNJjg?e=iqoZ9u)|
+| Repositório | Github | [github/onde-doar](https://github.com/adnamamonteiro/projeto-doacoes) |
+| Organização de tarefas | Kanban Github| [github/projects](https://github.com/adnamamonteiro/projeto-doacoes/projects/2)|
+| Editor de código | Visual Studio Code| [visualstudio.com](https://code.visualstudio.com/)|
+| Ferramentas de diagramação e projeto de interfaces | Figma| [figma.com/onde-doar](https://www.figma.com/file/AnDAMIwcsLVi92pWUxlJYc/Design-para-doa%C3%A7%C3%A3o-de-alimentos?node-id=758%3A1)|
+
+<!-- | Documentos do projeto | Teams| [teams.com](https://teams.microsoft.com/_#/school/conversations/Grupo%2004%20-%20Doa%C3%A7%C3%A3o%20de%20alimentos?groupId=f3eea540-4f48-4502-97be-5c1864eecd76&threadId=19:2c749bce7ac14388aa8710cfe5551d46@thread.tacv2&ctx=channel) -->
 
 Com o intuito de economizar tempo e evitar o uso de múltiplas ferramentas com a mesma função, o grupo deu preferência para o uso das ferramentas já usadas e sugeridas pelo curso. 
 
