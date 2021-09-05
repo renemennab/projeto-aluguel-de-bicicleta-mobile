@@ -14,6 +14,8 @@ function App(): ReactElement {
 }
 
 const AppStyles = styled.div`
+    height: 100vh;
+    width: 100%;
     main {
         width: 100%;
         height: 100%;
