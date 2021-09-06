@@ -1,36 +1,106 @@
-
 # Projeto de Interface
 
 <span style="color:red">Pré-requisitos: <a href="2-Especificação do Projeto.md"> Documentação de Especificação</a></span>
 
-Visão geral da interação do usuário pelas telas do sistema e protótipo interativo das telas com as funcionalidades que fazem parte do sistema (wireframes).
+A interface foi projetada utilizando o processo de design centrado no usuário e o conceito Mobile First a fim de oferecer a melhor experiência do usuário, usabilidade e acessibilidade.
 
- Apresente as principais interfaces da plataforma. Discuta como ela foi elaborada de forma a atender os requisitos funcionais, não funcionais e histórias de usuário abordados nas <a href="2-Especificação do Projeto.md"> Documentação de Especificação</a>.
-
-## Diagrama de Fluxo
-
-O diagrama apresenta o estudo do fluxo de interação do usuário com o sistema interativo e  muitas vezes sem a necessidade do desenho do design das telas da interface. Isso permite que o design das interações seja bem planejado e gere impacto na qualidade no design do wireframe interativo que será desenvolvido logo em seguida.
-
-O diagrama de fluxo pode ser desenvolvido com “boxes” que possuem internamente a indicação dos principais elementos de interface - tais como menus e acessos - e funcionalidades, tais como editar, pesquisar, filtrar, configurar - e a conexão entre esses boxes a partir do processo de interação. Você pode ver mais explicações e exemplos https://www.lucidchart.com/blog/how-to-make-a-user-flow-diagram.
-
-![Exemplo de Diagrama de Fluxo](img/diagramafluxo2.jpg)
-
-As referências abaixo irão auxiliá-lo na geração do artefato “Diagramas de Fluxo”.
-
-> **Links Úteis**:
-> - [Fluxograma online: seis sites para fazer gráfico sem instalar nada | Produtividade | TechTudo](https://www.techtudo.com.br/listas/2019/03/fluxograma-online-seis-sites-para-fazer-grafico-sem-instalar-nada.ghtml)
+## User Flow
+<br><br>
+<img src="img/diagramas/fluxo.png" width="500">
+<br><br>
+O diagrama acima apresenta o fluxo de interação do usuário pelas telas da aplicação.
 
 ## Wireframes
 
-![Exemplo de Wireframe](img/wireframe-example.png)
+Abaixo apresentamos o detalhamento e descrição dos wireframes mostrados no fluxo de usuário.
 
-São protótipos usados em design de interface para sugerir a estrutura de um site web e seu relacionamentos entre suas páginas. Um wireframe web é uma ilustração semelhante do layout de elementos fundamentais na interface.
- 
-> **Links Úteis**:
-> - [Protótipos vs Wireframes](https://www.nngroup.com/videos/prototypes-vs-wireframes-ux-projects/)
-> - [Ferramentas de Wireframes](https://rockcontent.com/blog/wireframes/)
-> - [MarvelApp](https://marvelapp.com/developers/documentation/tutorials/)
-> - [Figma](https://www.figma.com/)
-> - [Adobe XD](https://www.adobe.com/br/products/xd.html#scroll)
-> - [Axure](https://www.axure.com/edu) (Licença Educacional)
-> - [InvisionApp](https://www.invisionapp.com/) (Licença Educacional)
+### Componentes comuns a todas as telas
+
+- Rodapé: onde estão dispostos os botões 'Lista' para listar pontos de coleta, 'Mapa' para visualizar
+pontos de coleta no mapa e 'Menu' para acessar o menu da aplicação. <br> <br>
+
+<p>
+ <img src="img/wireframes/rodape.png" width="180" hspace="40">
+ <img src="img/wireframes/menu.png" width="180" hspace="40">
+</p>
+<br>
+
+### Tela - Home
+Apresenta mapa com pontos de coleta próximos à localização do usuário.
+
+Os componentes encontrados na tela são:
+ - Mapa
+ - Barra de pesquisa
+ - Informações do ponto selecionado
+ - Rodapé
+<br> <br>
+
+<p>
+ <img src="img/wireframes/home-1.png" width="180" hspace="40">
+ <img src="img/wireframes/home-2.png" width="180" hspace="40">
+</p>
+
+<br>
+
+### Tela - Listar Pontos de Coleta
+Apresenta lista de pontos de coleta de acordo com a cidade selecionada ou pesquisa realizada.
+
+Os componentes encontrados na tela são:
+ - Campo que permite que o usuário busque por um ponto de coleta
+ - Lista que permite selecionar um dos pontos próximos
+<br><br>
+
+<p>
+ <img src="img/wireframes/list.png" width="180" hspace="40">
+</p>
+
+<br>
+
+### Tela - Cadastro Usuário
+Apresenta o formulário de cadastro de usuário.
+
+Os componentes encontrados na tela são:
+ - Formulário de cadastro de usuário
+ - Botão "Salvar" que efetua o cadastro do usuário na base de dados da aplicação, apresenta mensagem de confirmação e o direciona para a página Home
+
+<br><br>
+
+<p>
+ <img src="img/wireframes/cadastro-usuario.png" width="180" hspace="40">
+ <img src="img/wireframes/confirmacao-usuario.png" width="180" hspace="40">
+</p>
+
+<br>
+
+### Tela - Cadastro Ponto de Coleta
+Apresenta o formulário de cadastro de ponto de coleta.
+
+Os componentes encontrados na tela são:
+ - Formulário de cadastro de ponto de coleta
+ - Botão "Salvar" que efetua o cadastro do ponto de coleta na base de dados da aplicação
+
+<br><br>
+
+<p>
+ <img src="img/wireframes/cadastro-ponto.png" width="180" hspace="40">
+ <img src="img/wireframes/confirmacao-ponto.png" width="180" hspace="40">
+</p>
+
+<br>
+
+### Tela - Login
+Apresenta o formulário para logar na aplicação
+
+Os componentes encontrados na tela são:
+ - Formulário de login
+ - Botão "Login" que realiza a autenticação do usuário na base de dados da aplicação
+
+<br><br>
+
+<p>
+ <img src="img/wireframes/login.png" width="180" hspace="40">
+</p>
+
+<br>
+
+O protótipo apresentado nesta seção foi criado e pode ser acessado pela [plataforma Figma.](https://www.figma.com/file/AnDAMIwcsLVi92pWUxlJYc/Design-para-doa%C3%A7%C3%A3o-de-alimentos?node-id=758%3A1) 
