@@ -83,7 +83,7 @@ export function MapComponent(): JSX.Element {
 }
 
 const StyledMap = styled.div`
-    height: 92vh;
+    flex-grow: 1;
     width: 100%;
     .leaflet-container {
         height: 100%;
