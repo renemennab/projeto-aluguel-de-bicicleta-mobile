@@ -1,6 +1,7 @@
 import React, { ReactElement, useState } from 'react'
 import styled from 'styled-components'
 import { MapComponent } from './map/mapComponent'
+import { MenuOptions } from './navBar/menuOptions'
 import { NavBar } from './navBar/navBar'
 
 function App(): ReactElement {
@@ -11,6 +12,7 @@ function App(): ReactElement {
             <main>
                 <MapComponent />
                 <NavBar selectedView={selectedView} setSelectedView={setSelectedView} />
+                <MenuOptions selectedView={selectedView} setSelectedView={setSelectedView} />
             </main>
         </AppStyles>
     )

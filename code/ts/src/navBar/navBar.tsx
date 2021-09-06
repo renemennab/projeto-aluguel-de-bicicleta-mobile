@@ -21,10 +21,7 @@ export function NavBar({ selectedView, setSelectedView }: IProps): JSX.Element {
                 <i className="far fa-map"></i>
                 <span>Map</span>
             </button>
-            <button
-                className={`navBar--list ${selectedView === `menu` ? `selected` : ``}`}
-                onClick={() => setSelectedView(`menu`)}
-            >
+            <button className={`navBar--list`} onClick={() => setSelectedView(`menu`)}>
                 <i className="fas fa-chevron-up"></i>
                 <span>Menu</span>
             </button>
