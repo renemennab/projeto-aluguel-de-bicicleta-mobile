@@ -108,11 +108,10 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |RF-006​​ | Permitir que o usuário coletor cadastre um ponto de coleta​​ | ALTA​​ |
 |RF-007​​ | Permitir que o usuário coletor edite um ponto de coleta​​ | ALTA​ |​
 |RF-008​​ | Permitir que o usuário coletor delete um ponto de coleta​​ | ALTA |​​
-|RF-009​​ | Permitir que o usuário coletor cadastre um novo tipo de produto que recebe​​ | ALTA​​ |
-|RF-010​​ | Permitir que o usuário procure por estabelecimentos próximos de sua localização​​ | ALTA |
+|RF-009 | Permitir que o usuário procure por estabelecimentos próximos de sua localização​​ | ALTA |
+|RF-010 | Permitir que o usuário filtre os pontos de coleta pelo tipo de doação que deseja fazer​​ | BAIXA​​ |
 |RF-011​​ | Permitir que o usuário envie mensagem para um ponto de coleta​​ | BAIXA​​ |
-|RF-012​​ | Permitir que o usuário filtre os pontos de coleta pelo tipo de doação que deseja fazer​​ | BAIXA​​ |
-|RF-013​ | Permitir que o usuário doador favorite pontos de coleta​ | BAIXA |​
+|RF-0132 | Permitir que o usuário doador favorite pontos de coleta​ | BAIXA |​
 
 
 ### Requisitos não Funcionais
