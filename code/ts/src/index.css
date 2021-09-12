@@ -15,3 +15,10 @@ code {
 * {
     box-sizing: border-box;
 }
+:root{
+    --red: #F28482;
+    --light-blue: #CEEAF7;
+    --dark-blue: #457B9D;
+    --black: #141414;
+    --yellow: #F7D08A;
+}
