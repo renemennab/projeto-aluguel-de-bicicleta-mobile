@@ -108,11 +108,10 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |RF-006​​ | Permitir que o usuário coletor cadastre um ponto de coleta​​ | ALTA​​ |
 |RF-007​​ | Permitir que o usuário coletor edite um ponto de coleta​​ | ALTA​ |​
 |RF-008​​ | Permitir que o usuário coletor delete um ponto de coleta​​ | ALTA |​​
-|RF-009​​ | Permitir que o usuário coletor cadastre um novo tipo de produto que recebe​​ | ALTA​​ |
-|RF-010​​ | Permitir que o usuário procure por estabelecimentos próximos de sua localização​​ | ALTA |
-|RF-011​​ | Permitir que o usuário envie mensagem para um ponto de coleta​​ | BAIXA​​ |
-|RF-012​​ | Permitir que o usuário filtre os pontos de coleta pelo tipo de doação que deseja fazer​​ | BAIXA​​ |
-|RF-013​ | Permitir que o usuário doador favorite pontos de coleta​ | BAIXA |​
+|RF-009 | Permitir que o usuário procure por estabelecimentos próximos de sua localização​​ | ALTA |
+|RF-010​​ | Permitir que o usuário envie mensagem para um ponto de coleta​​ | BAIXA​​ |
+|RF-011 | Permitir que o usuário filtre os pontos de coleta pelo tipo de doação que deseja fazer​​ | BAIXA​​ |
+|RF-012 | Permitir que o usuário doador favorite pontos de coleta​ | BAIXA |
 
 
 ### Requisitos não Funcionais
@@ -152,7 +151,6 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 |:----------------|:---------------|
 | Gerenciar Ponto de Coleta | <p> Permite que o usuário Coletor cadastre, altere ou delete um ponto de coleta.|
 | Manter Doador | <p> Permite que o usuário Doador se cadastre, altere ou delete perifl.|
-| Cadastrar um Tipo de Produto | <p> Permite que o usuário Coletor cadastre um novo tipo de produto que aceita<br> ou está apto a realizar doação.|
 | Visualizar um Ponto de Coleta | <p> Permite que o usuário Doador visualize um ponto de coleta.|
 | Contatar um Ponto de Coleta pelo Whatsapp  | <p> Permite que o usuário Doador envie uma mensagem via whatsapp <br>para o ponto de coleta selecionado.|
 | Manter Ponto de Coleta Favorito | <p> Permite ao usuário Doador favoritar e desfavoritar pontos de coleta e listar favoritos.|
