@@ -155,7 +155,6 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 | Gerenciar Ponto de Coleta | <p> Permite que o usuário Coletor cadastre, altere ou delete um ponto de coleta. |
 | Gerenciar Evento de Coleta | <p> Permite que o usuário Coletor cadastre, altere ou delete um evento de coleta.|
 | Manter Doador | <p> Permite que o usuário Doador se cadastre, altere ou delete perifl.|
-| Cadastrar um Tipo de Produto | <p> Permite que o usuário Coletor cadastre um novo tipo de produto que aceita<br> ou está apto a realizar doação.|
 | Visualizar um Ponto de Coleta | <p> Permite que o usuário Doador visualize um ponto de coleta.|
 | Contatar um Ponto de Coleta pelo Whatsapp  | <p> Permite que o usuário Doador envie uma mensagem via whatsapp <br>para o ponto de coleta selecionado.|
 | Manter Ponto de Coleta Favorito | <p> Permite ao usuário Doador favoritar e desfavoritar pontos de coleta e listar favoritos.|
