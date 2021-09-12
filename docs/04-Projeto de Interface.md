@@ -90,7 +90,7 @@ Apresenta modal de confirmação de exclusão
 
 Os componentes encontrados na tela são:
  - Modal de confirmação de exclusão
- - No modal, Botão "Ok" que efetua a exclusão dos dados do ponto de coleta na base de dados da aplicação e apresenta mensagem de sucesso e<br>
+ - No modal, Botão "Ok" que efetua a exclusão dos dados do ponto de coleta na base de dados da aplicação e apresenta mensagem de sucesso e
  'Cancelar' que cancela a ação
 <br><br>
 
@@ -148,4 +148,4 @@ Os componentes encontrados na tela são:
 
 <br>
 
-O protótipo apresentado nesta seção foi criado e pode ser acessado pela [plataforma Figma.](https://www.figma.com/file/AnDAMIwcsLVi92pWUxlJYc/Design-para-doa%C3%A7%C3%A3o-de-alimentos?node-id=758%3A1) 
+O protótipo apresentado nesta seção foi criado e pode ser acessado pela [plataforma Figma.](https://www.figma.com/file/Am9uOV7d5cALEt0lydM26W/Onde-Doar-team-library?node-id=312%3A2) 
