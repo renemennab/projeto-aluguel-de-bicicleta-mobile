@@ -1,5 +1,7 @@
 import React, { ReactElement, useState } from 'react'
 import styled from 'styled-components'
+import { AssetList } from './components/assetList'
+import { FakePointData } from './fakeData/fakeData'
 import { MapComponent } from './map/mapComponent'
 import { MenuOptions } from './navBar/menuOptions'
 import { NavBar } from './navBar/navBar'
@@ -10,7 +12,7 @@ function App(): ReactElement {
     return (
         <AppStyles className="App">
             <main>
-                <MapComponent />
+                {selectedView === `list` ? <AssetList assetData={FakePointData} /> : <MapComponent />}
                 <NavBar selectedView={selectedView} setSelectedView={setSelectedView} />
                 <MenuOptions selectedView={selectedView} setSelectedView={setSelectedView} />
             </main>
