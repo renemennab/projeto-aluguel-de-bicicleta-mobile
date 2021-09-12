@@ -34,24 +34,31 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir.
 |------|-----------------------------------------|
 |Requisitos associados | RF-006​​ Permitir que o usuário coletor cadastre um ponto de coleta <br /> RF-007​​  Permitir que o usuário coletor edite um ponto de coleta​​ <br /> RF-008 Permitir que o usuário coletor delete um ponto de coleta​​
 |Objetivo do teste | Verficar se os usuários conseguem cadastrar, editar e deletar um ponto de coleta
-|Passos | <ol><li>Entrar no navegador</li><li>Acessar o site</li><li>Fazer login</li><li>Abrir o menu</li><li>Clicar na opção criar ponto de coleta</li><li>Preencher as informações</li><li>Salvar</li><li>Clicar em "Menu"</li><li>Clicar em "Meus Pontos de coleta"</li><li>Selecionar um</li><li>Clicar no icone de edição</li><li>Editar campo desejado</li><li>Salvar</li><li>Clicar no ícone de deletar</li><li>Confirmar que deseja deletar</li></ol>
+|Passos | <ol><li>Entrar no navegador</li><li>Acessar o site</li><li>Fazer login</li><li>Abrir o menu</li><li>Clicar em "Meus Pontos de coleta"</li><li>Clicar na opção criar ponto de coleta</li><li>Preencher as informações</li><li>Salvar</li><li>Clicar em "Menu"</li><li>Clicar em "Meus Pontos de coleta"</li><li>Selecionar um</li><li>Clicar no icone de edição</li><li>Editar campo desejado</li><li>Salvar</li><li>Clicar no ícone de deletar</li><li>Confirmar que deseja deletar</li></ol>
 |Critérios de Êxito | <ul><li>Site deve rodar normalmente</li><li>Ponto deve ser criado, editado e deletado do banco</li><li>Caso haja qualquer erro de preenchimento, o usuário deve ser comunicado</li><li>Deve haver uma confirmação sempre antes de salvar uma edição ou de deletar</li><li>Caso haja qualquer falha de requisição, o usuário deve ser avisado</li></ul>
-
 
 <br>
 
-|Caso de teste   | CT-004 - Usuários conseguem fazer buscas 
+|Caso de teste   | CT-004 - Usuários conseguem manter evento de distribuição
 |------|-----------------------------------------|
-|Requisitos associados | RF-09 Permitir que o usuário procure por estabelecimentos próximos de sua localização​​ <br/> RF-010 Permitir que o usuário filtre os pontos de coleta pelo tipo de doação que deseja fazer
+|Requisitos associados | RF-010  Permitir que o usuário coletor cadastre um evento de distribuição  <br> RF-011  Permitir que o usuário coletor edite um evento de distribuição  <br> ​RF-012​​  Permitir que o usuário coletor delete um evento de distribuição ​​
+|Passos | <ol><li>Entrar no navegador</li><li>Acessar o site</li><li>Fazer login</li><li>Abrir o menu</li><li>Clicar em "Meus Eventos de Distribuição"</li><li>Clicar na opção criar novo evento</li><li>Preencher as informações</li><li>Salvar</li><li>Clicar em "Menu"</li><li>Clicar em "Meus Eventos de Distribuição"</li><li>Selecionar um</li><li>Clicar no icone de edição</li><li>Editar campo desejado</li><li>Salvar</li><li>Clicar no ícone de deletar</li><li>Confirmar que deseja deletar</li></ol>
+|Critérios de Êxito | <ul><li>Site deve rodar normalmente</li><li>Evento deve ser criado, editado e deletado do banco</li><li>Caso não haja nenhum ponto de coleta cadastrado, o usuário deve ser avisado que deve configurar um antes de criar um evento</li><li>Caso haja qualquer erro de preenchimento, o usuário deve ser comunicado</li><li>Deve haver uma confirmação sempre antes de salvar uma edição ou de deletar</li><li>Caso haja qualquer falha de requisição, o usuário deve ser avisado</li></ul>
+
+<br>
+
+|Caso de teste   | CT-006 - Usuários conseguem fazer buscas 
+|------|-----------------------------------------|
+|Requisitos associados | RF-09 Permitir que o usuário procure por estabelecimentos próximos de sua localização​​ <br/> RF-013 Permitir que o usuário filtre os pontos de coleta pelo tipo de doação que deseja fazer
 |Objetivo do teste |  Verificar se os usuários conseguem fazer buscas
 |Passos | <ol><li>Entrar no navegador</li><li>Acessar o site</li><li>Digitar o nome de um estabelecimento ou cidade no campo de buscas</li><li>Clicar no ícone de filtros</li><li>Selecionar tipos de itens desejados</li></ol>
 |Critérios de Êxito | <ul><li>Site deve rodar normalmente</li><li>Caso a pesquisa retorne com pontos, o usuário deve conseguir visualizar os cards com os pontos</li><li>Ao selecionar um filtro, lista deve mostrar apenas cards que correspondam àquele filtro</li><li>Caso a busca não retorne resultados o usuário deve ser informado</li></ul>
 
 <br>
 
-|Caso de teste   | CT-005 - Usuários conseguem favoritar e interagir com pontos de coleta
+|Caso de teste   | CT-006 - Usuários conseguem favoritar e interagir com pontos de coleta
 |------|-----------------------------------------|
-|Requisitos associados | RF-011​​ Permitir que o usuário envie mensagem para um ponto de coleta​​ <br /> RF-012​ Permitir que o usuário doador favorite pontos de coleta​
+|Requisitos associados | RF-014​​ Permitir que o usuário envie mensagem para um ponto de coleta​​ <br /> RF-015​ Permitir que o usuário doador favorite pontos de coleta​
 |Objetivo do teste | Verificar se os usuários conseguem favoritar e entrar em contato com pontos de coleta
 |Passos | <ol><li> Entrar no navegador </li><li>  Acessar o site </li><li>  Clicar em um ponto de coleta </li><li>  Ver informações do usuário </li><li> Clicar em Contatar usuário</li><li>Voltar</li><li>Clicar no ícone de estrela</li><li>   Fazer login ou cadastro </li></ol>
 |Critérios de Êxito | <ul><li> Site deve rodar normalmente </li> <li> Informações exibidas devem ser as referentes à instituição selecionada na tela de busca</li> <li> Botão de contato mostra informações de contato da instituição </li> <li> Botão enviar mensagem me leva ao whatsapp </li> <li>Ao clicar na estrela, caso o usuário não esteja logado, ele será redirecionado para o processo de signup e login, ao finalizar, seu ponto estará favoritado em seu perfil</li></ul> 
