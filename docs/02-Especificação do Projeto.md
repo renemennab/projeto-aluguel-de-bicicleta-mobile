@@ -152,7 +152,8 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 | Caso de Uso     | Descrição      |  
 |:----------------|:---------------|
-| Gerenciar Ponto de Coleta | <p> Permite que o usuário Coletor cadastre, altere ou delete um ponto de coleta, podendo ou não atrelar a ele um evento de distribuição.|
+| Gerenciar Ponto de Coleta | <p> Permite que o usuário Coletor cadastre, altere ou delete um ponto de coleta. |
+| Gerenciar Evento de Coleta | <p> Permite que o usuário Coletor cadastre, altere ou delete um evento de coleta.|
 | Manter Doador | <p> Permite que o usuário Doador se cadastre, altere ou delete perifl.|
 | Cadastrar um Tipo de Produto | <p> Permite que o usuário Coletor cadastre um novo tipo de produto que aceita<br> ou está apto a realizar doação.|
 | Visualizar um Ponto de Coleta | <p> Permite que o usuário Doador visualize um ponto de coleta.|
