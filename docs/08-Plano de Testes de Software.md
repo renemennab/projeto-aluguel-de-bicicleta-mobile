@@ -21,16 +21,16 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir.
 
 <br>
 
-|Caso de teste   | CT-002 - Usuários conseguem ver pontos no mapa 
+|Caso de teste   | CT-002 - Usuários conseguem ver pontos de coleta no mapa 
 |------|-----------------------------------------|
 |Requisitos associados | RF-005​​  Permitir que o usuário visualize um ponto de coleta​​  
 |Objetivo do teste |  Verificar se os usuários conseguem visualizar pontos no mapa
-|Passos | 1) Entrar no navegador <br /> 2) Acessar o site <br /> 3)  visualizar o mapa <br /> 4) Clicar em um ponto de distribuição <br /> 6) Caso não haja nenhum na sua região, clicar em lista e ver os pontos mais próximos
+|Passos | 1) Entrar no navegador <br /> 2) Acessar o site <br /> 3)  visualizar o mapa <br /> 4) Clicar em um ponto de coleta <br /> 6) Caso não haja nenhum na sua região, clicar em lista e ver os pontos mais próximos
 |Critérios de Êxito | - Site deve rodar normalmente <br /> - Mapa deve centralizar perto do usuário caso ele tenha dado permissão ao browser para compartilhar a localização <br /> - Ao clicar em lista a visualização deve mudar <br> - devem aparecer cards mostrando os pontos e sua distância
 
 <br>
 
-|Caso de teste   | CT-003 - Usuários consegue utilizar a funcionalidade de ponto de coleta
+|Caso de teste   | CT-003 - Usuários conseguem manter ponto de coleta
 |------|-----------------------------------------|
 |Requisitos associados | RF-006​​ Permitir que o usuário coletor cadastre um ponto de coleta <br /> RF-007​​  Permitir que o usuário coletor edite um ponto de coleta​​ <br /> RF-008 Permitir que o usuário coletor delete um ponto de coleta​​
 |Objetivo do teste | Verficar se os usuários conseguem cadastrar, editar e deletar um ponto de coleta
@@ -61,5 +61,5 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir.
  
 - Jest
 - Cypress
-- Métodos de teste c#
+- xUnit.net
 - Vscode test Explorer
