@@ -42,16 +42,61 @@ Os componentes encontrados na tela são:
 
 <br>
 
-### Tela - Listar Pontos de Coleta
-Apresenta lista de pontos de coleta de acordo com a cidade selecionada ou pesquisa realizada.
+### Tela - Listar Pontos ou Eventos de Coleta
+Apresenta lista de pontos ou eventos de coleta de acordo com a seleção no mapa ou pesquisa realizada.
 
 Os componentes encontrados na tela são:
  - Campo que permite que o usuário busque por um ponto de coleta
- - Lista que permite selecionar um dos pontos próximos
+ - Lista que permite selecionar um dos pontos ou eventos próximos
 <br><br>
 
 <p>
  <img src="img/wireframes/list.png" width="180" hspace="40">
+</p>
+
+<br>
+
+### Tela - Visualizar Ponto ou Evento de Coleta
+Apresenta informações do ponto ou evento de coleta selecionado
+
+Os componentes encontrados na tela são:
+ - Dados do ponto ou evento de coleta
+ - Botões "Editar" e "Deletar"
+<br><br>
+
+<p>
+ <img src="img/wireframes/visualizar.png" width="180" hspace="40">
+</p>
+
+<br>
+
+### Tela - Editar Ponto de Coleta
+Apresenta formulário para edição dos dados do ponto de coleta
+
+Os componentes encontrados na tela são:
+ - Formulário de edição
+ - Botão "Salvar" que efetua a atualização dos dados do ponto de coleta na base de dados da aplicação e apresenta mensagem de sucesso
+<br><br>
+
+<p>
+ <img src="img/wireframes/editar-form.png" width="180" hspace="40">
+ <img src="img/wireframes/editar-sucesso.png" width="180" hspace="40">
+</p>
+
+<br>
+
+### Tela - Deletar Ponto de Coleta
+Apresenta modal de confirmação de exclusão
+
+Os componentes encontrados na tela são:
+ - Modal de confirmação de exclusão
+ - No modal, Botão "Ok" que efetua a exclusão dos dados do ponto de coleta na base de dados da aplicação e apresenta mensagem de sucesso e<br>
+ 'Cancelar' que cancela a ação
+<br><br>
+
+<p>
+ <img src="img/wireframes/deletar-confirmacao.png" width="180" hspace="40">
+ <img src="img/wireframes/deletar-sucesso.png" width="180" hspace="40">
 </p>
 
 <br>
@@ -61,13 +106,13 @@ Apresenta o formulário de cadastro de usuário.
 
 Os componentes encontrados na tela são:
  - Formulário de cadastro de usuário
- - Botão "Salvar" que efetua o cadastro do usuário na base de dados da aplicação, apresenta mensagem de confirmação e o direciona para a página Home
+ - Botão "Salvar" que efetua o cadastro do usuário na base de dados da aplicação, apresenta mensagem de sucesso e o direciona para a página Home
 
 <br><br>
 
 <p>
  <img src="img/wireframes/cadastro-usuario.png" width="180" hspace="40">
- <img src="img/wireframes/confirmacao-usuario.png" width="180" hspace="40">
+ <img src="img/wireframes/sucesso-usuario.png" width="180" hspace="40">
 </p>
 
 <br>
@@ -77,13 +122,13 @@ Apresenta o formulário de cadastro de ponto de coleta.
 
 Os componentes encontrados na tela são:
  - Formulário de cadastro de ponto de coleta
- - Botão "Salvar" que efetua o cadastro do ponto de coleta na base de dados da aplicação
+ - Botão "Salvar" que efetua o cadastro do ponto de coleta na base de dados da aplicação e apresenta mensagem de sucesso
 
 <br><br>
 
 <p>
  <img src="img/wireframes/cadastro-ponto.png" width="180" hspace="40">
- <img src="img/wireframes/confirmacao-ponto.png" width="180" hspace="40">
+ <img src="img/wireframes/sucesso-ponto.png" width="180" hspace="40">
 </p>
 
 <br>
