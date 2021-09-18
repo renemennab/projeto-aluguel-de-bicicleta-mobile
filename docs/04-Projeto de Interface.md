@@ -4,15 +4,15 @@
 
 A interface foi projetada utilizando o processo de design centrado no usuário e o conceito Mobile First a fim de oferecer a melhor experiência do usuário, usabilidade e acessibilidade.
 
-## User Flow
+## Diagrama de fluxo
 <br><br>
-<img src="img/diagramas/fluxo.png" width="500">
+<img src="img/diagramas/Diagrama Fluxo.svg" width="500">
 <br><br>
-O diagrama acima apresenta o fluxo de interação do usuário pelas telas da aplicação.
+O diagrama acima apresenta as diferentes açoões possíveis por tipo de usuário pela aplicação.
 
 ## Wireframes
 
-Abaixo apresentamos o detalhamento e descrição dos wireframes mostrados no fluxo de usuário. O wireframe interativo pode ser encontrado abaixo: <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FAm9uOV7d5cALEt0lydM26W%2FOnde-Doar-team-library%3Fnode-id%3D362%253A7376%26scaling%3Dmin-zoom%26page-id%3D362%253A5861%26starting-point-node-id%3D362%253A7376" allowfullscreen></iframe>
+Abaixo apresentamos o detalhamento e descrição dos wireframes mostrados no fluxo de usuário. O wireframe interativo pode ser encontrado no [figma](https://www.figma.com/proto/Am9uOV7d5cALEt0lydM26W/Onde-Doar-team-library?node-id=362%3A7376&scaling=min-zoom&page-id=362%3A5861&starting-point-node-id=362%3A7376).
 
 ### Componentes comuns a todas as telas
 
