@@ -145,7 +145,3 @@ Os componentes encontrados na tela são:
 <p>
  <img src="img/wireframes/login.png" width="180" hspace="40">
 </p>
-
-<br>
-
-O protótipo apresentado nesta seção foi criado e pode ser acessado pela [plataforma Figma.](https://www.figma.com/file/Am9uOV7d5cALEt0lydM26W/Onde-Doar-team-library?node-id=312%3A2) 
