@@ -1,23 +1,22 @@
-# TÍTULO DO PROJETO
+# PROJETO DOAÇÕES
 
-`CURSO`
+`ANÁLISE E DESENVOLVIMENTO DE SISTEMAS`
 
-`DISCIPLINA`
+`PROJETO: DESENVOLVIMENTO DE UMA APLICAÇÃO INTERATIVA`
 
-`SEMESTRE`
+`2° SEMESTRE`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+Esse projeto tem como objetivo criar uma plataforma que contribua com a distribuição de doações a pessoas necessitadas, 
+facilitando o contato entre organizações ou empresas que coletam doações e pessoas interessadas em ajudar.
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+* Amanda Salles Monteiro
+* Renê Boaventura Neto
 
 ## Orientador
 
-* Nome completo do professor 1
+* Rosilane Ribeiro Da Mota
 
 ## Instruções de utilização
 
