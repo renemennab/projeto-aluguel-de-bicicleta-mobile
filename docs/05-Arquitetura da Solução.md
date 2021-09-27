@@ -6,23 +6,27 @@ Nesta seção apresentamos a definição da estrutura do software em termos dos 
 
 ## Diagrama de Classes
 
+Diagrama que ilustra as classes que compõem o sistema, bem como seus atributos, métodos e relações entre objetos.
+
 <p align="center">
-    <img src="img/diagramas/Onde Doar Diagrama de classe.png" width="700">
+    <img src="img/diagramas/diagrama-classe.png" width="700">
 </p>
 
 ## Modelo ER
 
+Diagrama que descreve o conjunto de entidades do sistema, seus atributos e relacionamentos.
+
 <p align="center">
-    <img src="img/diagramas/Diagrama Entidade Relacionamento - Projeto Doações.svg" width="700">
+    <img src="img/diagramas/modelo-er.png" width="700">
 </p>
 
 ## Esquema Relacional
 
-O Esquema Relacional corresponde à representação dos dados em tabelas juntamente com as restrições de integridade e chave primária.
- 
-As referências abaixo irão auxiliá-lo na geração do artefato “Esquema Relacional”.
+Esquema que representa o relacionamento entre as tabelas que armazenam os dados necessários ao sistema.
 
-> - [Criando um modelo relacional - Documentação da IBM](https://www.ibm.com/docs/pt-br/cognos-analytics/10.2.2?topic=designer-creating-relational-model)
+<p align="center">
+    <img src="img/diagramas/esquema-relacional.png" width="700">
+</p>
 
 ## Tecnologias Utilizadas
 
@@ -73,7 +77,9 @@ Serve para auxiliar na construção e execução de testes unitários, ou melhor
 #### [MySQL](https://www.techtudo.com.br/artigos/noticia/2012/04/o-que-e-e-como-usar-o-mysql.html)
 
 O MySQL é um sistema gerenciador de banco de dados relacional de código aberto usado na maioria das aplicações gratuitas para gerir suas bases de dados. O serviço utiliza a linguagem SQL (Structure Query Language – Linguagem de Consulta Estruturada), que é a linguagem mais popular para inserir, acessar e gerenciar o conteúdo armazenado num banco de dados.
-## Hospedagem
+
+### Hospedagem
 
 A equipe optou pela plataforma Heroku como ambiente de hospedagem da aplicação.<br>
-O deploy no Heroku é feito conectando o repositório que contém a aplicação no GitHub ao Heroku app para que a cada <em>git push</em>, automaticamente (ou não) seja feita a publicação da aplicação.
+<i>Como o Heroku não suporta .NET Core nativamente, o deploy será feito atráves da conteinerização da aplicação com [Docker](https://www.docker.com/).</i>
+
