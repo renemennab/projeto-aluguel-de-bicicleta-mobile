@@ -14,10 +14,10 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir.
 
 |Caso de teste   | CT-001 - Usuários conseguem se registrar 
 |------|-----------------------------------------|
-|Requisitos associados | RF-001​​  Permitir que o usuário crie cadastro como coletor​ <br/>RF-002  Permitir que o usuário crie cadastro como doador​ <br/>RF-003​  Permitir que o usuário efetue login​​ <br/>RF-004​​  Permitir que o usuário efetue logout​​ <br/>
+|Requisitos associados | RF-001​​  Permitir que o usuário crie cadastro como coletor​ <br/>RF-002  Permitir que o usuário crie cadastro como doador​ <br/>
 |Objetivo do teste | Verificar se os usuários conseguem se registrar
-|Passos | 1) Entrar no navegador <br /> 2) Acessar o site <br /> 3) Clicar em "Menu" e "login" <br /> 4) Inserir os dados, inclusive o tipo de usuário <br /> 5) Fazer login
-|Critérios de Êxito | - Site deve rodar normalmente <br /> - Aparecer mensagem de exito ao criar o cadastro <br /> - Dados devem ser salvos no banco de dados<br /> - Senha deve ser cryptografada <br /> - Deve ser gerado um identificador único para aquele usuário <br /> - Site deve conseguir acessar o banco de dados para permitir o login
+|Passos | 1) Entrar no navegador <br /> 2) Acessar o site <br /> 3) Clicar em "Menu" e "login" <br /> 4) Inserir os dados, inclusive o tipo de usuário <br /> <br/> 5) Realizar cadastro.
+|Critérios de Êxito | - <br /> - Aparecer mensagem de exito ao criar o cadastro <br /> - Dados devem ser salvos no banco de dados<br /> - Senha deve ser cryptografada <br /> - Deve ser gerado um identificador único para aquele usuário <br /> - Site deve conseguir acessar o banco de dados para permitir o login
 
 <br>
 
@@ -91,12 +91,33 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir.
 
 <br>
 
-|Caso de teste   | CT-010 - Usuários conseguem favoritar e interagir com pontos de coleta
+|Caso de teste   | CT-010 - Usuários conseguem favoritar pontos de coleta
 |------|-----------------------------------------|
-|Requisitos associados | RF-014​​ Permitir que o usuário envie mensagem para um ponto de coleta​​ <br /> RF-015​ Permitir que o usuário doador favorite pontos de coleta​
+|Requisitos associados |  RF-015​ Permitir que o usuário doador favorite pontos de coleta​
+|Objetivo do teste | Verificar se os usuários conseguem favoritar os pontos de coletas desejados.
+|Passos | <ol><li> Entrar no navegador </li><li>  Acessar o site </li><li>  Clicar em um ponto de coleta </li><li>  Ver informações do ponto de coleta </li><li>Voltar</li><li>Clicar no ícone de estrela</li><li>   Fazer login ou cadastro </li></ol>
+|Critérios de Êxito | <ul><li> Informações exibidas devem ser as referentes à instituição selecionada na tela de busca</li><li>Ao clicar na estrela, caso o usuário não esteja logado, ele será redirecionado para o processo de signup e login, ao finalizar, seu ponto estará favoritado em seu perfil</li></ul> 
+
+|Caso de teste   | CT-011 - Usuários conseguem interagir com pontos de coleta
+|------|-----------------------------------------|
+|Requisitos associados | RF-014​​ Permitir que o usuário envie mensagem para um ponto de coleta​​ 
 |Objetivo do teste | Verificar se os usuários conseguem enviar mensagem pelo WhatsApp no ponto de coleta desejado. 
-|Passos | <ol><li> Entrar no navegador </li><li>  Acessar o site </li><li>  Clicar em um ponto de coleta </li><li>  Ver informações do usuário </li><li> Clicar em Contatar usuário</li><li>Voltar</li><li>Clicar no ícone de estrela</li><li>   Fazer login ou cadastro </li></ol>
-|Critérios de Êxito | <ul><li> Informações exibidas devem ser as referentes à instituição selecionada na tela de busca</li> <li> Botão de contato mostra informações de contato da instituição </li> <li> Botão enviar mensagem me leva ao whatsapp </li> <li>Ao clicar na estrela, caso o usuário não esteja logado, ele será redirecionado para o processo de signup e login, ao finalizar, seu ponto estará favoritado em seu perfil</li></ul> 
+|Passos | <ol><li> Entrar no navegador </li><li>  Acessar o site </li><li>  Clicar em um ponto de coleta </li><li>  Ver informações do usuário </li><li> Clicar em Contatar usuário</li><li>Voltar</li>Usuário direcionado ao WhatsApp do ponto de coleta.</ol>
+|Critérios de Êxito | <ul><li> Informações exibidas devem ser as referentes à instituição selecionada na tela de busca</li> <li> Botão de contato mostra informações de contato da instituição </li> <li> Botão enviar mensagem me leva ao whatsapp </li>
+
+|Caso de teste   | CT-012 - Usuários conseguem efetuar login
+|------|-----------------------------------------|
+|Requisitos associados | RF-003​  Permitir que o usuário efetue login
+|Objetivo do teste | Verificar se o usuário consegue realizar login
+|Passos | <ol><li> Entrar no navegador </li><li>  Acessar o site </li><li>  Clicar em realizar login </li><li>  Digitar dados para login </li><li> Clicar em entrar</li><li>Login realizado</li></ol>
+|Critérios de Êxito | <ul><li>Aparecer mensagem de êxito ao realizar login.</li> <li> Caso o login não for realizado, usuário deverá ser informado</li> 
+
+|Caso de teste   | CT-013 - Usuários conseguem efetuar logout
+|------|-----------------------------------------|
+|Requisitos associados | RF-004​​  Permitir que o usuário efetue logout​
+|Objetivo do teste | Verificar se o usuário consegue realizar logout
+|Passos | <ol><li>  Acessar o site </li><li>  Clicar em menu </li><li>  Selecionar logout </li><li> Selecionar que confirma realizar logout</li><li>Logout realizado</li></ol>
+|Critérios de Êxito | <ul><li>Aparecer mensagem de êxito ao realizar logoutn.</li> <li> Caso o logout não for realizado, usuário deverá ser informado</li>
 
 <br> 
 ## Ferramentas de Testes
