@@ -129,6 +129,7 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |RNF-006| O formulário tem que ser de fácil preenchimento permitindo autocompletar| MÉDIO | 
 |RNF-007| As requisições devem ser leves para funcionar bem em áreas mais remotas | BAIXO | 
 |RNF-008| Deve exigir o mínimo de RAM possível para funcionar em aparelhos bem simples |  BAIXO | 
+|RNF-009| O sistema deve ser implementado na linguagem C# utilizando banco de dados MySQL | ALTO |
 
 
 ## Restrições
@@ -140,7 +141,7 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 |01| O sistema não permite doações em dinheiro |
 |02| O projeto deverá ser entregue até o final do semestre |
 |03| O tamanho de armazenamento e quantidade de usuários deve caber nos planos de hospedagem gratuita        |
-|04| Não pode depender de uma internete rápida        |
+|04| Não pode depender de uma internet rápida        |
 |05| Não pode depender de um hardware potente        |
 |06| O projeto deve seguir as regras de acessibilidade da w3c        |
 |07| A quantidade de trabalho deve caber na rotina compartilhada com família e trabalho        |
