@@ -114,7 +114,7 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir.
 |Requisitos associados | RF-004​​  Permitir que o usuário efetue logout​
 |Objetivo do teste | Verificar se o sistema permite que usuário realize logout
 |Passos | <ol><li>  Acessar o site </li><li>  Clicar em menu </li><li>  Selecionar logout </li><li> Selecionar que confirma realizar logout</li></ol>
-|Critérios de Êxito | <ul><li>Voltar a página Home.</li> <li> Caso o logout não for realizado, usuário deverá ser informado</li></ul>
+|Critérios de Êxito | <ul><li>Voltar a página Home.</li> <li> Caso o logout não seja realizado, usuário deverá ser informado</li></ul>
 
 <br> 
 ## Ferramentas de Testes
