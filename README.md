@@ -13,6 +13,7 @@ facilitando o contato entre organizações ou empresas que coletam doações e p
 
 * Amanda Salles Monteiro
 * Renê Boaventura Neto
+* Ruver Clacyus Oliveira Caldeira
 
 ## Orientador
 
