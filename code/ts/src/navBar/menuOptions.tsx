@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 interface IProps {
     selectedView: string
@@ -47,10 +48,12 @@ export function MenuOptions({ selectedView, setSelectedView }: IProps): JSX.Elem
                     </button>
                 </li>
                 <li className={`menuOptions--optionList__item `}>
-                    <button className={`menuOptions--optionList__item--button `}>
-                        <i className="fas fa-sign-in-alt"></i>
-                        Login
-                    </button>
+                    <Link to={`/login`}>
+                        <button className={`menuOptions--optionList__item--button `}>
+                            <i className="fas fa-sign-in-alt"></i>
+                            Login
+                        </button>
+                    </Link>
                 </li>
             </ul>
         </StyledMenuOptions>

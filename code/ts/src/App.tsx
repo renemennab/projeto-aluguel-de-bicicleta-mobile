@@ -5,18 +5,29 @@ import { FakePointData } from './fakeData/fakeData'
 import { MapComponent } from './map/mapComponent'
 import { MenuOptions } from './navBar/menuOptions'
 import { NavBar } from './navBar/navBar'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Login } from './login/login'
 
 function App(): ReactElement {
     const [selectedView, setSelectedView] = useState('map')
 
     return (
-        <AppStyles className="App">
-            <main>
-                {selectedView === `list` ? <AssetList assetData={FakePointData} /> : <MapComponent />}
-                <NavBar selectedView={selectedView} setSelectedView={setSelectedView} />
-                <MenuOptions selectedView={selectedView} setSelectedView={setSelectedView} />
-            </main>
-        </AppStyles>
+        <Router>
+            <AppStyles className="App">
+                <main>
+                    <Switch>
+                        <Route path={`/login`}>
+                            <Login />
+                        </Route>
+                        <Route path="/">
+                            {selectedView === `list` ? <AssetList assetData={FakePointData} /> : <MapComponent />}
+                            <NavBar selectedView={selectedView} setSelectedView={setSelectedView} />
+                            <MenuOptions selectedView={selectedView} setSelectedView={setSelectedView} />
+                        </Route>
+                    </Switch>
+                </main>
+            </AppStyles>
+        </Router>
     )
 }
 

@@ -20,5 +20,7 @@ code {
     --light-blue: #CEEAF7;
     --dark-blue: #457B9D;
     --black: #141414;
+    --gray: #cccccc;
     --yellow: #F7D08A;
+    --padding: 30px;
 }
