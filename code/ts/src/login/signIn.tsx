@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { BackArrow } from '../components/backArrow'
-import { StyledButton, StyledForm, StyledLabel } from '../components/styled'
+import { StyledButton, StyledForm, StyledInput, StyledLabel } from '../components/styled'
 import { UserInfo } from '../components/userInfo'
 
 export function SignIn(): JSX.Element {
+    const [name, setName] = useState(``)
     const [email, setEmail] = useState(``)
     const [password, setPassword] = useState(``)
     const [UserType, setUserType] = useState<`colector` | `donor`>(`donor`)
@@ -15,6 +16,15 @@ export function SignIn(): JSX.Element {
             <h1>Cadastro</h1>
             <StyledForm action="">
                 <fieldset className={`userInfo`}>
+                    <StyledLabel className={`column`}>
+                        Nome
+                        <StyledInput
+                            required
+                            type="name"
+                            value={name}
+                            onChange={event => setName(event.target.value)}
+                        />
+                    </StyledLabel>
                     <UserInfo email={email} setEmail={setEmail} password={password} setPassword={setPassword} />
                 </fieldset>
                 <fieldset className={`userType`}>
