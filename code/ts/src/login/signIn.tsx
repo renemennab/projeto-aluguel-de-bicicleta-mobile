@@ -8,7 +8,7 @@ export function SignIn(): JSX.Element {
     const [name, setName] = useState(``)
     const [email, setEmail] = useState(``)
     const [password, setPassword] = useState(``)
-    const [UserType, setUserType] = useState<`colector` | `donor`>(`donor`)
+    const [UserType, setUserType] = useState<`collector` | `donor`>(`donor`)
 
     return (
         <StyledSignIn>
@@ -44,9 +44,9 @@ export function SignIn(): JSX.Element {
                             className={`userType--input`}
                             type="radio"
                             name={`userType`}
-                            value={`colector`}
-                            checked={UserType === `colector`}
-                            onChange={() => setUserType(`colector`)}
+                            value={`collector`}
+                            checked={UserType === `collector`}
+                            onChange={() => setUserType(`collector`)}
                         />
                         Coletor
                     </StyledLabel>
