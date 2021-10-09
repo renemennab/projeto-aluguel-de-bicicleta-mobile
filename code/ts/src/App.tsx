@@ -7,6 +7,7 @@ import { MenuOptions } from './navBar/menuOptions'
 import { NavBar } from './navBar/navBar'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Login } from './login/login'
+import { SignIn } from './login/signIn'
 
 function App(): ReactElement {
     const [selectedView, setSelectedView] = useState('map')
@@ -18,6 +19,9 @@ function App(): ReactElement {
                     <Switch>
                         <Route path={`/login`}>
                             <Login />
+                        </Route>
+                        <Route path={`/signIn`}>
+                            <SignIn />
                         </Route>
                         <Route path="/">
                             {selectedView === `list` ? <AssetList assetData={FakePointData} /> : <MapComponent />}
