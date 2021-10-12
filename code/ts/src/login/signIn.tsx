@@ -1,20 +1,34 @@
-import React, { useState } from 'react'
+import React, { FormEvent, useState } from 'react'
 import styled from 'styled-components'
 import { BackArrow } from '../components/backArrow'
 import { StyledButton, StyledForm, StyledInput, StyledLabel } from '../components/styled'
 import { UserInfo } from '../components/userInfo'
+import { ROUTES } from '../utils'
+import { useHistory } from 'react-router-dom'
+import { postUser } from '../apis'
 
 export function SignIn(): JSX.Element {
     const [name, setName] = useState(``)
     const [email, setEmail] = useState(``)
     const [password, setPassword] = useState(``)
-    const [UserType, setUserType] = useState<`collector` | `donor`>(`donor`)
+    const [userType, setUserType] = useState<UserTypes>(`donor`)
+    const history = useHistory()
+
+    function handleSignIn(event: FormEvent<HTMLFormElement>): void {
+        event.preventDefault()
+        const params = { name, email, password, userType }
+        postUser(params).then(response => {
+            if (response.status === 200) {
+                history.push(ROUTES.LOGIN)
+            }
+        })
+    }
 
     return (
         <StyledSignIn>
             <BackArrow />
             <h1>Cadastro</h1>
-            <StyledForm action="">
+            <StyledForm action="" onSubmit={event => handleSignIn(event)}>
                 <fieldset className={`userInfo`}>
                     <StyledLabel className={`column`}>
                         Nome
@@ -34,7 +48,7 @@ export function SignIn(): JSX.Element {
                             type="radio"
                             name={`userType`}
                             value={`donor`}
-                            checked={UserType === `donor`}
+                            checked={userType === `donor`}
                             onChange={() => setUserType(`donor`)}
                         />
                         Doador
@@ -45,7 +59,7 @@ export function SignIn(): JSX.Element {
                             type="radio"
                             name={`userType`}
                             value={`collector`}
-                            checked={UserType === `collector`}
+                            checked={userType === `collector`}
                             onChange={() => setUserType(`collector`)}
                         />
                         Coletor

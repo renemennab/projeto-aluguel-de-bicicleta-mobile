@@ -1,24 +1,40 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { FormEvent, useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
+import { loginUser } from '../apis'
 import { BackArrow } from '../components/backArrow'
 import { StyledButton, StyledForm } from '../components/styled'
 import { UserInfo } from '../components/userInfo'
 import { ROUTES } from '../utils'
+
 export function Login(): JSX.Element {
     const [email, setEmail] = useState(``)
     const [password, setPassword] = useState(``)
+    const [userNotFound, setUserNotFound] = useState(false)
+    const history = useHistory()
+
+    function handleLogin(event: FormEvent<HTMLFormElement>): void {
+        event.preventDefault()
+        loginUser({ email, password }).then(response => {
+            if (response.status === 200) {
+                history.push('/')
+            } else {
+                setUserNotFound(true)
+            }
+        })
+    }
 
     return (
         <StyledLogin>
             <BackArrow />
             <h1>LOGIN</h1>
-            <StyledForm action="">
+            <StyledForm action="" onSubmit={event => handleLogin(event)}>
                 <UserInfo email={email} setEmail={setEmail} password={password} setPassword={setPassword} />
                 <StyledButton>
                     Login <i className="fas fa-sign-in-alt" />
                 </StyledButton>
             </StyledForm>
+            {userNotFound ? <span className={`login--userNotFound`}>USUÁRIO NÃO ENCONTRADO</span> : null}
             <Link to={ROUTES.SIGNIN} className={`login--signInLink`}>
                 Não tem uma conta? Cadastre-se aqui
             </Link>
@@ -36,6 +52,11 @@ const StyledLogin = styled.div`
             text-decoration: none;
             color: var(--dark-blue);
             margin-top: 50px;
+        }
+        &--userNotFound {
+            color: var(--red);
+            margin-top: 40px;
+            align-self: center;
         }
     }
 `
