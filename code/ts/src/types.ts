@@ -9,6 +9,12 @@ declare global {
         email: string
         password: string
     }
+    interface EventForm {
+        date: string
+        description: string
+        collectionPlace: number
+        workingHours: { from: string; to: string }
+    }
 
     interface CollecgtionPlacePostParams extends CollectionPlace {
         requestType?: 'PUT' | 'POST'

@@ -14,6 +14,14 @@ export function postCollectionPlace(params: CollecgtionPlacePostParams): Promise
         resolve({ status: 200 })
     })
 }
+export function postEvent(params: EventForm): Promise<Response> {
+    return new Promise(resolve => {
+        const currentUsers = JSON.parse(window.localStorage.getItem('EVENTS') || '[]')
+        window.localStorage.setItem('EVENTS', JSON.stringify([...currentUsers, params]))
+        // @ts-ignore
+        resolve({ status: 200 })
+    })
+}
 export function loginUser(params: LogInParams): Promise<Response> {
     return new Promise(resolve => {
         const currentUsers = JSON.parse(window.localStorage.getItem('USERS') || '[]')

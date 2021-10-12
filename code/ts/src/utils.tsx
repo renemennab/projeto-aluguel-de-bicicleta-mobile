@@ -3,7 +3,8 @@ export const ROUTES = {
     SIGNIN: `/signIn`,
     NEW_COLLECTION: `/newCollection`,
     NEW_EVENT: `/newEvent`,
-    COLLECTION_LIST: `/collectionList`
+    COLLECTION_LIST: `/collectionList`,
+    EVENT_LIST: `/eventList`
 }
 
 export const WEEK_DAYS = ['segunda', 'terça', 'quarta', 'quinta', 'sexta', `sábado`, 'domingo'] as const

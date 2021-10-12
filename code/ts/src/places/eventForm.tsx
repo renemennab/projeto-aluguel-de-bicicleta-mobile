@@ -1,39 +1,52 @@
-import React, { useState } from 'react'
+import React, { FormEvent, useState } from 'react'
 import styled from 'styled-components'
+import { postEvent } from '../apis'
 import { BackArrow } from '../components/backArrow'
 import { StyledButton, StyledForm, StyledInput, StyledLabel } from '../components/styled'
+import { ROUTES } from '../utils'
+import { useHistory } from 'react-router-dom'
 
 export function EventForm(): JSX.Element {
     const [date, setDate] = useState(``)
     const [description, setDescription] = useState(``)
     const [collectionPlace, setCollectionPlace] = useState(0)
     const [workingHours, setWorkingHours] = useState({ from: '', to: '' })
+    const history = useHistory()
 
     const options = [
         { value: 1, label: 'Mercado' },
         { value: 2, label: 'Igreja' }
     ]
 
+    function handleEventSubmit(event: FormEvent<HTMLFormElement>): void {
+        event.preventDefault()
+        postEvent({
+            date,
+            description,
+            collectionPlace,
+            workingHours
+        }).then(response => {
+            if (response.status === 200) {
+                history.push(ROUTES.EVENT_LIST)
+            }
+        })
+    }
+
     return (
         <StyledNewColectionPlace className={`newEvent`}>
             <BackArrow />
             <h1>Novo Evento de Coleta</h1>
-            <StyledForm action="">
+            <StyledForm action="" onSubmit={event => handleEventSubmit(event)}>
                 <StyledLabel className={`column`}>
                     Data
                     <StyledInput required type="date" value={date} onChange={event => setDate(event.target.value)} />
                 </StyledLabel>
                 <StyledLabel className={`column`}>
                     Ponto de Coleta
-                    <select name="collectionPlace">
+                    <select name="collectionPlace" onChange={event => setCollectionPlace(Number(event.target.value))}>
                         <option value={0}>--Por favor escolha um ponto--</option>
                         {options.map(option => (
-                            <option
-                                key={option.value}
-                                value={option.value}
-                                selected={option.value === collectionPlace}
-                                onClick={() => setCollectionPlace(option.value)}
-                            >
+                            <option key={option.value} value={option.value} selected={option.value === collectionPlace}>
                                 {option.label}
                             </option>
                         ))}
@@ -51,8 +64,8 @@ export function EventForm(): JSX.Element {
                     Até:
                     <StyledInput
                         type="time"
-                        value={workingHours.from}
-                        onChange={event => setWorkingHours({ ...workingHours, from: event?.target.value })}
+                        value={workingHours.to}
+                        onChange={event => setWorkingHours({ ...workingHours, to: event?.target.value })}
                     />
                 </StyledLabel>
                 <StyledLabel className={`column`}>
