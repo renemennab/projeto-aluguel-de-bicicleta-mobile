@@ -10,6 +10,7 @@ import { Login } from './login/login'
 import { SignIn } from './login/signIn'
 import { NewCollectionPlace } from './places/newCollectionPlace'
 import { ROUTES } from './utils'
+import { NewEvent } from './places/newEvent'
 
 function App(): ReactElement {
     const [selectedView, setSelectedView] = useState('map')
@@ -27,6 +28,9 @@ function App(): ReactElement {
                         </Route>
                         <Route path={ROUTES.NEW_COLLECTION}>
                             <NewCollectionPlace />
+                        </Route>
+                        <Route path={ROUTES.NEW_EVENT}>
+                            <NewEvent />
                         </Route>
                         <Route path="/">
                             {selectedView === `list` ? <AssetList assetData={FakePointData} /> : <MapComponent />}

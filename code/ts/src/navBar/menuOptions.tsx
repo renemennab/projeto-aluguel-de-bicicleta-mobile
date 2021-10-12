@@ -26,10 +26,10 @@ export function MenuOptions({ selectedView, setSelectedView }: IProps): JSX.Elem
                     </Link>
                 </li>
                 <li className={`menuOptions--optionList__item `}>
-                    <button className={`menuOptions--optionList__item--button `}>
-                        <i className="fas fa-plus"></i>
+                    <Link to={ROUTES.NEW_EVENT} className={`menuOptions--optionList__item--button `}>
+                        <i className="fas fa-sign-in-alt"></i>
                         Adicionar evento de doação
-                    </button>
+                    </Link>
                 </li>
                 <li className={`menuOptions--optionList__item `}>
                     <button className={`menuOptions--optionList__item--button `}>
