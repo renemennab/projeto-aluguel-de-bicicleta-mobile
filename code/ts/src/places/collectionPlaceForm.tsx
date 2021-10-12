@@ -1,7 +1,10 @@
-import React, { Dispatch, SetStateAction, useState } from 'react'
+import React, { Dispatch, FormEvent, SetStateAction, useState } from 'react'
 import styled from 'styled-components'
+import { postCollectionPlace } from '../apis'
 import { BackArrow } from '../components/backArrow'
 import { StyledButton, StyledForm, StyledInput, StyledLabel } from '../components/styled'
+import { ITEM_TYPES, ROUTES, WEEK_DAYS } from '../utils'
+import { useHistory } from 'react-router-dom'
 
 export function CollectionPlaceForm(): JSX.Element {
     const [name, setName] = useState(``)
@@ -11,31 +14,49 @@ export function CollectionPlaceForm(): JSX.Element {
     const [longitude, setLongitude] = useState(``)
     const [phone, setPhone] = useState(``)
     const [description, setDescription] = useState(``)
-    const [acceptableItems, setAcceptableItems] = useState<string[]>([])
+    const [acceptableItems, setAcceptableItems] = useState<AcceptableItems[]>([])
     const [workingHours, setWorkingHours] = useState({ from: '', to: '' })
-    const [workingDays, setWorkingDays] = useState<string[]>([])
+    const [workingDays, setWorkingDays] = useState<WeekDays[]>([])
+    const history = useHistory()
     // const [relatedEvents, setRelatedEvents] = useState(``)
 
-    const weekDays = ['segunda', 'terça', 'quarta', 'quinta', 'sexta', `sábado`, 'domingo']
-    const itemTypes = ['roupas', 'alimentos perecíveis', 'refeições prontas', 'brinquedos']
-
-    function handleCheckboxClick(
-        clickedItem: string,
-        state: string[],
-        setState: Dispatch<SetStateAction<string[]>>
+    function handleCheckboxClick<Type>(
+        clickedItem: Type,
+        state: Type[],
+        setState: Dispatch<SetStateAction<Type[]>>
     ): void {
         if (state.includes(clickedItem)) {
-            setState(state.filter(day => day !== clickedItem))
+            setState(state.filter((day: unknown) => day !== clickedItem))
         } else {
             setState([...state, clickedItem])
         }
+    }
+
+    function handleCollectionPlaceSubmit(event: FormEvent<HTMLFormElement>): void {
+        event.preventDefault()
+        postCollectionPlace({
+            name,
+            cep,
+            buildingNum,
+            latitude,
+            longitude,
+            phone,
+            description,
+            acceptableItems,
+            workingHours,
+            workingDays
+        }).then(response => {
+            if (response.status === 200) {
+                history.push(ROUTES.COLLECTION_LIST)
+            }
+        })
     }
 
     return (
         <StyledNewColectionPlace className={`newCollectionPlace`}>
             <BackArrow />
             <h1>Novo Ponto de Coleta</h1>
-            <StyledForm action="">
+            <StyledForm action="" onSubmit={event => handleCollectionPlaceSubmit(event)}>
                 <fieldset className={`userInfo`}>
                     <StyledLabel className={`column`}>
                         Nome
@@ -97,14 +118,14 @@ export function CollectionPlaceForm(): JSX.Element {
                 </fieldset>
                 <fieldset className={`workingDays`}>
                     <h2>Dias de funcionamento</h2>
-                    {weekDays.map(day => (
+                    {WEEK_DAYS.map(day => (
                         <StyledLabel key={day}>
                             <StyledInput
                                 type="checkbox"
                                 name={`workingDays`}
                                 value={day}
                                 checked={workingDays.includes(day)}
-                                onChange={() => handleCheckboxClick(day, workingDays, setWorkingDays)}
+                                onChange={() => handleCheckboxClick<WeekDays>(day, workingDays, setWorkingDays)}
                             />
                             {day}
                         </StyledLabel>
@@ -124,21 +145,23 @@ export function CollectionPlaceForm(): JSX.Element {
                         Até:
                         <StyledInput
                             type="time"
-                            value={workingHours.from}
-                            onChange={event => setWorkingHours({ ...workingHours, from: event?.target.value })}
+                            value={workingHours.to}
+                            onChange={event => setWorkingHours({ ...workingHours, to: event?.target.value })}
                         />
                     </StyledLabel>
                 </fieldset>
                 <fieldset className={`acceptableItems`}>
                     <h2>Tipos de Items coletados</h2>
-                    {itemTypes.map(itemType => (
+                    {ITEM_TYPES.map(itemType => (
                         <StyledLabel key={itemType}>
                             <StyledInput
                                 type="checkbox"
                                 name={`acceptableItems`}
                                 value={itemType}
-                                checked={workingDays.includes(itemType)}
-                                onChange={() => handleCheckboxClick(itemType, acceptableItems, setAcceptableItems)}
+                                checked={acceptableItems.includes(itemType)}
+                                onChange={() =>
+                                    handleCheckboxClick<AcceptableItems>(itemType, acceptableItems, setAcceptableItems)
+                                }
                             />
                             {itemType}
                         </StyledLabel>

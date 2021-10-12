@@ -6,6 +6,14 @@ export function postUser(params: UserPostParams): Promise<Response> {
         resolve({ status: 200 })
     })
 }
+export function postCollectionPlace(params: CollecgtionPlacePostParams): Promise<Response> {
+    return new Promise(resolve => {
+        const currentUsers = JSON.parse(window.localStorage.getItem('PLACES') || '[]')
+        window.localStorage.setItem('PLACES', JSON.stringify([...currentUsers, params]))
+        // @ts-ignore
+        resolve({ status: 200 })
+    })
+}
 export function loginUser(params: LogInParams): Promise<Response> {
     return new Promise(resolve => {
         const currentUsers = JSON.parse(window.localStorage.getItem('USERS') || '[]')
