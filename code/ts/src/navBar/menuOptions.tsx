@@ -49,11 +49,9 @@ export function MenuOptions({ selectedView, setSelectedView }: IProps): JSX.Elem
                     </button>
                 </li>
                 <li className={`menuOptions--optionList__item `}>
-                    <Link to={ROUTES.LOGIN}>
-                        <button className={`menuOptions--optionList__item--button `}>
-                            <i className="fas fa-sign-in-alt"></i>
-                            Login
-                        </button>
+                    <Link to={ROUTES.LOGIN} className={`menuOptions--optionList__item--button `}>
+                        <i className="fas fa-sign-in-alt"></i>
+                        Login
                     </Link>
                 </li>
             </ul>
