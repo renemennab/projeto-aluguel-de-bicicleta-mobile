@@ -20,7 +20,7 @@ export function SignIn(): JSX.Element {
                         Nome
                         <StyledInput
                             required
-                            type="name"
+                            type="text"
                             value={name}
                             onChange={event => setName(event.target.value)}
                         />
@@ -29,7 +29,7 @@ export function SignIn(): JSX.Element {
                 </fieldset>
                 <fieldset className={`userType`}>
                     <StyledLabel>
-                        <input
+                        <StyledInput
                             className={`userType--input`}
                             type="radio"
                             name={`userType`}
@@ -40,7 +40,7 @@ export function SignIn(): JSX.Element {
                         Doador
                     </StyledLabel>
                     <StyledLabel>
-                        <input
+                        <StyledInput
                             className={`userType--input`}
                             type="radio"
                             name={`userType`}
@@ -64,10 +64,5 @@ const StyledSignIn = styled.div`
     fieldset {
         border: none;
         width: 100%;
-        .userType {
-            &--input {
-                margin-right: 10px;
-            }
-        }
     }
 `
