@@ -8,7 +8,7 @@ import { NavBar } from './navBar/navBar'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Login } from './login/login'
 import { UserProfileForm } from './login/userProfileForm'
-import { NewCollectionPlace } from './places/newCollectionPlace'
+import { CollectionPlaceForm } from './places/collectionPlaceForm'
 import { ROUTES } from './utils'
 import { NewEvent } from './places/newEvent'
 
@@ -27,7 +27,7 @@ function App(): ReactElement {
                             <UserProfileForm />
                         </Route>
                         <Route path={ROUTES.NEW_COLLECTION}>
-                            <NewCollectionPlace />
+                            <CollectionPlaceForm />
                         </Route>
                         <Route path={ROUTES.NEW_EVENT}>
                             <NewEvent />

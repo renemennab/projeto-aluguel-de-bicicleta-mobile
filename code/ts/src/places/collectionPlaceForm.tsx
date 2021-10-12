@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { BackArrow } from '../components/backArrow'
 import { StyledButton, StyledForm, StyledInput, StyledLabel } from '../components/styled'
 
-export function NewCollectionPlace(): JSX.Element {
+export function CollectionPlaceForm(): JSX.Element {
     const [name, setName] = useState(``)
     const [cep, setCep] = useState(``)
     const [buildingNum, setBuildingNum] = useState(``)
