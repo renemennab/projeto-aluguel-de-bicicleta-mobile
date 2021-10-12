@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { BackArrow } from '../components/backArrow'
 import { StyledButton, StyledForm, StyledInput, StyledLabel } from '../components/styled'
 
-export function NewEvent(): JSX.Element {
+export function EventForm(): JSX.Element {
     const [date, setDate] = useState(``)
     const [description, setDescription] = useState(``)
     const [collectionPlace, setCollectionPlace] = useState(0)

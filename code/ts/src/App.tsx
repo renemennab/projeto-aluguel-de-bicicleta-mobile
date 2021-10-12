@@ -10,7 +10,7 @@ import { Login } from './login/login'
 import { UserProfileForm } from './login/userProfileForm'
 import { CollectionPlaceForm } from './places/collectionPlaceForm'
 import { ROUTES } from './utils'
-import { NewEvent } from './places/newEvent'
+import { EventForm } from './places/eventForm'
 
 function App(): ReactElement {
     const [selectedView, setSelectedView] = useState('map')
@@ -30,7 +30,7 @@ function App(): ReactElement {
                             <CollectionPlaceForm />
                         </Route>
                         <Route path={ROUTES.NEW_EVENT}>
-                            <NewEvent />
+                            <EventForm />
                         </Route>
                         <Route path="/">
                             {selectedView === `list` ? <AssetList assetData={FakePointData} /> : <MapComponent />}
