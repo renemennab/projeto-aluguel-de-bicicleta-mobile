@@ -24,12 +24,19 @@ export const StyledInput = styled.input`
     margin-top: 8px;
     border: 1px solid var(--gray);
     padding: 8px;
+    height: 40px;
     &:focus-visible,
     &:active {
         border: 1px solid var(--dark-blue);
         outline-color: var(--dark-blue);
     }
-    height: 40px;
+    &[type='checkbox'],
+    &[type='radio'] {
+        height: auto;
+        margin-top: 0;
+        margin-right: 10px;
+        align-self: center;
+    }
 `
 export const StyledForm = styled.form`
     display: flex;
