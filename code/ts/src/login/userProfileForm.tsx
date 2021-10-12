@@ -7,7 +7,7 @@ import { ROUTES } from '../utils'
 import { useHistory } from 'react-router-dom'
 import { postUser } from '../apis'
 
-export function SignIn(): JSX.Element {
+export function UserProfileForm(): JSX.Element {
     const [name, setName] = useState(``)
     const [email, setEmail] = useState(``)
     const [password, setPassword] = useState(``)

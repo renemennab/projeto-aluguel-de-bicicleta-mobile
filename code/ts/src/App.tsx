@@ -7,7 +7,7 @@ import { MenuOptions } from './navBar/menuOptions'
 import { NavBar } from './navBar/navBar'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Login } from './login/login'
-import { SignIn } from './login/userProfileForm'
+import { UserProfileForm } from './login/userProfileForm'
 import { NewCollectionPlace } from './places/newCollectionPlace'
 import { ROUTES } from './utils'
 import { NewEvent } from './places/newEvent'
@@ -24,7 +24,7 @@ function App(): ReactElement {
                             <Login />
                         </Route>
                         <Route path={ROUTES.SIGNIN}>
-                            <SignIn />
+                            <UserProfileForm />
                         </Route>
                         <Route path={ROUTES.NEW_COLLECTION}>
                             <NewCollectionPlace />
