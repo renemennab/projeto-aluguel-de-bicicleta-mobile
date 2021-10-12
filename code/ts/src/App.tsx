@@ -8,6 +8,8 @@ import { NavBar } from './navBar/navBar'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Login } from './login/login'
 import { SignIn } from './login/signIn'
+import { NewCollectionPlace } from './places/newCollectionPlace'
+import { ROUTES } from './utils'
 
 function App(): ReactElement {
     const [selectedView, setSelectedView] = useState('map')
@@ -17,11 +19,14 @@ function App(): ReactElement {
             <AppStyles className="App">
                 <main>
                     <Switch>
-                        <Route path={`/login`}>
+                        <Route path={ROUTES.LOGIN}>
                             <Login />
                         </Route>
-                        <Route path={`/signIn`}>
+                        <Route path={ROUTES.SIGNIN}>
                             <SignIn />
+                        </Route>
+                        <Route path={ROUTES.NEW_COLLECTION}>
+                            <NewCollectionPlace />
                         </Route>
                         <Route path="/">
                             {selectedView === `list` ? <AssetList assetData={FakePointData} /> : <MapComponent />}

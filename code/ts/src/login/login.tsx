@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { BackArrow } from '../components/backArrow'
 import { StyledButton, StyledForm } from '../components/styled'
 import { UserInfo } from '../components/userInfo'
+import { ROUTES } from '../utils'
 export function Login(): JSX.Element {
     const [email, setEmail] = useState(``)
     const [password, setPassword] = useState(``)
@@ -18,7 +19,7 @@ export function Login(): JSX.Element {
                     Login <i className="fas fa-sign-in-alt" />
                 </StyledButton>
             </StyledForm>
-            <Link to={`/signIn`} className={`login--signInLink`}>
+            <Link to={ROUTES.SIGNIN} className={`login--signInLink`}>
                 Não tem uma conta? Cadastre-se aqui
             </Link>
         </StyledLogin>

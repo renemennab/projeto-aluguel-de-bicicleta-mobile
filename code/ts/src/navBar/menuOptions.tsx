@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { ROUTES } from '../utils'
 interface IProps {
     selectedView: string
     setSelectedView: (type: string) => void
@@ -19,10 +20,10 @@ export function MenuOptions({ selectedView, setSelectedView }: IProps): JSX.Elem
                     </button>
                 </li>
                 <li className={`menuOptions--optionList__item `}>
-                    <button className={`menuOptions--optionList__item--button `}>
-                        <i className="fas fa-plus"></i>
+                    <Link to={ROUTES.NEW_COLLECTION} className={`menuOptions--optionList__item--button `}>
+                        <i className="fas fa-sign-in-alt"></i>
                         Adicionar Ponto de Coleta
-                    </button>
+                    </Link>
                 </li>
                 <li className={`menuOptions--optionList__item `}>
                     <button className={`menuOptions--optionList__item--button `}>
@@ -48,7 +49,7 @@ export function MenuOptions({ selectedView, setSelectedView }: IProps): JSX.Elem
                     </button>
                 </li>
                 <li className={`menuOptions--optionList__item `}>
-                    <Link to={`/login`}>
+                    <Link to={ROUTES.LOGIN}>
                         <button className={`menuOptions--optionList__item--button `}>
                             <i className="fas fa-sign-in-alt"></i>
                             Login
