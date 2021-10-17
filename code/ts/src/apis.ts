@@ -15,18 +15,30 @@ export function postUser(params: UserPostParams): Promise<Response> {
 }
 export function postCollectionPlace(params: CollecgtionPlacePostParams): Promise<Response> {
     return new Promise(resolve => {
-        const currentUsers = JSON.parse(window.localStorage.getItem(API_PATHS.PLACES) || '[]')
-        window.localStorage.setItem(API_PATHS.PLACES, JSON.stringify([...currentUsers, params]))
+        const currentPlaces = JSON.parse(window.localStorage.getItem(API_PATHS.PLACES) || '[]')
+        window.localStorage.setItem(API_PATHS.PLACES, JSON.stringify([...currentPlaces, params]))
         // @ts-ignore
         resolve({ status: 200 })
     })
 }
+export function getCollectionPlaces(): Promise<CollectionPlace[]> {
+    return new Promise(resolve => {
+        // @ts-ignore
+        resolve(JSON.parse(window.localStorage.getItem(API_PATHS.PLACES) || '[]'))
+    })
+}
 export function postEvent(params: EventForm): Promise<Response> {
     return new Promise(resolve => {
-        const currentUsers = JSON.parse(window.localStorage.getItem(API_PATHS.EVENTS) || '[]')
-        window.localStorage.setItem(API_PATHS.EVENTS, JSON.stringify([...currentUsers, params]))
+        const currentEvents = JSON.parse(window.localStorage.getItem(API_PATHS.EVENTS) || '[]')
+        window.localStorage.setItem(API_PATHS.EVENTS, JSON.stringify([...currentEvents, params]))
         // @ts-ignore
         resolve({ status: 200 })
+    })
+}
+export function getEvents(): Promise<Response> {
+    return new Promise(resolve => {
+        // @ts-ignore
+        resolve({ status: 200, body: JSON.parse(window.localStorage.getItem(API_PATHS.EVENTS) || '[]') })
     })
 }
 export function loginUser(params: LogInParams): Promise<Response> {
