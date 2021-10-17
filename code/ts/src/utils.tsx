@@ -1,8 +1,10 @@
 export const ROUTES = {
     LOGIN: `/login`,
     SIGNIN: `/signIn`,
+    PROFILE: `/profile`,
     NEW_PLACE: `/newCollection`,
     PLACES: `/places`,
+    FAVOURITES: `/favourites`,
     NEW_EVENT: `/newEvent`,
     EVENTS: `/events`,
     COLLECTION_LIST: `/collectionList`,
