@@ -2,14 +2,16 @@ import React from 'react'
 import styled from 'styled-components'
 
 interface Props {
-    assetData: any
+    assetData: CollectionPlace[]
 }
 export function AssetList({ assetData }: Props): JSX.Element {
+    console.log(assetData)
+
     return (
         <StyledAssetList className={`assetList`}>
-            {assetData.map((data: any, index: any) => (
+            {assetData.map((data: CollectionPlace, index: number) => (
                 <li className={`assetList--card`} key={index}>
-                    <span className={`assetList--card__name`}>{data.name}</span>
+                    <h2 className={`assetList--card__name`}>{data.name}</h2>
                     <span className={`assetList--card__acceptableItems`}>{data.acceptableItems.join(`, `)}</span>
                     <span className={`assetList--card__cep`}>{data.cep}</span>
                 </li>
