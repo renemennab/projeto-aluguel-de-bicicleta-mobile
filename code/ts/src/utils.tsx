@@ -1,8 +1,10 @@
 export const ROUTES = {
     LOGIN: `/login`,
     SIGNIN: `/signIn`,
-    NEW_COLLECTION: `/newCollection`,
+    NEW_PLACE: `/newCollection`,
+    PLACES: `/places`,
     NEW_EVENT: `/newEvent`,
+    EVENTS: `/events`,
     COLLECTION_LIST: `/collectionList`,
     EVENT_LIST: `/eventList`
 }

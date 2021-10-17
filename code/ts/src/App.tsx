@@ -26,7 +26,7 @@ function App(): ReactElement {
                         <Route path={ROUTES.SIGNIN}>
                             <UserProfileForm />
                         </Route>
-                        <Route path={ROUTES.NEW_COLLECTION}>
+                        <Route path={ROUTES.NEW_PLACE}>
                             <CollectionPlaceForm />
                         </Route>
                         <Route path={ROUTES.NEW_EVENT}>
