@@ -14,6 +14,7 @@ declare global {
         description: string
         collectionPlace: number
         workingHours: { from: string; to: string }
+        id?: number
     }
 
     interface CollecgtionPlacePostParams extends CollectionPlace {
@@ -30,6 +31,7 @@ declare global {
         acceptableItems: AcceptableItems[]
         workingHours: { from: string; to: string }
         workingDays: WeekDays[]
+        id?: number
     }
 
     type UserTypes = 'collector' | 'donor'
