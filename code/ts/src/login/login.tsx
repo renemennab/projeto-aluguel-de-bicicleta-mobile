@@ -2,7 +2,7 @@ import React, { FormEvent, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import { loginUser } from '../apis'
-import { BackArrow } from '../components/pageHeader'
+import { PageHeader } from '../components/pageHeader'
 import { StyledButton, StyledForm } from '../components/styled'
 import { UserInfo } from '../components/userInfo'
 import { ROUTES } from '../utils'
@@ -26,7 +26,7 @@ export function Login(): JSX.Element {
 
     return (
         <StyledLogin>
-            <BackArrow pageName={`Login`} />
+            <PageHeader pageName={`Login`} />
             <StyledForm action="" onSubmit={event => handleLogin(event)}>
                 <UserInfo email={email} setEmail={setEmail} password={password} setPassword={setPassword} />
                 <StyledButton>

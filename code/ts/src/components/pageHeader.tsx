@@ -6,7 +6,7 @@ interface IProps {
     pageName: string
 }
 
-export function BackArrow({ pageName }: IProps): JSX.Element {
+export function PageHeader({ pageName }: IProps): JSX.Element {
     return (
         <StyledBackArrow>
             <Link to="/">

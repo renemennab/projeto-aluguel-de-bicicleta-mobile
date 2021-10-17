@@ -1,7 +1,7 @@
 import React, { Dispatch, FormEvent, SetStateAction, useState } from 'react'
 import styled from 'styled-components'
 import { postCollectionPlace } from '../apis'
-import { BackArrow } from '../components/pageHeader'
+import { PageHeader } from '../components/pageHeader'
 import { StyledButton, StyledForm, StyledInput, StyledLabel } from '../components/styled'
 import { ITEM_TYPES, ROUTES, WEEK_DAYS } from '../utils'
 import { useHistory } from 'react-router-dom'
@@ -54,7 +54,7 @@ export function CollectionPlaceForm(): JSX.Element {
 
     return (
         <StyledNewColectionPlace className={`newCollectionPlace`}>
-            <BackArrow pageName={`Novo Ponto de Coleta`} />
+            <PageHeader pageName={`Novo Ponto de Coleta`} />
             <StyledForm action="" onSubmit={event => handleCollectionPlaceSubmit(event)}>
                 <fieldset className={`userInfo`}>
                     <StyledLabel className={`column`}>

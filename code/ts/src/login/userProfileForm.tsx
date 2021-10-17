@@ -1,6 +1,6 @@
 import React, { FormEvent, useState } from 'react'
 import styled from 'styled-components'
-import { BackArrow } from '../components/pageHeader'
+import { PageHeader } from '../components/pageHeader'
 import { StyledButton, StyledForm, StyledInput, StyledLabel } from '../components/styled'
 import { UserInfo } from '../components/userInfo'
 import { ROUTES } from '../utils'
@@ -26,7 +26,7 @@ export function UserProfileForm(): JSX.Element {
 
     return (
         <StyledSignIn>
-            <BackArrow pageName={`Cadastro`} />
+            <PageHeader pageName={`Cadastro`} />
             <StyledForm action="" onSubmit={event => handleSignIn(event)}>
                 <fieldset className={`userInfo`}>
                     <StyledLabel className={`column`}>
