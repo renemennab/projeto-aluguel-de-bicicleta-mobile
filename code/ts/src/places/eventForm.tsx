@@ -43,10 +43,14 @@ export function EventForm(): JSX.Element {
                 </StyledLabel>
                 <StyledLabel className={`column`}>
                     Ponto de Coleta
-                    <select name="collectionPlace" onChange={event => setCollectionPlace(Number(event.target.value))}>
+                    <select
+                        name="collectionPlace"
+                        onChange={event => setCollectionPlace(Number(event.target.value))}
+                        value={collectionPlace}
+                    >
                         <option value={0}>--Por favor escolha um ponto--</option>
                         {options.map(option => (
-                            <option key={option.value} value={option.value} selected={option.value === collectionPlace}>
+                            <option key={option.value} value={option.value}>
                                 {option.label}
                             </option>
                         ))}
