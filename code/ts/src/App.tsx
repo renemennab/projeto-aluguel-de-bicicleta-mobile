@@ -11,6 +11,7 @@ import { UserProfileForm } from './login/userProfileForm'
 import { CollectionPlaceForm } from './places/collectionPlaceForm'
 import { ROUTES } from './utils'
 import { EventForm } from './places/eventForm'
+import { PlacesList } from './places/placesList'
 
 function App(): ReactElement {
     const [selectedView, setSelectedView] = useState('map')
@@ -26,14 +27,26 @@ function App(): ReactElement {
                         <Route path={ROUTES.SIGNIN}>
                             <UserProfileForm />
                         </Route>
+                        <Route path={ROUTES.FAVOURITES}>
+                            <PlacesList />
+                        </Route>
+                        <Route path={ROUTES.PLACES}>
+                            <PlacesList />
+                        </Route>
                         <Route path={ROUTES.NEW_PLACE}>
                             <CollectionPlaceForm />
+                        </Route>
+                        <Route path={ROUTES.EVENTS}>
+                            <EventForm />
                         </Route>
                         <Route path={ROUTES.NEW_EVENT}>
                             <EventForm />
                         </Route>
                         <Route path="/">
-                            {selectedView === `list` ? <AssetList assetData={FakePointData} /> : <MapComponent />}
+                            {
+                                // @ts-ignore
+                                selectedView === `list` ? <AssetList assetData={FakePointData} /> : <MapComponent />
+                            }
                             <NavBar selectedView={selectedView} setSelectedView={setSelectedView} />
                             <MenuOptions selectedView={selectedView} setSelectedView={setSelectedView} />
                         </Route>
