@@ -1,22 +1,26 @@
-import React, { Dispatch, FormEvent, SetStateAction, useState } from 'react'
+import React, { Dispatch, FormEvent, SetStateAction, useContext, useState } from 'react'
 import styled from 'styled-components'
 import { postCollectionPlace } from '../apis'
 import { PageHeader } from '../components/pageHeader'
 import { StyledButton, StyledForm, StyledInput, StyledLabel } from '../components/styled'
 import { ITEM_TYPES, ROUTES, WEEK_DAYS } from '../utils'
 import { useHistory } from 'react-router-dom'
+import { SelectedPlaceContext } from '../App'
 
 export function CollectionPlaceForm(): JSX.Element {
-    const [name, setName] = useState(``)
-    const [cep, setCep] = useState(``)
-    const [buildingNum, setBuildingNum] = useState(``)
-    const [latitude, setLatitude] = useState(``)
-    const [longitude, setLongitude] = useState(``)
-    const [phone, setPhone] = useState(``)
-    const [description, setDescription] = useState(``)
-    const [acceptableItems, setAcceptableItems] = useState<AcceptableItems[]>([])
-    const [workingHours, setWorkingHours] = useState({ from: '', to: '' })
-    const [workingDays, setWorkingDays] = useState<WeekDays[]>([])
+    const { selectedPlace } = useContext(SelectedPlaceContext)
+
+    const [name, setName] = useState(selectedPlace?.name || ``)
+    const [cep, setCep] = useState(selectedPlace?.cep || ``)
+    const [buildingNum, setBuildingNum] = useState(selectedPlace?.buildingNum || ``)
+    const [latitude, setLatitude] = useState(selectedPlace?.latitude || ``)
+    const [longitude, setLongitude] = useState(selectedPlace?.longitude || ``)
+    const [phone, setPhone] = useState(selectedPlace?.phone || ``)
+    const [description, setDescription] = useState(selectedPlace?.description || ``)
+    const [acceptableItems, setAcceptableItems] = useState<AcceptableItems[]>(selectedPlace?.acceptableItems || [])
+    const [workingHours, setWorkingHours] = useState(selectedPlace?.workingHours || { from: '', to: '' })
+    const [workingDays, setWorkingDays] = useState<WeekDays[]>(selectedPlace?.workingDays || [])
+
     const history = useHistory()
     // const [relatedEvents, setRelatedEvents] = useState(``)
 

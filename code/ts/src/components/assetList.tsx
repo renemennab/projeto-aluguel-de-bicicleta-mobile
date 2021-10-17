@@ -1,19 +1,25 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { ROUTES } from '../utils'
+import { SelectedPlaceContext } from '../App'
 
 interface Props {
     assetData: CollectionPlace[]
 }
 export function AssetList({ assetData }: Props): JSX.Element {
     console.log(assetData)
+    const { setSelectedPlace } = useContext(SelectedPlaceContext)
 
     return (
         <StyledAssetList className={`assetList`}>
             {assetData.map((data: CollectionPlace, index: number) => (
-                <li className={`assetList--card`} key={index}>
-                    <h2 className={`assetList--card__name`}>{data.name}</h2>
-                    <span className={`assetList--card__acceptableItems`}>{data.acceptableItems.join(`, `)}</span>
-                    <span className={`assetList--card__cep`}>{data.cep}</span>
+                <li className={`assetList--card`} key={index} onClick={() => setSelectedPlace?.(data)}>
+                    <Link to={`${ROUTES.PLACES}/${data.id || 2}`}>
+                        <h2 className={`assetList--card__name`}>{data.name}</h2>
+                        <span className={`assetList--card__acceptableItems`}>{data.acceptableItems.join(`, `)}</span>
+                        <span className={`assetList--card__cep`}>{data.cep}</span>
+                    </Link>
                 </li>
             ))}
         </StyledAssetList>
