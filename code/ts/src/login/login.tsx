@@ -26,8 +26,7 @@ export function Login(): JSX.Element {
 
     return (
         <StyledLogin>
-            <BackArrow />
-            <h1>LOGIN</h1>
+            <BackArrow pageName={`Login`} />
             <StyledForm action="" onSubmit={event => handleLogin(event)}>
                 <UserInfo email={email} setEmail={setEmail} password={password} setPassword={setPassword} />
                 <StyledButton>

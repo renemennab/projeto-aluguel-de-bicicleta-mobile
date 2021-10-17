@@ -26,8 +26,7 @@ export function UserProfileForm(): JSX.Element {
 
     return (
         <StyledSignIn>
-            <BackArrow />
-            <h1>Cadastro</h1>
+            <BackArrow pageName={`Cadastro`} />
             <StyledForm action="" onSubmit={event => handleSignIn(event)}>
                 <fieldset className={`userInfo`}>
                     <StyledLabel className={`column`}>

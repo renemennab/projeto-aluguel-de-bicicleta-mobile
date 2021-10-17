@@ -15,8 +15,7 @@ export function PlacesList(): JSX.Element {
 
     return (
         <StyledPlacesList>
-            <BackArrow />
-            <h1>Meus Pontos de Coleta</h1>
+            <BackArrow pageName={`Meus Pontos de Coleta`} />
             <AssetList assetData={placesArray} />
         </StyledPlacesList>
     )

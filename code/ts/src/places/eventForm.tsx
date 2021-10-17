@@ -34,8 +34,7 @@ export function EventForm(): JSX.Element {
 
     return (
         <StyledNewColectionPlace className={`newEvent`}>
-            <BackArrow />
-            <h1>Novo Evento de Coleta</h1>
+            <BackArrow pageName={`Novo Evento de Coleta`} />
             <StyledForm action="" onSubmit={event => handleEventSubmit(event)}>
                 <StyledLabel className={`column`}>
                     Data

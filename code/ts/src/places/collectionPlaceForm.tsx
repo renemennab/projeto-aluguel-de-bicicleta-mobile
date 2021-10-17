@@ -54,8 +54,7 @@ export function CollectionPlaceForm(): JSX.Element {
 
     return (
         <StyledNewColectionPlace className={`newCollectionPlace`}>
-            <BackArrow />
-            <h1>Novo Ponto de Coleta</h1>
+            <BackArrow pageName={`Novo Ponto de Coleta`} />
             <StyledForm action="" onSubmit={event => handleCollectionPlaceSubmit(event)}>
                 <fieldset className={`userInfo`}>
                     <StyledLabel className={`column`}>
