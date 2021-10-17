@@ -15,12 +15,12 @@ export function MenuOptions({ selectedView, setSelectedView }: IProps): JSX.Elem
             </button>
             <ul className={`menuOptions--optionList `}>
                 <li className={`menuOptions--optionList__item `}>
-                    <button className={`menuOptions--optionList__item--button `}>
+                    <Link to={ROUTES.PROFILE} className={`menuOptions--optionList__item--button `}>
                         <i className="fas fa-user"></i> Perfil
-                    </button>
+                    </Link>
                 </li>
                 <li className={`menuOptions--optionList__item `}>
-                    <Link to={ROUTES.NEW_COLLECTION} className={`menuOptions--optionList__item--button `}>
+                    <Link to={ROUTES.NEW_PLACE} className={`menuOptions--optionList__item--button `}>
                         <i className="fas fa-sign-in-alt"></i>
                         Adicionar Ponto de Coleta
                     </Link>
@@ -32,21 +32,21 @@ export function MenuOptions({ selectedView, setSelectedView }: IProps): JSX.Elem
                     </Link>
                 </li>
                 <li className={`menuOptions--optionList__item `}>
-                    <button className={`menuOptions--optionList__item--button `}>
+                    <Link to={ROUTES.FAVOURITES} className={`menuOptions--optionList__item--button `}>
                         <i className="far fa-star"></i>
                         Favoritos
-                    </button>
+                    </Link>
                 </li>
                 <li className={`menuOptions--optionList__item `}>
-                    <button className={`menuOptions--optionList__item--button `}>
+                    <Link to={ROUTES.EVENTS} className={`menuOptions--optionList__item--button `}>
                         <i className="far fa-calendar"></i> Meus Eventos
-                    </button>
+                    </Link>
                 </li>
                 <li className={`menuOptions--optionList__item `}>
-                    <button className={`menuOptions--optionList__item--button `}>
+                    <Link to={ROUTES.PLACES} className={`menuOptions--optionList__item--button `}>
                         <i className="fas fa-map-marker-alt"></i>
                         Meus Pontos de coleta
-                    </button>
+                    </Link>
                 </li>
                 <li className={`menuOptions--optionList__item `}>
                     <Link to={ROUTES.LOGIN} className={`menuOptions--optionList__item--button `}>
