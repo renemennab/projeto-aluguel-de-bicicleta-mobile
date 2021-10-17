@@ -1,6 +1,6 @@
 import React, { FormEvent, useState } from 'react'
 import styled from 'styled-components'
-import { BackArrow } from '../components/backArrow'
+import { BackArrow } from '../components/pageHeader'
 import { StyledButton, StyledForm, StyledInput, StyledLabel } from '../components/styled'
 import { UserInfo } from '../components/userInfo'
 import { ROUTES } from '../utils'

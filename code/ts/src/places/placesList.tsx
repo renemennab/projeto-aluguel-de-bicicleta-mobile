@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { getCollectionPlaces } from '../apis'
 import { AssetList } from '../components/assetList'
-import { BackArrow } from '../components/backArrow'
+import { BackArrow } from '../components/pageHeader'
 
 export function PlacesList(): JSX.Element {
     const [placesArray, setPlacesArray] = useState<CollectionPlace[]>([])

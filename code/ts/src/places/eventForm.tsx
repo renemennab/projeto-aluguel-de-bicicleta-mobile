@@ -1,7 +1,7 @@
 import React, { FormEvent, useState } from 'react'
 import styled from 'styled-components'
 import { postEvent } from '../apis'
-import { BackArrow } from '../components/backArrow'
+import { BackArrow } from '../components/pageHeader'
 import { StyledButton, StyledForm, StyledInput, StyledLabel } from '../components/styled'
 import { ROUTES } from '../utils'
 import { useHistory } from 'react-router-dom'
