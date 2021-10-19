@@ -21,7 +21,6 @@ namespace mapa_do_bem_api.Model
         public string HorarioFuncionamento { get; set; }
         public string DiasFuncionamento { get; set; }
         public ICollection<Item> ItensDoacao { get; set; }
-       
         public virtual Coletor Coletor { get; set; }
         //Eventos
         

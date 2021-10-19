@@ -35,8 +35,5 @@ namespace mapa_do_bem_api.ViewModel
         
         [Required]
         public ICollection<Item> ItensDoacao { get; set; }
-
-        [Required]
-        public virtual Coletor Coletor { get; set; }
     }
 }

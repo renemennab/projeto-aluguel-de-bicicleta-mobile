@@ -24,5 +24,10 @@ namespace mapa_do_bem_api.Services
 
             return await _userRepository.Cadastrar(user, model.Senha);
         }
+
+        public async Task<ApplicationUser> SelecionarPorId(string id)
+        {
+            return await _userRepository.SelecionarPorId(id);
+        }
     }
 }

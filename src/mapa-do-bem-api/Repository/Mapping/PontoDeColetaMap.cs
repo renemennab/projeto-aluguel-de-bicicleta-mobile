@@ -32,6 +32,8 @@ namespace mapa_do_bem_api.Repository.Mapping
 
             builder.Property(p => p.DiasFuncionamento).IsRequired();
 
+            builder.HasMany<Item>(p => p.ItensDoacao).WithMany(i => i.PontoDeColeta);
+
         }
     }
 }

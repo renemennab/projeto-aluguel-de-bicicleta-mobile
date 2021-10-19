@@ -1,5 +1,4 @@
-﻿using mapa_do_bem_api.Model;
-using mapa_do_bem_api.Services;
+﻿using mapa_do_bem_api.Services;
 using mapa_do_bem_api.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -39,12 +38,12 @@ namespace mapa_do_bem_api.Controllers
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task CadastrarPonto(PontoColetaViewModel model)
+        public async Task CadastrarPonto(PontoColetaViewModel model, string coletorId)
         {
             //if (!ModelState.IsValid)
             //    return BadRequest(ModelState);
 
-            await _pontoService.Cadastrar(model);
+            await _pontoService.Cadastrar(model, coletorId);
 
             //return Created($"{ponto.Id}", ponto);
         }

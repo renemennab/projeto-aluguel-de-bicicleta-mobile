@@ -8,7 +8,7 @@ namespace mapa_do_bem_api.Repository
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Item> Item { get; set; }
-        public DbSet<PontoDeColeta> PontoDeColeta { get; set; }
+        public DbSet<Item> PontoDeColeta { get; set; }
         public DbSet<ApplicationUser> AspNetUsers { get; set; }
         public DbSet<Coletor> Coletor { get; set; }
         public DbSet<Doador> Doador { get; set; }

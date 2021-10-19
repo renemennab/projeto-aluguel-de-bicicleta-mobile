@@ -1,5 +1,6 @@
 ﻿using mapa_do_bem_api.Model;
 using Microsoft.AspNetCore.Identity;
+using System;
 using System.Threading.Tasks;
 
 namespace mapa_do_bem_api.Repository
@@ -11,11 +12,20 @@ namespace mapa_do_bem_api.Repository
         {
             _userManager = userManager;
         }
+        
+        // TODO: modificar retorno 
         public async Task<ApplicationUser> Cadastrar(ApplicationUser user, string senha)
         {           
            await _userManager.CreateAsync(user, senha);
 
            return user;
+        }
+
+        public async Task<ApplicationUser> SelecionarPorId(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+
+            return user;
         }
 
     }

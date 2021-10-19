@@ -12,8 +12,6 @@ namespace mapa_do_bem_api.Repository.Mapping
 
             builder.HasKey(i => i.Id);
 
-            builder.Property(i => i.Id).ValueGeneratedOnAdd();
-
             builder.Property(i => i.Produto).IsRequired().HasMaxLength(300);
 
             builder.HasData
