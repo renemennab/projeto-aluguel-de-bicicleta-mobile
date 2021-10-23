@@ -2,26 +2,42 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { ROUTES } from '../utils'
-import { SelectedPlaceContext } from '../App'
-
+import { SelectedEventContext, SelectedPlaceContext } from '../App'
 interface Props {
-    assetData: CollectionPlace[]
+    assetType: 'event' | 'place'
+    placesData?: CollectionPlace[]
+    eventData?: EventForm[]
 }
-export function AssetList({ assetData }: Props): JSX.Element {
-    console.log(assetData)
+export function AssetList({ placesData, assetType, eventData }: Props): JSX.Element {
+    console.log(placesData)
+    console.log('eventData', eventData)
     const { setSelectedPlace } = useContext(SelectedPlaceContext)
+    const { setSelectedEvent } = useContext(SelectedEventContext)
 
     return (
         <StyledAssetList className={`assetList`}>
-            {assetData.map((data: CollectionPlace, index: number) => (
-                <li className={`assetList--card`} key={index} onClick={() => setSelectedPlace?.(data)}>
-                    <Link to={`${ROUTES.PLACES}/${data.id || 2}`}>
-                        <h2 className={`assetList--card__name`}>{data.name}</h2>
-                        <span className={`assetList--card__acceptableItems`}>{data.acceptableItems.join(`, `)}</span>
-                        <span className={`assetList--card__cep`}>{data.cep}</span>
-                    </Link>
-                </li>
-            ))}
+            {assetType === 'place'
+                ? placesData?.map((data: CollectionPlace, index: number) => (
+                      <li className={`assetList--card`} key={index} onClick={() => setSelectedPlace?.(data)}>
+                          <Link to={`${ROUTES.PLACES}/${data.id || 2}`}>
+                              <h2 className={`assetList--card__name`}>{data.name}</h2>
+                              <span className={`assetList--card__acceptableItems`}>
+                                  {data.acceptableItems.join(`, `)}
+                              </span>
+                              <span className={`assetList--card__cep`}>{data.cep}</span>
+                          </Link>
+                      </li>
+                  ))
+                : eventData?.map((data: EventForm, index: number) => (
+                      <li className={`assetList--card`} key={index} onClick={() => setSelectedEvent?.(data)}>
+                          <Link to={`${ROUTES.EVENTS}/${data.id || 2}`}>
+                              <h2 className={`assetList--card__name`}>{data.date}</h2>
+                              <span className={`assetList--card__acceptableItems`}>{data.workingHours.from}</span>
+                              <span className={`assetList--card__acceptableItems`}>{data.workingHours.to}</span>
+                              <span className={`assetList--card__cep`}>{data.description}</span>
+                          </Link>
+                      </li>
+                  ))}
         </StyledAssetList>
     )
 }

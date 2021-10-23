@@ -13,58 +13,77 @@ import { ROUTES } from './utils'
 import { EventForm } from './places/eventForm'
 import { PlacesList } from './places/placesList'
 import { SelectedPlace } from './places/selectedPlace'
+import { SelectedEvent } from './places/selectedEvent'
+import { EventsList } from './places/eventsList'
 
 export const SelectedPlaceContext = React.createContext<{
     selectedPlace?: CollectionPlace
     setSelectedPlace?: Dispatch<SetStateAction<CollectionPlace | undefined>>
 }>({})
+export const SelectedEventContext = React.createContext<{
+    selectedEvent?: EventForm
+    setSelectedEvent?: Dispatch<SetStateAction<EventForm | undefined>>
+}>({})
 function App(): ReactElement {
     const [selectedView, setSelectedView] = useState('map')
     const [selectedPlace, setSelectedPlace] = useState<CollectionPlace | undefined>(undefined)
+    const [selectedEvent, setSelectedEvent] = useState<EventForm | undefined>(undefined)
 
     return (
         <Router>
             <AppStyles className="App">
                 <SelectedPlaceContext.Provider value={{ selectedPlace, setSelectedPlace }}>
-                    <main>
-                        <Switch>
-                            <Route path={ROUTES.LOGIN}>
-                                <Login />
-                            </Route>
-                            <Route path={ROUTES.SIGNIN}>
-                                <UserProfileForm />
-                            </Route>
-                            <Route path={ROUTES.FAVOURITES}>
-                                <PlacesList />
-                            </Route>
-                            <Route path={`${ROUTES.PLACES}/:placeId/edit`}>
-                                <CollectionPlaceForm />
-                            </Route>
-                            <Route path={`${ROUTES.PLACES}/:placeId`}>
-                                <SelectedPlace />
-                            </Route>
-                            <Route path={ROUTES.PLACES}>
-                                <PlacesList />
-                            </Route>
-                            <Route path={ROUTES.NEW_PLACE}>
-                                <CollectionPlaceForm />
-                            </Route>
-                            <Route path={ROUTES.EVENTS}>
-                                <EventForm />
-                            </Route>
-                            <Route path={ROUTES.NEW_EVENT}>
-                                <EventForm />
-                            </Route>
-                            <Route path="/">
-                                {
-                                    // @ts-ignore
-                                    selectedView === `list` ? <AssetList assetData={FakePointData} /> : <MapComponent />
-                                }
-                                <NavBar selectedView={selectedView} setSelectedView={setSelectedView} />
-                                <MenuOptions selectedView={selectedView} setSelectedView={setSelectedView} />
-                            </Route>
-                        </Switch>
-                    </main>
+                    <SelectedEventContext.Provider value={{ selectedEvent, setSelectedEvent }}>
+                        <main>
+                            <Switch>
+                                <Route path={ROUTES.LOGIN}>
+                                    <Login />
+                                </Route>
+                                <Route path={ROUTES.SIGNIN}>
+                                    <UserProfileForm />
+                                </Route>
+                                <Route path={ROUTES.FAVOURITES}>
+                                    <PlacesList />
+                                </Route>
+                                <Route path={`${ROUTES.PLACES}/:placeId/edit`}>
+                                    <CollectionPlaceForm />
+                                </Route>
+                                <Route path={`${ROUTES.PLACES}/:placeId`}>
+                                    <SelectedPlace />
+                                </Route>
+                                <Route path={ROUTES.PLACES}>
+                                    <PlacesList />
+                                </Route>
+                                <Route path={ROUTES.NEW_PLACE}>
+                                    <CollectionPlaceForm />
+                                </Route>
+                                <Route path={`${ROUTES.EVENTS}/:eventId/edit`}>
+                                    <EventForm />
+                                </Route>
+                                <Route path={`${ROUTES.EVENTS}/:eventId`}>
+                                    <SelectedEvent />
+                                </Route>
+                                <Route path={ROUTES.EVENTS}>
+                                    <EventsList />
+                                </Route>
+                                <Route path={ROUTES.NEW_EVENT}>
+                                    <EventForm />
+                                </Route>
+                                <Route path="/">
+                                    {
+                                        selectedView === `list` ? (
+                                            // @ts-ignore
+                                            <AssetList placesData={FakePointData} />
+                                        ) : (
+                                            <MapComponent />
+                                        )
+                                    }
+                                    <NavBar selectedView={selectedView} setSelectedView={setSelectedView} />
+                                    <MenuOptions selectedView={selectedView} setSelectedView={setSelectedView} />
+                                </Route>
+                            </Switch>
+                        </main>
+                    </SelectedEventContext.Provider>
                 </SelectedPlaceContext.Provider>
             </AppStyles>
         </Router>

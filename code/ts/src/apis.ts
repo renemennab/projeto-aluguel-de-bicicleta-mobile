@@ -35,7 +35,7 @@ export function postEvent(params: EventForm): Promise<Response> {
         resolve({ status: 200 })
     })
 }
-export function getEvents(): Promise<Response> {
+export function getEvents(): Promise<EventForm[]> {
     return new Promise(resolve => {
         // @ts-ignore
         resolve({ status: 200, body: JSON.parse(window.localStorage.getItem(API_PATHS.EVENTS) || '[]') })

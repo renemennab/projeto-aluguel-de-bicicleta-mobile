@@ -16,7 +16,7 @@ export function PlacesList(): JSX.Element {
     return (
         <StyledPlacesList>
             <PageHeader pageName={`Meus Pontos de Coleta`} />
-            <AssetList assetData={placesArray} />
+            <AssetList placesData={placesArray} assetType={'place'} />
         </StyledPlacesList>
     )
 }

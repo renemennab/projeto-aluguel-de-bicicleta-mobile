@@ -1,16 +1,19 @@
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent, useContext, useState } from 'react'
 import styled from 'styled-components'
 import { postEvent } from '../apis'
 import { PageHeader } from '../components/pageHeader'
 import { StyledButton, StyledForm, StyledInput, StyledLabel } from '../components/styled'
 import { ROUTES } from '../utils'
 import { useHistory } from 'react-router-dom'
+import { SelectedEventContext } from '../App'
 
 export function EventForm(): JSX.Element {
-    const [date, setDate] = useState(``)
-    const [description, setDescription] = useState(``)
-    const [collectionPlace, setCollectionPlace] = useState(0)
-    const [workingHours, setWorkingHours] = useState({ from: '', to: '' })
+    const { selectedEvent } = useContext(SelectedEventContext)
+
+    const [date, setDate] = useState(selectedEvent?.date || ``)
+    const [description, setDescription] = useState(selectedEvent?.description || ``)
+    const [collectionPlace, setCollectionPlace] = useState(selectedEvent?.collectionPlace || 0)
+    const [workingHours, setWorkingHours] = useState(selectedEvent?.workingHours || { from: '', to: '' })
     const history = useHistory()
 
     const options = [
