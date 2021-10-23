@@ -58,10 +58,13 @@ namespace mapa_do_bem_api.Controllers
         //{
         //}
 
-        //// DELETE api/<PontoController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+
+        [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<IActionResult> ExcluirPonto(int id)
+        {
+            await _pontoService.Excluir(id);
+            return NoContent();
+        }
     }
 }

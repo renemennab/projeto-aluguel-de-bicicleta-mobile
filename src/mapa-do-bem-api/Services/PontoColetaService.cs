@@ -54,5 +54,12 @@ namespace mapa_do_bem_api.Services
         {
             return await _repository.SelecionarPorId(id);
         }
+
+        public async Task Excluir(int id)
+        {
+            var ponto = await _repository.SelecionarPorId(id);
+
+            await _repository.Excluir(ponto);
+        }
     }
 }

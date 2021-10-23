@@ -9,5 +9,7 @@ namespace mapa_do_bem_api.Services
         Task Cadastrar(PontoColetaViewModel pontoDeColeta);
 
         Task<PontoDeColeta> SelecionarPorId(int id);
+
+        Task Excluir(int id);
     }
 }
