@@ -10,7 +10,7 @@ export function MenuOptions({ selectedView, setSelectedView }: IProps): JSX.Elem
     return (
         <StyledMenuOptions className={`menuOptions ${selectedView === `menu` ? `open` : ``}`}>
             <button className={`menuOptions--header `} onClick={() => setSelectedView(`map`)}>
-                <h1 className={`menuOptions--header__title`}>NOSSO NOME</h1>
+                <h1 className={`menuOptions--header__title`}>MAPA DO BEM</h1>
                 <i className="fas fa-chevron-down" />
             </button>
             <ul className={`menuOptions--optionList `}>
@@ -92,6 +92,10 @@ const StyledMenuOptions = styled.nav`
                     padding: 18px 0;
                     border: none;
                     background: white;
+                    text-decoration: none;
+                    &, &:visited{
+                        color: var(--black);
+                    }
                     i {
                         margin-right: 8px;
                     }
