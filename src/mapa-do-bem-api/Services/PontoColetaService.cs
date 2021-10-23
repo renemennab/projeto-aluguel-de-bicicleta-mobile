@@ -25,9 +25,9 @@ namespace mapa_do_bem_api.Services
 
             var ItensAceitos = new List<Item>();
 
-            foreach (var produto in pontoDeColeta.ItensDoacao)
+            foreach (var IdProduto in pontoDeColeta.ItensDoacao)
             {
-               ItensAceitos.Add(await _itemRepository.SelecionarPorId(produto.Id));
+               ItensAceitos.Add(await _itemRepository.SelecionarPorId(IdProduto));
             }
 
             var ponto = new PontoDeColeta
@@ -46,6 +46,11 @@ namespace mapa_do_bem_api.Services
             };
 
             await _repository.Incluir(ponto);
+        }
+
+        public async Task<PontoDeColeta> SelecionarPorId(int id)
+        {
+            return await _repository.SelecionarPorId(id);
         }
     }
 }

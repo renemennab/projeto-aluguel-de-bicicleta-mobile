@@ -6,6 +6,8 @@ namespace mapa_do_bem_api.ViewModel
 {
     public class PontoColetaViewModel
     {
+        public int Id { get; set; }
+
         [Required]
         public string Nome { get; set; }
         
@@ -34,6 +36,6 @@ namespace mapa_do_bem_api.ViewModel
         public string DiasFuncionamento { get; set; }
         
         [Required]
-        public ICollection<Item> ItensDoacao { get; set; }
+        public ICollection<int> ItensDoacao { get; set; }
     }
 }
