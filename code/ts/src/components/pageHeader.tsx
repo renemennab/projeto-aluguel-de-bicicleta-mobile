@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
 interface IProps {
@@ -7,20 +7,24 @@ interface IProps {
 }
 
 export function PageHeader({ pageName }: IProps): JSX.Element {
+    const history = useHistory()
+    console.log(history)
+
     return (
         <StyledBackArrow>
-            <Link to="/">
+            <button type="button" onClick={() => history.goBack()}>
                 <i className={`fa fa-arrow-left`} />
-            </Link>
+            </button>
             <h1>{pageName}</h1>
         </StyledBackArrow>
     )
 }
 
 const StyledBackArrow = styled.header`
-    a {
-        &:visited {
-            color: var(--red);
-        }
+    button {
+        color: var(--red);
+        border: none;
+        background: transparent;
+        font-size: 20px;
     }
 `
