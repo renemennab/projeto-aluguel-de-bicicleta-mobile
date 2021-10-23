@@ -70,14 +70,12 @@ function App(): ReactElement {
                                     <EventForm />
                                 </Route>
                                 <Route path="/">
-                                    {
-                                        selectedView === `list` ? (
-                                            // @ts-ignore
-                                            <AssetList placesData={FakePointData} />
-                                        ) : (
-                                            <MapComponent />
-                                        )
-                                    }
+                                    {selectedView === `list` ? (
+                                        // @ts-ignore
+                                        <AssetList placesData={FakePointData} />
+                                    ) : (
+                                        <MapComponent />
+                                    )}
                                     <NavBar selectedView={selectedView} setSelectedView={setSelectedView} />
                                     <MenuOptions selectedView={selectedView} setSelectedView={setSelectedView} />
                                 </Route>
