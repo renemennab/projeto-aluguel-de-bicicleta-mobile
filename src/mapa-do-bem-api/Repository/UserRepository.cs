@@ -13,12 +13,11 @@ namespace mapa_do_bem_api.Repository
             _userManager = userManager;
         }
         
-        // TODO: modificar retorno 
-        public async Task<ApplicationUser> Cadastrar(ApplicationUser user, string senha)
+        public async Task<bool> Cadastrar(ApplicationUser user, string senha)
         {           
-           await _userManager.CreateAsync(user, senha);
+           var retorno = await _userManager.CreateAsync(user, senha);
 
-           return user;
+           return retorno.Succeeded;
         }
 
         public async Task<ApplicationUser> SelecionarPorId(string id)

@@ -12,7 +12,7 @@ namespace mapa_do_bem_api.Services
         {
             _userRepository = userRepository;
         }
-        public async Task<ApplicationUser> Cadastrar(UserViewModel model)
+        public async Task<bool> Cadastrar(UserViewModel model)
         {
             var user = new ApplicationUser
             {

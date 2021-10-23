@@ -5,7 +5,7 @@ namespace mapa_do_bem_api.Repository
 {
     public interface IUserRepository 
     {
-        Task<ApplicationUser> Cadastrar(ApplicationUser user, string senha);
+        Task<bool> Cadastrar(ApplicationUser user, string senha);
 
         Task<ApplicationUser> SelecionarPorId(string id);
 

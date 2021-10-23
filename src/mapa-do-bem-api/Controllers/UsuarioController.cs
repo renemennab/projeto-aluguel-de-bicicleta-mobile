@@ -1,5 +1,4 @@
-﻿using mapa_do_bem_api.Model;
-using mapa_do_bem_api.Services;
+﻿using mapa_do_bem_api.Services;
 using mapa_do_bem_api.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -36,16 +35,20 @@ namespace mapa_do_bem_api.Controllers
         // POST api/<UserController>
         [HttpPost("cadastrar")]
         [Consumes(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<ApplicationUser>> CadastrarUsuario(UserViewModel model)
+        public async Task<IActionResult> CadastrarUsuario(UserViewModel model)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+            var user = await _service.Cadastrar(model);
 
-             var user = await _service.Cadastrar(model);
-
-            return Created($"{user.Id}", user);
+            if (!user)
+            {
+                return BadRequest();
+            } else
+            {
+                return Ok();
+            }
+                
         }
 
 

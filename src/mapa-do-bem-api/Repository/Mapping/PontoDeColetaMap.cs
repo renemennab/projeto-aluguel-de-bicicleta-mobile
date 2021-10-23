@@ -22,13 +22,17 @@ namespace mapa_do_bem_api.Repository.Mapping
 
             builder.Property(p => p.Cep).IsRequired().HasMaxLength(8);
 
+            builder.Property(p => p.CidadeEstado).IsRequired().HasMaxLength(500);
+
             builder.Property(p => p.Numero).IsRequired().HasMaxLength(4);
 
             builder.Property(p => p.Latitude).IsRequired().HasColumnType("decimal(8,6)");
 
             builder.Property(p => p.Longitude).IsRequired().HasColumnType("decimal(9,6)");
 
-            builder.Property(p => p.HorarioFuncionamento).IsRequired();
+            builder.Property(p => p.HorarioInicioFuncionamento).IsRequired().HasColumnType("datetime2");
+
+            builder.Property(p => p.HorarioFimFuncionamento).IsRequired().HasColumnType("datetime2");
 
             builder.Property(p => p.DiasFuncionamento).IsRequired();
 

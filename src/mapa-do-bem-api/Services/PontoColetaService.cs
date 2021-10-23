@@ -19,9 +19,9 @@ namespace mapa_do_bem_api.Services
             _itemRepository = itemRepository;
         }
      
-        public async Task Cadastrar(PontoColetaViewModel pontoDeColeta, string coletorId)
+        public async Task Cadastrar(PontoColetaViewModel pontoDeColeta)
         {
-            var Coletor = (Coletor) await _userRepository.SelecionarPorId(coletorId);
+            var Coletor = (Coletor) await _userRepository.SelecionarPorId(pontoDeColeta.ColetorId);
 
             var ItensAceitos = new List<Item>();
 
@@ -36,10 +36,12 @@ namespace mapa_do_bem_api.Services
                 Descricao = pontoDeColeta.Descricao,
                 Telefone = pontoDeColeta.Telefone,
                 Cep = pontoDeColeta.Cep,
+                CidadeEstado = pontoDeColeta.CidadeEstado,
                 Numero = pontoDeColeta.Numero,
                 Latitude = pontoDeColeta.Latitude,
                 Longitude = pontoDeColeta.Longitude,
-                HorarioFuncionamento = pontoDeColeta.HorarioFuncionamento,
+                HorarioInicioFuncionamento = pontoDeColeta.HorarioInicioFuncionamento,
+                HorarioFimFuncionamento = pontoDeColeta.HorarioFimFuncionamento,
                 DiasFuncionamento = pontoDeColeta.DiasFuncionamento,
                 ItensDoacao  = ItensAceitos, 
                 Coletor = Coletor

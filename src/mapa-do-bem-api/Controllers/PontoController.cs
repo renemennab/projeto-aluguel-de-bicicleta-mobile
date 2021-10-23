@@ -42,12 +42,12 @@ namespace mapa_do_bem_api.Controllers
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<PontoDeColeta>> CadastrarPonto(PontoColetaViewModel model, string coletorId)
+        public async Task<ActionResult<PontoDeColeta>> CadastrarPonto(PontoColetaViewModel model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            await _pontoService.Cadastrar(model, coletorId);
+            await _pontoService.Cadastrar(model);
 
             return Created($"/{model.Id}", model);
         }
