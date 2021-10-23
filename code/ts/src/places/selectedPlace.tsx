@@ -1,24 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { SelectedPlaceContext } from '../App'
 import { PageHeader } from '../components/pageHeader'
+import { AssetActions } from './assetActions'
 export function SelectedPlace(): JSX.Element {
     const { selectedPlace } = useContext(SelectedPlaceContext)
     console.log(`selectedPlace`, selectedPlace)
-    const location = useLocation().pathname
 
     return selectedPlace ? (
         <StyledSelectedPlace className={`selectedPlace`}>
             <PageHeader pageName={selectedPlace.name} />
-            <div className={`selectedPlace--actions`}>
-                <Link to={location + `/edit`} className={`selectedPlace--actions__edit`}>
-                    <i className="far fa-edit"></i>
-                </Link>
-                <button className={`selectedPlace--actions__remove`}>
-                    <i className="far fa-trash-alt"></i>
-                </button>
-            </div>
+            <AssetActions />
             <span>{selectedPlace.acceptableItems}</span>
             <span>{selectedPlace.buildingNum}</span>
             <span>{selectedPlace.cep}</span>
@@ -40,27 +32,4 @@ const StyledSelectedPlace = styled.div`
     display: flex;
     flex-direction: column;
     position: relative;
-    .selectedPlace {
-        &--actions {
-            width: 100%;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            position: absolute;
-            top: var(--padding);
-            right: var(--padding);
-            &__edit,
-            &__remove {
-                padding: 10px;
-                background: transparent;
-                color: var(--dark-blue);
-                border: none;
-                font-size: 18px;
-                transform: translate(10px, -25%);
-            }
-            &__remove {
-                color: var(--red);
-            }
-        }
-    }
 `
