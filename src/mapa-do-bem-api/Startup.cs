@@ -31,9 +31,7 @@ namespace mapa_do_bem_api
             });
 
 
-            services.AddControllers()
-                .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling =
-                Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            services.AddControllers();
 
             services.AddSwaggerGen(c =>
             {
