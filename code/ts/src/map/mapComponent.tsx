@@ -9,7 +9,10 @@ import iconShadow from 'leaflet/dist/images/marker-shadow.png'
 
 const DefaultIcon = L.icon({
     iconUrl: icon,
-    shadowUrl: iconShadow
+    shadowUrl: iconShadow,
+    iconSize: [30, 45], // size of the icon
+    iconAnchor: [15, 45], // point of the icon which will correspond to marker's location
+    popupAnchor: [0, -45]
 })
 
 export function MapComponent(): JSX.Element {
