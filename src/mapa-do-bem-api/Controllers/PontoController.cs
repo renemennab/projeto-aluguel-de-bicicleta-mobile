@@ -52,11 +52,19 @@ namespace mapa_do_bem_api.Controllers
             return Created($"/{model.Id}", model);
         }
 
-        //// PUT api/<PontoController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
+
+        [HttpPut("alterar")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> AlterarPonto(PontoDeColeta ponto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            await _pontoService.Alterar(ponto);
+
+            return Ok();
+        }
 
 
         [HttpDelete("{id}")]

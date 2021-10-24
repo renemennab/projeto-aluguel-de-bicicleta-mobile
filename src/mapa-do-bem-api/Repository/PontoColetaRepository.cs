@@ -1,6 +1,5 @@
 ﻿using mapa_do_bem_api.Model;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace mapa_do_bem_api.Repository
@@ -11,9 +10,7 @@ namespace mapa_do_bem_api.Repository
 
         public new async Task<PontoDeColeta> SelecionarPorId(int id)
         {
-            return await this.Query.Include(x => x.ItensDoacao)
-                                   .Where(x => x.Id == id)
-                                   .FirstOrDefaultAsync();
+            return await this.Query.Include(x => x.ItensDoacao).FirstOrDefaultAsync(x => x.Id == id);
         }
     }
 }

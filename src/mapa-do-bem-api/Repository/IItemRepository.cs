@@ -4,6 +4,5 @@ namespace mapa_do_bem_api.Repository
 {
     public interface IItemRepository : IBaseRepository<Item>
     {
-
     }
 }
