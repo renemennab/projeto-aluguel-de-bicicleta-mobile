@@ -44,11 +44,13 @@ const StyledNavBar = styled.nav`
             background: none;
             border: none;
             width: 90px;
+            color: var(--dark-blue);
             i {
                 margin-bottom: 5px;
+                color: var(--yellow);
             }
             &.selected {
-                border-bottom: 5px solid blue;
+                border-bottom: 5px solid var(--dark-blue);
             }
         }
     }

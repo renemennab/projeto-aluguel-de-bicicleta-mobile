@@ -79,6 +79,12 @@ const StyledMenuOptions = styled.nav`
             align-items: center;
             justify-content: space-between;
             width: 100%;
+            &__title {
+                color: var(--red);
+            }
+            i {
+                color: var(--yellow);
+            }
         }
         &--optionList {
             padding: 0;
@@ -93,11 +99,13 @@ const StyledMenuOptions = styled.nav`
                     border: none;
                     background: white;
                     text-decoration: none;
-                    &, &:visited{
-                        color: var(--black);
+                    &,
+                    &:visited {
+                        color: var(--dark-blue);
                     }
                     i {
                         margin-right: 8px;
+                        color: var(--yellow);
                     }
                 }
                 &:hover {
