@@ -24,3 +24,8 @@ code {
     --yellow: #F7D08A;
     --padding: 30px;
 }
+
+a, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: inherit;
+  }
