@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { SelectedPlaceContext, SelectedEventContext } from '../App'
 import { ROUTES } from '../utils'
 interface IProps {
     selectedView: string
     setSelectedView: (type: string) => void
 }
 export function MenuOptions({ selectedView, setSelectedView }: IProps): JSX.Element {
+    const { setSelectedPlace } = useContext(SelectedPlaceContext)
+    const { setSelectedEvent } = useContext(SelectedEventContext)
+    useEffect(() => {
+        setSelectedPlace?.(undefined)
+        setSelectedEvent?.(undefined)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     return (
         <StyledMenuOptions className={`menuOptions ${selectedView === `menu` ? `open` : ``}`}>
             <button className={`menuOptions--header `} onClick={() => setSelectedView(`map`)}>
