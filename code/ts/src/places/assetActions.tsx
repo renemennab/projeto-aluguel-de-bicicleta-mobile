@@ -47,7 +47,7 @@ const StyledAssetActions = styled.div`
             color: var(--red);
         }
         &--favourite {
-            color: var(--black);
+            color: var(--dark-gray);
         }
     }
 `
