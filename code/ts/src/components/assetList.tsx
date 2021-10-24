@@ -17,22 +17,25 @@ export function AssetList({ placesData, assetType, eventData }: Props): JSX.Elem
             {assetType === 'place'
                 ? placesData?.map((data: CollectionPlace, index: number) => (
                       <li className={`assetList--card`} key={index} onClick={() => setSelectedPlace?.(data)}>
-                          <Link to={`${ROUTES.PLACES}/${data.id || 2}`}>
-                              <h2 className={`assetList--card__name`}>{data.name}</h2>
-                              <span className={`assetList--card__acceptableItems`}>
+                          <Link className={`assetList--card__link`} to={`${ROUTES.PLACES}/${data.id || 2}`}>
+                              <h2 className={`assetList--card__link--name`}>{data.name}</h2>
+                              <span className={`assetList--card__link--acceptableItems`}>
                                   {data.acceptableItems.join(`, `)}
                               </span>
-                              <span className={`assetList--card__cep`}>{data.cep}</span>
+                              <span className={`assetList--card__link--cep`}>{data.cep}</span>
                           </Link>
                       </li>
                   ))
                 : eventData?.map((data: EventForm, index: number) => (
                       <li className={`assetList--card`} key={index} onClick={() => setSelectedEvent?.(data)}>
-                          <Link to={`${ROUTES.EVENTS}/${data.id || 2}`}>
-                              <h2 className={`assetList--card__name`}>{data.date}</h2>
-                              <span className={`assetList--card__acceptableItems`}>{data.workingHours.from}</span>
-                              <span className={`assetList--card__acceptableItems`}>{data.workingHours.to}</span>
-                              <span className={`assetList--card__cep`}>{data.description}</span>
+                          <Link className={`assetList--card__link`} to={`${ROUTES.EVENTS}/${data.id || 2}`}>
+                              <h2 className={`assetList--card__link--name`}>
+                                  {data.date?.split('-').reverse().join(`/`)}
+                              </h2>
+                              <span className={`assetList--card__link--workingHours`}>
+                                  {data.workingHours.from} - {data.workingHours.to}
+                              </span>
+                              <span className={`assetList--card__link--description`}>{data.description}</span>
                           </Link>
                       </li>
                   ))}
@@ -54,16 +57,24 @@ const StyledAssetList = styled.ul`
             flex-direction: column;
             border-radius: 3px;
             box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.22);
-            &__name,
-            &__acceptableItems,
-            &__cep {
-                font-size: 14px;
-            }
-            &__name {
-                color: var(--dark-blue);
-                text-transform: capitalize;
-                font-weight: 700;
-                font-size: 18px;
+            &__link {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                &--name,
+                &--acceptableItems,
+                &--workingHours,
+                &--description,
+                &--cep {
+                    font-size: 14px;
+                    margin-bottom: 15px;
+                }
+                &--name {
+                    color: var(--dark-blue);
+                    text-transform: capitalize;
+                    font-weight: 700;
+                    font-size: 18px;
+                }
             }
         }
     }
