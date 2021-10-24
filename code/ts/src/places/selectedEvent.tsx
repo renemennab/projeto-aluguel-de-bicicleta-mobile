@@ -9,12 +9,17 @@ export function SelectedEvent(): JSX.Element {
 
     return selectedEvent ? (
         <StyledSelectedEvent className={`selectedEvent`}>
-            <PageHeader pageName={selectedEvent.date} />
+            <PageHeader pageName={selectedEvent.date.replaceAll('-', '/')} />
             <AssetActions />
 
-            <span>{selectedEvent.description}</span>
-            <span>{selectedEvent.workingHours.to}</span>
-            <span>{selectedEvent.workingHours.from}</span>
+            <span className={`selectedEvent--description`}>
+                <strong>description: </strong>
+                {selectedEvent.description}
+            </span>
+            <span className={`selectedEvent--workingHours`}>
+                <strong>workingHours: </strong>
+                {selectedEvent.workingHours.to} - {selectedEvent.workingHours.from}
+            </span>
         </StyledSelectedEvent>
     ) : (
         <div />
@@ -26,4 +31,16 @@ const StyledSelectedEvent = styled.div`
     display: flex;
     flex-direction: column;
     position: relative;
+
+    .selectedEvent {
+        &--description,
+        &--workingHours {
+            margin-top: 30px;
+
+            strong {
+                color: var(--dark-blue);
+                text-transform: uppercase;
+            }
+        }
+    }
 `
