@@ -10,5 +10,6 @@ namespace mapa_do_bem_api.Repository
         Task<ApplicationUser> SelecionarPorId(string id);
 
         //Task<ApplicationUser> Login(string email, string senha);
+
     }
 }

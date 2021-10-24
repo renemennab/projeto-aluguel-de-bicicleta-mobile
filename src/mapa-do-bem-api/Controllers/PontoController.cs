@@ -19,12 +19,13 @@ namespace mapa_do_bem_api.Controllers
             _pontoService = pontoService;
         }
 
-        //// GET: api/<PontoController>
-        //[HttpGet]
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
+
+        [HttpGet("listar-todos")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> ListarTodos()
+        {
+            return Ok(await _pontoService.SelecionarTodos());
+        }
 
 
         [HttpGet("{id}")]
@@ -54,6 +55,7 @@ namespace mapa_do_bem_api.Controllers
 
 
         [HttpPut("alterar")]
+        [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> AlterarPonto(PontoDeColeta ponto)

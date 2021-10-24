@@ -89,5 +89,10 @@ namespace mapa_do_bem_api.Services
 
             await _repository.Alterar(pontoAntigo);
         }
+
+        public async Task<IList<PontoDeColeta>> SelecionarTodos()
+        {
+            return await _repository.SelecionarTodos();
+        }
     }
 }

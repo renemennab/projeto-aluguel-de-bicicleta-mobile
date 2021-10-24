@@ -18,21 +18,15 @@ namespace mapa_do_bem_api.Controllers
             _service = service;
         }
 
-        //// GET: api/<UserController>
-        //[HttpGet]
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
 
-        //// GET api/<UserController>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
+        [HttpGet("{id}/meus-pontos")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> ListarTodos(string id)
+        {
+            return Ok(await _service.SelecionarTodosPorUsuario(id));
+        }
 
-        // POST api/<UserController>
+
         [HttpPost("cadastrar")]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -51,17 +45,5 @@ namespace mapa_do_bem_api.Controllers
                 
         }
 
-
-        //// PUT api/<UserController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //// DELETE api/<UserController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
     }
 }
