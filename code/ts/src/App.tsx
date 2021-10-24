@@ -15,6 +15,7 @@ import { PlacesList } from './places/placesList'
 import { SelectedPlace } from './places/selectedPlace'
 import { SelectedEvent } from './places/selectedEvent'
 import { EventsList } from './places/eventsList'
+import { UserProfile } from './login/userProfile'
 
 export const SelectedPlaceContext = React.createContext<{
     selectedPlace?: CollectionPlace
@@ -41,6 +42,9 @@ function App(): ReactElement {
                                 </Route>
                                 <Route path={ROUTES.SIGNIN}>
                                     <UserProfileForm />
+                                </Route>
+                                <Route path={ROUTES.PROFILE}>
+                                    <UserProfile />
                                 </Route>
                                 <Route path={ROUTES.FAVOURITES}>
                                     <PlacesList />

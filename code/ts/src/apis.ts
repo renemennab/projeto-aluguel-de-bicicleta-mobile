@@ -13,6 +13,14 @@ export function postUser(params: UserPostParams): Promise<Response> {
         resolve({ status: 200 })
     })
 }
+
+export function getUser(): Promise<Response> {
+    return new Promise(resolve => {
+        const currentUsers = JSON.parse(window.localStorage.getItem(API_PATHS.USERS) || '[]')
+        // @ts-ignore
+        resolve({ status: 200, body: currentUsers })
+    })
+}
 export function postCollectionPlace(params: CollecgtionPlacePostParams): Promise<Response> {
     return new Promise(resolve => {
         const currentPlaces = JSON.parse(window.localStorage.getItem(API_PATHS.PLACES) || '[]')
