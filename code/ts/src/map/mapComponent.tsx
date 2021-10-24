@@ -56,6 +56,7 @@ export function MapComponent(): JSX.Element {
     useEffect(() => {
         // @ts-ignore
         if (mapMethods) mapMethods.flyTo([location.coordinates?.latitude || 0, location.coordinates?.longitude || 0])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location])
 
     return (
