@@ -9,8 +9,6 @@ interface Props {
     eventData?: EventForm[]
 }
 export function AssetList({ placesData, assetType, eventData }: Props): JSX.Element {
-    console.log(placesData)
-    console.log('eventData', eventData)
     const { setSelectedPlace } = useContext(SelectedPlaceContext)
     const { setSelectedEvent } = useContext(SelectedEventContext)
 

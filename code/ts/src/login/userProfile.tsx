@@ -5,7 +5,6 @@ import { PageHeader } from '../components/pageHeader'
 
 export function UserProfile(): JSX.Element {
     const [userProfile, setUserProfile] = useState<UserPostParams | null>(null)
-    console.log(`UserProfile`, userProfile)
 
     useEffect(() => {
         // @ts-ignore

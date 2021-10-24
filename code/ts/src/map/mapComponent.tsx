@@ -54,7 +54,6 @@ export function MapComponent(): JSX.Element {
         navigator.geolocation.getCurrentPosition(onSuccess, onError)
     }, [])
     useEffect(() => {
-        console.log(`i ran`)
         // @ts-ignore
         if (mapMethods) mapMethods.flyTo([location.coordinates?.latitude || 0, location.coordinates?.longitude || 0])
     }, [location])

@@ -6,7 +6,6 @@ import { AssetActions } from './assetActions'
 
 export function SelectedEvent(): JSX.Element {
     const { selectedEvent } = useContext(SelectedEventContext)
-    console.log(`selectedEvent`, selectedEvent)
 
     return selectedEvent ? (
         <StyledSelectedEvent className={`selectedEvent`}>

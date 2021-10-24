@@ -6,7 +6,6 @@ import { AssetActions } from './assetActions'
 
 export function SelectedPlace(): JSX.Element {
     const { selectedPlace } = useContext(SelectedPlaceContext)
-    console.log(`selectedPlace`, selectedPlace)
 
     return selectedPlace ? (
         <StyledSelectedPlace className={`selectedPlace`}>

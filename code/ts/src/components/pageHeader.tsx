@@ -8,7 +8,6 @@ interface IProps {
 
 export function PageHeader({ pageName }: IProps): JSX.Element {
     const history = useHistory()
-    console.log(history)
 
     return (
         <StyledBackArrow>
