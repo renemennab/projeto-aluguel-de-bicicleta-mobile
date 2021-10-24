@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System;
 
 namespace mapa_do_bem_api.Repository
 {
@@ -24,6 +25,15 @@ namespace mapa_do_bem_api.Repository
         {
             return await this.Query.Include(x => x.ItensDoacao)
                                    .Where(x => x.ColetorId == idUsuario)
+                                   .ToListAsync();
+        }
+
+        public async Task<IList<PontoDeColeta>> BuscarPorFiltro(String filtro)
+        {
+            return await this.Query.Include(x => x.ItensDoacao)
+                                   .Where(x => x.Nome.ToUpper().Contains(filtro)
+                                   || x.CidadeEstado.ToUpper().Contains(filtro)
+                                   || x.ItensDoacao.Any(i => i.Produto.ToUpper().Contains(filtro)))
                                    .ToListAsync();
         }
     }

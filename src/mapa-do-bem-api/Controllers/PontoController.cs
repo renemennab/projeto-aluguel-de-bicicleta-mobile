@@ -38,7 +38,16 @@ namespace mapa_do_bem_api.Controllers
             return result is not null ? Ok(result) : NotFound();
         }
 
-   
+
+        [HttpPost("buscar")]
+        [Consumes(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> Buscar(FiltroViewModel filtros)
+        {
+            return Ok(await _pontoService.BuscarPorFiltro(filtros));
+        }
+
+
         [HttpPost("cadastrar")]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status201Created)]

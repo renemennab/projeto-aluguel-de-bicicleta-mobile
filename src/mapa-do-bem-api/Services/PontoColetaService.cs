@@ -94,5 +94,10 @@ namespace mapa_do_bem_api.Services
         {
             return await _repository.SelecionarTodos();
         }
+
+        public async Task<IList<PontoDeColeta>> BuscarPorFiltro(FiltroViewModel filtros)
+        {
+            return await _repository.BuscarPorFiltro(filtros.Filtro.ToUpper());
+        }
     }
 }
