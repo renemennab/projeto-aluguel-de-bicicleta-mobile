@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
+import { ConfirmationDialog } from './confirmationDialog'
 
 export function AssetActions(): JSX.Element {
     const location = useLocation().pathname
+    const [showModal, setShowModal] = useState(false)
 
     return (
         <StyledAssetActions className={`assetActions`}>
@@ -14,9 +16,10 @@ export function AssetActions(): JSX.Element {
             <Link to={location + `/edit`} className={`assetActions--edit`}>
                 <i className="far fa-edit"></i>
             </Link>
-            <button className={`assetActions--remove`}>
+            <button className={`assetActions--remove`} onClick={() => setShowModal(true)}>
                 <i className="far fa-trash-alt"></i>
             </button>
+            {showModal ? <ConfirmationDialog onCancel={() => setShowModal(false)} onDelete={() => null} /> : null}
         </StyledAssetActions>
     )
 }

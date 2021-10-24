@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { SelectedPlaceContext } from '../App'
 import { PageHeader } from '../components/pageHeader'
 import { AssetActions } from './assetActions'
+
 export function SelectedPlace(): JSX.Element {
     const { selectedPlace } = useContext(SelectedPlaceContext)
     console.log(`selectedPlace`, selectedPlace)
