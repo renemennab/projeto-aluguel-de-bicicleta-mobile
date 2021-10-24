@@ -19,16 +19,36 @@ export function SelectedPlace(): JSX.Element {
         <StyledSelectedPlace className={`selectedPlace`}>
             <PageHeader pageName={selectedPlace.name} />
             <AssetActions />
-            <span>{selectedPlace.acceptableItems}</span>
-            <span>{selectedPlace.buildingNum}</span>
-            <span>{selectedPlace.cep}</span>
-            <span>{selectedPlace.description}</span>
-            <span>{selectedPlace.latitude}</span>
-            <span>{selectedPlace.longitude}</span>
-            <span>{selectedPlace.phone}</span>
-            <span>{selectedPlace.workingDays.join(`, `)}</span>
-            <span>{selectedPlace.workingHours.to}</span>
-            <span>{selectedPlace.workingHours.from}</span>
+            <span className={`selectedPlace--acceptableItems`}>
+                <strong>acceptableItems: </strong> {selectedPlace.acceptableItems.join(', ')}
+            </span>
+            <span className={`selectedPlace--buildingNum`}>
+                <strong>buildingNum: </strong> {selectedPlace.buildingNum}
+            </span>
+            <span className={`selectedPlace--cep`}>
+                <strong>cep: </strong> {selectedPlace.cep}
+            </span>
+            <span className={`selectedPlace--description`}>
+                <strong>description: </strong> {selectedPlace.description}
+            </span>
+            <span className={`selectedPlace--latitude`}>
+                <strong>latitude: </strong> {selectedPlace.latitude}
+            </span>
+            <span className={`selectedPlace--longitude`}>
+                <strong>longitude: </strong> {selectedPlace.longitude}
+            </span>
+            <span className={`selectedPlace--phone`}>
+                <strong>phone: </strong> {selectedPlace.phone}
+            </span>
+            <span className={`selectedPlace--workingDays`}>
+                <strong>workingDays: </strong> {selectedPlace.workingDays.join(`, `)}
+            </span>
+            <span className={`selectedPlace--workingHoursFrom`}>
+                <strong>From: </strong> {selectedPlace.workingHours.from}
+            </span>
+            <span className={`selectedPlace--workingHoursTo`}>
+                <strong>To: </strong> {selectedPlace.workingHours.to}
+            </span>
 
             <button type="button" className="selectedPlace--message" onClick={handleMessageClick}>
                 Enviar Mensagem
@@ -46,6 +66,23 @@ const StyledSelectedPlace = styled.div`
     flex-direction: column;
     position: relative;
     .selectedPlace {
+        &--acceptableItems,
+        &--buildingNum,
+        &--cep,
+        &--description,
+        &--latitude,
+        &--longitude,
+        &--phone,
+        &--workingDays,
+        &--workingHoursFrom,
+        &--workingHoursTo {
+            margin-bottom: 40px;
+
+            strong {
+                color: var(--dark-blue);
+                text-transform: uppercase;
+            }
+        }
         &--message {
             color: white;
             border: none;
