@@ -1,4 +1,4 @@
-import React, { Dispatch, ReactElement, SetStateAction, useState } from 'react'
+import React, { Dispatch, ReactElement, SetStateAction, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { AssetList } from './components/assetList'
 import { FakePointData } from './fakeData/fakeData'
@@ -16,6 +16,7 @@ import { SelectedPlace } from './places/selectedPlace'
 import { SelectedEvent } from './places/selectedEvent'
 import { EventsList } from './places/eventsList'
 import { UserProfile } from './login/userProfile'
+import { getCollectionPlaces } from './apis'
 
 export const SelectedPlaceContext = React.createContext<{
     selectedPlace?: CollectionPlace
@@ -29,6 +30,13 @@ function App(): ReactElement {
     const [selectedView, setSelectedView] = useState('map')
     const [selectedPlace, setSelectedPlace] = useState<CollectionPlace | undefined>(undefined)
     const [selectedEvent, setSelectedEvent] = useState<EventForm | undefined>(undefined)
+    const [placesArray, setPlacesArray] = useState<CollectionPlace[]>([])
+
+    useEffect(() => {
+        getCollectionPlaces().then(response => {
+            setPlacesArray(response)
+        })
+    }, [])
 
     return (
         <Router>
@@ -75,8 +83,7 @@ function App(): ReactElement {
                                 </Route>
                                 <Route path="/">
                                     {selectedView === `list` ? (
-                                        // @ts-ignore
-                                        <AssetList placesData={FakePointData} />
+                                        <AssetList placesData={placesArray} assetType={`place`} />
                                     ) : (
                                         <MapComponent />
                                     )}
