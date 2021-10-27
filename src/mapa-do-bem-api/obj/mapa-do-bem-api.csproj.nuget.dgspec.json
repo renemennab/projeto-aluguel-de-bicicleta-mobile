@@ -1,30 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\stefanini\\Documents\\Amanda\\pmv-ads-2021-2-e2-proj-int-t2-projeto-doacoes\\src\\mapa-do-bem-api\\mapa-do-bem-api.csproj": {}
+    "/Users/reneboaventuraneto/Programacao/pmv-ads-2021-2-e2-proj-int-t2-projeto-doacoes/src/mapa-do-bem-api/mapa-do-bem-api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\stefanini\\Documents\\Amanda\\pmv-ads-2021-2-e2-proj-int-t2-projeto-doacoes\\src\\mapa-do-bem-api\\mapa-do-bem-api.csproj": {
+    "/Users/reneboaventuraneto/Programacao/pmv-ads-2021-2-e2-proj-int-t2-projeto-doacoes/src/mapa-do-bem-api/mapa-do-bem-api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\stefanini\\Documents\\Amanda\\pmv-ads-2021-2-e2-proj-int-t2-projeto-doacoes\\src\\mapa-do-bem-api\\mapa-do-bem-api.csproj",
+        "projectUniqueName": "/Users/reneboaventuraneto/Programacao/pmv-ads-2021-2-e2-proj-int-t2-projeto-doacoes/src/mapa-do-bem-api/mapa-do-bem-api.csproj",
         "projectName": "mapa-do-bem-api",
-        "projectPath": "C:\\Users\\stefanini\\Documents\\Amanda\\pmv-ads-2021-2-e2-proj-int-t2-projeto-doacoes\\src\\mapa-do-bem-api\\mapa-do-bem-api.csproj",
-        "packagesPath": "C:\\Users\\stefanini\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\stefanini\\Documents\\Amanda\\pmv-ads-2021-2-e2-proj-int-t2-projeto-doacoes\\src\\mapa-do-bem-api\\obj\\",
+        "projectPath": "/Users/reneboaventuraneto/Programacao/pmv-ads-2021-2-e2-proj-int-t2-projeto-doacoes/src/mapa-do-bem-api/mapa-do-bem-api.csproj",
+        "packagesPath": "/Users/reneboaventuraneto/.nuget/packages/",
+        "outputPath": "/Users/reneboaventuraneto/Programacao/pmv-ads-2021-2-e2-proj-int-t2-projeto-doacoes/src/mapa-do-bem-api/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\stefanini\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/reneboaventuraneto/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -98,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.402/RuntimeIdentifierGraph.json"
         }
       }
     }
