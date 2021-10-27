@@ -1,61 +1,112 @@
-import React, { ReactElement } from 'react'
-import logo from './logo.svg'
+import React, { Dispatch, ReactElement, SetStateAction, useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { AssetList } from './components/assetList'
+import { FakePointData } from './fakeData/fakeData'
+import { MapComponent } from './map/mapComponent'
+import { MenuOptions } from './navBar/menuOptions'
+import { NavBar } from './navBar/navBar'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Login } from './login/login'
+import { UserProfileForm } from './login/userProfileForm'
+import { CollectionPlaceForm } from './places/collectionPlaceForm'
+import { ROUTES } from './utils'
+import { EventForm } from './places/eventForm'
+import { PlacesList } from './places/placesList'
+import { SelectedPlace } from './places/selectedPlace'
+import { SelectedEvent } from './places/selectedEvent'
+import { EventsList } from './places/eventsList'
+import { UserProfile } from './login/userProfile'
+import { getCollectionPlaces } from './apis'
 
+export const SelectedPlaceContext = React.createContext<{
+    selectedPlace?: CollectionPlace
+    setSelectedPlace?: Dispatch<SetStateAction<CollectionPlace | undefined>>
+}>({})
+export const SelectedEventContext = React.createContext<{
+    selectedEvent?: EventForm
+    setSelectedEvent?: Dispatch<SetStateAction<EventForm | undefined>>
+}>({})
 function App(): ReactElement {
+    const [selectedView, setSelectedView] = useState('map')
+    const [selectedPlace, setSelectedPlace] = useState<CollectionPlace | undefined>(undefined)
+    const [selectedEvent, setSelectedEvent] = useState<EventForm | undefined>(undefined)
+    const [placesArray, setPlacesArray] = useState<CollectionPlace[]>([])
+
+    useEffect(() => {
+        getCollectionPlaces().then(response => {
+            setPlacesArray(response)
+        })
+    }, [])
+
     return (
-        <AppStyles className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.tsx</code> and save to reload.
-                </p>
-                <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-                    Learn React
-                </a>
-            </header>
-        </AppStyles>
+        <Router>
+            <AppStyles className="App">
+                <SelectedPlaceContext.Provider value={{ selectedPlace, setSelectedPlace }}>
+                    <SelectedEventContext.Provider value={{ selectedEvent, setSelectedEvent }}>
+                        <main>
+                            <Switch>
+                                <Route path={ROUTES.LOGIN}>
+                                    <Login />
+                                </Route>
+                                <Route path={ROUTES.SIGNIN}>
+                                    <UserProfileForm />
+                                </Route>
+                                <Route path={ROUTES.PROFILE}>
+                                    <UserProfile />
+                                </Route>
+                                <Route path={ROUTES.FAVOURITES}>
+                                    <PlacesList />
+                                </Route>
+                                <Route path={`${ROUTES.PLACES}/:placeId/edit`}>
+                                    <CollectionPlaceForm />
+                                </Route>
+                                <Route path={`${ROUTES.PLACES}/:placeId`}>
+                                    <SelectedPlace />
+                                </Route>
+                                <Route path={ROUTES.PLACES}>
+                                    <PlacesList />
+                                </Route>
+                                <Route path={ROUTES.NEW_PLACE}>
+                                    <CollectionPlaceForm />
+                                </Route>
+                                <Route path={`${ROUTES.EVENTS}/:eventId/edit`}>
+                                    <EventForm />
+                                </Route>
+                                <Route path={`${ROUTES.EVENTS}/:eventId`}>
+                                    <SelectedEvent />
+                                </Route>
+                                <Route path={ROUTES.EVENTS}>
+                                    <EventsList />
+                                </Route>
+                                <Route path={ROUTES.NEW_EVENT}>
+                                    <EventForm />
+                                </Route>
+                                <Route path="/">
+                                    {selectedView === `list` ? (
+                                        <AssetList placesData={placesArray} assetType={`place`} />
+                                    ) : (
+                                        <MapComponent />
+                                    )}
+                                    <NavBar selectedView={selectedView} setSelectedView={setSelectedView} />
+                                    <MenuOptions selectedView={selectedView} setSelectedView={setSelectedView} />
+                                </Route>
+                            </Switch>
+                        </main>
+                    </SelectedEventContext.Provider>
+                </SelectedPlaceContext.Provider>
+            </AppStyles>
+        </Router>
     )
 }
 
 const AppStyles = styled.div`
-    .App {
-        text-align: center;
-    }
-
-    .App-logo {
-        height: 40vmin;
-        pointer-events: none;
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-        .App-logo {
-            animation: App-logo-spin infinite 20s linear;
-        }
-    }
-
-    .App-header {
-        background-color: #282c34;
-        min-height: 100vh;
+    height: 100vh;
+    width: 100%;
+    main {
+        width: 100%;
+        height: 100%;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        font-size: calc(10px + 2vmin);
-        color: white;
-    }
-
-    .App-link {
-        color: #61dafb;
-    }
-
-    @keyframes App-logo-spin {
-        from {
-            transform: rotate(0deg);
-        }
-        to {
-            transform: rotate(360deg);
-        }
     }
 `
 export default App

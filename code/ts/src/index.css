@@ -11,3 +11,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+* {
+    box-sizing: border-box;
+}
+:root{
+    --red: #F28482;
+    --light-blue: #CEEAF7;
+    --dark-blue: #457B9D;
+    --black: #141414;
+    --gray: #cccccc;
+    --dark-gray: #8e8e8e;
+    --yellow: #F7D08A;
+    --padding: 30px;
+}
+
+a, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: inherit;
+  }

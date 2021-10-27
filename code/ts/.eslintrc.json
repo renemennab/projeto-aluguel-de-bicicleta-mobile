@@ -32,6 +32,7 @@
     "rules": {
         "no-return-assign": "off",
         "@typescript-eslint/no-use-before-define": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
         "next-line space-infix-ops": "off",
         "eqeqeq": [
             "warn",
