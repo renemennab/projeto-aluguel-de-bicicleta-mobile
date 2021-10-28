@@ -45,5 +45,19 @@ namespace mapa_do_bem_api.Controllers
                 
         }
 
+        [HttpPost("login")]
+        [Consumes(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<UserLoggedViewModel>> Login(LoginViewModel loginView)
+        {
+            var result = await _service.Login(loginView);
+
+            return result is not null ? Ok(result) : NotFound(new
+            {
+                Message = "Email ou Password inválido"
+            });
+        }
+
     }
 }

@@ -29,6 +29,21 @@ namespace mapa_do_bem_api.Services
             return await _userRepository.Cadastrar(user, model.Senha);
         }
 
+        public async Task<UserLoggedViewModel> Login(LoginViewModel model)
+        {
+            var user = await _userRepository.Login(model.Email, model.Senha);
+
+            if (user == null)
+                return null;
+
+            return new UserLoggedViewModel
+            {
+                Id = user.Id,
+                Nome = user.Nome,
+                Perfil = user.Perfil
+            };
+        }
+
         public async Task<ApplicationUser> SelecionarPorId(string id)
         {
             return await _userRepository.SelecionarPorId(id);
