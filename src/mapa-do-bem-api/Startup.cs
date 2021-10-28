@@ -30,6 +30,16 @@ namespace mapa_do_bem_api
                 opt.UseSqlServer(this.Configuration.GetConnectionString("MapaDoBem"));
             });
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: "CorsPolicy",
+                        builder =>
+                        {
+                            builder.AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader();
+                        });
+            });
 
             services.AddControllers();
 
@@ -62,7 +72,9 @@ namespace mapa_do_bem_api
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            
+            app.UseCors("CorsPolicy");
+            
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
