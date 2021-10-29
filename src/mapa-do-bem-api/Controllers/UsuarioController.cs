@@ -37,7 +37,11 @@ namespace mapa_do_bem_api.Controllers
 
             if (!user)
             {
-                return BadRequest();
+                return BadRequest(new
+                {
+                    Message = "Dados inválidos!"
+                });
+
             } else
             {
                 return Ok();
@@ -55,7 +59,7 @@ namespace mapa_do_bem_api.Controllers
 
             return result is not null ? Ok(result) : NotFound(new
             {
-                Message = "Email ou Password inválido"
+                Message = "Email ou Senha inválidos"
             });
         }
 

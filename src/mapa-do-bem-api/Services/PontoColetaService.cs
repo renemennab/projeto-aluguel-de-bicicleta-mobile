@@ -21,7 +21,7 @@ namespace mapa_do_bem_api.Services
      
         public async Task Cadastrar(PontoColetaViewModel pontoDeColeta)
         {
-            var Coletor = (Coletor)await _userRepository.SelecionarPorId(pontoDeColeta.ColetorId);
+            var Coletor = (Coletor) await _userRepository.SelecionarPorId(pontoDeColeta.ColetorId);
 
             var ItensAceitos = new List<Item>();
 
