@@ -10,7 +10,6 @@ namespace mapa_do_bem_api.Services
         Task<bool> Cadastrar(UserViewModel model);
         Task<ApplicationUser> SelecionarPorId(string id);
         Task<IList<PontoDeColeta>> SelecionarTodosPorUsuario(string idUsuario);
-
-        //Task<ApplicationUser> Login(LoginViewModel model);
+        Task<UserLoggedViewModel> Login(LoginViewModel model);
     }
 }
