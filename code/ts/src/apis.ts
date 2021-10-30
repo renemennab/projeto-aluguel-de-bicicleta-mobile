@@ -112,10 +112,7 @@ export function postCollectionPlace(params: CollectionPlace, id?: string): Promi
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(convertPlaceParamsToPostObject(params))
-    })
-        .then(response => response.json())
-        .then(data => data)
-        .catch(err => console.error(err))
+    }).catch(err => err)
 }
 
 export function deletePlace(id: string): Promise<Response> {

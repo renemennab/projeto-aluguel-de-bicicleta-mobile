@@ -1,9 +1,9 @@
 import React, { Dispatch, FormEvent, SetStateAction, useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { getAddressFromCep, postCollectionPlace } from '../apis'
+import { getAddressFromCep, getItems, postCollectionPlace } from '../apis'
 import { PageHeader } from '../components/pageHeader'
 import { StyledButton, StyledForm, StyledInput, StyledLabel } from '../components/styled'
-import { ITEM_TYPES, ROUTES, WEEK_DAYS } from '../utils'
+import { ROUTES, WEEK_DAYS } from '../utils'
 import { useHistory } from 'react-router-dom'
 import { SelectedPlaceContext } from '../App'
 
@@ -18,7 +18,8 @@ export function CollectionPlaceForm(): JSX.Element {
     const [longitude, setLongitude] = useState(selectedPlace?.longitude || ``)
     const [phone, setPhone] = useState(selectedPlace?.phone || ``)
     const [description, setDescription] = useState(selectedPlace?.description || ``)
-    const [acceptableItems, setAcceptableItems] = useState<AcceptableItems[]>(selectedPlace?.acceptableItems || [])
+    const [acceptableItems, setAcceptableItems] = useState<number[]>(selectedPlace?.acceptableItems || [])
+    const [itemTypes, setItemTypes] = useState<AcceptableItemsResponse[]>([])
     const [workingHours, setWorkingHours] = useState(selectedPlace?.workingHours || { from: '', to: '' })
     const [workingDays, setWorkingDays] = useState<WeekDays[]>(selectedPlace?.workingDays || [])
 
@@ -50,23 +51,32 @@ export function CollectionPlaceForm(): JSX.Element {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [cep])
 
-    console.log(`address`, address)
+    useEffect(() => {
+        getItems().then(response => {
+            console.log(`setItemTypes response`, response)
+            setItemTypes(response)
+        })
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+    console.log(`working`, workingHours)
     function handleCollectionPlaceSubmit(event: FormEvent<HTMLFormElement>): void {
         event.preventDefault()
         postCollectionPlace({
             name,
             cep,
             address: JSON.stringify(address),
-            buildingNum,
-            latitude,
-            longitude,
+            buildingNum: Number(buildingNum),
+            latitude: Number(latitude),
+            longitude: Number(longitude),
             phone,
             description,
             acceptableItems,
             workingHours,
             workingDays
         }).then(response => {
-            if (response.status === 200) {
+            console.log(response)
+            if (response.status === 201) {
                 history.push(ROUTES.COLLECTION_LIST)
             }
         })
@@ -187,18 +197,18 @@ export function CollectionPlaceForm(): JSX.Element {
                 </fieldset>
                 <fieldset className={`acceptableItems`}>
                     <h2>Tipos de Items coletados</h2>
-                    {ITEM_TYPES.map(itemType => (
-                        <StyledLabel key={itemType}>
+                    {itemTypes.map(itemType => (
+                        <StyledLabel key={itemType.id}>
                             <StyledInput
                                 type="checkbox"
                                 name={`acceptableItems`}
-                                value={itemType}
-                                checked={acceptableItems.includes(itemType)}
+                                value={itemType.id}
+                                checked={acceptableItems.includes(itemType.id)}
                                 onChange={() =>
-                                    handleCheckboxClick<AcceptableItems>(itemType, acceptableItems, setAcceptableItems)
+                                    handleCheckboxClick<number>(itemType.id, acceptableItems, setAcceptableItems)
                                 }
                             />
-                            {itemType}
+                            {itemType.produto}
                         </StyledLabel>
                     ))}
                 </fieldset>
@@ -222,7 +232,7 @@ const StyledNewColectionPlace = styled.div`
         }
     }
 `
-function getAddresEmptyObj() {
+function getAddresEmptyObj(): CepObject {
     return {
         bairro: '',
         cep: '',
