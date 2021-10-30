@@ -19,19 +19,19 @@ namespace mapa_do_bem_api.Migrations
                 nullable: false,
                 defaultValue: "");
 
-            migrationBuilder.AddColumn<DateTime>(
+            migrationBuilder.AddColumn<string>(
                 name: "HorarioFimFuncionamento",
                 table: "PontoDeColeta",
-                type: "datetime2",
+                type: "nvarchar(500)",
                 nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+                defaultValue: "08:00");
 
-            migrationBuilder.AddColumn<DateTime>(
+            migrationBuilder.AddColumn<string>(
                 name: "HorarioInicioFuncionamento",
                 table: "PontoDeColeta",
-                type: "datetime2",
+                type: "nvarchar(500)",
                 nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+                defaultValue: "22:00");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

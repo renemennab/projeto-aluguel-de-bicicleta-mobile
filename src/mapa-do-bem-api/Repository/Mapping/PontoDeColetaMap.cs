@@ -30,9 +30,9 @@ namespace mapa_do_bem_api.Repository.Mapping
 
             builder.Property(p => p.Longitude).IsRequired().HasColumnType("decimal(9,6)");
 
-            builder.Property(p => p.HorarioInicioFuncionamento).IsRequired().HasColumnType("datetime2");
+            builder.Property(p => p.HorarioInicioFuncionamento).IsRequired().HasMaxLength(500);
 
-            builder.Property(p => p.HorarioFimFuncionamento).IsRequired().HasColumnType("datetime2");
+            builder.Property(p => p.HorarioFimFuncionamento).IsRequired().HasMaxLength(500);
 
             builder.Property(p => p.DiasFuncionamento).IsRequired();
 

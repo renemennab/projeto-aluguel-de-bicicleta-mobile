@@ -35,10 +35,10 @@ namespace mapa_do_bem_api.ViewModel
         public decimal Longitude { get; set; }
 
         [Required]
-        public DateTime HorarioInicioFuncionamento { get; set; }
+        public string HorarioInicioFuncionamento { get; set; }
 
         [Required]
-        public DateTime HorarioFimFuncionamento { get; set; }
+        public string HorarioFimFuncionamento { get; set; }
 
         [Required]
         public string DiasFuncionamento { get; set; }

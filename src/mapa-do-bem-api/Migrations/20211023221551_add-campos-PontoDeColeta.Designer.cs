@@ -312,11 +312,11 @@ namespace mapa_do_bem_api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("HorarioFimFuncionamento")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("HorarioFimFuncionamento")
+                        .HasColumnType("nvarchar(500)");
 
-                    b.Property<DateTime>("HorarioInicioFuncionamento")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("HorarioInicioFuncionamento")
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<decimal>("Latitude")
                         .HasColumnType("decimal(8,6)");

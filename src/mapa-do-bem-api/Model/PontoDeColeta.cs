@@ -20,8 +20,8 @@ namespace mapa_do_bem_api.Model
         public int? Numero { get; set; }
         public decimal? Latitude { get; set; }
         public decimal? Longitude { get; set; }
-        public DateTime? HorarioInicioFuncionamento { get; set; }
-        public DateTime? HorarioFimFuncionamento { get; set; }
+        public string HorarioInicioFuncionamento { get; set; }
+        public string HorarioFimFuncionamento { get; set; }
         public string DiasFuncionamento { get; set; }
         public ICollection<Item> ItensDoacao { get; set; }
         public string ColetorId { get; set; }
