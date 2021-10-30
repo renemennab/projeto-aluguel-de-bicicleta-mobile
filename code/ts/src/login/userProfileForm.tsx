@@ -1,17 +1,20 @@
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent, useContext, useState } from 'react'
 import styled from 'styled-components'
 import { PageHeader } from '../components/pageHeader'
 import { StyledButton, StyledForm, StyledInput, StyledLabel } from '../components/styled'
 import { UserInfo } from '../components/userInfo'
-import { ROUTES } from '../utils'
+import { COLLECTOR, DONOR } from '../utils'
 import { useHistory } from 'react-router-dom'
-import { postUser } from '../apis'
+import { loginUser, postUser } from '../apis'
+import { UserLoggedContext } from '../App'
 
 export function UserProfileForm(): JSX.Element {
     const [name, setName] = useState(``)
     const [email, setEmail] = useState(``)
     const [password, setPassword] = useState(``)
-    const [userType, setUserType] = useState<UserTypes>(`donor`)
+    const [userType, setUserType] = useState<UserTypes>(DONOR)
+    const { setUserIsLogged } = useContext(UserLoggedContext)
+
     const history = useHistory()
 
     function handleSignIn(event: FormEvent<HTMLFormElement>): void {
@@ -19,7 +22,14 @@ export function UserProfileForm(): JSX.Element {
         const params = { name, email, password, userType }
         postUser(params).then(response => {
             if (response?.status === 200) {
-                history.push(ROUTES.LOGIN)
+                console.log('usuário criado')
+                loginUser({ email, password }).then(response => {
+                    if (response.status === 200) {
+                        console.log('usuário logado')
+                        setUserIsLogged?.(true)
+                        history.push('/')
+                    }
+                })
             }
         })
     }
@@ -46,9 +56,9 @@ export function UserProfileForm(): JSX.Element {
                             className={`userType--input`}
                             type="radio"
                             name={`userType`}
-                            value={`donor`}
-                            checked={userType === `donor`}
-                            onChange={() => setUserType(`donor`)}
+                            value={DONOR}
+                            checked={userType === DONOR}
+                            onChange={() => setUserType(DONOR)}
                         />
                         Doador
                     </StyledLabel>
@@ -57,9 +67,9 @@ export function UserProfileForm(): JSX.Element {
                             className={`userType--input`}
                             type="radio"
                             name={`userType`}
-                            value={`collector`}
-                            checked={userType === `collector`}
-                            onChange={() => setUserType(`collector`)}
+                            value={COLLECTOR}
+                            checked={userType === COLLECTOR}
+                            onChange={() => setUserType(COLLECTOR)}
                         />
                         Coletor
                     </StyledLabel>
