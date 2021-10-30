@@ -1,34 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { getUser } from '../apis'
+import { SESSION_DATA } from '../apis'
 import { PageHeader } from '../components/pageHeader'
 
 export function UserProfile(): JSX.Element {
-    const [userProfile, setUserProfile] = useState<UserPostParams | null>(null)
-
-    useEffect(() => {
-        // @ts-ignore
-        getUser().then(response => setUserProfile(response.body?.[0]))
-    }, [])
-
-    return userProfile ? (
+    return (
         <StyledUserProfile className={`userProfile`}>
-            <PageHeader pageName={userProfile.name} />
+            <PageHeader pageName={window.sessionStorage.getItem(SESSION_DATA.NAME) || ``} />
             <span className={`userProfile--email`}>
                 <strong>EMAIL: </strong>
-                {userProfile.email}
-            </span>
-            <span className={`userProfile--password`}>
-                <strong>SENHA: </strong>
-                {userProfile.password}
+                {window.sessionStorage.getItem(SESSION_DATA.EMAIL)}
             </span>
             <span className={`userProfile--type`}>
                 <strong>TIPO: </strong>
-                {userProfile.userType}
+                {window.sessionStorage.getItem(SESSION_DATA.USER_TYPE)}
             </span>
         </StyledUserProfile>
-    ) : (
-        <div />
     )
 }
 
@@ -39,7 +26,7 @@ const StyledUserProfile = styled.div`
     position: relative;
     .userProfile {
         &--email,
-        &--password,
+        &--name,
         &--type {
             margin-top: 15px;
             strong {
