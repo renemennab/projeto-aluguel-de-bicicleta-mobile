@@ -23,6 +23,7 @@ export function MenuOptions({ selectedView, setSelectedView }: IProps): JSX.Elem
     function handleLogOut(): void {
         logOutUser()
         setUserIsLogged?.(false)
+        setShowDialog(false)
     }
 
     return (
