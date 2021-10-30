@@ -68,21 +68,25 @@ export function logOutUser(): void {
     window.sessionStorage.clear()
 }
 
-export function postCollectionPlace(params: CollectionPlace, id?: string): Promise<Response> {
+export function postCollectionPlace(params: CollectionPlace, id?: number): Promise<Response> {
     let url = URL_BASE + API_PATHS.PLACE
-    if (id) url += API_PATHS.ALTER
-    else url += API_PATHS.REGISTER
+    if (id) {
+        url += API_PATHS.ALTER
+        params.id = id
+    } else {
+        url += API_PATHS.REGISTER
+    }
 
     return fetch(url, {
         method: id ? 'PUT' : 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(convertPlaceParamsToPostObject(params))
+        body: JSON.stringify(convertPlaceParamsToPostObject(params, id))
     }).catch(err => err)
 }
 
-export function deletePlace(id: string): Promise<Response> {
+export function deletePlace(id: number): Promise<Response> {
     return fetch(API_PATHS.PLACE + '/' + id, {
         method: 'DELETE'
     })

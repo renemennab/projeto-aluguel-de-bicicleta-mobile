@@ -59,22 +59,26 @@ export function CollectionPlaceForm(): JSX.Element {
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-    console.log(`working`, workingHours)
+
     function handleCollectionPlaceSubmit(event: FormEvent<HTMLFormElement>): void {
         event.preventDefault()
-        postCollectionPlace({
-            name,
-            cep,
-            address: JSON.stringify(address),
-            buildingNum: Number(buildingNum),
-            latitude: Number(latitude),
-            longitude: Number(longitude),
-            phone,
-            description,
-            acceptableItems,
-            workingHours,
-            workingDays
-        }).then(response => {
+        postCollectionPlace(
+            {
+                name,
+                cep,
+                address: JSON.stringify(address),
+                buildingNum: Number(buildingNum),
+                latitude: Number(latitude),
+                longitude: Number(longitude),
+                phone,
+                description,
+                acceptableItems,
+                configuredItems: selectedPlace?.configuredItems,
+                workingHours,
+                workingDays
+            },
+            selectedPlace?.id
+        ).then(response => {
             console.log(response)
             if (response.status === 201) {
                 history.push(ROUTES.COLLECTION_LIST)
@@ -213,7 +217,7 @@ export function CollectionPlaceForm(): JSX.Element {
                     ))}
                 </fieldset>
                 <StyledButton>
-                    Salvar <i className={`fa fa-save`} />
+                    {selectedPlace ? 'Atualizar' : 'Salvar'} <i className={`fa fa-save`} />
                 </StyledButton>
             </StyledForm>
         </StyledNewColectionPlace>

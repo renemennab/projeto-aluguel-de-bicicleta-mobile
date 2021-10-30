@@ -39,7 +39,7 @@ declare global {
         workingDays: WeekDays[]
         acceptableItems: number[]
         configuredItems?: AcceptableItemsResponse[]
-        id?: string
+        id?: number
     }
 
     interface CollectionPlaceResponse {

@@ -1,4 +1,4 @@
-import { SESSION_DATA } from "./apis"
+import { SESSION_DATA } from './apis'
 
 export const ROUTES = {
     LOGIN: `/login`,
@@ -24,7 +24,7 @@ export const ITEM_TYPES = [
 export const DONOR = 'Doador'
 export const COLLECTOR = 'Coletor'
 
-export function convertPlaceParamsToPostObject(params: CollectionPlace, id?: string): Record<string, unknown> {
+export function convertPlaceParamsToPostObject(params: CollectionPlace, id?: number): Record<string, unknown> {
     const {
         name,
         description,
@@ -36,7 +36,8 @@ export function convertPlaceParamsToPostObject(params: CollectionPlace, id?: str
         longitude,
         workingHours,
         workingDays,
-        acceptableItems
+        acceptableItems,
+        configuredItems
     } = params
 
     const postObj = {
@@ -51,7 +52,7 @@ export function convertPlaceParamsToPostObject(params: CollectionPlace, id?: str
         horarioInicioFuncionamento: workingHours.from,
         horarioFimFuncionamento: workingHours.to,
         diasFuncionamento: JSON.stringify(workingDays),
-        itensDoacao: acceptableItems,
+        itensDoacao: id ? configuredItems : acceptableItems,
         coletorId: window.sessionStorage.getItem(SESSION_DATA.ID),
         id
     }
@@ -62,6 +63,7 @@ export function convertPlaceParamsToPostObject(params: CollectionPlace, id?: str
 
 export function convertPlaceResponse(response: CollectionPlaceResponse): CollectionPlace {
     const {
+        id,
         nome,
         descricao,
         telefone,
@@ -88,7 +90,8 @@ export function convertPlaceResponse(response: CollectionPlaceResponse): Collect
         workingHours: { from: horarioInicioFuncionamento, to: horarioFimFuncionamento },
         workingDays: JSON.parse(diasFuncionamento),
         acceptableItems: itensDoacao.map(item => item.id),
-        configuredItems: itensDoacao
+        configuredItems: itensDoacao,
+        id
     }
 
     return newObj
