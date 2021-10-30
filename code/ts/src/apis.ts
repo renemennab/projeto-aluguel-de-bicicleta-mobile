@@ -19,7 +19,7 @@ export const SESSION_DATA = {
 }
 const URL_BASE = 'https://localhost:3001/'
 
-export function getItems(): Promise<CollectionPlace[]> {
+export function getItems(): Promise<AcceptableItemsResponse[]> {
     return fetch(URL_BASE + API_PATHS.ITEMS, {
         method: 'GET'
     })
