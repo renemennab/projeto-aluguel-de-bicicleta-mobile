@@ -32,16 +32,34 @@ declare global {
         phone: string
         cep: string
         address: string
-        buildingNum: string
-        latitude: string
-        longitude: string
+        buildingNum: number
+        latitude: number
+        longitude: number
         workingHours: { from: string; to: string }
         workingDays: WeekDays[]
-        acceptableItems: AcceptableItems[]
+        acceptableItems: number[]
         id?: string
+    }
+
+    interface CepObject {
+        bairro: string
+        cep: string
+        complemento: string
+        ddd: string
+        gia: string
+        ibge: string
+        localidade: string
+        logradouro: string
+        siafi: string
+        uf: string
     }
 
     type UserTypes = typeof COLLECTOR | typeof DONOR
     type WeekDays = typeof WEEK_DAYS[number]
     type AcceptableItems = typeof ITEM_TYPES[number]
+
+    interface AcceptableItemsResponse {
+        id: number
+        produto: AcceptableItems
+    }
 }
