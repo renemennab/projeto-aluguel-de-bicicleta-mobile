@@ -1,3 +1,5 @@
+import { convertPlaceParamsToPostObject, convertPlaceResponse } from './utils'
+
 const API_PATHS = {
     ITEMS: 'api/Itens',
     PLACE: 'api/Ponto/',
@@ -66,75 +68,6 @@ export function logOutUser(): void {
     window.sessionStorage.clear()
 }
 
-function convertPlaceParamsToPostObject(params: CollectionPlace, id?: string): Record<string, unknown> {
-    const {
-        name,
-        description,
-        phone,
-        cep,
-        address,
-        buildingNum,
-        latitude,
-        longitude,
-        workingHours,
-        workingDays,
-        acceptableItems
-    } = params
-
-    const postObj = {
-        nome: name,
-        descricao: description,
-        telefone: phone,
-        cep: cep,
-        cidadeEstado: address,
-        numero: buildingNum,
-        latitude,
-        longitude,
-        horarioInicioFuncionamento: workingHours.from,
-        horarioFimFuncionamento: workingHours.to,
-        diasFuncionamento: JSON.stringify(workingDays),
-        itensDoacao: acceptableItems,
-        coletorId: window.sessionStorage.getItem(SESSION_DATA.ID),
-        id
-    }
-    if (!id) delete postObj.id
-
-    return postObj
-}
-
-function convertPlaceResponse(response: CollectionPlaceResponse): CollectionPlace {
-    const {
-        nome,
-        descricao,
-        telefone,
-        cep,
-        cidadeEstado,
-        numero,
-        latitude,
-        longitude,
-        horarioInicioFuncionamento,
-        horarioFimFuncionamento,
-        diasFuncionamento,
-        itensDoacao
-    } = response
-
-    const newObj = {
-        name: nome,
-        description: descricao,
-        phone: telefone,
-        cep,
-        address: cidadeEstado,
-        buildingNum: numero,
-        latitude,
-        longitude,
-        workingHours: { from: horarioInicioFuncionamento, to: horarioFimFuncionamento },
-        workingDays: JSON.parse(diasFuncionamento),
-        acceptableItems: itensDoacao.map(item => item.id),
-        configuredItems: itensDoacao
-    }
-
-    return newObj
-}
 export function postCollectionPlace(params: CollectionPlace, id?: string): Promise<Response> {
     let url = URL_BASE + API_PATHS.PLACE
     if (id) url += API_PATHS.ALTER
