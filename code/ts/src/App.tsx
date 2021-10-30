@@ -15,7 +15,7 @@ import { SelectedPlace } from './places/selectedPlace'
 import { SelectedEvent } from './places/selectedEvent'
 import { EventsList } from './places/eventsList'
 import { UserProfile } from './login/userProfile'
-import { getCollectionPlaces } from './apis'
+import { getCollectionPlaces, SESSION_DATA } from './apis'
 
 export const SelectedPlaceContext = React.createContext<{
     selectedPlace?: CollectionPlace
@@ -34,7 +34,7 @@ function App(): ReactElement {
     const [selectedPlace, setSelectedPlace] = useState<CollectionPlace | undefined>(undefined)
     const [selectedEvent, setSelectedEvent] = useState<EventForm | undefined>(undefined)
     const [placesArray, setPlacesArray] = useState<CollectionPlace[]>([])
-    const [userIsLogged, setUserIsLogged] = useState<boolean>(false)
+    const [userIsLogged, setUserIsLogged] = useState<boolean>(!!window.sessionStorage.getItem(SESSION_DATA.ID))
     useEffect(() => {
         getCollectionPlaces().then(response => {
             setPlacesArray(response)
