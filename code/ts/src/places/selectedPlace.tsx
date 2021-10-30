@@ -1,12 +1,22 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
+import { getPlace } from '../apis'
 import { SelectedPlaceContext } from '../App'
 import { PageHeader } from '../components/pageHeader'
 import { AssetActions } from './assetActions'
 
 export function SelectedPlace(): JSX.Element {
-    const { selectedPlace } = useContext(SelectedPlaceContext)
-
+    const { selectedPlace, setSelectedPlace } = useContext(SelectedPlaceContext)
+    const params = useParams() as { placeId: string }
+    useEffect(() => {
+        if (!selectedPlace && params.placeId) {
+            getPlace(Number(params.placeId)).then(place => {
+                setSelectedPlace?.(place)
+            })
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
     function handleMessageClick(): void {
         const phone = `55${selectedPlace?.phone}`
 

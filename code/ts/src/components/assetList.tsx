@@ -17,7 +17,7 @@ export function AssetList({ placesData, assetType, eventData }: Props): JSX.Elem
             {assetType === 'place'
                 ? placesData?.map((data: CollectionPlace, index: number) => (
                       <li className={`assetList--card`} key={index} onClick={() => setSelectedPlace?.(data)}>
-                          <Link className={`assetList--card__link`} to={`${ROUTES.PLACES}/${data.id}`}>
+                          <Link className={`assetList--card__link`} to={`${ROUTES.PLACE}/${data.id}`}>
                               <h2 className={`assetList--card__link--name`}>{data.name}</h2>
                               <span className={`assetList--card__link--acceptableItems`}>
                                   {data.configuredItems?.map(item => item.produto).join(`, `)}

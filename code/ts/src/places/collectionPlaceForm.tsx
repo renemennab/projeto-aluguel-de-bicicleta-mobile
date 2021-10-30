@@ -1,14 +1,14 @@
 import React, { Dispatch, FormEvent, SetStateAction, useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { getAddressFromCep, getItems, postCollectionPlace } from '../apis'
+import { getAddressFromCep, getItems, getPlace, postCollectionPlace } from '../apis'
 import { PageHeader } from '../components/pageHeader'
 import { StyledButton, StyledForm, StyledInput, StyledLabel } from '../components/styled'
 import { ROUTES, WEEK_DAYS } from '../utils'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { SelectedPlaceContext } from '../App'
 
 export function CollectionPlaceForm(): JSX.Element {
-    const { selectedPlace } = useContext(SelectedPlaceContext)
+    const { selectedPlace, setSelectedPlace } = useContext(SelectedPlaceContext)
 
     const [name, setName] = useState(selectedPlace?.name || ``)
     const [cep, setCep] = useState(selectedPlace?.cep || ``)
@@ -24,8 +24,30 @@ export function CollectionPlaceForm(): JSX.Element {
     const [workingDays, setWorkingDays] = useState<WeekDays[]>(selectedPlace?.workingDays || [])
 
     const history = useHistory()
-    // const [relatedEvents, setRelatedEvents] = useState(``)
+    const params = useParams() as { placeId: string }
+    console.log(params)
+    console.log(selectedPlace)
 
+    // const [relatedEvents, setRelatedEvents] = useState(``)
+    useEffect(() => {
+        if (!selectedPlace && params.placeId) {
+            getPlace(Number(params.placeId)).then(place => {
+                console.log(place)
+                setSelectedPlace?.(place)
+                setName(place.name)
+                setCep(place.cep)
+                setBuildingNum(place.buildingNum)
+                setLatitude(place.latitude)
+                setLongitude(place.longitude)
+                setPhone(place.phone)
+                setDescription(place.description)
+                setAcceptableItems(place.acceptableItems)
+                setWorkingHours(place.workingHours)
+                setWorkingDays(place.workingDays)
+            })
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
     function handleCheckboxClick<Type>(
         clickedItem: Type,
         state: Type[],

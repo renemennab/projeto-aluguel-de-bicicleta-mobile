@@ -30,6 +30,15 @@ export function getItems(): Promise<AcceptableItemsResponse[]> {
         .catch(err => err)
 }
 
+export function getPlace(placeId: number): Promise<CollectionPlace> {
+    return fetch(URL_BASE + API_PATHS.PLACE + placeId, {
+        method: 'GET'
+    })
+        .then(response => response.json())
+        .then(data => convertPlaceResponse(data))
+        .catch(err => err)
+}
+
 export function postUser(params: UserPostParams): Promise<Response> {
     const { name, email, password, userType } = params
 
