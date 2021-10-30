@@ -10,8 +10,7 @@ export function SelectedEvent(): JSX.Element {
     return selectedEvent ? (
         <StyledSelectedEvent className={`selectedEvent`}>
             <PageHeader pageName={selectedEvent.date.replaceAll('-', '/')} />
-            <AssetActions />
-
+            <AssetActions itemId={selectedEvent.id || 0} itemType={'event'} />
             <span className={`selectedEvent--description`}>
                 <strong>description: </strong>
                 {selectedEvent.description}

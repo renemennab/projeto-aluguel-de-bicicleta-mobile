@@ -1,11 +1,26 @@
 import React, { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useHistory, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
+import { deletePlace } from '../apis'
+import { ROUTES } from '../utils'
 import { ConfirmationDialog } from './confirmationDialog'
+interface IProps {
+    itemId: number
+    itemType: AssetType
+}
 
-export function AssetActions(): JSX.Element {
+export function AssetActions({ itemId, itemType }: IProps): JSX.Element {
     const location = useLocation().pathname
     const [showModal, setShowModal] = useState(false)
+    const history = useHistory()
+
+    function handleDelete(): void {
+        if (itemType === 'place') {
+            deletePlace(itemId)
+            history.push(ROUTES.PLACES)
+        }
+        setShowModal(false)
+    }
 
     return (
         <StyledAssetActions className={`assetActions`}>
@@ -19,7 +34,9 @@ export function AssetActions(): JSX.Element {
             <button className={`assetActions--remove`} onClick={() => setShowModal(true)}>
                 <i className="far fa-trash-alt"></i>
             </button>
-            {showModal ? <ConfirmationDialog onCancel={() => setShowModal(false)} onDelete={() => null} /> : null}
+            {showModal ? (
+                <ConfirmationDialog onCancel={() => setShowModal(false)} onDelete={() => handleDelete()} />
+            ) : null}
         </StyledAssetActions>
     )
 }

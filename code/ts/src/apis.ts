@@ -87,7 +87,7 @@ export function postCollectionPlace(params: CollectionPlace, id?: number): Promi
 }
 
 export function deletePlace(id: number): Promise<Response> {
-    return fetch(API_PATHS.PLACE + '/' + id, {
+    return fetch(URL_BASE + API_PATHS.PLACE + id, {
         method: 'DELETE'
     })
         .then(response => response.json())

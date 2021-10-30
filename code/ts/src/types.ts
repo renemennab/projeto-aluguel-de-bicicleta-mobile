@@ -75,6 +75,7 @@ declare global {
     type UserTypes = typeof COLLECTOR | typeof DONOR
     type WeekDays = typeof WEEK_DAYS[number]
     type AcceptableItems = typeof ITEM_TYPES[number]
+    type AssetType = 'place' | 'event'
 
     interface AcceptableItemsResponse {
         id: number

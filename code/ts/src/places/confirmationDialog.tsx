@@ -13,7 +13,7 @@ export function ConfirmationDialog({ onDelete, onCancel }: Props): JSX.Element {
             <div className={`confirmationDialog--container`}>
                 <span className={`confirmationDialog--container__text`}>Tem certeza que deseja deletar?</span>
                 <button className={`confirmationDialog--container__delete`} onClick={() => onDelete()}>
-                    Deletar
+                    Sim
                 </button>
                 <button className={`confirmationDialog--container__cancel`} onClick={() => onCancel()}>
                     Cancelar

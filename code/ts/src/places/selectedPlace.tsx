@@ -18,7 +18,7 @@ export function SelectedPlace(): JSX.Element {
     return selectedPlace ? (
         <StyledSelectedPlace className={`selectedPlace`}>
             <PageHeader pageName={selectedPlace.name} />
-            <AssetActions />
+            <AssetActions itemId={selectedPlace.id || 0} itemType={'place'} />
             <span className={`selectedPlace--acceptableItems`}>
                 <strong>acceptableItems: </strong> {selectedPlace.acceptableItems.join(', ')}
             </span>
