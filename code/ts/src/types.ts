@@ -1,4 +1,4 @@
-import { WEEK_DAYS, ITEM_TYPES } from './utils'
+import { WEEK_DAYS, ITEM_TYPES, COLLECTOR, DONOR } from './utils'
 
 declare global {
     interface UserPostParams extends LogInParams {
@@ -38,9 +38,10 @@ declare global {
         workingHours: { from: string; to: string }
         workingDays: WeekDays[]
         acceptableItems: AcceptableItems[]
+        id?: string
     }
 
-    type UserTypes = 'collector' | 'donor'
+    type UserTypes = typeof COLLECTOR | typeof DONOR
     type WeekDays = typeof WEEK_DAYS[number]
     type AcceptableItems = typeof ITEM_TYPES[number]
 }
