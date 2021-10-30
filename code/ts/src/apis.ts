@@ -19,16 +19,16 @@ export const SESSION_DATA = {
 }
 const URL_BASE = 'https://localhost:3001/'
 
-export function getItems(): Promise<void | CollectionPlace[]> {
+export function getItems(): Promise<CollectionPlace[]> {
     return fetch(URL_BASE + API_PATHS.ITEMS, {
         method: 'GET'
     })
         .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(err => console.error(err))
+        .then(data => data)
+        .catch(err => err)
 }
 
-export function postUser(params: UserPostParams): Promise<void | Response> {
+export function postUser(params: UserPostParams): Promise<Response> {
     const { name, email, password, userType } = params
 
     return fetch(URL_BASE + API_PATHS.USER + API_PATHS.REGISTER, {
@@ -37,19 +37,18 @@ export function postUser(params: UserPostParams): Promise<void | Response> {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ nome: name, email, senha: password, perfil: userType })
-    })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(err => console.error(err))
+    }).catch(err => err)
 }
 
-export function loginUser(params: LogInParams): Promise<void> {
+export function loginUser(params: LogInParams): Promise<Response> {
+    const { email, password } = params
+
     return fetch(URL_BASE + API_PATHS.USER + API_PATHS.LOGIN, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(params)
+        body: JSON.stringify({ email, senha: password })
     })
         .then(response => response.json())
         .then((data: LogInResponse) => {
@@ -57,8 +56,10 @@ export function loginUser(params: LogInParams): Promise<void> {
             window.sessionStorage.setItem(SESSION_DATA.NAME, data.nome)
             window.sessionStorage.setItem(SESSION_DATA.USER_TYPE, data.perfil)
             window.sessionStorage.setItem(SESSION_DATA.EMAIL, params.email)
+
+            return { status: 200 }
         })
-        .catch(err => console.error(err))
+        .catch(err => err)
 }
 
 export function logOutUser(): void {
@@ -117,16 +118,16 @@ export function postCollectionPlace(params: CollectionPlace, id?: string): Promi
         .catch(err => console.error(err))
 }
 
-export function deletePlace(id: string): Promise<void | Response> {
+export function deletePlace(id: string): Promise<Response> {
     return fetch(API_PATHS.PLACE + '/' + id, {
         method: 'DELETE'
     })
         .then(response => response.json())
         .then(data => data)
-        .catch(err => console.error(err))
+        .catch(err => err)
 }
 
-export function getCollectionPlacesFromUser(userId: number): Promise<void | CollectionPlace[]> {
+export function getCollectionPlacesFromUser(userId: number): Promise<CollectionPlace[]> {
     return fetch(`${URL_BASE + API_PATHS.USER}/${userId}${API_PATHS.MY_PLACES}`, {
         method: 'GET',
         headers: {
@@ -135,7 +136,7 @@ export function getCollectionPlacesFromUser(userId: number): Promise<void | Coll
     })
         .then(response => response.json())
         .then(data => data)
-        .catch(err => console.error(err))
+        .catch(err => err)
 }
 export function getCollectionPlaces(): Promise<CollectionPlace[]> {
     return fetch(`${URL_BASE + API_PATHS.PLACE + API_PATHS.LIST}`, {
@@ -162,4 +163,13 @@ export function getEvents(): Promise<EventForm[]> {
         // @ts-ignore
         resolve({ status: 200, body: JSON.parse(window.localStorage.getItem(API_PATHS.EVENTS) || '[]') })
     })
+}
+
+export function getAddressFromCep(cep: string): Promise<Response> {
+    return fetch(`viacep.com.br/ws/${cep}/json/`, {
+        method: 'GET'
+    })
+        .then(response => response.json())
+        .then(data => data)
+        .catch(err => err)
 }
