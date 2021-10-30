@@ -18,7 +18,7 @@ export function UserProfileForm(): JSX.Element {
         event.preventDefault()
         const params = { name, email, password, userType }
         postUser(params).then(response => {
-            if (response.status === 200) {
+            if (response?.status === 200) {
                 history.push(ROUTES.LOGIN)
             }
         })

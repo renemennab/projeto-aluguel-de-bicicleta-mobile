@@ -9,6 +9,12 @@ declare global {
         email: string
         password: string
     }
+
+    interface LogInResponse {
+        nome: string
+        id: string
+        perfil: string
+    }
     interface EventForm {
         date: string
         description: string
