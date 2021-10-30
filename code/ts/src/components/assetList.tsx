@@ -20,7 +20,7 @@ export function AssetList({ placesData, assetType, eventData }: Props): JSX.Elem
                           <Link className={`assetList--card__link`} to={`${ROUTES.PLACES}/${data.id}`}>
                               <h2 className={`assetList--card__link--name`}>{data.name}</h2>
                               <span className={`assetList--card__link--acceptableItems`}>
-                                  {data.acceptableItems.join(`, `)}
+                                  {data.configuredItems?.map(item => item.produto).join(`, `)}
                               </span>
                               <span className={`assetList--card__link--cep`}>{data.cep}</span>
                           </Link>

@@ -101,6 +101,40 @@ function convertPlaceParamsToPostObject(params: CollectionPlace, id?: string): R
 
     return postObj
 }
+
+function convertPlaceResponse(response: CollectionPlaceResponse): CollectionPlace {
+    const {
+        nome,
+        descricao,
+        telefone,
+        cep,
+        cidadeEstado,
+        numero,
+        latitude,
+        longitude,
+        horarioInicioFuncionamento,
+        horarioFimFuncionamento,
+        diasFuncionamento,
+        itensDoacao
+    } = response
+
+    const newObj = {
+        name: nome,
+        description: descricao,
+        phone: telefone,
+        cep,
+        address: cidadeEstado,
+        buildingNum: numero,
+        latitude,
+        longitude,
+        workingHours: { from: horarioInicioFuncionamento, to: horarioFimFuncionamento },
+        workingDays: JSON.parse(diasFuncionamento),
+        acceptableItems: itensDoacao.map(item => item.id),
+        configuredItems: itensDoacao
+    }
+
+    return newObj
+}
 export function postCollectionPlace(params: CollectionPlace, id?: string): Promise<Response> {
     let url = URL_BASE + API_PATHS.PLACE
     if (id) url += API_PATHS.ALTER
@@ -124,15 +158,15 @@ export function deletePlace(id: string): Promise<Response> {
         .catch(err => err)
 }
 
-export function getCollectionPlacesFromUser(userId: number): Promise<CollectionPlace[]> {
-    return fetch(`${URL_BASE + API_PATHS.USER}/${userId}${API_PATHS.MY_PLACES}`, {
+export function getCollectionPlacesFromUser(userId: string): Promise<CollectionPlace[]> {
+    return fetch(`${URL_BASE + API_PATHS.USER}${userId}/${API_PATHS.MY_PLACES}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
         }
     })
         .then(response => response.json())
-        .then(data => data)
+        .then(data => data.map((place: CollectionPlaceResponse) => convertPlaceResponse(place)))
         .catch(err => err)
 }
 export function getCollectionPlaces(): Promise<CollectionPlace[]> {
@@ -143,8 +177,8 @@ export function getCollectionPlaces(): Promise<CollectionPlace[]> {
         }
     })
         .then(response => response.json())
-        .then(data => data)
-        .catch(err => console.error(err))
+        .then(data => data.map((place: CollectionPlaceResponse) => convertPlaceResponse(place)))
+        .catch(err => err)
 }
 
 export function postEvent(params: EventForm): Promise<Response> {

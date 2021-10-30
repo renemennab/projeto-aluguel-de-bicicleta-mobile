@@ -87,6 +87,7 @@ function App(): ReactElement {
                                     </Route>
                                     <Route path="/">
                                         {selectedView === `list` ? (
+                                            // @ts-ignore
                                             <AssetList placesData={placesArray} assetType={`place`} />
                                         ) : (
                                             <MapComponent />

@@ -38,7 +38,25 @@ declare global {
         workingHours: { from: string; to: string }
         workingDays: WeekDays[]
         acceptableItems: number[]
+        configuredItems?: AcceptableItemsResponse[]
         id?: string
+    }
+
+    interface CollectionPlaceResponse {
+        cep: string
+        cidadeEstado: string
+        coletorId: string
+        descricao: string
+        diasFuncionamento: string
+        horarioFimFuncionamento: string
+        horarioInicioFuncionamento: string
+        id: number
+        itensDoacao: AcceptableItemsResponse[]
+        latitude: number
+        longitude: number
+        nome: string
+        numero: number
+        telefone: string
     }
 
     interface CepObject {
