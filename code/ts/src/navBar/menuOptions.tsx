@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { logOutUser } from '../apis'
+import { logOutUser, SESSION_DATA } from '../apis'
 import { SelectedPlaceContext, SelectedEventContext, UserLoggedContext } from '../App'
 import { ConfirmationDialog } from '../places/confirmationDialog'
-import { ROUTES } from '../utils'
+import { COLLECTOR, ROUTES } from '../utils'
 interface IProps {
     selectedView: string
     setSelectedView: (type: string) => void
@@ -40,35 +40,40 @@ export function MenuOptions({ selectedView, setSelectedView }: IProps): JSX.Elem
                                 <i className="fas fa-user"></i> Perfil
                             </Link>
                         </li>
-                        <li className={`menuOptions--optionList__item `}>
-                            <Link to={ROUTES.NEW_PLACE} className={`menuOptions--optionList__item--button `}>
-                                <i className="fas fa-sign-in-alt"></i>
-                                Adicionar Ponto de Coleta
-                            </Link>
-                        </li>
-                        <li className={`menuOptions--optionList__item `}>
-                            <Link to={ROUTES.NEW_EVENT} className={`menuOptions--optionList__item--button `}>
-                                <i className="fas fa-sign-in-alt"></i>
-                                Adicionar evento de doação
-                            </Link>
-                        </li>
-                        <li className={`menuOptions--optionList__item `}>
-                            <Link to={ROUTES.FAVOURITES} className={`menuOptions--optionList__item--button `}>
-                                <i className="far fa-star"></i>
-                                Favoritos
-                            </Link>
-                        </li>
-                        <li className={`menuOptions--optionList__item `}>
-                            <Link to={ROUTES.EVENTS} className={`menuOptions--optionList__item--button `}>
-                                <i className="far fa-calendar"></i> Meus Eventos
-                            </Link>
-                        </li>
-                        <li className={`menuOptions--optionList__item `}>
-                            <Link to={ROUTES.PLACES} className={`menuOptions--optionList__item--button `}>
-                                <i className="fas fa-map-marker-alt"></i>
-                                Meus Pontos de coleta
-                            </Link>
-                        </li>
+                        {window.sessionStorage.getItem(SESSION_DATA.USER_TYPE) === COLLECTOR ? (
+                            <>
+                                <li className={`menuOptions--optionList__item `}>
+                                    <Link to={ROUTES.NEW_PLACE} className={`menuOptions--optionList__item--button `}>
+                                        <i className="fas fa-sign-in-alt"></i>
+                                        Adicionar Ponto de Coleta
+                                    </Link>
+                                </li>
+                                <li className={`menuOptions--optionList__item `}>
+                                    <Link to={ROUTES.NEW_EVENT} className={`menuOptions--optionList__item--button `}>
+                                        <i className="fas fa-sign-in-alt"></i>
+                                        Adicionar evento de doação
+                                    </Link>
+                                </li>
+                                <li className={`menuOptions--optionList__item `}>
+                                    <Link to={ROUTES.PLACES} className={`menuOptions--optionList__item--button `}>
+                                        <i className="fas fa-map-marker-alt"></i>
+                                        Meus Pontos de coleta
+                                    </Link>
+                                </li>
+                                <li className={`menuOptions--optionList__item `}>
+                                    <Link to={ROUTES.EVENTS} className={`menuOptions--optionList__item--button `}>
+                                        <i className="far fa-calendar"></i> Meus Eventos
+                                    </Link>
+                                </li>
+                            </>
+                        ) : (
+                            <li className={`menuOptions--optionList__item `}>
+                                <Link to={ROUTES.FAVOURITES} className={`menuOptions--optionList__item--button `}>
+                                    <i className="far fa-star"></i>
+                                    Favoritos
+                                </Link>
+                            </li>
+                        )}
                         <li className={`menuOptions--optionList__item `}>
                             <button
                                 onClick={() => setShowDialog(true)}
