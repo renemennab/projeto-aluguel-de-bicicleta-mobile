@@ -134,6 +134,7 @@ const StyledMenuOptions = styled.nav`
                     border: none;
                     background: white;
                     text-decoration: none;
+                    font-size: 18px;
                     &,
                     &:visited {
                         color: var(--dark-blue);
