@@ -1,7 +1,8 @@
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent, useContext, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import { loginUser } from '../apis'
+import { UserLoggedContext } from '../App'
 import { PageHeader } from '../components/pageHeader'
 import { StyledButton, StyledForm } from '../components/styled'
 import { UserInfo } from '../components/userInfo'
@@ -11,12 +12,14 @@ export function Login(): JSX.Element {
     const [email, setEmail] = useState(``)
     const [password, setPassword] = useState(``)
     const [userNotFound, setUserNotFound] = useState(false)
+    const { setUserIsLogged } = useContext(UserLoggedContext)
     const history = useHistory()
 
     function handleLogin(event: FormEvent<HTMLFormElement>): void {
         event.preventDefault()
         loginUser({ email, password }).then(response => {
-            if (response.status === 200) {
+            if (response?.status === 200) {
+                setUserIsLogged?.(true)
                 history.push('/')
             } else {
                 setUserNotFound(true)
