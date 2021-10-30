@@ -65,13 +65,65 @@ export function logOutUser(): void {
     window.sessionStorage.clear()
 }
 
-export function postCollectionPlace(params: CollecgtionPlacePostParams): Promise<Response> {
-    return new Promise(resolve => {
-        const currentPlaces = JSON.parse(window.localStorage.getItem(API_PATHS.PLACE) || '[]')
-        window.localStorage.setItem(API_PATHS.PLACE, JSON.stringify([...currentPlaces, params]))
-        // @ts-ignore
-        resolve({ status: 200 })
+function convertPlaceParamsToPostObject(params: CollectionPlace, id?: string): Record<string, unknown> {
+    const {
+        name,
+        description,
+        phone,
+        cep,
+        address,
+        buildingNum,
+        latitude,
+        longitude,
+        workingHours,
+        workingDays,
+        acceptableItems
+    } = params
+
+    const postObj = {
+        nome: name,
+        descricao: description,
+        telefone: phone,
+        cep: cep,
+        cidadeEstado: address,
+        numero: buildingNum,
+        latitude,
+        longitude,
+        horarioInicioFuncionamento: workingHours.from,
+        horarioFimFuncionamento: workingHours.to,
+        diasFuncionamento: JSON.stringify(workingDays),
+        itensDoacao: acceptableItems,
+        coletorId: window.sessionStorage.getItem(SESSION_DATA.ID),
+        id
+    }
+    if (!id) delete postObj.id
+
+    return postObj
+}
+export function postCollectionPlace(params: CollectionPlace, id?: string): Promise<Response> {
+    let url = URL_BASE + API_PATHS.PLACE
+    if (id) url += API_PATHS.ALTER
+    else url += API_PATHS.REGISTER
+
+    return fetch(url, {
+        method: id ? 'PUT' : 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(convertPlaceParamsToPostObject(params))
     })
+        .then(response => response.json())
+        .then(data => data)
+        .catch(err => console.error(err))
+}
+
+export function deletePlace(id: string): Promise<void | Response> {
+    return fetch(API_PATHS.PLACE + '/' + id, {
+        method: 'DELETE'
+    })
+        .then(response => response.json())
+        .then(data => data)
+        .catch(err => console.error(err))
 }
 
 export function getCollectionPlacesFromUser(userId: number): Promise<void | CollectionPlace[]> {
@@ -86,10 +138,15 @@ export function getCollectionPlacesFromUser(userId: number): Promise<void | Coll
         .catch(err => console.error(err))
 }
 export function getCollectionPlaces(): Promise<CollectionPlace[]> {
-    return new Promise(resolve => {
-        // @ts-ignore
-        resolve(JSON.parse(window.localStorage.getItem(API_PATHS.PLACES) || '[]'))
+    return fetch(`${URL_BASE + API_PATHS.PLACE + API_PATHS.LIST}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
     })
+        .then(response => response.json())
+        .then(data => data)
+        .catch(err => console.error(err))
 }
 
 export function postEvent(params: EventForm): Promise<Response> {

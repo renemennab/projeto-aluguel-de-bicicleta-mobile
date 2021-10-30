@@ -23,21 +23,21 @@ declare global {
         id?: number
     }
 
-    interface CollecgtionPlacePostParams extends CollectionPlace {
-        requestType?: 'PUT' | 'POST'
+    interface AlterCollectionPlaceParams extends CollectionPlace {
+        placeId: string
     }
     interface CollectionPlace {
         name: string
+        description: string
+        phone: string
         cep: string
+        address: string
         buildingNum: string
         latitude: string
         longitude: string
-        phone: string
-        description: string
-        acceptableItems: AcceptableItems[]
         workingHours: { from: string; to: string }
         workingDays: WeekDays[]
-        id?: number
+        acceptableItems: AcceptableItems[]
     }
 
     type UserTypes = 'collector' | 'donor'
