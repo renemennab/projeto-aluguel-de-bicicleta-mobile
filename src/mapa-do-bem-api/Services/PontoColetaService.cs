@@ -44,7 +44,8 @@ namespace mapa_do_bem_api.Services
                 HorarioFimFuncionamento = pontoDeColeta.HorarioFimFuncionamento,
                 DiasFuncionamento = pontoDeColeta.DiasFuncionamento,
                 ItensDoacao  = ItensAceitos, 
-                Coletor = Coletor
+                Coletor = Coletor,
+                ColetorId = pontoDeColeta.ColetorId
             };
 
             await _repository.Incluir(ponto);
