@@ -165,8 +165,8 @@ export function getEvents(): Promise<EventForm[]> {
     })
 }
 
-export function getAddressFromCep(cep: string): Promise<Response> {
-    return fetch(`viacep.com.br/ws/${cep}/json/`, {
+export function getAddressFromCep(cep: string): Promise<CepObject> {
+    return fetch(`http://viacep.com.br/ws/${cep}/json/`, {
         method: 'GET'
     })
         .then(response => response.json())
