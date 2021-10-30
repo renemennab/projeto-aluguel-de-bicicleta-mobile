@@ -30,6 +30,9 @@ export const StyledInput = styled.input`
         border: 1px solid var(--dark-blue);
         outline-color: var(--dark-blue);
     }
+    &:read-only {
+        background-color: var(--gray);
+    }
     &[type='checkbox'],
     &[type='radio'] {
         height: auto;
