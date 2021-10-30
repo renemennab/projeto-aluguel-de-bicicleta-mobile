@@ -13,3 +13,6 @@ export const ROUTES = {
 
 export const WEEK_DAYS = ['segunda', 'terça', 'quarta', 'quinta', 'sexta', `sábado`, 'domingo'] as const
 export const ITEM_TYPES = ['roupas', 'alimentos perecíveis', 'refeições prontas', 'brinquedos'] as const
+
+export const DONOR = 'Doador'
+export const COLLECTOR = 'Coletor'
