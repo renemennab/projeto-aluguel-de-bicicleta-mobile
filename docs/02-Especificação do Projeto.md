@@ -91,10 +91,13 @@ Com base na análise das personas foram identificadas as seguintes histórias de
 |Griselda Barbosa  | ver contato de um ponto de coleta   | tirar dúvidas sobre melhor momento para a entrega e se há alguma restrição para pessoas com baixa mobilidade             |
 |Jéssica Prates  | ver contato de um ponto de coleta   | tirar dúvidas sobre como participar da entrega das doações             |
 
+<br><br>
 
 ## Requisitos
 
 As tabelas que se seguem apresentam os requisitos funcionais e não funcionais que detalham o escopo do projeto.
+
+<br>
 
 ### Requisitos Funcionais
 
@@ -116,6 +119,7 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |RF-014​​ | Permitir que o usuário envie mensagem para um ponto de coleta​​ | BAIXA​​ |
 |RF-015 | Permitir que o usuário doador favorite pontos de coleta​ | BAIXA |​
 
+<br>
 
 ### Requisitos não Funcionais
 
@@ -131,6 +135,7 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |RNF-008| Deve exigir o mínimo de RAM possível para funcionar em aparelhos bem simples |  BAIXO | 
 |RNF-009| O sistema deve ser implementado na linguagem C# utilizando banco de dados MySQL | ALTO |
 
+<br><br>
 
 ## Restrições
 
@@ -155,11 +160,13 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 |:----------------|:---------------|
 | Gerenciar Ponto de Coleta | <p> Permite que o usuário Coletor cadastre, altere ou delete um ponto de coleta. |
 | Gerenciar Evento de Coleta | <p> Permite que o usuário Coletor cadastre, altere ou delete um evento de coleta.|
-| Manter Doador | <p> Permite que o usuário Doador se cadastre, altere ou delete perifl.|
+| Cadastrar Usuário | <p> Permite ao usuário se cadastrar e autenticar no sistema.|
 | Visualizar um Ponto de Coleta | <p> Permite que o usuário Doador visualize um ponto de coleta.|
 | Contatar um Ponto de Coleta pelo Whatsapp  | <p> Permite que o usuário Doador envie uma mensagem via whatsapp <br>para o ponto de coleta selecionado.|
 | Manter Ponto de Coleta Favorito | <p> Permite ao usuário Doador favoritar e desfavoritar pontos de coleta e listar favoritos.|
 | Buscar Ponto de Coleta |<p> Permite que o usuário busque pontos de coleta por localização, nome ou<br> tipos de produtos que aceitam.|
+
+<!-- | Manter Doador | <p> Permite que o usuário Doador se cadastre, altere ou delete perifl.| -->
 
 <br>
 
