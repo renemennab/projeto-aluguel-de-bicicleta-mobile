@@ -4,6 +4,12 @@
 
 Nesta seção apresentamos as telas desenvolvidas para cada uma das funcionalidades do sistema.
 
+OBS: Como o site ainda não está hospedado é necessario subir o back e depois o front. Para subir o back é necessário ter o sql server rodando. No visual studio rode Update-Database dentro do console do Nuget. Depois é só usar o botão de run do próprio visual studio. Depois, para subir o front, acesse pelo terminal o diretório 'code/ts', rode o comando "yarn" e, depois que tudo for instalado, rode "yarn start" para subir o localhost.
+
+Caso esteja usando um mac, será necessário subir o sql server no docker com uma PORTA, USUARIO e SENHA e alterar a "ConnectionStrings" no arquivo "appsettings.json" para 
+
+    "MapaDoBem": "Server=localhost,PORTA;Database=mapa-do-bem-db;Trusted_Connection=false;User Id=USUARIO; Password=SENHA;"
+
 ## Home - Mapa
 
 A página apresenta um mapa com pontos de coleta próximos à localização do usuário.
