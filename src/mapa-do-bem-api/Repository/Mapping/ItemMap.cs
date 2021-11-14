@@ -19,7 +19,8 @@ namespace mapa_do_bem_api.Repository.Mapping
                 new Item { Id = 1, Produto = "Alimento Não Perecível" },
                 new Item { Id = 2, Produto = "Alimento Preparado" },
                 new Item { Id = 3, Produto = "Produtos de Higiene Pessoal" },
-                new Item { Id = 4, Produto = "Roupas" }
+                new Item { Id = 4, Produto = "Roupas" },
+                new Item { Id = 5, Produto = "Material Escolar"}
             );
         }
     }

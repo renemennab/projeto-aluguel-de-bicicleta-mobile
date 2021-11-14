@@ -18,15 +18,6 @@ namespace mapa_do_bem_api.Controllers
             _service = service;
         }
 
-
-        [HttpGet("{id}/meus-pontos")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> ListarTodos(string id)
-        {
-            return Ok(await _service.SelecionarTodosPorUsuario(id));
-        }
-
-
         [HttpPost("cadastrar")]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]

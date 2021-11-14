@@ -19,7 +19,7 @@ namespace mapa_do_bem_api_test
 
             var mockRepoPonto = new Mock<IPontoColetaRepository>();
 
-            var usuarioService = new UserService(mockRepo.Object, mockRepoPonto.Object);
+            var usuarioService = new UserService(mockRepo.Object);
             var retorno = await usuarioService.Cadastrar(
                 new UserViewModel
                 {
@@ -48,7 +48,7 @@ namespace mapa_do_bem_api_test
 
             var mockRepoPonto = new Mock<IPontoColetaRepository>();
 
-            var usuarioService = new UserService(mockRepo.Object, mockRepoPonto.Object);
+            var usuarioService = new UserService(mockRepo.Object);
             var retorno = await usuarioService.Login(
                 new LoginViewModel
                 {

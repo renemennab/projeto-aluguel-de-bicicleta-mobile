@@ -86,7 +86,7 @@ namespace mapa_do_bem_api.Services
                 pontoAntigo.ItensDoacao.Add(await _itemRepository.SelecionarPorId(produto.Id));
             }
 
-            pontoAntigo.Coletor = (Coletor)await _userRepository.SelecionarPorId(ponto.ColetorId);
+            pontoAntigo.Coletor = (Coletor) await _userRepository.SelecionarPorId(ponto.ColetorId);
 
             await _repository.Alterar(pontoAntigo);
         }

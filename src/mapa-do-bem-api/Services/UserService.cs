@@ -1,7 +1,6 @@
 ﻿using mapa_do_bem_api.Model;
 using mapa_do_bem_api.Repository;
 using mapa_do_bem_api.ViewModel;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace mapa_do_bem_api.Services
@@ -9,12 +8,10 @@ namespace mapa_do_bem_api.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
-        private readonly IPontoColetaRepository _pontoRepository;
 
-        public UserService(IUserRepository userRepository, IPontoColetaRepository pontoRepository)
+        public UserService(IUserRepository userRepository)
         {
             _userRepository = userRepository;
-            _pontoRepository = pontoRepository;
         }
         public async Task<bool> Cadastrar(UserViewModel model)
         {
@@ -47,11 +44,6 @@ namespace mapa_do_bem_api.Services
         public async Task<ApplicationUser> SelecionarPorId(string id)
         {
             return await _userRepository.SelecionarPorId(id);
-        }
-
-        public async Task<IList<PontoDeColeta>> SelecionarTodosPorUsuario(string idUsuario)
-        {
-            return await _pontoRepository.SelecionarTodosPorUsuario(idUsuario);
         }
     }
 }
