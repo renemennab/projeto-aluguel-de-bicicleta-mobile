@@ -4,6 +4,7 @@ const API_PATHS = {
     ITEMS: 'api/Itens',
     PLACE: 'api/Ponto/',
     USER: 'api/Usuario/',
+    COLLECTOR: 'api/Coletor/',
     LIST: 'listar-todos',
     MY_PLACES: 'meus-pontos',
     SEARCH: 'buscar',
@@ -105,7 +106,7 @@ export function deletePlace(id: number): Promise<Response> {
 }
 
 export function getCollectionPlacesFromUser(userId: string): Promise<CollectionPlace[]> {
-    return fetch(`${URL_BASE + API_PATHS.USER}${userId}/${API_PATHS.MY_PLACES}`, {
+    return fetch(`${URL_BASE + API_PATHS.COLLECTOR}${userId}/${API_PATHS.MY_PLACES}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
