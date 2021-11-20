@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
-import { deletePlace } from '../apis'
+import { deleteEvent, deletePlace } from '../apis'
 import { ROUTES } from '../utils'
 import { ConfirmationDialog } from './confirmationDialog'
 interface IProps {
@@ -18,6 +18,9 @@ export function AssetActions({ itemId, itemType }: IProps): JSX.Element {
         if (itemType === 'place') {
             deletePlace(itemId)
             history.push(ROUTES.PLACES)
+        } else if (itemType === 'event') {
+            deleteEvent(itemId)
+            history.push('/')
         }
         setShowModal(false)
     }

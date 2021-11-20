@@ -129,6 +129,15 @@ export function deletePlace(id: number): Promise<Response> {
         .catch(err => err)
 }
 
+export function deleteEvent(id: number): Promise<Response> {
+    return fetch(URL_BASE + API_PATHS.EVENT + id, {
+        method: 'DELETE'
+    })
+        .then(response => response.json())
+        .then(data => data)
+        .catch(err => err)
+}
+
 export function getCollectionPlacesFromUser(userId: string): Promise<CollectionPlace[]> {
     return fetch(`${URL_BASE + API_PATHS.COLLECTOR}${userId}/${API_PATHS.MY_PLACES}`, {
         method: 'GET',
