@@ -20,7 +20,17 @@ declare global {
         description: string
         collectionPlace: number
         workingHours: { from: string; to: string }
+        name: string
         id?: number
+    }
+
+    interface EventResponse {
+        id: number
+        nome: string
+        descricao: string
+        dataInicio: string
+        dataFim: string
+        pontoColetaId: number
     }
 
     interface AlterCollectionPlaceParams extends CollectionPlace {

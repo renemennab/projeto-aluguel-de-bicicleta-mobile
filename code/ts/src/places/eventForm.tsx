@@ -1,6 +1,6 @@
-import React, { FormEvent, useContext, useState } from 'react'
+import React, { FormEvent, useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { postEvent } from '../apis'
+import { getCollectionPlacesFromUser, postEvent, SESSION_DATA } from '../apis'
 import { PageHeader } from '../components/pageHeader'
 import { StyledButton, StyledForm, StyledInput, StyledLabel } from '../components/styled'
 import { ROUTES } from '../utils'
@@ -10,27 +10,36 @@ import { SelectedEventContext } from '../App'
 export function EventForm(): JSX.Element {
     const { selectedEvent } = useContext(SelectedEventContext)
 
+    const [name, setName] = useState(selectedEvent?.name || ``)
     const [date, setDate] = useState(selectedEvent?.date || ``)
     const [description, setDescription] = useState(selectedEvent?.description || ``)
     const [collectionPlace, setCollectionPlace] = useState(selectedEvent?.collectionPlace || 0)
     const [workingHours, setWorkingHours] = useState(selectedEvent?.workingHours || { from: '', to: '' })
+    const [existingPlaces, setExistingPlaces] = useState<CollectionPlace[]>([])
     const history = useHistory()
 
-    const options = [
-        { value: 1, label: 'Mercado' },
-        { value: 2, label: 'Igreja' }
-    ]
+    useEffect(() => {
+        if (window.sessionStorage.getItem(SESSION_DATA.ID)) {
+            getCollectionPlacesFromUser(window.sessionStorage.getItem(SESSION_DATA.ID) || '').then(response => {
+                setExistingPlaces(response)
+            })
+        } else {
+            history.push('/')
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     function handleEventSubmit(event: FormEvent<HTMLFormElement>): void {
         event.preventDefault()
         postEvent({
+            name,
             date,
             description,
             collectionPlace,
             workingHours
         }).then(response => {
-            if (response.status === 200) {
-                history.push(ROUTES.EVENT_LIST)
+            if (response.status === 201) {
+                history.push(`${ROUTES.PLACE}/${collectionPlace}`)
             }
         })
     }
@@ -39,6 +48,10 @@ export function EventForm(): JSX.Element {
         <StyledNewColectionPlace className={`newEvent`}>
             <PageHeader pageName={`Novo Evento de Coleta`} />
             <StyledForm action="" onSubmit={event => handleEventSubmit(event)}>
+                <StyledLabel className={`column`}>
+                    Nome
+                    <StyledInput type="text" value={name} onChange={event => setName(event.target.value)} />
+                </StyledLabel>
                 <StyledLabel className={`column`}>
                     Data
                     <StyledInput required type="date" value={date} onChange={event => setDate(event.target.value)} />
@@ -51,9 +64,9 @@ export function EventForm(): JSX.Element {
                         value={collectionPlace}
                     >
                         <option value={0}>--Por favor escolha um ponto--</option>
-                        {options.map(option => (
-                            <option key={option.value} value={option.value}>
-                                {option.label}
+                        {existingPlaces.map(option => (
+                            <option key={option.id} value={option.id}>
+                                {option.name}
                             </option>
                         ))}
                     </select>

@@ -1,4 +1,4 @@
-import { convertPlaceParamsToPostObject, convertPlaceResponse } from './utils'
+import { convertEventParamsToPostObject, convertPlaceParamsToPostObject, convertPlaceResponse } from './utils'
 
 const API_PATHS = {
     ITEMS: 'api/Itens',
@@ -10,7 +10,7 @@ const API_PATHS = {
     SEARCH: 'buscar',
     REGISTER: 'cadastrar',
     ALTER: 'alterar',
-    EVENTS: 'EVENTS',
+    EVENT: 'api/Evento/',
     LOGIN: 'login'
 }
 
@@ -96,6 +96,24 @@ export function postCollectionPlace(params: CollectionPlace, id?: number): Promi
     }).catch(err => err)
 }
 
+export function postEvent(params: EventForm, id?: number): Promise<Response> {
+    let url = URL_BASE + API_PATHS.EVENT
+    if (id) {
+        url += API_PATHS.ALTER
+        params.id = id
+    } else {
+        url += API_PATHS.REGISTER
+    }
+
+    return fetch(url, {
+        method: id ? 'PUT' : 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(convertEventParamsToPostObject(params, id))
+    }).catch(err => err)
+}
+
 export function deletePlace(id: number): Promise<Response> {
     return fetch(URL_BASE + API_PATHS.PLACE + id, {
         method: 'DELETE'
@@ -128,18 +146,10 @@ export function getCollectionPlaces(): Promise<CollectionPlace[]> {
         .catch(err => err)
 }
 
-export function postEvent(params: EventForm): Promise<Response> {
-    return new Promise(resolve => {
-        const currentEvents = JSON.parse(window.localStorage.getItem(API_PATHS.EVENTS) || '[]')
-        window.localStorage.setItem(API_PATHS.EVENTS, JSON.stringify([...currentEvents, params]))
-        // @ts-ignore
-        resolve({ status: 200 })
-    })
-}
 export function getEvents(): Promise<EventForm[]> {
     return new Promise(resolve => {
         // @ts-ignore
-        resolve({ status: 200, body: JSON.parse(window.localStorage.getItem(API_PATHS.EVENTS) || '[]') })
+        resolve({ status: 200, body: JSON.parse(window.localStorage.getItem(API_PATHS.EVENT) || '[]') })
     })
 }
 

@@ -97,3 +97,34 @@ export function convertPlaceResponse(response: CollectionPlaceResponse): Collect
 
     return newObj
 }
+export function convertEventParamsToPostObject(params: EventForm, id?: number): Record<string, unknown> {
+    const { name, description, date, collectionPlace, workingHours } = params
+
+    const postObj = {
+        nome: name,
+        descricao: description,
+        dataInicio: date + '@' + workingHours.from,
+        dataFim: date + '@' + workingHours.to,
+        pontoColetaId: collectionPlace,
+        id
+    }
+    if (!id) delete postObj.id
+
+    return postObj
+}
+
+export function convertEventResponse(response: EventResponse): EventForm {
+    const { id, nome, descricao, dataInicio, dataFim, pontoColetaId } = response
+    const date = dataInicio.split('@')[0]
+
+    const newObj = {
+        name: nome,
+        description: descricao,
+        date,
+        workingHours: { from: dataInicio.split('@')[1], to: dataFim.split('@')[1] },
+        collectionPlace: pontoColetaId,
+        id
+    }
+
+    return newObj
+}
