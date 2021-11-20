@@ -79,10 +79,9 @@ function App(): ReactElement {
                                     <Route path={ROUTES.NEW_PLACE}>
                                         <CollectionPlaceForm />
                                     </Route>
-                                    <Route path={`${ROUTES.EVENTS}?id=:eventId`}>
+                                    <Route path={`${ROUTES.EVENTS}/:eventId`}>
                                         <SelectedEvent />
                                     </Route>
-
                                     <Route path={ROUTES.EVENTS}>
                                         <EventsList />
                                     </Route>
