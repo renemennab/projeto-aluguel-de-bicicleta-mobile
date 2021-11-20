@@ -73,5 +73,14 @@ namespace mapa_do_bem_api.Controllers
             return Ok(await _service.SelecionarTodosPorPonto(idPonto));
         }
 
+        [HttpGet("listar-todos")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> ListarTodos()
+        {
+            var listEventos= await _service.SelecionarTodos();
+
+            return Ok(listEventos);
+        }
+
     }
 }

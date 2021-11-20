@@ -11,5 +11,6 @@ namespace mapa_do_bem_api.Services
         Task Excluir(int id);
         Task Alterar(Evento evento);
         Task<IList<Evento>> SelecionarTodosPorPonto(int idPonto);
+        Task<IEnumerable<Evento>> SelecionarTodos();
     }
 }
