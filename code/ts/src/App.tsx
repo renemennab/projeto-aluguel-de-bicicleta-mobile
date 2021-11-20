@@ -61,6 +61,9 @@ function App(): ReactElement {
                                     <Route path={ROUTES.FAVOURITES}>
                                         <PlacesList />
                                     </Route>
+                                    <Route path={`${ROUTES.PLACE}/:placeId${ROUTES.EVENTS}/:eventId/edit`}>
+                                        <EventForm />
+                                    </Route>
                                     <Route path={`${ROUTES.PLACE}/:placeId${ROUTES.EVENTS}/:eventId`}>
                                         <SelectedEvent />
                                     </Route>
@@ -75,9 +78,6 @@ function App(): ReactElement {
                                     </Route>
                                     <Route path={ROUTES.NEW_PLACE}>
                                         <CollectionPlaceForm />
-                                    </Route>
-                                    <Route path={`${ROUTES.EVENTS}/:eventId/edit`}>
-                                        <EventForm />
                                     </Route>
                                     <Route path={`${ROUTES.EVENTS}?id=:eventId`}>
                                         <SelectedEvent />

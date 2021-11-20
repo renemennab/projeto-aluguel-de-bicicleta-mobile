@@ -1,14 +1,15 @@
 import React, { FormEvent, useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { getCollectionPlacesFromUser, postEvent, SESSION_DATA } from '../apis'
+import { getCollectionPlacesFromUser, getEvent, postEvent, SESSION_DATA } from '../apis'
 import { PageHeader } from '../components/pageHeader'
 import { StyledButton, StyledForm, StyledInput, StyledLabel } from '../components/styled'
 import { ROUTES } from '../utils'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { SelectedEventContext } from '../App'
 
 export function EventForm(): JSX.Element {
-    const { selectedEvent } = useContext(SelectedEventContext)
+    const { selectedEvent, setSelectedEvent } = useContext(SelectedEventContext)
+    const params = useParams() as UrlParams
 
     const [name, setName] = useState(selectedEvent?.name || ``)
     const [date, setDate] = useState(selectedEvent?.date || ``)
@@ -19,6 +20,16 @@ export function EventForm(): JSX.Element {
     const history = useHistory()
 
     useEffect(() => {
+        if (!selectedEvent && params.eventId) {
+            getEvent(Number(params.eventId)).then(event => {
+                setSelectedEvent?.(event)
+                setName(event.name)
+                setDate(event.date)
+                setDescription(event.description)
+                setCollectionPlace(event.collectionPlace)
+                setWorkingHours(event.workingHours)
+            })
+        }
         if (window.sessionStorage.getItem(SESSION_DATA.ID)) {
             getCollectionPlacesFromUser(window.sessionStorage.getItem(SESSION_DATA.ID) || '').then(response => {
                 setExistingPlaces(response)
@@ -31,14 +42,17 @@ export function EventForm(): JSX.Element {
 
     function handleEventSubmit(event: FormEvent<HTMLFormElement>): void {
         event.preventDefault()
-        postEvent({
-            name,
-            date,
-            description,
-            collectionPlace,
-            workingHours
-        }).then(response => {
-            if (response.status === 201) {
+        postEvent(
+            {
+                name,
+                date,
+                description,
+                collectionPlace,
+                workingHours
+            },
+            selectedEvent?.id
+        ).then(response => {
+            if (response.status === 201 || response.status === 200) {
                 history.push(`${ROUTES.PLACE}/${collectionPlace}`)
             }
         })

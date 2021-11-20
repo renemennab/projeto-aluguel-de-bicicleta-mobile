@@ -91,4 +91,9 @@ declare global {
         id: number
         produto: AcceptableItems
     }
+
+    interface UrlParams {
+        placeId: string
+        eventId: string
+    }
 }

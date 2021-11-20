@@ -1,23 +1,21 @@
 import React, { useContext, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import { getEvent } from '../apis'
 import { SelectedEventContext } from '../App'
 import { PageHeader } from '../components/pageHeader'
 import { AssetActions } from './assetActions'
-type Params = { placeId: string; eventId: string }
+
 export function SelectedEvent(): JSX.Element {
     const { selectedEvent, setSelectedEvent } = useContext(SelectedEventContext)
-    const params = useParams() as Params
+    const params = useParams() as UrlParams
+    const history = useHistory()
 
     useEffect(() => {
-        if (!selectedEvent && params.eventId) {
-            getEvent(Number(params.eventId)).then(event => {
-                setSelectedEvent?.(event)
-
-                return event
-            })
-        }
+        getEvent(Number(params.eventId)).then(event => {
+            if (event) setSelectedEvent?.(event)
+            else history.push('/')
+        })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

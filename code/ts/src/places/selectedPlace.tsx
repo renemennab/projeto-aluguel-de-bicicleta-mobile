@@ -21,6 +21,8 @@ export function SelectedPlace(): JSX.Element {
                     return place
                 })
                 .then(place => getEventsFromPlace(place.id as number).then(events => setPlaceEvents(events)))
+        } else {
+            getEventsFromPlace(selectedPlace?.id as number).then(events => setPlaceEvents(events))
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
