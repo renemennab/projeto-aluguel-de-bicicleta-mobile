@@ -6,6 +6,7 @@ import L from 'leaflet'
 
 import icon from 'leaflet/dist/images/marker-icon.png'
 import iconShadow from 'leaflet/dist/images/marker-shadow.png'
+import { getCollectionPlacesFromUser, SESSION_DATA } from '../apis'
 
 const DefaultIcon = L.icon({
     iconUrl: icon,
@@ -17,6 +18,7 @@ const DefaultIcon = L.icon({
 
 export function MapComponent(): JSX.Element {
     const [mapMethods, setMapMethods] = useState<Map<unknown, unknown> | null>(null)
+    const [placesArray, setPlacesArray] = useState<CollectionPlace[]>([])
     const [location, setLocation] = useState<{
         loaded: boolean
         coordinates?: { latitude: number; longitude: number }
@@ -25,6 +27,13 @@ export function MapComponent(): JSX.Element {
         loaded: false,
         coordinates: { latitude: -19.919946017081916, longitude: -43.995658850819936 }
     })
+
+    useEffect(() => {
+        getCollectionPlacesFromUser(window.sessionStorage.getItem(SESSION_DATA.ID) || '').then(response => {
+            setPlacesArray(response)
+        })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     const onSuccess = (location: { coords: { latitude: number; longitude: number } }): void => {
         setLocation({
@@ -80,6 +89,11 @@ export function MapComponent(): JSX.Element {
                         A pretty CSS3 popup. <br /> Easily customizable.
                     </Popup>
                 </Marker>
+                {placesArray.map(place => (
+                    <Marker key={place.id} position={[place.latitude || 0, place.longitude || 0]} icon={DefaultIcon}>
+                        <Popup>{place.name}</Popup>
+                    </Marker>
+                ))}
             </MapContainer>
         </StyledMap>
     )
