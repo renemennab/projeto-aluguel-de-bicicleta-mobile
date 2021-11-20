@@ -26,9 +26,10 @@ export function AssetList({ placesData, assetType, eventData }: Props): JSX.Elem
 
             return acc
         }, [])
+
         setFilteredList(filtered)
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [filter])
+    }, [filter, placesData, eventData])
 
     return (
         <StyledAssetList className={`assetList`}>
