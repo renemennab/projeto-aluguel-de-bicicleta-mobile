@@ -89,12 +89,7 @@ function App(): ReactElement {
                                         <EventForm />
                                     </Route>
                                     <Route path="/">
-                                        {selectedView === `list` ? (
-                                            // @ts-ignore
-                                            <AssetList placesData={placesArray} assetType={`place`} />
-                                        ) : (
-                                            <MapComponent />
-                                        )}
+                                        {selectedView === `list` ? <PlacesList /> : <MapComponent />}
                                         <NavBar selectedView={selectedView} setSelectedView={setSelectedView} />
                                         <MenuOptions selectedView={selectedView} setSelectedView={setSelectedView} />
                                     </Route>
