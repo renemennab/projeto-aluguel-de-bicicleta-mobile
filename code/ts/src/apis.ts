@@ -174,10 +174,15 @@ export function getEventsFromPlace(placeId: number): Promise<EventForm[]> {
 }
 
 export function getEvents(): Promise<EventForm[]> {
-    return new Promise(resolve => {
-        // @ts-ignore
-        resolve({ status: 200, body: JSON.parse(window.localStorage.getItem(API_PATHS.EVENT) || '[]') })
+    return fetch(`${URL_BASE + API_PATHS.EVENT}${API_PATHS.LIST}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
     })
+        .then(response => response.json())
+        .then(data => data.map((event: EventResponse) => convertEventResponse(event)))
+        .catch(err => err)
 }
 
 export function getEvent(eventId: number): Promise<EventForm> {
