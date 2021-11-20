@@ -1,19 +1,26 @@
-import React, { useContext, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
 import styled from 'styled-components'
-import { getPlace } from '../apis'
+import { getEventsFromPlace, getPlace } from '../apis'
 import { SelectedPlaceContext } from '../App'
 import { PageHeader } from '../components/pageHeader'
+import { ROUTES } from '../utils'
 import { AssetActions } from './assetActions'
 
 export function SelectedPlace(): JSX.Element {
     const { selectedPlace, setSelectedPlace } = useContext(SelectedPlaceContext)
+    const [placeEvents, setPlaceEvents] = useState<EventForm[]>([])
     const params = useParams() as { placeId: string }
+
     useEffect(() => {
         if (!selectedPlace && params.placeId) {
-            getPlace(Number(params.placeId)).then(place => {
-                setSelectedPlace?.(place)
-            })
+            getPlace(Number(params.placeId))
+                .then(place => {
+                    setSelectedPlace?.(place)
+
+                    return place
+                })
+                .then(place => getEventsFromPlace(place.id as number).then(events => setPlaceEvents(events)))
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -59,7 +66,24 @@ export function SelectedPlace(): JSX.Element {
             <span className={`selectedPlace--workingHoursTo`}>
                 <strong>To: </strong> {selectedPlace.workingHours.to}
             </span>
-
+            {placeEvents.length ? (
+                <div className={`selectedPlace--events`}>
+                    <h2 className={`selectedPlace--events__title`}>Eventos de distribuição</h2>
+                    {placeEvents.map(event => (
+                        <Link
+                            key={event.id}
+                            className={`selectedPlace--events__card--link`}
+                            to={`${ROUTES.PLACE}/${selectedPlace.id}${ROUTES.EVENTS}/${event.id}`}
+                        >
+                            <h2 className={`selectedPlace--events__card--link--name`}>{event.name}</h2>
+                            <span className={`selectedPlace--events__card--link--date`}>{event.date}</span>
+                            <span className={`selectedPlace--events__card--link--time`}>
+                                {event.workingHours.from} - {event.workingHours.to}
+                            </span>
+                        </Link>
+                    ))}
+                </div>
+            ) : null}
             <button type="button" className="selectedPlace--message" onClick={handleMessageClick}>
                 Enviar Mensagem
                 <i className="fab fa-whatsapp"></i>
