@@ -9,7 +9,7 @@ namespace mapa_do_bem_api.Model
         public string Descricao { get; set; }
         public string DataInicio { get; set; }
         public string DataFim { get; set; }
-        public int PontoColetaId { get; set; }
+        public int? PontoColetaId { get; set; }
 
         [JsonIgnore]
         public virtual PontoDeColeta PontoColeta { get; set; }

@@ -22,6 +22,7 @@ namespace mapa_do_bem_api.Services
             eventoAntigo.Descricao = evento.Descricao is not null ? evento.Descricao : eventoAntigo.Descricao;
             eventoAntigo.DataInicio = evento.DataInicio is not null ? evento.DataInicio : eventoAntigo.DataInicio;
             eventoAntigo.DataFim = evento.DataFim is not null ? evento.DataFim : eventoAntigo.DataFim;
+            eventoAntigo.PontoColetaId = evento.PontoColetaId is not null ? evento.PontoColetaId : eventoAntigo.PontoColetaId;
 
             await _repository.Alterar(eventoAntigo);
         }
@@ -55,6 +56,11 @@ namespace mapa_do_bem_api.Services
         public async Task<IList<Evento>> SelecionarTodosPorPonto(int idPonto)
         {
             return await _repository.SelecionarTodosPorPonto(idPonto);
+        }
+
+        public async Task<IEnumerable<Evento>> SelecionarTodos()
+        {
+            return await _repository.SelecionarTodos();
         }
     }
 }
