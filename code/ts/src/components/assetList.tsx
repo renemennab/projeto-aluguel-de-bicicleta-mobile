@@ -12,7 +12,7 @@ export function AssetList({ placesData, assetType, eventData }: Props): JSX.Elem
     const { setSelectedPlace } = useContext(SelectedPlaceContext)
     const { setSelectedEvent } = useContext(SelectedEventContext)
     const [filter, setFilter] = useState('')
-    const [filteredList, setFilteredList] = useState([])
+    const [filteredList, setFilteredList] = useState(assetType === 'place' ? placesData : eventData)
 
     useEffect(() => {
         const list = assetType === 'place' ? placesData : eventData
