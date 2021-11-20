@@ -53,7 +53,7 @@ export function EventForm(): JSX.Element {
             selectedEvent?.id
         ).then(response => {
             if (response.status === 201 || response.status === 200) {
-                history.push(`${ROUTES.PLACE}/${collectionPlace}`)
+                history.push(`${ROUTES.PLACES}/${collectionPlace}`)
             }
         })
     }

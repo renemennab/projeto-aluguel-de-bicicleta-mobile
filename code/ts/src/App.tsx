@@ -61,16 +61,16 @@ function App(): ReactElement {
                                     <Route path={ROUTES.FAVOURITES}>
                                         <PlacesList />
                                     </Route>
-                                    <Route path={`${ROUTES.PLACE}/:placeId${ROUTES.EVENTS}/:eventId/edit`}>
+                                    <Route path={`${ROUTES.PLACES}/:placeId${ROUTES.EVENTS}/:eventId/edit`}>
                                         <EventForm />
                                     </Route>
-                                    <Route path={`${ROUTES.PLACE}/:placeId${ROUTES.EVENTS}/:eventId`}>
+                                    <Route path={`${ROUTES.PLACES}/:placeId${ROUTES.EVENTS}/:eventId`}>
                                         <SelectedEvent />
                                     </Route>
-                                    <Route path={`${ROUTES.PLACE}/:placeId/edit`}>
+                                    <Route path={`${ROUTES.PLACES}/:placeId/edit`}>
                                         <CollectionPlaceForm />
                                     </Route>
-                                    <Route path={`${ROUTES.PLACE}/:placeId`}>
+                                    <Route path={`${ROUTES.PLACES}/:placeId`}>
                                         <SelectedPlace />
                                     </Route>
                                     <Route path={ROUTES.PLACES}>

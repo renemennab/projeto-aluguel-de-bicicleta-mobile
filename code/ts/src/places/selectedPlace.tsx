@@ -75,7 +75,7 @@ export function SelectedPlace(): JSX.Element {
                         <Link
                             key={event.id}
                             className={`selectedPlace--events__card--link`}
-                            to={`${ROUTES.PLACE}/${selectedPlace.id}${ROUTES.EVENTS}/${event.id}`}
+                            to={`${ROUTES.PLACES}/${selectedPlace.id}${ROUTES.EVENTS}/${event.id}`}
                         >
                             <h2 className={`selectedPlace--events__card--link--name`}>{event.name}</h2>
                             <span className={`selectedPlace--events__card--link--date`}>{event.date}</span>

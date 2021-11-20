@@ -6,7 +6,6 @@ export const ROUTES = {
     PROFILE: `/profile`,
     NEW_PLACE: `/newCollection`,
     PLACES: `/places`,
-    PLACE: `/place`,
     FAVOURITES: `/favourites`,
     NEW_EVENT: `/newEvent`,
     EVENTS: `/events`,
