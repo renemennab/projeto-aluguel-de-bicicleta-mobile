@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import styled from 'styled-components'
-import { getEventsFromPlace, getPlace } from '../apis'
+import { getEventsFromPlace, getPlace, SESSION_DATA } from '../apis'
 import { SelectedPlaceContext } from '../App'
 import { PageHeader } from '../components/pageHeader'
-import { ROUTES } from '../utils'
+import { DONOR, ROUTES } from '../utils'
 import { AssetActions } from './assetActions'
 
 export function SelectedPlace(): JSX.Element {
@@ -86,10 +86,12 @@ export function SelectedPlace(): JSX.Element {
                     ))}
                 </div>
             ) : null}
-            <button type="button" className="selectedPlace--message" onClick={handleMessageClick}>
-                Enviar Mensagem
-                <i className="fab fa-whatsapp"></i>
-            </button>
+            {window.sessionStorage.getItem(SESSION_DATA.USER_TYPE) === DONOR ? (
+                <button type="button" className="selectedPlace--message" onClick={handleMessageClick}>
+                    Enviar Mensagem
+                    <i className="fab fa-whatsapp"></i>
+                </button>
+            ) : null}
         </StyledSelectedPlace>
     ) : (
         <div />
