@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { ROUTES } from '../utils'
@@ -11,11 +11,35 @@ interface Props {
 export function AssetList({ placesData, assetType, eventData }: Props): JSX.Element {
     const { setSelectedPlace } = useContext(SelectedPlaceContext)
     const { setSelectedEvent } = useContext(SelectedEventContext)
+    const [filter, setFilter] = useState('')
+    const [filteredList, setFilteredList] = useState([])
+
+    useEffect(() => {
+        const list = assetType === 'place' ? placesData : eventData
+        // @ts-ignore
+        const filtered = list?.reduce((acc: any[], asset: Record<string, string | number>) => {
+            const assetValues = Object.values(asset)
+            const matchingValues = assetValues.filter(value =>
+                value.toString().toLowerCase().includes(filter.toLowerCase())
+            )
+            if (matchingValues.length) acc.push(asset)
+
+            return acc
+        }, [])
+        setFilteredList(filtered)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [filter])
 
     return (
         <StyledAssetList className={`assetList`}>
+            <input
+                className={`assetList--input`}
+                type="text"
+                value={filter}
+                onChange={event => setFilter(event.target.value)}
+            />
             {assetType === 'place'
-                ? placesData?.map((data: CollectionPlace, index: number) => (
+                ? (filteredList as CollectionPlace[])?.map((data: CollectionPlace, index: number) => (
                       <li className={`assetList--card`} key={index} onClick={() => setSelectedPlace?.(data)}>
                           <Link className={`assetList--card__link`} to={`${ROUTES.PLACES}/${data.id}`}>
                               <h2 className={`assetList--card__link--name`}>{data.name}</h2>
@@ -26,7 +50,7 @@ export function AssetList({ placesData, assetType, eventData }: Props): JSX.Elem
                           </Link>
                       </li>
                   ))
-                : eventData?.map((data: EventForm, index: number) => (
+                : (filteredList as EventForm[])?.map((data: EventForm, index: number) => (
                       <li className={`assetList--card`} key={index} onClick={() => setSelectedEvent?.(data)}>
                           <Link className={`assetList--card__link`} to={`${ROUTES.EVENTS}/${data.id || 2}`}>
                               <h2 className={`assetList--card__link--name`}>{data.name}</h2>
@@ -48,6 +72,14 @@ const StyledAssetList = styled.ul`
     margin: 0;
     padding: 20px;
     .assetList {
+        &--input {
+            width: 100%;
+            height: 30px;
+            border-radius: 35px;
+            margin-bottom: 20px;
+            border: 1px solid var(--black);
+            padding-left: 16px;
+        }
         &--card {
             padding: 20px;
             margin-bottom: 10px;
