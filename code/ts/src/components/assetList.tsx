@@ -29,13 +29,11 @@ export function AssetList({ placesData, assetType, eventData }: Props): JSX.Elem
                 : eventData?.map((data: EventForm, index: number) => (
                       <li className={`assetList--card`} key={index} onClick={() => setSelectedEvent?.(data)}>
                           <Link className={`assetList--card__link`} to={`${ROUTES.EVENTS}/${data.id || 2}`}>
-                              <h2 className={`assetList--card__link--name`}>
-                                  {data.date?.split('-').reverse().join(`/`)}
-                              </h2>
+                              <h2 className={`assetList--card__link--name`}>{data.name}</h2>
+                              <span className={`assetList--card__link--date`}>{data.date}</span>
                               <span className={`assetList--card__link--workingHours`}>
                                   {data.workingHours.from} - {data.workingHours.to}
                               </span>
-                              <span className={`assetList--card__link--description`}>{data.description}</span>
                           </Link>
                       </li>
                   ))}
