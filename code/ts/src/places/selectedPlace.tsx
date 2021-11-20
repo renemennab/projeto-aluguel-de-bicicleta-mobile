@@ -72,17 +72,18 @@ export function SelectedPlace(): JSX.Element {
                 <div className={`selectedPlace--events`}>
                     <h2 className={`selectedPlace--events__title`}>Eventos de distribuição</h2>
                     {placeEvents.map(event => (
-                        <Link
-                            key={event.id}
-                            className={`selectedPlace--events__card--link`}
-                            to={`${ROUTES.PLACES}/${selectedPlace.id}${ROUTES.EVENTS}/${event.id}`}
-                        >
-                            <h2 className={`selectedPlace--events__card--link--name`}>{event.name}</h2>
-                            <span className={`selectedPlace--events__card--link--date`}>{event.date}</span>
-                            <span className={`selectedPlace--events__card--link--time`}>
-                                {event.workingHours.from} - {event.workingHours.to}
-                            </span>
-                        </Link>
+                        <div className={`selectedPlace--events__card`} key={event.id}>
+                            <Link
+                                className={`selectedPlace--events__card--link`}
+                                to={`${ROUTES.PLACES}/${selectedPlace.id}${ROUTES.EVENTS}/${event.id}`}
+                            >
+                                <h2 className={`selectedPlace--events__card--link--name`}>{event.name}</h2>
+                                <span className={`selectedPlace--events__card--link--date`}>{event.date}</span>
+                                <span className={`selectedPlace--events__card--link--time`}>
+                                    {event.workingHours.from} - {event.workingHours.to}
+                                </span>
+                            </Link>
+                        </div>
                     ))}
                 </div>
             ) : null}
@@ -121,6 +122,35 @@ const StyledSelectedPlace = styled.div`
                 text-transform: uppercase;
             }
         }
+
+        &--events {
+            &__card {
+                padding: 20px;
+                margin-bottom: 10px;
+                display: flex;
+                flex-direction: column;
+                border-radius: 3px;
+                box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.22);
+                &--link {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    &--name,
+                    &--date,
+                    &--time {
+                        font-size: 14px;
+                        margin-bottom: 15px;
+                    }
+                    &--name {
+                        color: var(--dark-blue);
+                        text-transform: capitalize;
+                        font-weight: 700;
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+
         &--message {
             color: white;
             border: none;
