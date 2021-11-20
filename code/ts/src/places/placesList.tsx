@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
-import { getCollectionPlacesFromUser, SESSION_DATA } from '../apis'
+import { getCollectionPlaces, getCollectionPlacesFromUser, SESSION_DATA } from '../apis'
 import { AssetList } from '../components/assetList'
 import { PageHeader } from '../components/pageHeader'
 
@@ -11,7 +11,11 @@ export function PlacesList(): JSX.Element {
     const generalView = history.location.pathname === '/'
 
     useEffect(() => {
-        if (window.sessionStorage.getItem(SESSION_DATA.ID)) {
+        if (generalView) {
+            getCollectionPlaces().then(response => {
+                setPlacesArray(response)
+            })
+        } else if (window.sessionStorage.getItem(SESSION_DATA.ID)) {
             getCollectionPlacesFromUser(window.sessionStorage.getItem(SESSION_DATA.ID) || '').then(response => {
                 setPlacesArray(response)
             })
