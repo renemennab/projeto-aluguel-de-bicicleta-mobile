@@ -88,6 +88,9 @@ function App(): ReactElement {
                                     <Route path={ROUTES.NEW_EVENT}>
                                         <EventForm />
                                     </Route>
+                                    <Route path={`/:placeId`}>
+                                        <SelectedPlace />
+                                    </Route>
                                     <Route path="/">
                                         {selectedView === `list` ? <PlacesList /> : <MapComponent />}
                                         <NavBar selectedView={selectedView} setSelectedView={setSelectedView} />

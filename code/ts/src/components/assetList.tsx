@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import { ROUTES } from '../utils'
 import { SelectedEventContext, SelectedPlaceContext } from '../App'
@@ -13,6 +13,7 @@ export function AssetList({ placesData, assetType, eventData }: Props): JSX.Elem
     const { setSelectedEvent } = useContext(SelectedEventContext)
     const [filter, setFilter] = useState('')
     const [filteredList, setFilteredList] = useState(assetType === 'place' ? placesData : eventData)
+    const history = useHistory()
 
     useEffect(() => {
         const list = assetType === 'place' ? placesData : eventData
@@ -31,6 +32,8 @@ export function AssetList({ placesData, assetType, eventData }: Props): JSX.Elem
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [filter, placesData, eventData])
 
+    const placeLink = history.location.pathname === '/' ? '' : history.location.pathname
+
     return (
         <StyledAssetList className={`assetList`}>
             <input
@@ -42,7 +45,7 @@ export function AssetList({ placesData, assetType, eventData }: Props): JSX.Elem
             {assetType === 'place'
                 ? (filteredList as CollectionPlace[])?.map((data: CollectionPlace, index: number) => (
                       <li className={`assetList--card`} key={index} onClick={() => setSelectedPlace?.(data)}>
-                          <Link className={`assetList--card__link`} to={`${ROUTES.PLACES}/${data.id}`}>
+                          <Link className={`assetList--card__link`} to={`${placeLink}/${data.id}`}>
                               <h2 className={`assetList--card__link--name`}>{data.name}</h2>
                               <span className={`assetList--card__link--acceptableItems`}>
                                   {data.configuredItems?.map(item => item.produto).join(`, `)}
