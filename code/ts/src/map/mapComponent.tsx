@@ -6,7 +6,7 @@ import L from 'leaflet'
 
 import icon from 'leaflet/dist/images/marker-icon.png'
 import iconShadow from 'leaflet/dist/images/marker-shadow.png'
-import { getCollectionPlacesFromUser, SESSION_DATA } from '../apis'
+import { getCollectionPlaces } from '../apis'
 import { Link } from 'react-router-dom'
 import { ROUTES } from '../utils'
 
@@ -31,7 +31,7 @@ export function MapComponent(): JSX.Element {
     })
 
     useEffect(() => {
-        getCollectionPlacesFromUser(window.sessionStorage.getItem(SESSION_DATA.ID) || '').then(response => {
+        getCollectionPlaces().then(response => {
             setPlacesArray(response)
         })
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -92,7 +92,7 @@ export function MapComponent(): JSX.Element {
                         A pretty CSS3 popup. <br /> Easily customizable.
                     </Popup>
                 </Marker> */}
-                {placesArray.map(place => (
+                {placesArray?.map(place => (
                     <Marker key={place.id} position={[place.latitude || 0, place.longitude || 0]} icon={DefaultIcon}>
                         <Popup>
                             <Link className={`popup--link`} to={`${ROUTES.PLACES}/${place.id}`}>
