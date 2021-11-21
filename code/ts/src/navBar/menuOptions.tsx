@@ -109,8 +109,11 @@ const StyledMenuOptions = styled.nav`
     background: white;
     padding: 10px 40px;
     transition: all 0.5s ease-in-out;
+    max-height: 0;
+    overflow: hidden;
     &.open {
         transform: translateY(-100vh);
+        max-height: 100vh;
     }
     .menuOptions {
         &--header {
