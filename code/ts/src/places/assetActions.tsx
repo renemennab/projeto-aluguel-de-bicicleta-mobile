@@ -27,14 +27,14 @@ export function AssetActions({ itemId, itemType }: IProps): JSX.Element {
 
     return (
         <StyledAssetActions className={`assetActions`}>
-            <button className={`assetActions--favourite`}>
+            <button className={`assetActions--favourite`} aria-label={'adicionar aos favoritos'}>
                 <i className="far fa-star"></i>
                 {/* filled star <i class="fas fa-star"></i> */}
             </button>
-            <Link to={location + `/edit`} className={`assetActions--edit`}>
+            <Link to={location + `/edit`} className={`assetActions--edit`} aria-label={'editar'}>
                 <i className="far fa-edit"></i>
             </Link>
-            <button className={`assetActions--remove`} onClick={() => setShowModal(true)}>
+            <button className={`assetActions--remove`} onClick={() => setShowModal(true)} aria-label={'deletar'}>
                 <i className="far fa-trash-alt"></i>
             </button>
             {showModal ? (
