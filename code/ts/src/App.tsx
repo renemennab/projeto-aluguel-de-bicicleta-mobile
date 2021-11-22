@@ -64,6 +64,9 @@ function App(): ReactElement {
                                     <Route path={`${ROUTES.PLACES}/:placeId${ROUTES.EVENTS}/:eventId/edit`}>
                                         <EventForm />
                                     </Route>
+                                    <Route path={`${ROUTES.EVENTS}/:eventId/edit`}>
+                                        <EventForm />
+                                    </Route>
                                     <Route path={`${ROUTES.PLACES}/:placeId${ROUTES.EVENTS}/:eventId`}>
                                         <SelectedEvent />
                                     </Route>
