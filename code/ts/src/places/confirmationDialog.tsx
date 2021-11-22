@@ -4,14 +4,17 @@ import styled from 'styled-components'
 interface Props {
     onDelete: () => void
     onCancel: () => void
+    text?: string
 }
 
-export function ConfirmationDialog({ onDelete, onCancel }: Props): JSX.Element {
+export function ConfirmationDialog({ onDelete, onCancel, text }: Props): JSX.Element {
     return (
         <StyledConfirmationDialog className={`confirmationDialog`}>
             <div className="confirmationDialog--backdrop" />
             <div className={`confirmationDialog--container`}>
-                <span className={`confirmationDialog--container__text`}>Tem certeza que deseja deletar?</span>
+                <span className={`confirmationDialog--container__text`}>
+                    Tem certeza que deseja {text || 'deletar'}?
+                </span>
                 <button className={`confirmationDialog--container__delete`} onClick={() => onDelete()}>
                     Sim
                 </button>

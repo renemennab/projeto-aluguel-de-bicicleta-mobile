@@ -94,7 +94,11 @@ export function MenuOptions({ selectedView, setSelectedView }: IProps): JSX.Elem
                 )}
             </ul>
             {showDialog ? (
-                <ConfirmationDialog onCancel={() => setShowDialog(false)} onDelete={() => handleLogOut()} />
+                <ConfirmationDialog
+                    onCancel={() => setShowDialog(false)}
+                    onDelete={() => handleLogOut()}
+                    text={'sair'}
+                />
             ) : null}
         </StyledMenuOptions>
     )
