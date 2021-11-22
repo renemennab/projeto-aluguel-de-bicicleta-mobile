@@ -12,6 +12,16 @@ declare namespace Cypress {
          */
         createUser(): Chainable<Element>
         /**
+         * Custom command to create new user.
+         * @example cy.createPonto()
+         */
+        createPonto(): Chainable<Element>
+        /**
+         * Custom command to create new user.
+         * @example cy.removePlace()
+         */
+        removePlace(): Chainable<Element>
+        /**
          * Custom command to remove user.
          * @example cy.login()
          */
