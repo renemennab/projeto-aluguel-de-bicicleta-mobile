@@ -80,13 +80,15 @@
         },
         {
             "files": [
-                "*.spec.*"
+                "*.spec.*",
+                "cypress/**"
             ],
             "rules": {
                 "jest/expect-expect": "off",
                 "jest/valid-expect-in-promise": "off",
                 "jest/valid-expect": "off",
-                "@typescript-eslint/no-unused-expressions":"off"
+                "@typescript-eslint/no-unused-expressions":"off",
+                "jest/no-standalone-expect": "off"
             }
         }
     ]
