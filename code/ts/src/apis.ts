@@ -1,15 +1,22 @@
-import { convertPlaceParamsToPostObject, convertPlaceResponse } from './utils'
+import {
+    convertEventParamsToPostObject,
+    convertEventResponse,
+    convertPlaceParamsToPostObject,
+    convertPlaceResponse
+} from './utils'
 
 const API_PATHS = {
     ITEMS: 'api/Itens',
     PLACE: 'api/Ponto/',
     USER: 'api/Usuario/',
+    COLLECTOR: 'api/Coletor/',
     LIST: 'listar-todos',
     MY_PLACES: 'meus-pontos',
+    PLACE_EVENTS: 'eventos-ponto',
     SEARCH: 'buscar',
     REGISTER: 'cadastrar',
     ALTER: 'alterar',
-    EVENTS: 'EVENTS',
+    EVENT: 'api/Evento/',
     LOGIN: 'login'
 }
 
@@ -95,6 +102,24 @@ export function postCollectionPlace(params: CollectionPlace, id?: number): Promi
     }).catch(err => err)
 }
 
+export function postEvent(params: EventForm, id?: number): Promise<Response> {
+    let url = URL_BASE + API_PATHS.EVENT
+    if (id) {
+        url += API_PATHS.ALTER
+        params.id = id
+    } else {
+        url += API_PATHS.REGISTER
+    }
+
+    return fetch(url, {
+        method: id ? 'PUT' : 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(convertEventParamsToPostObject(params, id))
+    }).catch(err => err)
+}
+
 export function deletePlace(id: number): Promise<Response> {
     return fetch(URL_BASE + API_PATHS.PLACE + id, {
         method: 'DELETE'
@@ -104,8 +129,17 @@ export function deletePlace(id: number): Promise<Response> {
         .catch(err => err)
 }
 
+export function deleteEvent(id: number): Promise<Response> {
+    return fetch(URL_BASE + API_PATHS.EVENT + id, {
+        method: 'DELETE'
+    })
+        .then(response => response.json())
+        .then(data => data)
+        .catch(err => err)
+}
+
 export function getCollectionPlacesFromUser(userId: string): Promise<CollectionPlace[]> {
-    return fetch(`${URL_BASE + API_PATHS.USER}${userId}/${API_PATHS.MY_PLACES}`, {
+    return fetch(`${URL_BASE + API_PATHS.COLLECTOR}${userId}/${API_PATHS.MY_PLACES}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -127,19 +161,40 @@ export function getCollectionPlaces(): Promise<CollectionPlace[]> {
         .catch(err => err)
 }
 
-export function postEvent(params: EventForm): Promise<Response> {
-    return new Promise(resolve => {
-        const currentEvents = JSON.parse(window.localStorage.getItem(API_PATHS.EVENTS) || '[]')
-        window.localStorage.setItem(API_PATHS.EVENTS, JSON.stringify([...currentEvents, params]))
-        // @ts-ignore
-        resolve({ status: 200 })
+export function getEventsFromPlace(placeId: number): Promise<EventForm[]> {
+    return fetch(`${URL_BASE + API_PATHS.EVENT}${placeId}/${API_PATHS.PLACE_EVENTS}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
     })
+        .then(response => response.json())
+        .then(data => data.map((event: EventResponse) => convertEventResponse(event)))
+        .catch(err => err)
 }
+
 export function getEvents(): Promise<EventForm[]> {
-    return new Promise(resolve => {
-        // @ts-ignore
-        resolve({ status: 200, body: JSON.parse(window.localStorage.getItem(API_PATHS.EVENTS) || '[]') })
+    return fetch(`${URL_BASE + API_PATHS.EVENT}${API_PATHS.LIST}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
     })
+        .then(response => response.json())
+        .then(data => data.map((event: EventResponse) => convertEventResponse(event)))
+        .catch(err => err)
+}
+
+export function getEvent(eventId: number): Promise<EventForm> {
+    return fetch(`${URL_BASE + API_PATHS.EVENT}${eventId}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+        .then((event: EventResponse) => convertEventResponse(event))
+        .catch(err => err)
 }
 
 export function getAddressFromCep(cep: string): Promise<CepObject> {

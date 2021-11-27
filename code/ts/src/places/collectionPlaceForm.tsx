@@ -102,8 +102,8 @@ export function CollectionPlaceForm(): JSX.Element {
             selectedPlace?.id
         ).then(response => {
             console.log(response)
-            if (response.status === 201) {
-                history.push(ROUTES.COLLECTION_LIST)
+            if (response.status === 200 || response.status === 201) {
+                history.push(ROUTES.PLACES)
             }
         })
     }

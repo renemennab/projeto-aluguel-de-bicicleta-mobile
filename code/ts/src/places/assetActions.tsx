@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
-import { deletePlace } from '../apis'
+import { deleteEvent, deletePlace } from '../apis'
 import { ROUTES } from '../utils'
 import { ConfirmationDialog } from './confirmationDialog'
 interface IProps {
@@ -18,20 +18,23 @@ export function AssetActions({ itemId, itemType }: IProps): JSX.Element {
         if (itemType === 'place') {
             deletePlace(itemId)
             history.push(ROUTES.PLACES)
+        } else if (itemType === 'event') {
+            deleteEvent(itemId)
+            history.push('/')
         }
         setShowModal(false)
     }
 
     return (
         <StyledAssetActions className={`assetActions`}>
-            <button className={`assetActions--favourite`}>
+            <button className={`assetActions--favourite`} aria-label={'adicionar aos favoritos'}>
                 <i className="far fa-star"></i>
                 {/* filled star <i class="fas fa-star"></i> */}
             </button>
-            <Link to={location + `/edit`} className={`assetActions--edit`}>
+            <Link to={location + `/edit`} className={`assetActions--edit`} aria-label={'editar'}>
                 <i className="far fa-edit"></i>
             </Link>
-            <button className={`assetActions--remove`} onClick={() => setShowModal(true)}>
+            <button className={`assetActions--remove`} onClick={() => setShowModal(true)} aria-label={'deletar'}>
                 <i className="far fa-trash-alt"></i>
             </button>
             {showModal ? (

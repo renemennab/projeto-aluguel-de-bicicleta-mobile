@@ -9,8 +9,7 @@ export function EventsList(): JSX.Element {
 
     useEffect(() => {
         getEvents().then(response => {
-            // @ts-ignore
-            setEventsArray(response.body)
+            setEventsArray(response)
         })
     }, [])
 
