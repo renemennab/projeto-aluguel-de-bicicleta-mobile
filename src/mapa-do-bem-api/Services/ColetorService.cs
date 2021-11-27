@@ -9,12 +9,20 @@ namespace mapa_do_bem_api.Services
     {
         private readonly IPontoColetaRepository _pontoRepository;
 
-        public ColetorService(IPontoColetaRepository pontoRepository)
+        private readonly IEventoRepository _eventoRepository;
+
+        public ColetorService(IPontoColetaRepository pontoRepository, IEventoRepository eventoRepository)
         {
             _pontoRepository = pontoRepository;
+            _eventoRepository = eventoRepository;
         }
-       
-        public async Task<IList<PontoDeColeta>> SelecionarTodosPorUsuario(string idUsuario)
+
+        public async Task<IList<Evento>> SelecionarEventosPorColetor(string idUsuario)
+        {
+            return await _eventoRepository.SelecionarTodosPorColetor(idUsuario);
+        }
+
+        public async Task<IList<PontoDeColeta>> SelecionarPontosPorColetor(string idUsuario)
         {
             return await _pontoRepository.SelecionarTodosPorUsuario(idUsuario);
         }

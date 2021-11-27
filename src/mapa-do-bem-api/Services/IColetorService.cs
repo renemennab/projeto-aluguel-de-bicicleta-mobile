@@ -6,6 +6,7 @@ namespace mapa_do_bem_api.Services
 {
     public interface IColetorService
     {
-        Task<IList<PontoDeColeta>> SelecionarTodosPorUsuario(string idUsuario);
+        Task<IList<PontoDeColeta>> SelecionarPontosPorColetor(string idUsuario);
+        Task<IList<Evento>> SelecionarEventosPorColetor(string idUsuario);
     }
 }

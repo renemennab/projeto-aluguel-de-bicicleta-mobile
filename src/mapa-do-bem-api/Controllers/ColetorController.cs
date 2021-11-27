@@ -19,9 +19,16 @@ namespace mapa_do_bem_api.Controllers
 
         [HttpGet("{id}/meus-pontos")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> ListarTodos(string id)
+        public async Task<IActionResult> ListarPontos(string id)
         {
-            return Ok(await _service.SelecionarTodosPorUsuario(id));
+            return Ok(await _service.SelecionarPontosPorColetor(id));
+        }
+
+        [HttpGet("{id}/meus-eventos")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> ListarEventos(string id)
+        {
+            return Ok(await _service.SelecionarEventosPorColetor(id));
         }
 
     }

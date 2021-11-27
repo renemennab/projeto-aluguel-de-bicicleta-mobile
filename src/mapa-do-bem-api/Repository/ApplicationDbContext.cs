@@ -13,6 +13,7 @@ namespace mapa_do_bem_api.Repository
         public DbSet<Coletor> Coletor { get; set; }
         public DbSet<Doador> Doador { get; set; }
         public DbSet<Evento> Evento { get; set; }
+        public DbSet<PontosFavoritos> PontosFavoritos { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
@@ -22,6 +23,8 @@ namespace mapa_do_bem_api.Repository
             builder.ApplyConfiguration(new PontoDeColetaMap());
             builder.ApplyConfiguration(new ApplicationUserMap());
             builder.ApplyConfiguration(new EventoMap());
+            builder.ApplyConfiguration(new PontosFavoritosMap());
+
 
             base.OnModelCreating(builder);
         }

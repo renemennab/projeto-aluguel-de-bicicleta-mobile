@@ -15,5 +15,11 @@ namespace mapa_do_bem_api.Repository
             return await this.Query.Where(x => x.PontoColetaId == idPonto)
                                    .ToListAsync();
         }
+
+        public async Task<IList<Evento>> SelecionarTodosPorColetor(string idColetor)
+        {
+            return await this.Query.Where(x => x.PontoColeta.ColetorId == idColetor)
+                                   .ToListAsync();
+        }
     }
 }

@@ -29,6 +29,9 @@ namespace mapa_do_bem_api.Model
 
         [JsonIgnore]
         public virtual Coletor Coletor { get; set; }
-        
+
+        [JsonIgnore]
+        public IList<PontosFavoritos> PontosFavoritos { get; set; }
+
     }
 }

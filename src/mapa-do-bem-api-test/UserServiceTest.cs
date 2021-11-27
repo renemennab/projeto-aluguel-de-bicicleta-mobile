@@ -10,14 +10,13 @@ namespace mapa_do_bem_api_test
 {
     public class UserServiceTest
     {
+        /* CT001 - Sistema deve permitir que usuários se cadastrem */
         [Fact]
         public async void Cadastrar()
         {
             var mockRepo = new Mock<IUserRepository>();
             mockRepo.Setup(x => x.Cadastrar(It.IsAny<ApplicationUser>(), It.IsAny<string>()))
                     .Returns(Task.FromResult(true));
-
-            var mockRepoPonto = new Mock<IPontoColetaRepository>();
 
             var usuarioService = new UserService(mockRepo.Object);
             var retorno = await usuarioService.Cadastrar(
@@ -32,6 +31,7 @@ namespace mapa_do_bem_api_test
             Assert.True(retorno);
         }
 
+        /* CT012 - Sistema deve permitir que usuários efetuem login */
         [Fact]
         public async void Login()
         {
@@ -45,8 +45,6 @@ namespace mapa_do_bem_api_test
             var mockRepo = new Mock<IUserRepository>();
             mockRepo.Setup(x => x.Login("teste@email.com", "senhaForte!123"))
                     .Returns(Task.FromResult(user));
-
-            var mockRepoPonto = new Mock<IPontoColetaRepository>();
 
             var usuarioService = new UserService(mockRepo.Object);
             var retorno = await usuarioService.Login(

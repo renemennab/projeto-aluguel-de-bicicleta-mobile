@@ -13,7 +13,6 @@ namespace mapa_do_bem_api.Repository.Mapping
             builder.Property(u => u.Nome).HasMaxLength(300);
 
             builder.Property(u => u.Perfil).HasMaxLength(300).HasColumnName("Perfil");
-
         }
     }
 }
