@@ -59,7 +59,7 @@ function App(): ReactElement {
                                         <UserProfile />
                                     </Route>
                                     <Route path={ROUTES.FAVOURITES}>
-                                        <PlacesList isFavourites />
+                                        <PlacesList listType="favourites" />
                                     </Route>
                                     <Route path={`${ROUTES.PLACES}/:placeId${ROUTES.EVENTS}/:eventId/edit`}>
                                         <EventForm />
@@ -77,7 +77,7 @@ function App(): ReactElement {
                                         <SelectedPlace />
                                     </Route>
                                     <Route path={ROUTES.PLACES}>
-                                        <PlacesList />
+                                        <PlacesList listType="userPlaces" />
                                     </Route>
                                     <Route path={ROUTES.NEW_PLACE}>
                                         <CollectionPlaceForm />
@@ -95,7 +95,11 @@ function App(): ReactElement {
                                         <SelectedPlace />
                                     </Route>
                                     <Route path="/">
-                                        {selectedView === `list` ? <PlacesList /> : <MapComponent />}
+                                        {selectedView === `list` ? (
+                                            <PlacesList listType="allPlaces" />
+                                        ) : (
+                                            <MapComponent />
+                                        )}
                                         <NavBar selectedView={selectedView} setSelectedView={setSelectedView} />
                                         <MenuOptions selectedView={selectedView} setSelectedView={setSelectedView} />
                                     </Route>
