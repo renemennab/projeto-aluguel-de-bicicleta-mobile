@@ -39,34 +39,34 @@ export function SelectedPlace(): JSX.Element {
             <PageHeader pageName={selectedPlace.name} />
             <AssetActions itemId={selectedPlace.id || 0} itemType={'place'} />
             <span className={`selectedPlace--acceptableItems`}>
-                <strong>acceptableItems: </strong> {selectedPlace.acceptableItems.join(', ')}
-            </span>
-            <span className={`selectedPlace--buildingNum`}>
-                <strong>buildingNum: </strong> {selectedPlace.buildingNum}
+                <strong>Items aceitaveis: </strong> {selectedPlace.acceptableItems.join(', ')}
             </span>
             <span className={`selectedPlace--cep`}>
-                <strong>cep: </strong> {selectedPlace.cep}
+                <strong>CEP: </strong> {selectedPlace.cep}
+            </span>
+            <span className={`selectedPlace--buildingNum`}>
+                <strong>Número: </strong> {selectedPlace.buildingNum}
             </span>
             <span className={`selectedPlace--description`}>
-                <strong>description: </strong> {selectedPlace.description}
+                <strong>Descrição: </strong> {selectedPlace.description}
             </span>
             <span className={`selectedPlace--latitude`}>
-                <strong>latitude: </strong> {selectedPlace.latitude}
+                <strong>Latitude: </strong> {selectedPlace.latitude}
             </span>
             <span className={`selectedPlace--longitude`}>
-                <strong>longitude: </strong> {selectedPlace.longitude}
+                <strong>Longitude: </strong> {selectedPlace.longitude}
             </span>
             <span className={`selectedPlace--phone`}>
-                <strong>phone: </strong> {selectedPlace.phone}
+                <strong>Telefone: </strong> {selectedPlace.phone}
             </span>
             <span className={`selectedPlace--workingDays`}>
-                <strong>workingDays: </strong> {selectedPlace.workingDays.join(`, `)}
+                <strong>Dias de funcionamento: </strong> {selectedPlace.workingDays.join(`, `)}
             </span>
             <span className={`selectedPlace--workingHoursFrom`}>
-                <strong>From: </strong> {selectedPlace.workingHours.from}
+                <strong>das: </strong> {selectedPlace.workingHours.from}
             </span>
             <span className={`selectedPlace--workingHoursTo`}>
-                <strong>To: </strong> {selectedPlace.workingHours.to}
+                <strong>as: </strong> {selectedPlace.workingHours.to}
             </span>
             {placeEvents.length ? (
                 <div className={`selectedPlace--events`}>
@@ -87,12 +87,10 @@ export function SelectedPlace(): JSX.Element {
                     ))}
                 </div>
             ) : null}
-            {window.sessionStorage.getItem(SESSION_DATA.USER_TYPE) === DONOR ? (
-                <button type="button" className="selectedPlace--message" onClick={handleMessageClick}>
-                    Enviar Mensagem
-                    <i className="fab fa-whatsapp"></i>
-                </button>
-            ) : null}
+            <button type="button" className="selectedPlace--message" onClick={handleMessageClick}>
+                Enviar Mensagem
+                <i className="fab fa-whatsapp"></i>
+            </button>
         </StyledSelectedPlace>
     ) : (
         <div />
