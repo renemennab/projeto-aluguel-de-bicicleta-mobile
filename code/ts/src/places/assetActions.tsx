@@ -32,6 +32,9 @@ export function AssetActions({ itemId, itemType }: IProps): JSX.Element {
         event.preventDefault()
 
         const userId = window.sessionStorage.getItem(SESSION_DATA.ID) as string
+        if (!userId) {
+            history.push(ROUTES.LOGIN)
+        }
         if (!isPlaceFavourite) {
             addFavourite(userId, itemId).then(response => {
                 if (response?.status === 200) {
