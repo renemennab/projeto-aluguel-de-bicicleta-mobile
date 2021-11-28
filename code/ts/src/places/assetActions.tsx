@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, MouseEvent } from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
-import { deleteEvent, deletePlace } from '../apis'
+import { deleteEvent, deletePlace, addFavourite, removeFavourite, SESSION_DATA } from '../apis'
 import { ROUTES } from '../utils'
 import { ConfirmationDialog } from './confirmationDialog'
+
 interface IProps {
     itemId: number
     itemType: AssetType
@@ -13,7 +14,7 @@ export function AssetActions({ itemId, itemType }: IProps): JSX.Element {
     const location = useLocation().pathname
     const [showModal, setShowModal] = useState(false)
     const history = useHistory()
-
+    const [isPlaceFavourite, setIsPlaceFavourite] = useState(false)
     function handleDelete(): void {
         if (itemType === 'place') {
             deletePlace(itemId)
@@ -25,11 +26,35 @@ export function AssetActions({ itemId, itemType }: IProps): JSX.Element {
         setShowModal(false)
     }
 
+    function handleFavourite(event: MouseEvent<HTMLButtonElement>): void {
+        event.preventDefault()
+
+        const userId = window.sessionStorage.getItem(SESSION_DATA.ID) as string
+        if (!isPlaceFavourite) {
+            addFavourite(userId, itemId).then(response => {
+                if (response?.status === 200) {
+                    console.log('Ponto favoritado')
+                    setIsPlaceFavourite(true)
+                }
+            })
+        } else {
+            removeFavourite(userId, itemId).then(response => {
+                if (response?.status === 200) {
+                    console.log('Ponto des favoritado')
+                    setIsPlaceFavourite(false)
+                }
+            })
+        }
+    }
+
     return (
         <StyledAssetActions className={`assetActions`}>
-            <button className={`assetActions--favourite`} aria-label={'adicionar aos favoritos'}>
-                <i className="far fa-star"></i>
-                {/* filled star <i class="fas fa-star"></i> */}
+            <button
+                className={`assetActions--favourite`}
+                aria-label={'adicionar aos favoritos'}
+                onClick={event => handleFavourite(event)}
+            >
+                {isPlaceFavourite ? <i className="fas fa-star"></i> : <i className="far fa-star"></i>}
             </button>
             <Link to={location + `/edit`} className={`assetActions--edit`} aria-label={'editar'}>
                 <i className="far fa-edit"></i>

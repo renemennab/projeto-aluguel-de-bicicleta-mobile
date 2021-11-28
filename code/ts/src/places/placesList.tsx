@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
-import { getCollectionPlaces, getCollectionPlacesFromUser, SESSION_DATA } from '../apis'
+import { getCollectionPlaces, getCollectionPlacesFromUser, getFavourites, SESSION_DATA } from '../apis'
 import { AssetList } from '../components/assetList'
 import { PageHeader } from '../components/pageHeader'
 
-export function PlacesList(): JSX.Element {
+interface IProps {
+    isFavourites?: boolean
+}
+
+export function PlacesList({ isFavourites }: IProps): JSX.Element {
     const [placesArray, setPlacesArray] = useState<CollectionPlace[]>([])
     const history = useHistory()
     const generalView = history.location.pathname === '/'
@@ -13,6 +17,10 @@ export function PlacesList(): JSX.Element {
     useEffect(() => {
         if (generalView) {
             getCollectionPlaces().then(response => {
+                setPlacesArray(response)
+            })
+        } else if (isFavourites) {
+            getFavourites(window.sessionStorage.getItem(SESSION_DATA.ID) || '').then(response => {
                 setPlacesArray(response)
             })
         } else if (window.sessionStorage.getItem(SESSION_DATA.ID)) {

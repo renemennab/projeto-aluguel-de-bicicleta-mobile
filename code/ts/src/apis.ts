@@ -10,6 +10,7 @@ const API_PATHS = {
     PLACE: 'api/Ponto/',
     USER: 'api/Usuario/',
     COLLECTOR: 'api/Coletor/',
+    DONOR: 'api/Doador/',
     LIST: 'listar-todos',
     MY_PLACES: 'meus-pontos',
     PLACE_EVENTS: 'eventos-ponto',
@@ -17,7 +18,10 @@ const API_PATHS = {
     REGISTER: 'cadastrar',
     ALTER: 'alterar',
     EVENT: 'api/Evento/',
-    LOGIN: 'login'
+    LOGIN: 'login',
+    ADD_FAVOURITE: 'add-favorito',
+    FAVOURITE_PLACES: 'pontos-favoritos',
+    REMOVE_FAVOURITE: 'remover-favorito'
 }
 
 export const SESSION_DATA = {
@@ -28,6 +32,35 @@ export const SESSION_DATA = {
 }
 const URL_BASE = 'https://localhost:3001/'
 
+export function addFavourite(donorId: string, placeId: number): Promise<Response> {
+    return fetch(`${URL_BASE + API_PATHS.DONOR}${donorId}/${API_PATHS.ADD_FAVOURITE}/${placeId}`, {
+        method: 'POST'
+    })
+        .then(response => response.json())
+        .then(data => data)
+        .catch(err => err)
+}
+
+export function getFavourites(donorId: string): Promise<CollectionPlace[]> {
+    return fetch(`${URL_BASE + API_PATHS.DONOR}${donorId}/${API_PATHS.FAVOURITE_PLACES}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => (response.status === 200 ? response.json() : []))
+        .then(data => data.map((place: CollectionPlaceResponse) => convertPlaceResponse(place)))
+        .catch(err => err)
+}
+
+export function removeFavourite(donorId: string, placeId: number): Promise<Response> {
+    return fetch(`${URL_BASE + API_PATHS.DONOR}${donorId}/${API_PATHS.REMOVE_FAVOURITE}/${placeId}`, {
+        method: 'DELETE'
+    })
+        .then(response => response.json())
+        .then(data => data)
+        .catch(err => err)
+}
 export function getItems(): Promise<AcceptableItemsResponse[]> {
     return fetch(URL_BASE + API_PATHS.ITEMS, {
         method: 'GET'

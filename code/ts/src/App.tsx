@@ -59,7 +59,7 @@ function App(): ReactElement {
                                         <UserProfile />
                                     </Route>
                                     <Route path={ROUTES.FAVOURITES}>
-                                        <PlacesList />
+                                        <PlacesList isFavourites />
                                     </Route>
                                     <Route path={`${ROUTES.PLACES}/:placeId${ROUTES.EVENTS}/:eventId/edit`}>
                                         <EventForm />
