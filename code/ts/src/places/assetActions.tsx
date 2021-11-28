@@ -1,7 +1,7 @@
-import React, { useState, MouseEvent } from 'react'
+import React, { useState, MouseEvent, useEffect } from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
-import { deleteEvent, deletePlace, addFavourite, removeFavourite, SESSION_DATA } from '../apis'
+import { deleteEvent, deletePlace, addFavourite, removeFavourite, SESSION_DATA, getFavourites } from '../apis'
 import { DONOR, ROUTES } from '../utils'
 import { ConfirmationDialog } from './confirmationDialog'
 
@@ -15,7 +15,9 @@ export function AssetActions({ itemId, itemType }: IProps): JSX.Element {
     const [showModal, setShowModal] = useState(false)
     const history = useHistory()
     const [isPlaceFavourite, setIsPlaceFavourite] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
     const isDonor = window.sessionStorage.getItem(SESSION_DATA.USER_TYPE) === DONOR
+    const userId = window.sessionStorage.getItem(SESSION_DATA.ID) as string
 
     function handleDelete(): void {
         if (itemType === 'place') {
@@ -31,7 +33,6 @@ export function AssetActions({ itemId, itemType }: IProps): JSX.Element {
     function handleFavourite(event: MouseEvent<HTMLButtonElement>): void {
         event.preventDefault()
 
-        const userId = window.sessionStorage.getItem(SESSION_DATA.ID) as string
         if (!userId) {
             history.push(ROUTES.LOGIN)
         }
@@ -52,9 +53,19 @@ export function AssetActions({ itemId, itemType }: IProps): JSX.Element {
         }
     }
 
+    useEffect(() => {
+        setIsLoading(true)
+        getFavourites(userId).then(response => {
+            const matches = response.filter(place => place.id === itemId)
+            if (matches.length) setIsPlaceFavourite(true)
+            setIsLoading(false)
+        })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     return (
         <StyledAssetActions className={`assetActions`}>
-            {isDonor && itemType === 'place' ? (
+            {isDonor && itemType === 'place' && !isLoading ? (
                 <button
                     className={`assetActions--favourite`}
                     aria-label={'adicionar aos favoritos'}
@@ -92,6 +103,9 @@ const StyledAssetActions = styled.div`
     position: absolute;
     top: var(--padding);
     right: var(--padding);
+    .fas.fa-star {
+        color: var(--yellow);
+    }
     .assetActions {
         &--edit,
         &--remove,
