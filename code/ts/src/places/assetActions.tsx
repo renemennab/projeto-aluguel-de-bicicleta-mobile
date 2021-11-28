@@ -65,7 +65,7 @@ export function AssetActions({ itemId, itemType }: IProps): JSX.Element {
 
     return (
         <StyledAssetActions className={`assetActions`}>
-            {isDonor && itemType === 'place' && !isLoading ? (
+            {!userId || (isDonor && itemType === 'place' && !isLoading) ? (
                 <button
                     className={`assetActions--favourite`}
                     aria-label={'adicionar aos favoritos'}
@@ -74,7 +74,7 @@ export function AssetActions({ itemId, itemType }: IProps): JSX.Element {
                     {isPlaceFavourite ? <i className="fas fa-star"></i> : <i className="far fa-star"></i>}
                 </button>
             ) : null}
-            {!isDonor ? (
+            {!isDonor && userId ? (
                 <>
                     <Link to={location + `/edit`} className={`assetActions--edit`} aria-label={'editar'}>
                         <i className="far fa-edit"></i>

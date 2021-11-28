@@ -93,7 +93,6 @@ Cypress.Commands.add('removeUser', (isDoador?: boolean) => {
         console.log(`DELETE FROM AspNetUsers WHERE Nome = '${userFixture.name}';`)
         cy.sqlServer(`DELETE FROM AspNetUsers WHERE Nome = '${userFixture.name}';`)
         cy.sqlServer(`SELECT * FROM AspNetUsers WHERE Nome = '${userFixture.name}';`).should('have.length', 0)
-
     })
     sessionStorage.clear()
 })
