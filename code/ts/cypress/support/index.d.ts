@@ -10,26 +10,31 @@ declare namespace Cypress {
          * Custom command to create new user.
          * @example cy.createUser()
          */
-        createUser(): Chainable<Element>
+        createUser(isDoador?: boolean): Chainable<Element>
         /**
          * Custom command to create new user.
          * @example cy.createPonto()
          */
-        createPonto(): Chainable<Element>
+        createPonto(second?: boolean): Chainable<Element>
         /**
          * Custom command to create new user.
          * @example cy.removePlace()
          */
-        removePlace(): Chainable<Element>
+        removePlace(second?: boolean): Chainable<Element>
         /**
          * Custom command to remove user.
          * @example cy.login()
          */
-        login(): Chainable<Element>
+        login(isDoador?: boolean): Chainable<Element>
+        /**
+         * Custom command to remove user.
+         * @example cy.logout()
+         */
+        logout(): Chainable<Element>
         /**
          * Custom command to remove user.
          * @example cy.removeUser()
          */
-        removeUser(): Chainable<Element>
+        removeUser(isDoador?: boolean): Chainable<Element>
     }
 }

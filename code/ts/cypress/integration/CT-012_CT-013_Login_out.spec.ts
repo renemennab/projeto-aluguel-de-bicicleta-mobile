@@ -10,13 +10,7 @@ context('CT-012, CT-013 - Login e out', () => {
         cy.login()
     })
     it('CT-013 - Sistema deve permitir que usuários efetuem logout', () => {
-        cy.login()
-        cy.contains(`Logout`).click()
-        cy.findByText(/tem certeza que deseja sair\?/i)
-        cy.findByRole('button', {
-            name: /sim/i
-        }).click()
-        cy.contains(`Login`)
+        cy.logout()
     })
 
     it('remove user', () => {
