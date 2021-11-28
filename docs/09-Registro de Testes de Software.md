@@ -57,10 +57,13 @@ Relatório com as evidências dos testes de software realizados no sistema pela 
 
 
 <br>
+
 |Caso de teste   | CT-007 - Sistema deve permitir que usuários editem evento de distribuição
 |------|-----------------------------------------|
 |Objetivo do teste | Verificar se o sistema permite que o usuário edite evento de distribuição
-|Conclusão do teste |  <br/>
+
+
+
 
 
 <br>
