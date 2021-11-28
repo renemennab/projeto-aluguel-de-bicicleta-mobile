@@ -2,7 +2,7 @@ import React, { useState, MouseEvent } from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import { deleteEvent, deletePlace, addFavourite, removeFavourite, SESSION_DATA } from '../apis'
-import { ROUTES } from '../utils'
+import { DONOR, ROUTES } from '../utils'
 import { ConfirmationDialog } from './confirmationDialog'
 
 interface IProps {
@@ -15,6 +15,8 @@ export function AssetActions({ itemId, itemType }: IProps): JSX.Element {
     const [showModal, setShowModal] = useState(false)
     const history = useHistory()
     const [isPlaceFavourite, setIsPlaceFavourite] = useState(false)
+    const isDonor = window.sessionStorage.getItem(SESSION_DATA.USER_TYPE) === DONOR
+
     function handleDelete(): void {
         if (itemType === 'place') {
             deletePlace(itemId)
@@ -49,19 +51,29 @@ export function AssetActions({ itemId, itemType }: IProps): JSX.Element {
 
     return (
         <StyledAssetActions className={`assetActions`}>
-            <button
-                className={`assetActions--favourite`}
-                aria-label={'adicionar aos favoritos'}
-                onClick={event => handleFavourite(event)}
-            >
-                {isPlaceFavourite ? <i className="fas fa-star"></i> : <i className="far fa-star"></i>}
-            </button>
-            <Link to={location + `/edit`} className={`assetActions--edit`} aria-label={'editar'}>
-                <i className="far fa-edit"></i>
-            </Link>
-            <button className={`assetActions--remove`} onClick={() => setShowModal(true)} aria-label={'deletar'}>
-                <i className="far fa-trash-alt"></i>
-            </button>
+            {isDonor && itemType === 'place' ? (
+                <button
+                    className={`assetActions--favourite`}
+                    aria-label={'adicionar aos favoritos'}
+                    onClick={event => handleFavourite(event)}
+                >
+                    {isPlaceFavourite ? <i className="fas fa-star"></i> : <i className="far fa-star"></i>}
+                </button>
+            ) : null}
+            {!isDonor ? (
+                <>
+                    <Link to={location + `/edit`} className={`assetActions--edit`} aria-label={'editar'}>
+                        <i className="far fa-edit"></i>
+                    </Link>
+                    <button
+                        className={`assetActions--remove`}
+                        onClick={() => setShowModal(true)}
+                        aria-label={'deletar'}
+                    >
+                        <i className="far fa-trash-alt"></i>
+                    </button>
+                </>
+            ) : null}
             {showModal ? (
                 <ConfirmationDialog onCancel={() => setShowModal(false)} onDelete={() => handleDelete()} />
             ) : null}
