@@ -1,5 +1,6 @@
 ﻿using mapa_do_bem_api.Model;
 using mapa_do_bem_api.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -28,6 +29,11 @@ namespace mapa_do_bem_api.Services
             var Ponto = await _pontoRepository.SelecionarPorId(idPonto);
 
             var Doador = await _doadorRepository.SelecionarPorId(idDoador);
+
+            if (Doador.PontosFavoritos.Any(f =>  f.PontoId == Ponto.Id)) 
+            {
+                throw new ArgumentException("Ponto já favoritado por esse usuário");
+            } 
 
             Doador.PontosFavoritos.Add(new PontosFavoritos()
             {
