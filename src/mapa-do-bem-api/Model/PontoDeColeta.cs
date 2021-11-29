@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace mapa_do_bem_api.Model
@@ -25,10 +24,14 @@ namespace mapa_do_bem_api.Model
         public string DiasFuncionamento { get; set; }
         public ICollection<Item> ItensDoacao { get; set; }
         public string ColetorId { get; set; }
+        [JsonIgnore]
+        public ICollection<Evento> Eventos { get; set; }
 
         [JsonIgnore]
         public virtual Coletor Coletor { get; set; }
-        //Eventos
-        
+
+        [JsonIgnore]
+        public IList<PontosFavoritos> PontosFavoritos { get; set; }
+
     }
 }

@@ -57,6 +57,11 @@ namespace mapa_do_bem_api
             services.AddScoped<IPontoColetaRepository, PontoColetaRepository>();
             services.AddScoped<IPontoColetaService, PontoColetaService>();
             services.AddScoped<IItemRepository, ItemRepository>();
+            services.AddScoped<IEventoRepository, EventoRepository>();
+            services.AddScoped<IEventoService, EventoService>();
+            services.AddScoped<IColetorService, ColetorService>();
+            services.AddScoped<IDoadorRepository, DoadorRepository>();
+            services.AddScoped<IDoadorService, DoadorService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

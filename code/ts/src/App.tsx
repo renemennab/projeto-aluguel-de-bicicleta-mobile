@@ -59,24 +59,30 @@ function App(): ReactElement {
                                         <UserProfile />
                                     </Route>
                                     <Route path={ROUTES.FAVOURITES}>
-                                        <PlacesList />
+                                        <PlacesList listType="favourites" />
                                     </Route>
-                                    <Route path={`${ROUTES.PLACE}/:placeId/edit`}>
-                                        <CollectionPlaceForm />
-                                    </Route>
-                                    <Route path={`${ROUTES.PLACE}/:placeId`}>
-                                        <SelectedPlace />
-                                    </Route>
-                                    <Route path={ROUTES.PLACES}>
-                                        <PlacesList />
-                                    </Route>
-                                    <Route path={ROUTES.NEW_PLACE}>
-                                        <CollectionPlaceForm />
+                                    <Route path={`${ROUTES.PLACES}/:placeId${ROUTES.EVENTS}/:eventId/edit`}>
+                                        <EventForm />
                                     </Route>
                                     <Route path={`${ROUTES.EVENTS}/:eventId/edit`}>
                                         <EventForm />
                                     </Route>
-                                    <Route path={`${ROUTES.EVENTS}?id=:eventId`}>
+                                    <Route path={`${ROUTES.PLACES}/:placeId${ROUTES.EVENTS}/:eventId`}>
+                                        <SelectedEvent />
+                                    </Route>
+                                    <Route path={`${ROUTES.PLACES}/:placeId/edit`}>
+                                        <CollectionPlaceForm />
+                                    </Route>
+                                    <Route path={`${ROUTES.PLACES}/:placeId`}>
+                                        <SelectedPlace />
+                                    </Route>
+                                    <Route path={ROUTES.PLACES}>
+                                        <PlacesList listType="userPlaces" />
+                                    </Route>
+                                    <Route path={ROUTES.NEW_PLACE}>
+                                        <CollectionPlaceForm />
+                                    </Route>
+                                    <Route path={`${ROUTES.EVENTS}/:eventId`}>
                                         <SelectedEvent />
                                     </Route>
                                     <Route path={ROUTES.EVENTS}>
@@ -85,10 +91,12 @@ function App(): ReactElement {
                                     <Route path={ROUTES.NEW_EVENT}>
                                         <EventForm />
                                     </Route>
+                                    <Route path={`/:placeId`}>
+                                        <SelectedPlace />
+                                    </Route>
                                     <Route path="/">
                                         {selectedView === `list` ? (
-                                            // @ts-ignore
-                                            <AssetList placesData={placesArray} assetType={`place`} />
+                                            <PlacesList listType="allPlaces" />
                                         ) : (
                                             <MapComponent />
                                         )}

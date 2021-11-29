@@ -21,12 +21,12 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir.
 
 <br>
 
-|Caso de teste   | CT-002 - Sistema deve permitir que usuários vejam pontos de coleta no mapa 
+|Caso de teste   | CT-002 - Sistema deve permitir que usuários vejam pontos de coleta 
 |------|-----------------------------------------|
 |Requisitos associados | RF-005​​  Permitir que o usuário visualize um ponto de coleta​​  
-|Objetivo do teste |  Verificar se o sistema exibe pontos no mapa
-|Passos | <ol><li> Entrar no navegador </li> <li> Acessar o site </li> <li>  Visualizar o mapa </li> <li> Clicar em um ponto de coleta </li> <li> Caso não haja nenhum na sua região, clicar em lista e ver os pontos mais próximos</li></ol>
-|Critérios de Êxito | <ul><li> Mapa deve centralizar perto do usuário caso ele tenha dado permissão ao browser para compartilhar a localização </li> <li> Ao clicar em lista a visualização deve mudar </li> <li> Devem aparecer cards mostrando os pontos e sua distância </li></ul>
+|Objetivo do teste |  Verificar se o sistema exibe pontos na lista
+|Passos | <ol><li> Entrar no navegador </li> <li> Acessar o site </li> <li>  Visualizar e clicar em botão de lista </li> <li> Clicar em um ponto de coleta </li></ol>
+|Critérios de Êxito | <ul> <li> Ao clicar em lista a visualização deve mudar </li> <li> Devem aparecer cards mostrando os pontos</li></ul>
 
 <br>
 

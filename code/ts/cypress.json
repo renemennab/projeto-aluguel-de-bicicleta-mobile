@@ -3,8 +3,8 @@
     "viewportWidth": 375,
     "viewportHeight": 812,
     "retries": {
-        "runMode": 4,
-        "openMode": 2
+        "runMode": 1,
+        "openMode": 1
       },
       "screenshotOnRunFailure": false,
       "video": false,
