@@ -25,12 +25,12 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import '@testing-library/cypress/add-commands'
 
-Cypress.Commands.add('createUser', () => {
+Cypress.Commands.add('createUser', (isDoador?: boolean) => {
     cy.visit('/')
     cy.contains(`Menu`).click()
     cy.contains(`Login`).click()
     cy.contains('Não tem uma conta? Cadastre-se aqui').click()
-    cy.fixture('collectorData').then(userFixture => {
+    cy.fixture(isDoador ? 'donorData' : 'collectorData').then(userFixture => {
         cy.findAllByRole('textbox', {
             name: /nome/i
         }).type(userFixture.name)
@@ -44,10 +44,10 @@ Cypress.Commands.add('createUser', () => {
     cy.contains('Logout')
 })
 
-Cypress.Commands.add('createPonto', () => {
+Cypress.Commands.add('createPonto', (second?: boolean) => {
     cy.login()
     cy.contains(`Adicionar Ponto de Coleta`).click()
-    cy.fixture('collectionPointData').then(placeFixture => {
+    cy.fixture(second ? 'secondCollectionPointData' : 'collectionPointData').then(placeFixture => {
         cy.findAllByRole('textbox', {
             name: /nome/i
         }).type(placeFixture.Nome)
@@ -68,35 +68,39 @@ Cypress.Commands.add('createPonto', () => {
         cy.contains(/salvar/i).click()
 
         cy.contains(placeFixture.Nome)
-        cy.get('li>a').should('have.length', 1)
         cy.sqlServer(`SELECT Nome FROM PontoDeColeta WHERE Nome = '${placeFixture.Nome}';`).then(resp =>
             expect(resp).to.eq(placeFixture.Nome)
         )
     })
 })
-Cypress.Commands.add('removePlace', () => {
+Cypress.Commands.add('removePlace', (second?: boolean) => {
     cy.login()
     cy.contains('Meus Pontos de coleta').click()
 
-    cy.fixture('collectionPointData').then(placeFixture => {
+    cy.fixture(second ? 'secondCollectionPointData' : 'collectionPointData').then(placeFixture => {
         cy.contains(placeFixture.Nome).click()
+        cy.findByRole('button', { name: /deletar/i }).click()
+        cy.findByText(/tem certeza que deseja deletar\?/i)
+        cy.findByRole('button', {
+            name: /sim/i
+        }).click()
+        cy.contains(placeFixture.Nome).should('have.length', 0)
     })
-    cy.findByRole('button', { name: /deletar/i }).click()
-    cy.findByText(/tem certeza que deseja deletar\?/i)
-    cy.findByRole('button', {
-        name: /sim/i
-    }).click()
-    cy.get('li>a').should('have.length', 0)
 })
-Cypress.Commands.add('removeUser', () => {
-    cy.sqlServer(`DELETE FROM AspNetUsers WHERE Nome = 'João Silva';`)
+Cypress.Commands.add('removeUser', (isDoador?: boolean) => {
+    cy.fixture(isDoador ? 'donorData' : 'collectorData').then(userFixture => {
+        console.log(userFixture)
+        console.log(`DELETE FROM AspNetUsers WHERE Nome = '${userFixture.name}';`)
+        cy.sqlServer(`DELETE FROM AspNetUsers WHERE Nome = '${userFixture.name}';`)
+        cy.sqlServer(`SELECT * FROM AspNetUsers WHERE Nome = '${userFixture.name}';`).should('have.length', 0)
+    })
     sessionStorage.clear()
 })
 
-Cypress.Commands.add('login', () => {
+Cypress.Commands.add('login', (isDoador?: boolean) => {
     cy.contains(`Menu`).click()
     cy.contains(`Login`).click()
-    cy.fixture('collectorData').then(userFixture => {
+    cy.fixture(isDoador ? 'donorData' : 'collectorData').then(userFixture => {
         cy.findAllByRole('textbox', {
             name: /email/i
         }).type(userFixture.email)
@@ -105,4 +109,14 @@ Cypress.Commands.add('login', () => {
         cy.get('button').contains(/login/i).click()
     })
     cy.contains('Logout')
+})
+
+Cypress.Commands.add('logout', () => {
+    cy.login()
+    cy.contains(`Logout`).click()
+    cy.findByText(/tem certeza que deseja sair\?/i)
+    cy.findByRole('button', {
+        name: /sim/i
+    }).click()
+    cy.contains(`Login`)
 })

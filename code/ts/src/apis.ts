@@ -21,7 +21,7 @@ const API_PATHS = {
     LOGIN: 'login',
     ADD_FAVOURITE: 'add-favorito',
     FAVOURITE_PLACES: 'pontos-favoritos',
-    REMOVE_FAVOURITE: 'remover-favorito'
+    REMOVE_FAVOURITE: 'remove-favorito'
 }
 
 export const SESSION_DATA = {
@@ -36,8 +36,7 @@ export function addFavourite(donorId: string, placeId: number): Promise<Response
     return fetch(`${URL_BASE + API_PATHS.DONOR}${donorId}/${API_PATHS.ADD_FAVOURITE}/${placeId}`, {
         method: 'POST'
     })
-        .then(response => response.json())
-        .then(data => data)
+        .then(response => response)
         .catch(err => err)
 }
 
@@ -57,8 +56,7 @@ export function removeFavourite(donorId: string, placeId: number): Promise<Respo
     return fetch(`${URL_BASE + API_PATHS.DONOR}${donorId}/${API_PATHS.REMOVE_FAVOURITE}/${placeId}`, {
         method: 'DELETE'
     })
-        .then(response => response.json())
-        .then(data => data)
+        .then(response => response)
         .catch(err => err)
 }
 export function getItems(): Promise<AcceptableItemsResponse[]> {
