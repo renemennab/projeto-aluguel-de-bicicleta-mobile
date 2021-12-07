@@ -24,11 +24,13 @@ namespace mapa_do_bem_api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string mySqlConnection = Configuration.GetConnectionString("MapaDoBem");
 
             services.AddDbContext<ApplicationDbContext>(opt =>
             {
-                opt.UseSqlServer(this.Configuration.GetConnectionString("MapaDoBem"));
-            });
+                opt.UseMySql(mySqlConnection,
+                       ServerVersion.AutoDetect(mySqlConnection));
+        });
 
             services.AddCors(options =>
             {
