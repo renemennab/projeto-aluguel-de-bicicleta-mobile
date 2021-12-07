@@ -24,9 +24,19 @@ namespace mapa_do_bem_api
         public IConfiguration Configuration { get; }
         private IWebHostEnvironment CurrentEnvironment { get; set; }
 
+        private string GetHerokuConnectionString()
+        {
+            var dbUri = new Uri(Environment.GetEnvironmentVariable("DATABASE_URL"));
+
+            string db = dbUri.LocalPath.TrimStart('/');
+            string[] userInfo = dbUri.UserInfo.Split(':', StringSplitOptions.RemoveEmptyEntries);
+
+            return $"User ID={userInfo[0]};Password={userInfo[1]};Host={dbUri.Host};Port={dbUri.Port};Database={db};Pooling=true;SSL Mode=Require;Trust Server Certificate=True;";
+        }
+
         public void ConfigureServices(IServiceCollection services)
         {
-            string connectionString = this.CurrentEnvironment.IsProduction() ? Environment.GetEnvironmentVariable("DATABASE_URL")
+            string connectionString = this.CurrentEnvironment.IsProduction() ? GetHerokuConnectionString()
                                         : this.Configuration.GetConnectionString("MapaDoBem");
 
             services.AddDbContext<ApplicationDbContext>(opt =>
