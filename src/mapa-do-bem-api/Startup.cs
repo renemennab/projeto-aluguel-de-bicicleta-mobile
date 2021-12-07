@@ -9,25 +9,29 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System;
 
 namespace mapa_do_bem_api
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            CurrentEnvironment = env;
         }
 
         public IConfiguration Configuration { get; }
+        private IWebHostEnvironment CurrentEnvironment { get; set; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string connectionString = this.CurrentEnvironment.IsProduction() ? Environment.GetEnvironmentVariable("DATABASE_URL")
+                                        : this.Configuration.GetConnectionString("MapaDoBem");
 
             services.AddDbContext<ApplicationDbContext>(opt =>
             {
-                opt.UseNpgsql(this.Configuration.GetConnectionString("MapaDoBem"));
+                opt.UseNpgsql(connectionString);
             });
 
             services.AddCors(options =>
@@ -64,18 +68,15 @@ namespace mapa_do_bem_api
             services.AddScoped<IDoadorService, DoadorService>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
+            if (this.CurrentEnvironment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "mapa_do_bem_api v1"));
-
-            //app.UseHttpsRedirection();
 
             app.UseRouting();
             
