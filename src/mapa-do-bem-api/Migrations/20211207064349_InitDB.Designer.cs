@@ -4,28 +4,30 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using mapa_do_bem_api.Repository;
 
 namespace mapa_do_bem_api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211207052002_InitDB")]
+    [Migration("20211207064349_InitDB")]
     partial class InitDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 64)
-                .HasAnnotation("ProductVersion", "5.0.11");
+                .HasAnnotation("Relational:MaxIdentifierLength", 63)
+                .HasAnnotation("ProductVersion", "5.0.11")
+                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
             modelBuilder.Entity("ItemPontoDeColeta", b =>
                 {
                     b.Property<int>("ItensDoacaoId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int>("PontoDeColetaId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("ItensDoacaoId", "PontoDeColetaId");
 
@@ -37,19 +39,19 @@ namespace mapa_do_bem_api.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("text");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4");
+                        .HasColumnType("character varying(256)");
 
                     b.Property<string>("NormalizedName")
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4");
+                        .HasColumnType("character varying(256)");
 
                     b.HasKey("Id");
 
@@ -64,17 +66,18 @@ namespace mapa_do_bem_api.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("text");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("text");
 
                     b.Property<string>("RoleId")
                         .IsRequired()
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -87,17 +90,18 @@ namespace mapa_do_bem_api.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("text");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("text");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -109,17 +113,17 @@ namespace mapa_do_bem_api.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("text");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("text");
 
                     b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("text");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("text");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -131,10 +135,10 @@ namespace mapa_do_bem_api.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("text");
 
                     b.Property<string>("RoleId")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("text");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -146,16 +150,16 @@ namespace mapa_do_bem_api.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("text");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("text");
 
                     b.Property<string>("Value")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("text");
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
@@ -165,64 +169,64 @@ namespace mapa_do_bem_api.Migrations
             modelBuilder.Entity("mapa_do_bem_api.Model.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("text");
 
                     b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("text");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4");
+                        .HasColumnType("character varying(256)");
 
                     b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("boolean");
 
                     b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("boolean");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Nome")
                         .HasMaxLength(300)
-                        .HasColumnType("varchar(300) CHARACTER SET utf8mb4");
+                        .HasColumnType("character varying(300)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4");
+                        .HasColumnType("character varying(256)");
 
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4");
+                        .HasColumnType("character varying(256)");
 
                     b.Property<string>("PasswordHash")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("text");
 
                     b.Property<string>("Perfil")
                         .IsRequired()
                         .HasMaxLength(300)
-                        .HasColumnType("varchar(300) CHARACTER SET utf8mb4")
+                        .HasColumnType("character varying(300)")
                         .HasColumnName("Perfil");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("text");
 
                     b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("boolean");
 
                     b.Property<string>("SecurityStamp")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("text");
 
                     b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("boolean");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4");
+                        .HasColumnType("character varying(256)");
 
                     b.HasKey("Id");
 
@@ -242,30 +246,31 @@ namespace mapa_do_bem_api.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("DataFim")
                         .IsRequired()
                         .HasMaxLength(500)
-                        .HasColumnType("varchar(500) CHARACTER SET utf8mb4");
+                        .HasColumnType("character varying(500)");
 
                     b.Property<string>("DataInicio")
                         .IsRequired()
                         .HasMaxLength(500)
-                        .HasColumnType("varchar(500) CHARACTER SET utf8mb4");
+                        .HasColumnType("character varying(500)");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
                         .HasMaxLength(500)
-                        .HasColumnType("varchar(500) CHARACTER SET utf8mb4");
+                        .HasColumnType("character varying(500)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(300)
-                        .HasColumnType("varchar(300) CHARACTER SET utf8mb4");
+                        .HasColumnType("character varying(300)");
 
                     b.Property<int?>("PontoColetaId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -278,12 +283,13 @@ namespace mapa_do_bem_api.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("Produto")
                         .IsRequired()
                         .HasMaxLength(300)
-                        .HasColumnType("varchar(300) CHARACTER SET utf8mb4");
+                        .HasColumnType("character varying(300)");
 
                     b.HasKey("Id");
 
@@ -321,62 +327,63 @@ namespace mapa_do_bem_api.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("Cep")
                         .IsRequired()
                         .HasMaxLength(8)
-                        .HasColumnType("varchar(8) CHARACTER SET utf8mb4");
+                        .HasColumnType("character varying(8)");
 
                     b.Property<string>("CidadeEstado")
                         .IsRequired()
                         .HasMaxLength(500)
-                        .HasColumnType("varchar(500) CHARACTER SET utf8mb4");
+                        .HasColumnType("character varying(500)");
 
                     b.Property<string>("ColetorId")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("text");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
                         .HasMaxLength(500)
-                        .HasColumnType("varchar(500) CHARACTER SET utf8mb4");
+                        .HasColumnType("character varying(500)");
 
                     b.Property<string>("DiasFuncionamento")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("text");
 
                     b.Property<string>("HorarioFimFuncionamento")
                         .IsRequired()
                         .HasMaxLength(500)
-                        .HasColumnType("varchar(500) CHARACTER SET utf8mb4");
+                        .HasColumnType("character varying(500)");
 
                     b.Property<string>("HorarioInicioFuncionamento")
                         .IsRequired()
                         .HasMaxLength(500)
-                        .HasColumnType("varchar(500) CHARACTER SET utf8mb4");
+                        .HasColumnType("character varying(500)");
 
                     b.Property<decimal?>("Latitude")
                         .IsRequired()
-                        .HasColumnType("decimal(8,6)");
+                        .HasColumnType("numeric(8,6)");
 
                     b.Property<decimal?>("Longitude")
                         .IsRequired()
-                        .HasColumnType("decimal(9,6)");
+                        .HasColumnType("numeric(9,6)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(300)
-                        .HasColumnType("varchar(300) CHARACTER SET utf8mb4");
+                        .HasColumnType("character varying(300)");
 
                     b.Property<int?>("Numero")
                         .IsRequired()
                         .HasMaxLength(4)
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Telefone")
                         .IsRequired()
                         .HasMaxLength(11)
-                        .HasColumnType("varchar(11) CHARACTER SET utf8mb4");
+                        .HasColumnType("character varying(11)");
 
                     b.HasKey("Id");
 
@@ -389,14 +396,15 @@ namespace mapa_do_bem_api.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("DoadorId")
                         .IsRequired()
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("text");
 
                     b.Property<int>("PontoId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
