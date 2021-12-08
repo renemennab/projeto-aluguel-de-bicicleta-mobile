@@ -78,6 +78,18 @@ namespace mapa_do_bem_api
             services.AddScoped<IDoadorService, DoadorService>();
         }
 
+        private void UpgradeDatabase(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices.CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
+                if (context != null && context.Database != null)
+                {
+                    context.Database.Migrate();
+                }
+            }
+        }
+
         public void Configure(IApplicationBuilder app)
         {
             if (this.CurrentEnvironment.IsDevelopment())
@@ -98,6 +110,8 @@ namespace mapa_do_bem_api
             {
                 endpoints.MapControllers();
             });
+
+            UpgradeDatabase(app);
         }
     }
 }
