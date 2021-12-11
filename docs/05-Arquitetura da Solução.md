@@ -86,8 +86,8 @@ Trata-se de uma aplicação open source que auxilia desenvolvedores nos processo
 
 ### Banco de dados
 
-#### [SQL Server Express](https://www.microsoft.com/pt-br/download/details.aspx?id=55994)
-O Microsoft® SQL Server® Express é um sistema gratuito de gerenciamento de dados avançado e confiável que fornece um repositório de dados confiável e avançado para sites leves e aplicativos de área de trabalho.
+#### [PostgreSQL](https://www.postgresql.org/)
+PostgreSQL é um sistema gerenciador de banco de dados objeto relacional, desenvolvido como projeto de código aberto.
 
 ### Hospedagem
 
