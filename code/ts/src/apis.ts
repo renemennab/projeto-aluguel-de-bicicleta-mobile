@@ -30,7 +30,7 @@ export const SESSION_DATA = {
     ID: 'id',
     USER_TYPE: 'perfil'
 }
-const URL_BASE = 'https://localhost:3001/'
+const URL_BASE = 'https://mapa-do-bem-api.herokuapp.com/'
 
 export function addFavourite(donorId: string, placeId: number): Promise<Response> {
     return fetch(`${URL_BASE + API_PATHS.DONOR}${donorId}/${API_PATHS.ADD_FAVOURITE}/${placeId}`, {
