@@ -9,25 +9,39 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System;
 
 namespace mapa_do_bem_api
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            CurrentEnvironment = env;
         }
 
         public IConfiguration Configuration { get; }
+        private IWebHostEnvironment CurrentEnvironment { get; set; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        private string GetHerokuConnectionString()
+        {
+            var dbUri = new Uri(Environment.GetEnvironmentVariable("DATABASE_URL"));
+
+            string db = dbUri.LocalPath.TrimStart('/');
+            string[] userInfo = dbUri.UserInfo.Split(':', StringSplitOptions.RemoveEmptyEntries);
+
+            return $"User ID={userInfo[0]};Password={userInfo[1]};Host={dbUri.Host};Port={dbUri.Port};Database={db};Pooling=true;SSL Mode=Require;Trust Server Certificate=True;";
+        }
+
         public void ConfigureServices(IServiceCollection services)
         {
+            string connectionString = this.CurrentEnvironment.IsProduction() ? GetHerokuConnectionString()
+                                        : this.Configuration.GetConnectionString("MapaDoBem");
 
             services.AddDbContext<ApplicationDbContext>(opt =>
             {
-                opt.UseSqlServer(this.Configuration.GetConnectionString("MapaDoBem"));
+                opt.UseNpgsql(connectionString);
             });
 
             services.AddCors(options =>
@@ -64,17 +78,27 @@ namespace mapa_do_bem_api
             services.AddScoped<IDoadorService, DoadorService>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        private void UpgradeDatabase(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
+            using (var serviceScope = app.ApplicationServices.CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
+                if (context != null && context.Database != null)
+                {
+                    context.Database.Migrate();
+                }
+            }
+        }
+
+        public void Configure(IApplicationBuilder app)
+        {
+            if (this.CurrentEnvironment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "mapa_do_bem_api v1"));
             }
 
-            app.UseHttpsRedirection();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "mapa_do_bem_api v1"));
 
             app.UseRouting();
             
@@ -86,6 +110,8 @@ namespace mapa_do_bem_api
             {
                 endpoints.MapControllers();
             });
+
+            UpgradeDatabase(app);
         }
     }
 }
