@@ -24,7 +24,7 @@ Relatório com as evidências dos testes de software realizados no sistema pela 
 
 |Caso de teste   | CT-003 - Sistema deve permitir que usuários cadastrem ponto de coleta
 |------|-----------------------------------------|
-|Objetivo do teste | Verficar se o sistema permite que o usuário cadastre pontos de coleta
+|Objetivo do teste | verificar se o sistema permite que o usuário cadastre pontos de coleta
 |Conclusão do teste | Sistema permitindo usuário cadastrar pontos de coleta <br/>
 
 
@@ -34,7 +34,7 @@ Relatório com as evidências dos testes de software realizados no sistema pela 
 
 |Caso de teste   | CT-004 - Sistema deve permitir que usuários editem ponto de coleta
 |------|-----------------------------------------|
-|Objetivo do teste | Verficar se o sistema permite que o usuário edite ponto de coleta
+|Objetivo do teste | verificar se o sistema permite que o usuário edite ponto de coleta
 |Conclusão do teste | Sistema permitindo usuários editarem ponto de coleta. <br/>
 
 
@@ -42,7 +42,7 @@ Relatório com as evidências dos testes de software realizados no sistema pela 
 
 |Caso de teste   | CT-005 - Sistema deve permitir que usuários deletem ponto de coleta
 |------|-----------------------------------------|
-|Objetivo do teste |Verficar se o sistema permite que o usuário delete ponto de coleta
+|Objetivo do teste |verificar se o sistema permite que o usuário delete ponto de coleta
 |Conclusão do teste | Sistema permitindo usuários deletarem ponto de coleta.  <br/>
 
 
