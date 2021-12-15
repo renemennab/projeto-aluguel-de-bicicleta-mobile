@@ -99,7 +99,7 @@ Relatório com as evidências dos testes de software realizados no sistema pela 
 |Caso de teste   | CT-011 - Sistema deve permitir que usuários contatem o ponto de coleta através do whatsapp
 |------|-----------------------------------------|
 |Objetivo do teste | Verificar se o sistema permite que o usuário envie mensagem para o ponto de coleta através do whatsapp
-|Conclusão do teste | Funcionalidade ainda não disponível br/>
+|Conclusão do teste | Sistema abre o whatsapp e permite o envio de mensagens
 
 
 <br>
