@@ -39,7 +39,7 @@ export function SelectedPlace(): JSX.Element {
             <PageHeader pageName={selectedPlace.name} />
             <AssetActions itemId={selectedPlace.id || 0} itemType={'place'} />
             <span className={`selectedPlace--acceptableItems`}>
-                <strong>Items aceitaveis: </strong> {selectedPlace.acceptableItems.join(', ')}
+                <strong>Items aceitaveis: </strong> {selectedPlace.configuredItems?.map(el => el.produto).join(', ')}
             </span>
             <span className={`selectedPlace--cep`}>
                 <strong>CEP: </strong> {selectedPlace.cep}
