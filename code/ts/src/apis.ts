@@ -229,7 +229,7 @@ export function getEvent(eventId: number): Promise<EventForm> {
 }
 
 export function getAddressFromCep(cep: string): Promise<CepObject> {
-    return fetch(`http://viacep.com.br/ws/${cep}/json/`, {
+    return fetch(`https://viacep.com.br/ws/${cep}/json/`, {
         method: 'GET'
     })
         .then(response => response.json())
