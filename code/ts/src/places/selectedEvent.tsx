@@ -5,6 +5,7 @@ import { getEvent } from '../apis'
 import { SelectedEventContext } from '../App'
 import { PageHeader } from '../components/pageHeader'
 import { AssetActions } from './assetActions'
+import moment from 'moment'
 
 export function SelectedEvent(): JSX.Element {
     const { selectedEvent, setSelectedEvent } = useContext(SelectedEventContext)
@@ -29,7 +30,7 @@ export function SelectedEvent(): JSX.Element {
             </span>
             <span className={`selectedEvent--date`}>
                 <strong>data: </strong>
-                {selectedEvent.date}
+                {moment(selectedEvent?.date, 'YYYY-MM-DD').format('DD/MM/YYYY')}
             </span>
             <span className={`selectedEvent--workingHours`}>
                 <strong>Horário: </strong>
