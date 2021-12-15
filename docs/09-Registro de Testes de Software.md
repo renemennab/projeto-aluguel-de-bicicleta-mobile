@@ -120,3 +120,11 @@ Relatório com as evidências dos testes de software realizados no sistema pela 
 
 <br>
 <br> 
+
+## Conclusão
+
+Após realizarmos os testes concluímos que todos os requisitos foram entregues. Todos os testes puderam ser realizados e rodaram sem grandes problemas. Como os testes foram feitos usando ferramentas focadas em acessibilidade, podemos dizer que o site desempenha bem no quesito acessibilidade. A performance também foi um fator positivo. O site ficou leve e rodou bem em todos os aparelhos testados.
+
+No entanto, verificamos que o uso do whatsapp como requisito dificulta a testagem completa devido a limitações do cypress ao lidar com uma nova aba aberta. Além disso, não conseguimos testar os elementos que foram renderizados dentro do mapa. Por fim, a maior dificuldade foi lidar com a latitude e longitude. Não conseguimos encontrar uma ferramenta gratuita que descobrisse as coordenadas apenas a partir do endereço. Por isso, o usuário precisa saber sua própria latitude e longitude ao criar um local de doação. 
+
+Devido ao tempo limitado, muitas melhorias não puderam ser feitas. Com mais tempo, gostaríamos de corrigir mais bugs, colocar aviso de senha incorreta e informações sobre o formato da senha. Também gostaríamos de incluir um feedback sobre os resultados das ações como a alteração ou remoção de um ponto de coleta. 
