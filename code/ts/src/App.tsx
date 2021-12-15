@@ -4,7 +4,7 @@ import { AssetList } from './components/assetList'
 import { MapComponent } from './map/mapComponent'
 import { MenuOptions } from './navBar/menuOptions'
 import { NavBar } from './navBar/navBar'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 import { Login } from './login/login'
 import { UserProfileForm } from './login/userProfileForm'
 import { CollectionPlaceForm } from './places/collectionPlaceForm'
@@ -57,6 +57,9 @@ function App(): ReactElement {
                                     </Route>
                                     <Route path={ROUTES.PROFILE}>
                                         <UserProfile />
+                                    </Route>
+                                    <Route path={`${ROUTES.FAVOURITES}/:placeId`}>
+                                        <SelectedPlace />
                                     </Route>
                                     <Route path={ROUTES.FAVOURITES}>
                                         <PlacesList listType="favourites" />
