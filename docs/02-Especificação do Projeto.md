@@ -93,18 +93,18 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|---------|
 |RF-001​​ | Permitir que o usuário crie cadastro​ | ALTA​​ |
-|RF-002 | Permitir que um gestor crie cadastro para outro​ | ALTA​​ |
-|RF-003​ | Permitir que o usuário/gestor efetue login​​ | ALTA​​ |
-|RF-004​​ | Permitir que o usuário/gestor efetue logout​​ | ALTA​​ |
-|RF-005​​ | Permitir que o usuário visualize uma lista das localidades​​ | ALTA |​​
-|RF-006​​ | Permitir que o usuário filtre a lista de bikes​​ | ALTA​​ |
-|RF-007​​ | Permitir que o usuário avalie uma bike | MÉDIA |​
-|RF-008​​ | Permitir que o usuário reserve uma bike | ALTA |​​
-|RF-009 | Permitir que o usuário veja suas reservas​​ | ALTA |
-|RF-010 | Permitir que o usuário cancele sua reserva | ALTA |
-|RF-011 | Permitir que o gestor crie uma bike | ALTA |​
-|RF-012 | Permitir que o gestor edite uma bike | ALTA |​
-|RF-013 | Permitir que o gestor delete uma bike | ALTA |​
+|RF-002 | Permitir que o usuário/gestor efetue login​​ | ALTA​​ |
+|RF-003​​ | Permitir que o usuário/gestor efetue logout​​ | ALTA​​ |
+|RF-004​​ | Permitir que o usuário visualize uma lista das localidades​​ | ALTA |​​
+|RF-005​​ | Permitir que o usuário filtre a lista de bikes​​ | ALTA​​ |
+|RF-006 | Permitir que o usuário reserve uma bike | ALTA |​​
+|RF-007 | Permitir que o usuário veja suas reservas​​ | ALTA |
+|RF-008 | Permitir que o usuário cancele sua reserva | ALTA |
+|RF-009​​ | Permitir que o usuário avalie uma bike | MÉDIA |​
+|RF-010 | Permitir que o gestor crie uma bike | ALTA |​
+|RF-011 | Permitir que o gestor edite uma bike | ALTA |​
+|RF-012 | Permitir que o gestor delete uma bike | ALTA |​
+|RF-013 | Permitir que um gestor crie cadastro para outro gestor ou usuário​ | ALTA​​ |
 |RF-014 | Permitir que o gestor edite um usuário | ALTA |​
 |RF-015 | Permitir que o gestor delete um usuário | ALTA |​
 |RF-016​​ | Permitir que o gestor veja uma lista de usuários | ALTA |
