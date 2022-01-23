@@ -13,18 +13,17 @@ Nos quadros abaixo são apresentadas as personas definidas durante o processo de
 
 |<img src="img/joao.jpg" width="100" height="100">   | **João Mendes** <br> 48 anos   |
 |:---------------------------------------:|:-------------------------------:|
-|**Ocupação** |<br> Responsável pelas campanhas de doação de alimentos organizadas nas unidades dos mercados pão de açucar.<br> Tem ensino superior em administração|
-|**Motivação** |<br>Aumentar a quantidade de doações coletadas pelo mercado
-|**Dispositivos** |Possui um samsung de última geração e um laptop |
+|**Ocupação** |<br> Publicitário <br> Tem ensino superior em comunicação|
+|**Motivação** |<br>Quer ter uma vida mais saudável e usar menos seu carro
+|**Dispositivos** |Possui um samsung de última geração |
 |**Aplicativos** |Facebook<br>App do G1|
 
 <br><br>
 
 |<img src="img/anita.jpg" width="100">  | **Anita Camões** <br> 40 anos   |
 |:---------------------------------------:|:-------------------------------:|
-|**Ocupação** | Voluntária em uma instutuição de caridade que ajuda pessoas em situação de rua|
-|**Motivação** | Religiosa, com ensino médio, viu seu filho perder a luta contra o vício em crack e quer ajudar para que outras famílias<br> não passem pela mesma perda|
-|**Dispositivos** |Tem um android de segunda mão |
+|**Ocupação** | Gestora do serviço de bicicletas|
+|**Dispositivos** |Tem um Motorola de 2020 |
 |**Aplicativos** |Whatsapp<br>Facebook|
 
 <br><br>
@@ -38,37 +37,28 @@ Nos quadros abaixo são apresentadas as personas definidas durante o processo de
 
 <br><br>
 
-|<img src="img/otavio.jpg" width="100" height="100">   | **Otávio Cardoso** <br> 27 anos   |
+|<img src="img/otavio.jpg" width="100" height="100">   | **Otávio Cardoso** <br> 20 anos   |
 |:---------------------------------------:|:-------------------------------:|
-|**Ocupação**| <br> Administrador |
-|**Motivação** | <br> Trabalha em uma escola. Quer aumentar a arrecadação de peças para sua campanha do agasalho<br>Assiste a muitas notícias e sente um dever de contribuir, visto que sua situação financeira não foi afetada na pandemia|
-|**Dispositivos** |Tem um android de uns 3 anos |
+|**Ocupação**| <br> Estudante |
+|**Motivação** | <br>  Frequentar parques e museus no centro de São Paulo |
+|**Dispositivos** |Tem um android de segunda mão |
 |**Aplicativos** |instagram, twitter e tik tok|
-
-<br><br>
-
-|<img src="img/griselda.jpg" width="100" height="100">   | **Griselda Barbosa** <br> 61 anos   |
-|:---------------------------------------:|:-------------------------------:|
-|**Ocupação**| <br> Aposentada |
-|**Motivação** | <br> Costura por hobbie e quer começar a doar suas peças para pessoas necessitadas|
-|**Dispositivos** |Tem um iphone que era do seu neto |
-|**Aplicativos** |whatsapp|
 
 <br><br>
 
 |<img src="img/fred.jpg" width="100" height="100">   | **Fred Silva** <br> 33 anos   |
 |:---------------------------------------:|:-------------------------------:|
-|**Ocupação**| <br> Dono de restaurante |
-|**Motivação** | <br> Deseja doar os produtos que não foram vendidos e estão próximos do vencimento|
-|**Dispositivos** |Tem um Motorola de última geração |
+|**Ocupação**| <br> Desempregado |
+|**Motivação** | <br> Deseja gastar pouco para conseguir se locomover para entrevistas de emprego|
+|**Dispositivos** |Tem um Xiaomi de 2019 |
 |**Aplicativos** |instagram, telegram|
 
 <br><br>
 
-|<img src="img/jessica.jpg" width="100" height="100">   | **Jéssica Prates** <br> 23 anos   |
+|<img src="img/jessica.jpg" width="100" height="100">   | **Jéssica Prates** <br> 28 anos   |
 |:---------------------------------------:|:-------------------------------:|
-|**Ocupação**| <br> Estudante |
-|**Motivação** | <br> Após estar com as duas doses, deseja participar de doaçoes para fazer sua parte para ajudar os que precisam|
+|**Ocupação**| <br> Professora de ginástica |
+|**Motivação** | <br> Tem medo de pegar transportes públicos devido a covid, mas não possui carro|
 |**Dispositivos** |Tem um iphone de última geração |
 |**Aplicativos** |instagram, whatsapp, tik tok|
 
@@ -80,16 +70,15 @@ Com base na análise das personas foram identificadas as seguintes histórias de
 
 |EU COMO... `PERSONA`| QUERO/PRECISO ... `FUNCIONALIDADE` |PARA ... `MOTIVO/VALOR`                 |
 |--------------------|------------------------------------|----------------------------------------|
-|João Mendes  | criar um cadastro como coletor  | acessar a plataforma              |
-|João Mendes  | registrar um ponto de coleta   | atingir mais doadores             |
-|João Mendes  | registrar o tipo de produtos que recebe   | evitar doações de produtos que não tem um distribuidor definido             |
-|Anita Camões  | criar um cadastro como coletora   | acessar a plataforma              |
-|Anita Camões  | registrar um ponto de coleta   | atingir mais doadores             |
-|Anita Camões  | registrar a data da próxima distribuição   | conseguir ajuda de mais voluntários             |
-|Camila Themes  | encontrar pontos de coleta perto de sua residência   | marcar a coleta da doação            |
-|Fred Silva  | favoritar pontos de coleta perto de sua residência   | registrar os pontos onde a experiência de doação foi mais satisfatória             |
-|Griselda Barbosa  | ver contato de um ponto de coleta   | tirar dúvidas sobre melhor momento para a entrega e se há alguma restrição para pessoas com baixa mobilidade             |
-|Jéssica Prates  | ver contato de um ponto de coleta   | tirar dúvidas sobre como participar da entrega das doações             |
+|Usuário  | criar um cadastro como usuário  | acessar a plataforma              |
+|Usuário  | ver bicicletas disponíveis para datas específicas   | reservar uma bicicleta             |
+|Usuário  | filtrar a bicicleta por cor, modelo, avaliação e local   | escolher a melhor bicicleta            |
+|Usuário  | Reservar uma bicicleta   | usar a bicicleta na data marcada              |
+|Gestor  | criar, visualizar, editar e deletar bicicletas   | manter controle do inventário             |
+|Gestor  | criar, visualizar, editar e deletar usuários   | manter controle do acesso às bicicletas             |
+|Gestor  | criar, visualizar, editar e deletar gestores   | manter controle do acesso ao sistema             |
+|Gestor  | ver todos os usuários que reservaram uma bike   | encontrar responsáveis por danos a bicicleta             |
+| Gestor | ver todas as bicicletas que foram reservadas e por quais períodos   | acompanhar necessidade de manutenção            |
 
 <br><br>
 
@@ -103,21 +92,23 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|---------|
-|RF-001​​ | Permitir que o usuário crie cadastro como coletor​ | ALTA​​ |
-|RF-002 | Permitir que o usuário crie cadastro como doador​ | ALTA​​ |
-|RF-003​ | Permitir que o usuário efetue login​​ | ALTA​​ |
-|RF-004​​ | Permitir que o usuário efetue logout​​ | ALTA​​ |
-|RF-005​​ | Permitir que o usuário visualize um ponto de coleta​​ | ALTA |​​
-|RF-006​​ | Permitir que o usuário coletor cadastre um ponto de coleta​​ | ALTA​​ |
-|RF-007​​ | Permitir que o usuário coletor edite um ponto de coleta​​ | ALTA​ |​
-|RF-008​​ | Permitir que o usuário coletor delete um ponto de coleta​​ | ALTA |​​
-|RF-009 | Permitir que o usuário procure por estabelecimentos próximos de sua localização​​ | ALTA |
-|RF-010 | Permitir que o usuário coletor cadastre um evento de distribuição | MÉDIA |
-|RF-011 | Permitir que o usuário coletor edite um evento de distribuição | MÉDIA |​
-|RF-012​​ | Permitir que o usuário coletor delete um evento de distribuição | MÉDIA |​​
-|RF-013 | Permitir que o usuário filtre os pontos de coleta pelo tipo de doação que deseja fazer​​ | BAIXA​​ |
-|RF-014​​ | Permitir que o usuário envie mensagem para um ponto de coleta​​ | BAIXA​​ |
-|RF-015 | Permitir que o usuário doador favorite pontos de coleta​ | BAIXA |​
+|RF-001​​ | Permitir que o usuário crie cadastro​ | ALTA​​ |
+|RF-002 | Permitir que um gestor crie cadastro para outro​ | ALTA​​ |
+|RF-003​ | Permitir que o usuário/gestor efetue login​​ | ALTA​​ |
+|RF-004​​ | Permitir que o usuário/gestor efetue logout​​ | ALTA​​ |
+|RF-005​​ | Permitir que o usuário visualize uma lista das localidades​​ | ALTA |​​
+|RF-006​​ | Permitir que o usuário filtre a lista de bikes​​ | ALTA​​ |
+|RF-007​​ | Permitir que o usuário avalie uma bike | MÉDIA |​
+|RF-008​​ | Permitir que o usuário reserve uma bike | ALTA |​​
+|RF-009 | Permitir que o usuário veja suas reservas​​ | ALTA |
+|RF-010 | Permitir que o usuário cancele sua reserva | ALTA |
+|RF-011 | Permitir que o gestor crie uma bike | ALTA |​
+|RF-012 | Permitir que o gestor edite uma bike | ALTA |​
+|RF-013 | Permitir que o gestor delete uma bike | ALTA |​
+|RF-014 | Permitir que o gestor edite um usuário | ALTA |​
+|RF-015 | Permitir que o gestor delete um usuário | ALTA |​
+|RF-016​​ | Permitir que o gestor veja uma lista de usuários | ALTA |
+|RF-017 | Permitir que o gestor veja uma lista de bicicletas​ | ALTA |​
 
 <br>
 
@@ -126,14 +117,12 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |ID     | Descrição do Requisito  |Prioridade |
 |-------|-------------------------|-----------|
 |RNF-001| O sistema deve focado para o uso em mobile (mobile-first) | ALTO | 
-|RNF-002| O sistema deve funcionar nos principais browsers para mobile (chrome e safari) | ALTO | 
-|RNF-003| O sistema deve ser responsivo para rodar em um dispositivos móvel e web | MÉDIA | 
-|RNF-004| Deve possibilitar ser aberto através do facebook ou whatsapp para economizar plano de dados que podem ser muito limitados ou inexistentes |  MÉDIO | 
-|RNF-005| Deve seguir os padrões de acessibilidade |  MÉDIO | 
-|RNF-006| O formulário tem que ser de fácil preenchimento permitindo autocompletar| MÉDIO | 
-|RNF-007| As requisições devem ser leves para funcionar bem em áreas mais remotas | BAIXO | 
-|RNF-008| Deve exigir o mínimo de RAM possível para funcionar em aparelhos bem simples |  BAIXO | 
-|RNF-009| O sistema deve ser implementado na linguagem C# utilizando banco de dados MySQL | ALTO |
+|RNF-002| O sistema deve funcionar nos principais stemas operacionais mobile de forma nativa | ALTO | 
+|RNF-003| Deve seguir os padrões de acessibilidade |  MÉDIO | 
+|RNF-004| O formulário tem que ser de fácil preenchimento permitindo autocompletar| MÉDIO | 
+|RNF-005| As requisições devem ser leves para funcionar bem em áreas mais remotas | BAIXO | 
+|RNF-006| Deve exigir o mínimo de RAM possível para funcionar em aparelhos bem simples |  BAIXO | 
+|RNF-007| O sistema deve ser implementado na linguagem C# utilizando banco de dados MySQL | ALTO |
 
 <br><br>
 
@@ -143,7 +132,7 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 |ID| Restrição                                             |
 |--|-------------------------------------------------------|
-|01| O sistema não permite doações em dinheiro |
+|01| O sistema deve sempre ter pelo menos um gestor |
 |02| O projeto deverá ser entregue até o final do semestre |
 |03| O tamanho de armazenamento e quantidade de usuários deve caber nos planos de hospedagem gratuita        |
 |04| Não pode depender de uma internet rápida        |
@@ -158,15 +147,13 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 | Caso de Uso     | Descrição      |  
 |:----------------|:---------------|
-| Gerenciar Ponto de Coleta | <p> Permite que o usuário Coletor cadastre, altere ou delete um ponto de coleta. |
-| Gerenciar Evento de Coleta | <p> Permite que o usuário Coletor cadastre, altere ou delete um evento de coleta.|
+| Gerenciar Bicicletas | <p> Permite que o gestor cadastre, altere ou delete uma bicicleta. |
+| Gerenciar Usuários | <p> Permite que o gestor cadastre, altere ou delete um usuário.|
 | Cadastrar Usuário | <p> Permite ao usuário se cadastrar e autenticar no sistema.|
-| Visualizar um Ponto de Coleta | <p> Permite que o usuário Doador visualize um ponto de coleta.|
-| Contatar um Ponto de Coleta pelo Whatsapp  | <p> Permite que o usuário Doador envie uma mensagem via whatsapp <br>para o ponto de coleta selecionado.|
-| Manter Ponto de Coleta Favorito | <p> Permite ao usuário Doador favoritar e desfavoritar pontos de coleta e listar favoritos.|
-| Buscar Ponto de Coleta |<p> Permite que o usuário busque pontos de coleta por localização, nome ou<br> tipos de produtos que aceitam.|
-
-<!-- | Manter Doador | <p> Permite que o usuário Doador se cadastre, altere ou delete perifl.| -->
+| Visualizar bicicletas | <p> Permite que o usuário Doador visualize bicicletas.|
+| Buscar bicicletas |<p> Permite que o usuário busque bicicletas por localização, modelo, <br> avaliação ou cor.|
+| Reservar bicicleta | <p> Permite ao usuário reservar uma bicicleta por um período específico.|
+| Avaliar bicicleta | <p> Permite ao usuário avalie a bicicleta com uma nota de 1 a 5.|
 
 <br>
 
@@ -175,6 +162,6 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 |    Ator         |  Definição     |  
 |:----------------|:---------------|
-| Coletor | Cidadão que recebe doações para encaminhá-las a pessoas necessitadas<br> ou intermediar doações à uma instiutição|
-| Doador  | Cidadão que deseja realizar uma doação |
-| Sistema | Sistema que mantém cadastro de pontos de coleta de doações diversas |
+| Usuário | Cidadão reserva e avalia bicicletas|
+| Gestor  | Funcionário que controla o estado das bicicletas assim como o acesso ao sistema por usuários e outros gestores |
+| Sistema | Sistema que mantém cadastro de bicicletas e usuários |
