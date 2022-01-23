@@ -110,8 +110,6 @@ As ferramentas empregadas no projeto são:
 | Ferramentas de diagramação e projeto de interfaces | Figma| [figma.com/mapa-do-bem](https://www.figma.com/file/Am9uOV7d5cALEt0lydM26W/Onde-Doar-team-library?node-id=312%3A2)|
 | Ferramenta de criação dos diagramas do projeto | LucidChart | [lucid.app/mapa-do-bem](https://lucid.app/folder/invitations/accept/inv_0ab1d935-592a-491e-ae31-5a4b7a015589)| 
 
-<!-- | Documentos do projeto | Teams| [teams.com](https://teams.microsoft.com/_#/school/conversations/Grupo%2004%20-%20Doa%C3%A7%C3%A3o%20de%20alimentos?groupId=f3eea540-4f48-4502-97be-5c1864eecd76&threadId=19:2c749bce7ac14388aa8710cfe5551d46@thread.tacv2&ctx=channel) -->
-
 Com o intuito de economizar tempo e evitar o uso de múltiplas ferramentas com a mesma função, o grupo deu preferência para o uso das ferramentas já usadas e sugeridas pelo curso. 
 
 Por isso, usamos o teams/ microsoft para comunicação, apresentação e guardar documentos. Seguindo a mesma linha, mas também por ser uma ferramenta crucial no mercado de trabalho, decidimos pelo uso do Github tanto como repositório quanto como organizador de tarefas. 
