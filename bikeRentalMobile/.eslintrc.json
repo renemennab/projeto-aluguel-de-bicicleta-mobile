@@ -31,9 +31,9 @@
             "rules": {
                 "@typescript-eslint/no-use-before-define": "off",
                 "react/react-in-jsx-scope": "off",
-                "react/function-component-definition": [
+                "react/function-component-definition": ["error",
                     {
-                        "namedComponents": "function-expression"
+                        "namedComponents": "function-declaration"
                     }
                 ],
                 "func-names": "off",
