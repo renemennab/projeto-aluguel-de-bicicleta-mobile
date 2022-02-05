@@ -6,7 +6,7 @@ A interface foi projetada utilizando o processo de design centrado no usuário e
 
 ## Diagrama de fluxo
 <br><br>
-<img src="img/diagramas/Diagrama Fluxo.svg" width="500">
+<img src="img/diagramas/Diagrama de fluxo.svg" width="500">
 <br><br>
 O diagrama acima apresenta as diferentes açoões possíveis por tipo de usuário pela aplicação.
 
