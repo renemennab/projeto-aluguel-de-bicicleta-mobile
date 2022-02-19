@@ -9,6 +9,7 @@ import useColorScheme from "../hooks/useColorScheme";
 import HomeScreen from "../screens/home/homeScreen";
 import TabTwoScreen from "../screens/TabTwoScreen";
 import { RootTabParamList } from "../types";
+import { HomeTabBarIcon, TabTwoBarIcon } from "./BottomTabBarIcons";
 
 /**
  * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
@@ -45,28 +46,6 @@ function BottomTabNavigator() {
         })}
       />
     </BottomTab.Navigator>
-  );
-}
-
-function HomeTabBarIcon({ color }: { color: string }) {
-  return (
-    <FontAwesome
-      size={30}
-      style={{ marginBottom: -3 }}
-      name="home"
-      color={color}
-    />
-  );
-}
-
-function TabTwoBarIcon({ color }: { color: string }) {
-  return (
-    <FontAwesome
-      size={30}
-      style={{ marginBottom: -3 }}
-      name="code"
-      color={color}
-    />
   );
 }
 
