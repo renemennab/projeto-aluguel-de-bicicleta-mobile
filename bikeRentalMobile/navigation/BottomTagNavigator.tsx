@@ -8,7 +8,7 @@ import useColorScheme from "../hooks/useColorScheme";
 
 import HomeScreen from "../screens/home/homeScreen";
 import TabTwoScreen from "../screens/TabTwoScreen";
-import { RootTabParamList, RootTabScreenProps } from "../types";
+import { RootTabParamList } from "../types";
 
 /**
  * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
@@ -38,7 +38,7 @@ function BottomTabNavigator() {
       <BottomTab.Screen
         name="TabTwo"
         component={TabTwoScreen}
-        options={(props: RootTabScreenProps<"TabTwo">) => ({
+        options={() => ({
           title: "Tab Two",
           tabBarIcon: TabTwoBarIcon,
           headerRight: TabTwoHeader,
