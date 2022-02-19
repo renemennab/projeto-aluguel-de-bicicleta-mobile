@@ -1,5 +1,6 @@
 import { FontAwesome } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { useNavigation } from "@react-navigation/native";
 import { Pressable } from "react-native";
 
 import Colors from "../constants/Colors";
@@ -31,44 +32,61 @@ function BottomTabNavigator() {
         options={{
           title: "Home",
           headerShown: false,
-          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
+          tabBarIcon: HomeTabBarIcon,
         }}
       />
       <BottomTab.Screen
         name="TabTwo"
         component={TabTwoScreen}
-        options={({ navigation }: RootTabScreenProps<"HomeScreen">) => ({
+        options={(props: RootTabScreenProps<"TabTwo">) => ({
           title: "Tab Two",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Pressable
-              onPress={() => navigation.navigate("Modal")}
-              style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-              })}
-            >
-              <FontAwesome
-                name="info-circle"
-                size={25}
-                color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }}
-              />
-            </Pressable>
-          ),
+          tabBarIcon: TabTwoBarIcon,
+          headerRight: TabTwoHeader,
         })}
       />
     </BottomTab.Navigator>
   );
 }
 
-/**
- * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
- */
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>["name"];
-  color: string;
-}) {
-  return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />;
+function HomeTabBarIcon({ color }: { color: string }) {
+  return (
+    <FontAwesome
+      size={30}
+      style={{ marginBottom: -3 }}
+      name="home"
+      color={color}
+    />
+  );
 }
 
+function TabTwoBarIcon({ color }: { color: string }) {
+  return (
+    <FontAwesome
+      size={30}
+      style={{ marginBottom: -3 }}
+      name="code"
+      color={color}
+    />
+  );
+}
+
+function TabTwoHeader() {
+  const colorScheme = useColorScheme();
+  const navigation = useNavigation();
+  return (
+    <Pressable
+      onPress={() => navigation.navigate("Modal")}
+      style={({ pressed }) => ({
+        opacity: pressed ? 0.5 : 1,
+      })}
+    >
+      <FontAwesome
+        name="info-circle"
+        size={25}
+        color={Colors[colorScheme].text}
+        style={{ marginRight: 15 }}
+      />
+    </Pressable>
+  );
+}
 export default BottomTabNavigator;
