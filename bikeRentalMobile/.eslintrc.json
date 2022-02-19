@@ -4,7 +4,8 @@
             // enable the rule specifically for TypeScript files
             "files": [
                 "*.ts",
-                "*.tsx"
+                "*.tsx",
+                "*.d.ts"
             ],
             "env": {
                 "browser": true,
