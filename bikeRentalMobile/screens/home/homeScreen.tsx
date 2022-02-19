@@ -1,5 +1,6 @@
-import { ScrollView, Text, SafeAreaView, StyleSheet, View } from "react-native";
+import { Text, SafeAreaView } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+import styled from "styled-components/native";
 import Lamp from "./lamp";
 import Logo from "./logo";
 import { getLoggedInUser } from "../../common/utils";
@@ -9,57 +10,64 @@ function HomePage(): JSX.Element {
   const isUserLoggedIn = getLoggedInUser();
 
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <ScrollView contentContainerStyle={styles.HomeScreenContainer}>
+    <SafeAreaView style={{ flex: 1 }}>
+      <HomeScreenContainer>
         {isUserLoggedIn ? null : (
           <>
-            <View style={styles.Banner}>
+            <Banner>
               <Logo />
-            </View>
-            <View style={styles.LampContainer}>
+            </Banner>
+            <LampContainer>
               <Lamp />
               <Text>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </Text>
-            </View>
-            <View style={styles.LampContainer}>
+            </LampContainer>
+            <TimeContainer>
               <Text>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </Text>
               <MaterialIcons name="attach-money" size={84} color="black" />
-            </View>
+            </TimeContainer>
           </>
         )}
         <OptionsList />
-      </ScrollView>
+      </HomeScreenContainer>
     </SafeAreaView>
   );
 }
 
 export default HomePage;
-const styles = StyleSheet.create({
-  safeArea: { flex: 1 },
-  HomeScreenContainer: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
-  },
-  Banner: {
-    width: "100%",
-    height: 400,
-    backgroundColor: "#f7d08a",
-    display: "flex",
-    justifyContent: "center",
+
+const HomeScreenContainer = styled.ScrollView.attrs(() => ({
+  contentContainerStyle: {
     alignItems: "center",
   },
-  LampContainer: {
-    width: "50%",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
-    marginTop: 20,
-  },
-});
+}))`
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 40px;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+`;
+
+const Banner = styled.View`
+  width: 100%;
+  height: 400px;
+  min-height: 50%;
+  background-color: #f7d08a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const LampContainer = styled.View`
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 20px;
+`;
+const TimeContainer = styled(LampContainer)``;
