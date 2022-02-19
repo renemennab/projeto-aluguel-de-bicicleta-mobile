@@ -7,7 +7,7 @@ interface Props {
   text?: string;
 }
 
-const ConfirmationDialog = function ({
+function ConfirmationDialog({
   onDelete,
   onCancel,
   text = "",
@@ -36,7 +36,7 @@ const ConfirmationDialog = function ({
       </div>
     </StyledConfirmationDialog>
   );
-};
+}
 
 ConfirmationDialog.defaultProps = {
   text: "remove",
