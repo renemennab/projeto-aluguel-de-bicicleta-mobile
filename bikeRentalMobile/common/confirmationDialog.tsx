@@ -1,5 +1,6 @@
 import React from "react";
-import styled from "styled-components";
+import { View } from "react-native";
+import styled from "styled-components/native";
 
 interface Props {
   onDelete: () => void;
@@ -14,8 +15,8 @@ function ConfirmationDialog({
 }: Props): JSX.Element {
   return (
     <StyledConfirmationDialog className="confirmationDialog">
-      <div className="confirmationDialog--backdrop" />
-      <div className="confirmationDialog--container">
+      <View className="confirmationDialog--backdrop" />
+      <View className="confirmationDialog--container">
         <span className="confirmationDialog--container__text">
           Are you sure you want to {text}?
         </span>
@@ -33,7 +34,7 @@ function ConfirmationDialog({
         >
           Cancel
         </button>
-      </div>
+      </View>
     </StyledConfirmationDialog>
   );
 }
@@ -44,7 +45,7 @@ ConfirmationDialog.defaultProps = {
 
 export default ConfirmationDialog;
 
-const StyledConfirmationDialog = styled.div`
+const StyledConfirmationDialog = styled.View`
   width: 100vw;
   height: 100vh;
   position: fixed;
