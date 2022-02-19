@@ -24,7 +24,7 @@ function BottomTabNavigator() {
     <BottomTab.Navigator
       initialRouteName="HomeScreen"
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,
+        tabBarActiveTintColor: Colors[colorScheme].yellow,
       }}
     >
       <BottomTab.Screen
@@ -62,7 +62,7 @@ function TabTwoHeader() {
       <FontAwesome
         name="info-circle"
         size={25}
-        color={Colors[colorScheme].text}
+        color={Colors[colorScheme].black}
         style={{ marginRight: 15 }}
       />
     </Pressable>
