@@ -1,6 +1,5 @@
 import { AxiosError } from "axios";
 import { Dispatch } from "redux";
-import jwtDecode from "jwt-decode";
 import setGlobalNotification from "../actions/globalNotificationActions";
 
 export function handleGoBack(history): void {
@@ -56,25 +55,3 @@ export const SESSION_DATA = {
   TOKEN: "token",
   PROFILE: "profile",
 };
-
-export function getLoggedInUser(): IlocalStorageProfile {
-  const profileString = window?.localStorage?.getItem(SESSION_DATA.PROFILE);
-  const profile = profileString ? JSON.parse(profileString) : null;
-  return profile;
-}
-
-interface IDecodedToken {
-  name: string;
-  exp: number;
-}
-
-export function checkIfTokenIsExpired(): boolean {
-  const token = getLoggedInUser()?.token;
-  if (!token) return true;
-
-  const decodedToken = jwtDecode<IDecodedToken>(token);
-  const timeNowInMilisseconds = new Date().getTime();
-  const tokenExpireDateInMilisseconds = decodedToken.exp * 1000;
-  if (tokenExpireDateInMilisseconds < timeNowInMilisseconds) return true;
-  return false;
-}
