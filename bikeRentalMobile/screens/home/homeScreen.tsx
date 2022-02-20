@@ -1,22 +1,29 @@
 import { Text, SafeAreaView } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import styled from "styled-components/native";
+import { useState, useEffect } from "react";
 import Lamp from "./lamp";
 import Logo from "./logo";
-import { getLoggedInUser } from "../../common/utils";
 import OptionsList from "./optionsList";
+import { getLoggedInUser } from "../../services/loggedInServices";
 
 function HomePage(): JSX.Element {
-  const isUserLoggedIn = getLoggedInUser();
-
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    getLoggedInUser().then((response) => {
+      setUser(response ? JSON.parse(response?.result) : response);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  console.log("home user", user);
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <HomeScreenContainer>
-        {isUserLoggedIn ? null : (
+        <Banner>
+          <Logo />
+        </Banner>
+        {user ? null : (
           <>
-            <Banner>
-              <Logo />
-            </Banner>
             <LampContainer>
               <Lamp />
               <Text>
