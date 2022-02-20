@@ -48,7 +48,7 @@ interface ISignupParams extends ILoginParams {
 }
 
 interface IlocalStorageProfile {
-  result: IStorageResult;
+  result: string;
   token: string;
 }
 

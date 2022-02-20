@@ -38,16 +38,9 @@
                     }
                 ],
                 "func-names": "off",
+                "no-underscore-dangle": "off",
                 "prettier/prettier": [
                     "error"
-                ],
-                "no-underscore-dangle": [
-                    "error",
-                    {
-                        "allow": [
-                            "_id"
-                        ]
-                    }
                 ]
             }
         },
