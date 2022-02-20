@@ -58,7 +58,7 @@ export const SESSION_DATA = {
 };
 
 export function getLoggedInUser(): IlocalStorageProfile {
-  const profileString = window.localStorage.getItem(SESSION_DATA.PROFILE);
+  const profileString = window?.localStorage?.getItem(SESSION_DATA.PROFILE);
   const profile = profileString ? JSON.parse(profileString) : null;
   return profile;
 }
