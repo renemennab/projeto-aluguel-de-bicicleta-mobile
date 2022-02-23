@@ -126,17 +126,6 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 <br><br>
 
-## Matriz de Rastreabilidade
-
-Com o objetivo de mapear e explicitar as dependências internas e externas do projeto, desenvolvemos uma matriz de rastreabilidade de requisitos (_Requirements Traceability Matrix_ - RTM). 
-
-Esse tipo de ferramenta facilita a visualização do relacionamento entre requisitos, artefatos e stakeholders,  permitindo rastrear a ligação entre eses elementos. Esse rastreamento, por sua vez, é essencial para gerenciar a evolução do projeto, uma vez que permite monitorear, com mais clareza, o impacto gerado por mudanças solicitadas ao longo do desenvolvimento do produto.
-
-A [matriz que elaboramos](https://docs.google.com/spreadsheets/d/1IjKcDnUtN5G3vvxWoMcbk0O1e0gSDn-CIqAM-QKRxuE/edit?usp=sharing) está em constante atualização e será atualizada à medida em que avancemos com nosso projeto. Veja [aqui](https://docs.google.com/spreadsheets/d/1IjKcDnUtN5G3vvxWoMcbk0O1e0gSDn-CIqAM-QKRxuE/edit?usp=sharing) nossa RTM.
-
-
-<br><br>
-
 ## Restrições
 
 O projeto está restrito pelos itens apresentados na tabela a seguir.
@@ -176,3 +165,16 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 | Usuário | Cidadão reserva e avalia bicicletas|
 | Gestor  | Funcionário que controla o estado das bicicletas assim como o acesso ao sistema por usuários e outros gestores |
 | Sistema | Sistema que mantém cadastro de bicicletas e usuários |
+  
+   
+ <br><br>
+
+## Matriz de Rastreabilidade
+
+Com o objetivo de mapear e explicitar as dependências internas e externas do projeto, desenvolvemos uma matriz de rastreabilidade de requisitos (_Requirements Traceability Matrix_ - RTM). 
+
+Esse tipo de ferramenta facilita a visualização do relacionamento entre requisitos, artefatos e stakeholders,  permitindo rastrear a ligação entre eses elementos. Esse rastreamento, por sua vez, é essencial para gerenciar a evolução do projeto, uma vez que permite monitorar, com mais clareza, o impacto gerado por mudanças solicitadas ao longo do desenvolvimento do produto.
+
+A matriz que elaboramos está em constante atualização e será atualizada à medida em que avancemos com nosso projeto.
+Veja [aqui](https://docs.google.com/spreadsheets/d/1IjKcDnUtN5G3vvxWoMcbk0O1e0gSDn-CIqAM-QKRxuE/edit?usp=sharing) nossa RTM.
+</br> [INSERIR IMAGEM]
