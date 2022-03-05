@@ -1,6 +1,5 @@
 import { MaterialIcons } from "@expo/vector-icons";
 import React, { useState } from "react";
-import { GestureResponderEvent } from "react-native";
 import { useDispatch } from "react-redux";
 import styled from "styled-components/native";
 import { loginUser } from "../../actions/userActions";
@@ -21,8 +20,7 @@ function Login({ navigation }: RootStackScreenProps<"Login">): JSX.Element {
   const [password, setPassword] = useState(``);
   const [userNotFound, setUserNotFound] = useState(false);
   const dispatch = useDispatch();
-  function handleLogin(event: GestureResponderEvent): void {
-    event.preventDefault();
+  function handleLogin(): void {
     dispatch(loginUser({ email, password }, navigation, setUserNotFound));
   }
 
@@ -37,10 +35,7 @@ function Login({ navigation }: RootStackScreenProps<"Login">): JSX.Element {
           setPassword={setPassword}
           isLogin
         />
-        <SubmitPressable
-          style={{ marginTop: 50 }}
-          onPress={(event) => handleLogin(event)}
-        >
+        <SubmitPressable style={{ marginTop: 50 }} onPress={handleLogin}>
           <SubmitPressableText>Login</SubmitPressableText>
           <MaterialIcons size={30} name="login" color="white" />
         </SubmitPressable>
