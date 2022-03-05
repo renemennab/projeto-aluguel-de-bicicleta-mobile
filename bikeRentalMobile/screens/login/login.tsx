@@ -40,7 +40,7 @@ function Login({ navigation }: RootStackScreenProps<"Login">): JSX.Element {
       </StyledForm>
 
       {userNotFound ? <Text>USER NOT FOUND</Text> : null}
-      <Pressable to={ROUTES.SIGNUP}>
+      <Pressable onPress={() => navigation.replace(ROUTES.SIGNUP)}>
         <Text>Need to create an account? Sign up here!</Text>
       </Pressable>
     </StyledLogin>
