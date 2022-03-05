@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components/native";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 // import { FontAwesome } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -9,10 +9,7 @@ import { SELECTED_BIKE_REDUCER_OPTIONS } from "../../reducers/selectedBikeReduce
 import { LOGGED_USER_REDUCER_OPTIONS } from "../../reducers/loggedUser";
 import { SELECTED_USER_REDUCER_OPTIONS } from "../../reducers/selectedUserReducer";
 import Colors from "../../constants/Colors";
-import {
-  checkIfTokenIsExpired,
-  getLoggedInUser,
-} from "../../services/loggedInServices";
+import { checkIfTokenIsExpired } from "../../services/loggedInServices";
 
 interface ItemProps {
   to: string;
@@ -23,13 +20,16 @@ function OptionsList(): JSX.Element {
   const [showDialog, setShowDialog] = useState(false);
   const [userIsLogged, setUserIsLogged] = useState(false);
   const [userIsManager, setUserIsManager] = useState(false);
-  const [user, setUser] = useState(null);
+  const { loggedUser } = useSelector(
+    (state: { loggedUser: IlocalStorageProfile }) => state
+  );
+  const [user, setUser] = useState(loggedUser?.result);
+
   useEffect(() => {
-    getLoggedInUser().then((response) => {
-      setUser(response ? JSON.parse(response?.result) : response);
-    });
+    setUser(loggedUser?.result);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [loggedUser]);
   const dispatch = useDispatch();
   console.log("show dialog", showDialog);
 
