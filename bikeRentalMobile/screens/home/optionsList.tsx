@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components/native";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
-// import { FontAwesome } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { SELECTED_BIKE_REDUCER_OPTIONS } from "../../reducers/selectedBikeReducer";
 import { LOGGED_USER_REDUCER_OPTIONS } from "../../reducers/loggedUser";
@@ -82,7 +81,7 @@ function OptionsList(): JSX.Element {
     listData.push({
       text: "My reservations",
       to: "reservations",
-      icon: "calendar",
+      icon: "calendar-today",
     });
   }
   return (
