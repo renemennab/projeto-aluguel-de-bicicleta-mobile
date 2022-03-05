@@ -10,7 +10,8 @@ export const StyledPressable = styled.Pressable`
 `;
 
 export const StyledLabel = styled.Text`
-  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-bottom: 10px;
   display: flex;
   width: 100%;
   color: ${Colors.light.black};
@@ -25,6 +26,8 @@ export const StyledInput = styled.TextInput`
   border: 1px solid ${Colors.light.gray};
   padding: 8px;
   height: 40px;
+  width: 100%;
+  // TODO: FIX INPUT STATES
   &:focus-visible,
   &:active {
     border: 1px solid ${Colors.light["dark-blue"]};
@@ -60,4 +63,21 @@ export const FilterInput = styled.TextInput`
   margin-bottom: 20px;
   border: 1px solid ${Colors.light.black};
   padding-left: 16px;
+`;
+export const SubmitPressable = styled.Pressable`
+  width: 100%;
+  border-radius: 35px;
+  margin-bottom: 20px;
+  background: ${Colors.light["dark-blue"]};
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+`;
+
+export const SubmitPressableText = styled.Text`
+  color: white;
+  font-size: 20px;
+  margin-right: 8px;
 `;

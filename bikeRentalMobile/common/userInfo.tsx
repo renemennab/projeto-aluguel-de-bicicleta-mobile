@@ -52,11 +52,10 @@ function UserInfo({
           onChangeText={(value) => setPassword(value)}
         />
         <ShowPasswordPressable onPress={(event) => handleShowPassword(event)}>
-          {showPassword ? (
-            <Ionicons name="eye-off-outline" />
-          ) : (
-            <Ionicons name="eye" />
-          )}
+          <Ionicons
+            name={showPassword ? "eye-off-outline" : "eye"}
+            size={eyeSize}
+          />
         </ShowPasswordPressable>
       </PasswordContainer>
     </>
@@ -71,7 +70,10 @@ export default UserInfo;
 
 const PasswordContainer = styled.View`
   position: relative;
+  width: 100%;
 `;
+
+const eyeSize = 30;
 const ShowPasswordPressable = styled.Pressable`
   position: absolute;
   top: 60%;
@@ -80,5 +82,5 @@ const ShowPasswordPressable = styled.Pressable`
   background: transparent;
   font-size: 20px;
   color: ${Colors.light["dark-gray"]};
-  /* transform: translateY(-50%); */
+  transform: translateY(-${eyeSize / 2}px);
 `;
