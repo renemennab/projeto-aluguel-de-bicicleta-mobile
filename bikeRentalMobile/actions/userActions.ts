@@ -32,6 +32,7 @@ export const loginUser =
       );
       navigation.replace("Root");
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log("login user error", error);
       setUserNotFound(true);
     }
