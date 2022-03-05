@@ -25,7 +25,9 @@ function OptionsList(): JSX.Element {
   const [userIsManager, setUserIsManager] = useState(false);
   const [user, setUser] = useState(null);
   useEffect(() => {
-    getLoggedInUser().then((result) => setUser(result));
+    getLoggedInUser().then((response) => {
+      setUser(response ? JSON.parse(response?.result) : response);
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const dispatch = useDispatch();
@@ -47,13 +49,13 @@ function OptionsList(): JSX.Element {
     console.log("options user", user);
     if (user) {
       setUserIsLogged(true);
-      if (user.result.isManager) setUserIsManager(true);
+      if (user.result?.isManager) setUserIsManager(true);
       if (checkIfTokenIsExpired()) {
         handleLogOut();
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [user]);
 
   function handleLogOut(): void {
     dispatch({ type: LOGGED_USER_REDUCER_OPTIONS.LOGOUT_USER });
