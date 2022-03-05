@@ -9,7 +9,8 @@ export async function getLoggedInUser(): Promise<IlocalStorageProfile> {
   return results.rows._array[0];
 }
 
-export const setLoggedInUser = async (param: IlocalStorageProfile) => {
+export const setLoggedInUser = async (param: IlocalStorageProfile | null) => {
+  if (!param) return;
   // there should only be one user logged in
   await DB_EXEC(`delete from ${SESSION_DATA.PROFILE}`);
   let results;
