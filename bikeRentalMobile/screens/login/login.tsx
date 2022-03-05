@@ -25,7 +25,7 @@ function Login({ navigation }: RootStackScreenProps<"Login">): JSX.Element {
   }
 
   return (
-    <StyledLogin>
+    <StyledLogin behavior="padding">
       <PageHeader pageName="Login" navigation={navigation} />
       <StyledForm>
         <UserInfo
@@ -66,7 +66,7 @@ const StyledUserNotFound = styled.Text`
   margin-top: 40px;
   align-self: center;
 `;
-const StyledLogin = styled.View`
+const StyledLogin = styled.KeyboardAvoidingView`
   padding: ${defaultPadding}px;
   display: flex;
   flex-direction: column;
