@@ -51,6 +51,10 @@ interface IlocalStorageProfile {
   result: string;
   token: string;
 }
+interface UserObject {
+  result: IStorageResult;
+  token: string;
+}
 
 interface IStorageResult extends ISignupParams {
   isManager: boolean;

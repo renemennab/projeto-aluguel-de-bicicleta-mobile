@@ -23,7 +23,7 @@ function OptionsList(): JSX.Element {
   const [userIsLogged, setUserIsLogged] = useState(false);
   const [userIsManager, setUserIsManager] = useState(false);
   const { loggedUser } = useSelector(
-    (state: { loggedUser: IlocalStorageProfile }) => state
+    (state: { loggedUser: UserObject }) => state
   );
   const [user, setUser] = useState(loggedUser?.result);
 
@@ -50,7 +50,7 @@ function OptionsList(): JSX.Element {
   useEffect(() => {
     if (user) {
       setUserIsLogged(true);
-      if (user.result?.isManager) setUserIsManager(true);
+      if (user.isManager) setUserIsManager(true);
       checkIfTokenIsExpired().then((response) => response && handleLogOut());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

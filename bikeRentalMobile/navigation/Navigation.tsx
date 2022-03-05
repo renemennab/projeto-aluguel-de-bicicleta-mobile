@@ -23,7 +23,7 @@ export default function Navigation({
 }) {
   const dispatch = useDispatch();
   const { loggedUser } = useSelector(
-    (state: { loggedUser: IlocalStorageProfile }) => state
+    (state: { loggedUser: UserObject }) => state
   );
   React.useEffect(() => {
     if (!loggedUser) {

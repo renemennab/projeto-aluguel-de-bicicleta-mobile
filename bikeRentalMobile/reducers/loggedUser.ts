@@ -6,16 +6,16 @@ export const LOGGED_USER_REDUCER_OPTIONS = {
 const optionValues = Object.values(LOGGED_USER_REDUCER_OPTIONS);
 
 interface IAction {
-  payload: IlocalStorageProfile | null;
+  payload: UserObject | null;
   type: typeof optionValues[number];
 }
 
 const defaultAction = { type: "", payload: null };
 
 const loggedUserReducer = (
-  loggedUser: IlocalStorageProfile | null = null,
+  loggedUser: UserObject | null = null,
   action: IAction = defaultAction
-): IlocalStorageProfile | null => {
+): UserObject | null => {
   const { LOGIN_USER, LOGOUT_USER } = LOGGED_USER_REDUCER_OPTIONS;
   switch (action.type) {
     case LOGIN_USER:

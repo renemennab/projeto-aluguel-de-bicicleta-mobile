@@ -4,14 +4,14 @@ import { SESSION_DATA } from "../common/utils";
 
 const DB_EXEC = Database.getConnection();
 
-export async function getLoggedInUser(): Promise<IlocalStorageProfile> {
+export async function getLoggedInUser(): Promise<UserObject> {
   const results = await DB_EXEC(`select * from ${SESSION_DATA.PROFILE}`);
   const userObject = results.rows._array[0];
   if (userObject?.result) userObject.result = JSON.parse(userObject?.result);
   return userObject;
 }
 
-export const setLoggedInUser = async (param: IlocalStorageProfile | null) => {
+export const setLoggedInUser = async (param: UserObject | null) => {
   if (!param) return;
   // there should only be one user logged in
   await DB_EXEC(`delete from ${SESSION_DATA.PROFILE}`);

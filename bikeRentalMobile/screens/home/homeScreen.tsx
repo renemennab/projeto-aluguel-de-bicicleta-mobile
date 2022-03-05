@@ -8,7 +8,7 @@ import OptionsList from "./optionsList";
 
 function HomePage(): JSX.Element {
   const { loggedUser } = useSelector(
-    (state: { loggedUser: IlocalStorageProfile }) => state
+    (state: { loggedUser: UserObject }) => state
   );
 
   return (
