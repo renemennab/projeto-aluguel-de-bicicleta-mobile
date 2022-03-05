@@ -2,14 +2,6 @@ import { AxiosError } from "axios";
 import { Dispatch } from "redux";
 import setGlobalNotification from "../actions/globalNotificationActions";
 
-export function handleGoBack(history): void {
-  const currentUrl = history.location.pathname;
-  const splitUrl = currentUrl.split("/");
-  splitUrl.pop();
-  const newUrl = splitUrl.join("/");
-  history.push(newUrl);
-}
-
 export const checkIfFilterMatchesBike = (
   bike: IBike,
   searchFilter: string
