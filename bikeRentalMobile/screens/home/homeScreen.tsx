@@ -1,28 +1,23 @@
 import { Text, SafeAreaView } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import styled from "styled-components/native";
-import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import Lamp from "./lamp";
 import Logo from "./logo";
 import OptionsList from "./optionsList";
-import { getLoggedInUser } from "../../services/loggedInServices";
 
 function HomePage(): JSX.Element {
-  const [user, setUser] = useState(null);
-  useEffect(() => {
-    getLoggedInUser().then((response) => {
-      setUser(response ? JSON.parse(response?.result) : response);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  console.log("home user", user);
+  const { loggedUser } = useSelector(
+    (state: { loggedUser: IlocalStorageProfile }) => state
+  );
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <HomeScreenContainer>
         <Banner>
           <Logo />
         </Banner>
-        {user ? null : (
+        {loggedUser ? null : (
           <>
             <LampContainer>
               <Lamp />
