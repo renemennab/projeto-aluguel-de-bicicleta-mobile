@@ -1,18 +1,19 @@
 import { Dispatch } from "redux";
-import { RouteComponentProps } from "react-router-dom";
 import { AxiosError } from "axios";
-import * as api from "../api";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import * as api from "../services/api";
 import { LOGGED_USER_REDUCER_OPTIONS } from "../reducers/loggedUser";
 import { USERS_REDUCER_OPTIONS } from "../reducers/usersReducer";
 import { SELECTED_USER_REDUCER_OPTIONS } from "../reducers/selectedUserReducer";
 import { SEARCH_FILTERS_REDUCER_OPTIONS } from "../reducers/searchFiltersReducer";
 import setGlobalNotification from "./globalNotificationActions";
 import { handleErrors, ROUTES } from "../common/utils";
+import { RootStackParamList } from "../types";
 
 export const loginUser =
   (
     params: ILoginParams,
-    history: RouteComponentProps["history"],
+    navigation: NativeStackNavigationProp<RootStackParamList, "Login">,
     setUserNotFound: (status: boolean) => void
   ) =>
   async (dispatch: Dispatch): Promise<void> => {
@@ -24,7 +25,7 @@ export const loginUser =
         `Hello, ${data.result.firstName}`,
         "success"
       );
-      history.push("/");
+      navigation.replace("Root");
     } catch (error) {
       setUserNotFound(true);
     }
@@ -33,7 +34,7 @@ export const loginUser =
 export const createUser =
   (
     params: ISignupParams,
-    history: RouteComponentProps["history"],
+    navigation: NativeStackNavigationProp<RootStackParamList, "Login">,
     login?: boolean
   ) =>
   async (dispatch: Dispatch): Promise<void> => {
@@ -45,14 +46,14 @@ export const createUser =
           type: LOGGED_USER_REDUCER_OPTIONS.LOGIN_USER,
           payload: data,
         });
-        history.push("/");
+        navigation.replace("Root");
         setGlobalNotification(
           dispatch,
           `Welcome ${data.result.firstName}`,
           "success"
         );
       } else {
-        history.push(ROUTES.USERS);
+        navigation.replace(ROUTES.USERS);
         setGlobalNotification(dispatch, `User created sucessfuly`, "success");
       }
     } catch (error) {
@@ -86,7 +87,10 @@ export const fetchUser =
   };
 
 export const updateUser =
-  (updatedUser: IUpdateUserParams, history: RouteComponentProps["history"]) =>
+  (
+    updatedUser: IUpdateUserParams,
+    navigation: NativeStackNavigationProp<RootStackParamList, "Login">
+  ) =>
   async (dispatch: Dispatch): Promise<void> => {
     try {
       const { data } = await api.updateUser(updatedUser);
@@ -95,7 +99,7 @@ export const updateUser =
         type: SELECTED_USER_REDUCER_OPTIONS.SET_SELECTED_USER,
         payload: data,
       });
-      history.push(`${ROUTES.USERS}/${updatedUser.userId}`);
+      navigation.replace(`${ROUTES.USERS}/${updatedUser.userId}`);
       setGlobalNotification(dispatch, `User updated sucessfuly`, "success");
     } catch (error) {
       handleErrors(dispatch, error as AxiosError);
