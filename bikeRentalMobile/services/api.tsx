@@ -2,11 +2,8 @@ import axios, { AxiosRequestConfig } from "axios";
 import { set } from "lodash";
 import API_PATHS from "./pathConstants";
 
-const isDev = process.env.NODE_ENV === "development";
 const API = axios.create({
-  baseURL: isDev
-    ? "http://localhost:5000/"
-    : "https://bike-rental-manager.herokuapp.com/",
+  baseURL: "https://bike-rental-manager.herokuapp.com/",
 });
 
 API.interceptors.request.use((req: AxiosRequestConfig) => {
@@ -85,7 +82,7 @@ export const createUser = (
   newUser: ISignupParams
 ): Promise<{ data: IlocalStorageProfile }> =>
   API.post(`${API_PATHS.USER}/${API_PATHS.SIGNUP}`, newUser);
-export const loginUser = (
+export const loginUser = async (
   user: ILoginParams
 ): Promise<{ data: IlocalStorageProfile }> =>
   API.post(`${API_PATHS.USER}/${API_PATHS.LOGIN}`, user);
