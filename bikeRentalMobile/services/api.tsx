@@ -84,7 +84,7 @@ export const createUser = (
   API.post(`${API_PATHS.USER}/${API_PATHS.SIGNUP}`, newUser);
 export const loginUser = async (
   user: ILoginParams
-): Promise<{ data: IlocalStorageProfile }> =>
+): Promise<{ data: UserObject }> =>
   API.post(`${API_PATHS.USER}/${API_PATHS.LOGIN}`, user);
 export const updateUser = (
   updateduser: IUpdateUserParams
