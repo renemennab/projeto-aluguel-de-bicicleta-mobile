@@ -1,7 +1,6 @@
 import { AntDesign } from "@expo/vector-icons";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React from "react";
-import { Text } from "react-native";
 import styled from "styled-components/native";
 import Colors from "../constants/Colors";
 import { RootStackParamList } from "../types";
@@ -16,13 +15,13 @@ function PageHeader({ pageName, navigation }: IProps): JSX.Element {
     <StyledPageHeader>
       <StyledBackArrow onPress={() => navigation.goBack()}>
         <AntDesign
-          size={30}
+          size={40}
           style={{ marginBottom: -3 }}
           name="arrowleft"
           color={Colors.light.red}
         />
       </StyledBackArrow>
-      <Text>{pageName}</Text>
+      <StyledPageTitle>{pageName}</StyledPageTitle>
     </StyledPageHeader>
   );
 }
@@ -30,9 +29,15 @@ function PageHeader({ pageName, navigation }: IProps): JSX.Element {
 export default PageHeader;
 const StyledBackArrow = styled.Pressable`
   color: ${Colors.light.red};
-  border: none;
-  background: transparent;
-  font-size: 20px;
 `;
 
-const StyledPageHeader = styled.View``;
+const StyledPageHeader = styled.View`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const StyledPageTitle = styled.Text`
+  font-size: 25px;
+  margin-left: 15px;
+`;
