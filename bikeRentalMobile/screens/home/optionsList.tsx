@@ -70,7 +70,7 @@ function OptionsList(): JSX.Element {
   ];
 
   if (!userIsLogged) {
-    listData = [{ text: "Login", to: "login", icon: "login" }];
+    listData = [{ text: "Login", to: "Login", icon: "login" }];
   } else if (userIsManager) {
     listData.push(
       { text: "Users", to: "users", icon: "users" },
