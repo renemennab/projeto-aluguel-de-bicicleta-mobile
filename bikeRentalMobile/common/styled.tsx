@@ -15,9 +15,6 @@ export const StyledLabel = styled.Text`
   display: flex;
   width: 100%;
   color: ${Colors.light.black};
-  &.column {
-    flex-direction: column;
-  }
 `;
 
 export const StyledInput = styled.TextInput`
@@ -27,28 +24,28 @@ export const StyledInput = styled.TextInput`
   padding: 8px;
   height: 40px;
   width: 100%;
-  // TODO: FIX INPUT STATES
-  &:focus-visible,
-  &:active {
-    border: 1px solid ${Colors.light["dark-blue"]};
-    outline-color: ${Colors.light["dark-blue"]};
-  }
-  &:read-only {
-    background-color: ${Colors.light.gray};
-  }
-  &[type="checkbox"],
-  &[type="radio"] {
-    height: auto;
-    margin-top: 0;
-    margin-right: 10px;
-    align-self: center;
-  }
-  &[type="checkbox"] {
-    margin: 0 10px;
-    height: 20px;
-    width: 20px;
-  }
 `;
+//   // TODO: FIX INPUT STATES
+//   &:focus-visible,
+//   &:active {
+//     border: 1px solid ${Colors.light["dark-blue"]};
+//     outline-color: ${Colors.light["dark-blue"]};
+//   }
+//   &:read-only {
+//     background-color: ${Colors.light.gray};
+//   }
+//   &[type="checkbox"],
+//   &[type="radio"] {
+//     height: auto;
+//     margin-top: 0;
+//     margin-right: 10px;
+//     align-self: center;
+//   }
+//   &[type="checkbox"] {
+//     margin: 0 10px;
+//     height: 20px;
+//     width: 20px;
+//   }
 export const StyledForm = styled.View`
   display: flex;
   flex-direction: column;
