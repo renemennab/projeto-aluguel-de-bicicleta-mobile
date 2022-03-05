@@ -9,7 +9,10 @@ import { SELECTED_BIKE_REDUCER_OPTIONS } from "../../reducers/selectedBikeReduce
 import { LOGGED_USER_REDUCER_OPTIONS } from "../../reducers/loggedUser";
 import { SELECTED_USER_REDUCER_OPTIONS } from "../../reducers/selectedUserReducer";
 import Colors from "../../constants/Colors";
-import { checkIfTokenIsExpired } from "../../services/loggedInServices";
+import {
+  checkIfTokenIsExpired,
+  logOutUser,
+} from "../../services/loggedInServices";
 
 interface ItemProps {
   to: string;
@@ -55,9 +58,11 @@ function OptionsList(): JSX.Element {
   }, [user]);
 
   function handleLogOut(): void {
-    dispatch({ type: LOGGED_USER_REDUCER_OPTIONS.LOGOUT_USER });
-    setUserIsLogged?.(false);
-    setShowDialog(false);
+    logOutUser().then(() => {
+      dispatch({ type: LOGGED_USER_REDUCER_OPTIONS.LOGOUT_USER });
+      setUserIsLogged?.(false);
+      setShowDialog(false);
+    });
   }
 
   let listData: ItemProps[] = [
