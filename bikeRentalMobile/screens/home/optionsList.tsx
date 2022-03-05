@@ -46,13 +46,10 @@ function OptionsList(): JSX.Element {
   }, []);
 
   useEffect(() => {
-    console.log("options user", user);
     if (user) {
       setUserIsLogged(true);
       if (user.result?.isManager) setUserIsManager(true);
-      if (checkIfTokenIsExpired()) {
-        handleLogOut();
-      }
+      checkIfTokenIsExpired().then((response) => response && handleLogOut());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
