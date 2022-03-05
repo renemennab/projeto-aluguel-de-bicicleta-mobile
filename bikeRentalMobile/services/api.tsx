@@ -1,17 +1,17 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { set } from "lodash";
+import { getLoggedInUser } from "./loggedInServices";
 import API_PATHS from "./pathConstants";
 
 const API = axios.create({
   baseURL: "https://bike-rental-manager.herokuapp.com/",
 });
 
-API.interceptors.request.use((req: AxiosRequestConfig) => {
-  const profile = localStorage.getItem("profile");
+API.interceptors.request.use(async (req: AxiosRequestConfig) => {
+  const profile = await getLoggedInUser();
   if (profile) {
-    set(req, "headers.Authorization", `Bearer ${JSON.parse(profile).token}`);
+    set(req, "headers.Authorization", `Bearer ${profile.token}`);
   }
-
   return req;
 });
 
