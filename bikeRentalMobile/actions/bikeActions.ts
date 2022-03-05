@@ -1,6 +1,6 @@
 import { AxiosError } from "axios";
 import { Dispatch } from "redux";
-import * as api from "../api";
+import * as api from "../services/api";
 import { handleErrors } from "../common/utils";
 import { BIKE_REDUCER_OPTIONS } from "../reducers/bikesReducer";
 import { SEARCH_FILTERS_REDUCER_OPTIONS } from "../reducers/searchFiltersReducer";

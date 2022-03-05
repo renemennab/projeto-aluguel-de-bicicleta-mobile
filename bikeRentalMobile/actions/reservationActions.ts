@@ -1,7 +1,7 @@
 import { AxiosError } from "axios";
 import { RouteComponentProps } from "react-router-dom";
 import { Dispatch } from "redux";
-import * as api from "../api";
+import * as api from "../services/api";
 import { handleErrors, ROUTES } from "../common/utils";
 import { RESERVATION_REDUCER_OPTIONS } from "../reducers/reservationsReducer";
 import { SELECTED_RESERVATION_REDUCER_OPTIONS } from "../reducers/selectedReservationReducer";
