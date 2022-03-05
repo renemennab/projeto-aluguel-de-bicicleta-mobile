@@ -1,11 +1,14 @@
 import jwtDecode from "jwt-decode";
+import { ResultSet, SQLResultSet } from "expo-sqlite";
 import Database from "./dbServices";
 import { SESSION_DATA } from "../common/utils";
 
 const DB_EXEC = Database.getConnection();
 
 export async function getLoggedInUser(): Promise<UserObject> {
-  const results = await DB_EXEC(`select * from ${SESSION_DATA.PROFILE}`);
+  const results = (await DB_EXEC(
+    `select * from ${SESSION_DATA.PROFILE}`
+  )) as SQLResultSet;
   const userObject = results.rows._array[0];
   if (userObject?.result) userObject.result = JSON.parse(userObject?.result);
   return userObject;
@@ -17,20 +20,22 @@ export const setLoggedInUser = async (param: UserObject | null) => {
   await DB_EXEC(`delete from ${SESSION_DATA.PROFILE}`);
   let results;
   try {
-    results = await DB_EXEC(
+    results = (await DB_EXEC(
       `insert into ${SESSION_DATA.PROFILE} (${SESSION_DATA.RESULT}, ${SESSION_DATA.TOKEN})
         values (?,?)`,
       [JSON.stringify(param.result), param.token]
-    );
+    )) as ResultSet;
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.log("setLoggedInUser error", error);
   }
-  return results?.rowsAffected;
+  // eslint-disable-next-line no-console
+  console.log(results?.rowsAffected);
 };
 
 export const logOutUser = async () => {
-  const results = await DB_EXEC(`delete from ${SESSION_DATA.PROFILE}`);
-  return results.rowsAffected;
+  (await DB_EXEC(`delete from ${SESSION_DATA.PROFILE}`)) as ResultSet;
+  //   console.log(results?.rowsAffected);
 };
 
 interface IDecodedToken {
