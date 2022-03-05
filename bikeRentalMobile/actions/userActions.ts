@@ -9,6 +9,7 @@ import { SEARCH_FILTERS_REDUCER_OPTIONS } from "../reducers/searchFiltersReducer
 import setGlobalNotification from "./globalNotificationActions";
 import { handleErrors, ROUTES } from "../common/utils";
 import { RootStackParamList } from "../types";
+import { setLoggedInUser } from "../services/loggedInServices";
 
 export const loginUser =
   (
@@ -17,8 +18,12 @@ export const loginUser =
     setUserNotFound: (status: boolean) => void
   ) =>
   async (dispatch: Dispatch): Promise<void> => {
+    setUserNotFound(false);
+
     try {
       const { data } = await api.loginUser(params);
+      await setLoggedInUser(data);
+
       dispatch({ type: LOGGED_USER_REDUCER_OPTIONS.LOGIN_USER, payload: data });
       setGlobalNotification(
         dispatch,
@@ -27,6 +32,7 @@ export const loginUser =
       );
       navigation.replace("Root");
     } catch (error) {
+      console.log("login user error", error);
       setUserNotFound(true);
     }
   };
