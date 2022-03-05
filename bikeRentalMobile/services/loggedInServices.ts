@@ -25,7 +25,7 @@ export const setLoggedInUser = async (param: IlocalStorageProfile) => {
   return results?.rowsAffected;
 };
 
-export const logOutUser = async (id: string) => {
+export const logOutUser = async () => {
   const results = await DB_EXEC(`delete from ${SESSION_DATA.PROFILE}`);
   return results.rowsAffected;
 };
