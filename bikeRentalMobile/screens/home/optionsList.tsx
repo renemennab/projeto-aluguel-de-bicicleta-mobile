@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 // import { FontAwesome } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
-// import ConfirmationDialog from "../../common/confirmationDialog";
 import { SELECTED_BIKE_REDUCER_OPTIONS } from "../../reducers/selectedBikeReducer";
 import { LOGGED_USER_REDUCER_OPTIONS } from "../../reducers/loggedUser";
 import { SELECTED_USER_REDUCER_OPTIONS } from "../../reducers/selectedUserReducer";
@@ -13,6 +12,7 @@ import {
   checkIfTokenIsExpired,
   logOutUser,
 } from "../../services/loggedInServices";
+import ConfirmationDialog from "../../common/confirmationDialog";
 
 interface ItemProps {
   to: string;
@@ -33,8 +33,8 @@ function OptionsList(): JSX.Element {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loggedUser]);
+
   const dispatch = useDispatch();
-  console.log("show dialog", showDialog);
 
   useEffect(() => {
     dispatch({
@@ -68,7 +68,6 @@ function OptionsList(): JSX.Element {
   let listData: ItemProps[] = [
     { text: "My Profile", to: "profile", icon: "person" },
     { text: "Bikes", to: "bikes", icon: "pedal-bike" },
-    { text: "Logout", to: "logout", icon: "logout" },
   ];
 
   if (!userIsLogged) {
@@ -91,13 +90,19 @@ function OptionsList(): JSX.Element {
       {listData.map((item) => (
         <OptionListItem item={item} key={item.text} />
       ))}
-      {/* {showDialog ? (
+      {user && (
+        <OptionListButton onPress={() => setShowDialog(true)}>
+          <ButtonText>Logout</ButtonText>
+          <MaterialIcons size={30} name="logout" color="white" />
+        </OptionListButton>
+      )}
+      {showDialog ? (
         <ConfirmationDialog
           onCancel={() => setShowDialog(false)}
           onDelete={() => handleLogOut()}
           text="logout"
         />
-      ) : null} */}
+      ) : null}
     </>
   );
 }
