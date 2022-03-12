@@ -1,36 +1,53 @@
-import { Text } from "react-native";
-import styled from "styled-components/native";
+import { Text, SafeAreaView } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+import styled from "styled-components/native";
+import { useSelector } from "react-redux";
 import Lamp from "./lamp";
 import Logo from "./logo";
-// import { getLoggedInUser } from "../common/utils";
-// import OptionsList from "./optionsList";
+import OptionsList from "./optionsList";
 
 function HomePage(): JSX.Element {
-  //   const isUserLoggedIn = getLoggedInUser();
+  const { loggedUser } = useSelector(
+    (state: { loggedUser: UserObject }) => state
+  );
 
   return (
-    <HomeScreenContainer>
-      <Banner>
-        <Logo />
-      </Banner>
-      <LampContainer>
-        <Lamp />
-        <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
-      </LampContainer>
-      <TimeContainer>
-        <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
-        <MaterialIcons name="attach-money" size={84} color="black" />
-      </TimeContainer>
-    </HomeScreenContainer>
+    <SafeAreaView style={{ flex: 1 }}>
+      <HomeScreenContainer>
+        <Banner>
+          <Logo />
+        </Banner>
+        {loggedUser ? null : (
+          <>
+            <LampContainer>
+              <Lamp />
+              <Text>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </Text>
+            </LampContainer>
+            <TimeContainer>
+              <Text>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </Text>
+              <MaterialIcons name="attach-money" size={84} color="black" />
+            </TimeContainer>
+          </>
+        )}
+        <OptionsList />
+      </HomeScreenContainer>
+    </SafeAreaView>
   );
 }
 
 export default HomePage;
-const HomeScreenContainer = styled.View`
+
+const HomeScreenContainer = styled.ScrollView.attrs(() => ({
+  contentContainerStyle: {
+    alignItems: "center",
+  },
+}))`
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding-bottom: 40px;
   width: 100%;
   height: 100%;
@@ -39,7 +56,7 @@ const HomeScreenContainer = styled.View`
 
 const Banner = styled.View`
   width: 100%;
-  height: 50%;
+  height: 400px;
   min-height: 50%;
   background-color: #f7d08a;
   display: flex;
@@ -56,40 +73,3 @@ const LampContainer = styled.View`
   margin-top: 20px;
 `;
 const TimeContainer = styled(LampContainer)``;
-const StyledHomePage = styled.View`
-  .homePage {
-    &--menuBtn {
-      position: fixed;
-      left: 20px;
-      top: 20px;
-      background: var(--yellow);
-      border-radius: 8px;
-      padding: 15px;
-      color: white;
-      border: none;
-      font-size: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    &--banner {
-    }
-    &--energy,
-    &--timeMoney {
-      width: 90%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 20px;
-      &__text {
-        color: var(--dark-gray);
-        width: 250px;
-      }
-    }
-    &--timeMoney {
-      &__text {
-        width: 200px;
-      }
-    }
-  }
-`;

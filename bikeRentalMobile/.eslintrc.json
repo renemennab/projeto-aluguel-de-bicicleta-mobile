@@ -4,7 +4,8 @@
             // enable the rule specifically for TypeScript files
             "files": [
                 "*.ts",
-                "*.tsx"
+                "*.tsx",
+                "*.d.ts"
             ],
             "env": {
                 "browser": true,
@@ -37,16 +38,10 @@
                     }
                 ],
                 "func-names": "off",
+                "react/jsx-no-bind": "off",
+                "no-underscore-dangle": "off",
                 "prettier/prettier": [
                     "error"
-                ],
-                "no-underscore-dangle": [
-                    "error",
-                    {
-                        "allow": [
-                            "_id"
-                        ]
-                    }
                 ]
             }
         },
