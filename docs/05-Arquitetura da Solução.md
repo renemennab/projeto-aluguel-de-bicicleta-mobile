@@ -17,7 +17,7 @@ Diagrama que ilustra as classes que compõem o sistema, bem como seus atributos,
 Diagrama que descreve o conjunto de entidades do sistema, seus atributos e relacionamentos.
 
 <p align="center">
-    <img src="img/diagramas/modelo-er.svg" width="700">
+    <img src="img/diagramas/modelo-er.drawio.png" width="700">
 </p>
 
 ## Esquema Relacional
