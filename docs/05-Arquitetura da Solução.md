@@ -17,7 +17,7 @@ Diagrama que ilustra as classes que compõem o sistema, bem como seus atributos,
 Diagrama que descreve o conjunto de entidades do sistema, seus atributos e relacionamentos.
 
 <p align="center">
-    <img src="img/diagramas/modelo-er.svg" width="700">
+    <img src="img/diagramas/modelo-er.drawio.png" width="700">
 </p>
 
 ## Esquema Relacional
@@ -25,7 +25,7 @@ Diagrama que descreve o conjunto de entidades do sistema, seus atributos e relac
 Esquema que representa o relacionamento entre as tabelas que armazenam os dados necessários ao sistema.
 
 <p align="center">
-    <img src="img/diagramas/esquema-relacional.svg" width="700">
+    <img src="img/diagramas/esquema-relacional.drawio.png" width="700">
 </p>
 
 ## Tecnologias Utilizadas
