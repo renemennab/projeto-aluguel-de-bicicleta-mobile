@@ -82,6 +82,28 @@ Com base na análise das personas foram identificadas as seguintes histórias de
 
 <br><br>
 
+## Modelagem do Processo de Negócio 
+
+### Análise da Situação Atual
+
+Não existe no mercado uma proposta de negócio que permita que uma pessoa física disponibilize sua bicicleta para aluguel. Atualmente, uma pessoa que deseje pagar pelo uso temporário de uma bike, precisa recorrer a serviços oferecidos através de parcerias entre entidades comerciais e órgãos estatais (Itaú, Estado de São Paulo). Tais serviços são limitados a áreas reduzidas, acessíveis a um público pequeno, e priorizam o uso para o lazer. 
+
+### Descrição Geral da Proposta
+
+Apresente aqui uma descrição da sua proposta abordando seus limites e suas ligações com as estratégias e objetivos do negócio. Apresente aqui as oportunidades de melhorias.
+
+### Processo Atual – ALUGUEL DE BICICLETAS 
+
+Apresente aqui o nome e as oportunidades de melhorias para o processo 1. Em seguida, apresente o modelo do processo 1, descrito no padrão BPMN. 
+
+![Processo 1](img/02-bpmn-proc1.png)
+
+### Processo Proposto – NOSSA BIKE
+
+Apresente aqui o nome e as oportunidades de melhorias para o processo 2. Em seguida, apresente o modelo do processo 2, descrito no padrão BPMN.
+
+![Processo 2](img/02-bpmn-proc2.png)
+
 ## Requisitos
 
 As tabelas que se seguem apresentam os requisitos funcionais e não funcionais que detalham o escopo do projeto.
