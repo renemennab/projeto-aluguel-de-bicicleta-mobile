@@ -16,28 +16,39 @@ Abaixo apresentamos o detalhamento e descrição dos wireframes mostrados no flu
 
 ### Componentes comuns a todas as telas
 
-- Rodapé: onde estão dispostos os botões 'Lista' para listar pontos de coleta, 'Mapa' para visualizar
-pontos de coleta no mapa e 'Menu' para acessar o menu da aplicação. <br> <br>
+- Cabeçalho: Onde fica disponível a opção "voltar" em todas as páginas e, na tela de perfil do usuário, opção para ir à tela de edição de cadastro.   <br> <br>
 
 <p>
- <img src="img/wireframes/rodape.png" width="180" hspace="40">
- <img src="img/wireframes/menu.png" width="180" hspace="40">
+ <img src="img\wireframes\Wireframe atulizado\doc04-Header.jpeg" height="360" hspace="40">
+ <img src="img\wireframes\Wireframe atulizado\doc04-Header2.jpg" height="360" hspace="40">
 </p>
 <br>
 
-### Tela - Home
-Apresenta mapa com pontos de coleta próximos à localização do usuário.
+- Logo: Identidade visual do produto, presente em diversas telas.   <br> <br>
+
+<p>
+ <img src="img\wireframes\Wireframe atulizado\doc04-Logo.jpeg" height="360" hspace="40">
+</p>
+<br>
+
+- Título: Sua função principal é de indicar qual tela você está navegando no momento.    <br> <br>
+
+<p>
+ <img src="img\wireframes\Wireframe atulizado\doc04-Titulo.jpeg" height="360" hspace="40">
+</p>
+
+### Tela - Menu Principal
+Apresenta diversas opções de navegação para o usuário usufruir do produto.
 
 Os componentes encontrados na tela são:
- - Mapa
- - Barra de pesquisa
- - Informações do ponto selecionado
- - Rodapé
+ - Meu Perfil
+ - Bikes
+ - My Reservations
+ - Logout
 <br> <br>
 
 <p>
- <img src="img/wireframes/home-1.png" width="180" hspace="40">
- <img src="img/wireframes/home-2.png" width="180" hspace="40">
+ <img src="img\wireframes\Wireframe atulizado\MainMenu.jpeg" height="360" hspace="40">
 </p>
 
 <br>
@@ -56,16 +67,18 @@ Os componentes encontrados na tela são:
 
 <br>
 
-### Tela - Visualizar Ponto ou Evento de Coleta
+### Tela - Visualizar Pontos ou Bikes alugadas
 Apresenta informações do ponto ou evento de coleta selecionado
 
 Os componentes encontrados na tela são:
  - Dados do ponto ou evento de coleta
- - Botões "Editar" e "Deletar"
+ - Informações sobre a bicicleta
+ - Valores, preços e duração do aluguel
 <br><br>
 
 <p>
- <img src="img/wireframes/visualizar.png" width="180" hspace="40">
+ <img src="img\wireframes\Wireframe atulizado\MyBikes1.jpeg" height="360" hspace="40">
+ <img src="img\wireframes\Wireframe atulizado\MyBikes2.jpeg" height="360"" hspace="40">
 </p>
 
 <br>
@@ -79,8 +92,7 @@ Os componentes encontrados na tela são:
 <br><br>
 
 <p>
- <img src="img/wireframes/editar-form.png" width="180" hspace="40">
- <img src="img/wireframes/editar-sucesso.png" width="180" hspace="40">
+A adicionar imagens
 </p>
 
 <br>
@@ -95,8 +107,7 @@ Os componentes encontrados na tela são:
 <br><br>
 
 <p>
- <img src="img/wireframes/deletar-confirmacao.png" width="180" hspace="40">
- <img src="img/wireframes/deletar-sucesso.png" width="180" hspace="40">
+A adicionar imagens
 </p>
 
 <br>
@@ -111,8 +122,8 @@ Os componentes encontrados na tela são:
 <br><br>
 
 <p>
- <img src="img/wireframes/cadastro-usuario.png" width="180" hspace="40">
- <img src="img/wireframes/sucesso-usuario.png" width="180" hspace="40">
+ <img src="img\wireframes\Wireframe atulizado\Cadastro1.jpeg" height="360" hspace="40">
+ <img src="img\wireframes\Wireframe atulizado\Cadastro2.jpeg" height="360" hspace="40">
 </p>
 
 <br>
@@ -127,8 +138,7 @@ Os componentes encontrados na tela são:
 <br><br>
 
 <p>
- <img src="img/wireframes/cadastro-ponto.png" width="180" hspace="40">
- <img src="img/wireframes/sucesso-ponto.png" width="180" hspace="40">
+A adicionar imagens
 </p>
 
 <br>
@@ -143,5 +153,5 @@ Os componentes encontrados na tela são:
 <br><br>
 
 <p>
- <img src="img/wireframes/login.png" width="180" hspace="40">
+ <img src="img\wireframes\Wireframe atulizado\Login.jpeg" height="360" hspace="40">
 </p>

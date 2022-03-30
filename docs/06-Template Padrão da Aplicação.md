@@ -13,16 +13,9 @@ Tela que abrange todas as visualizações do site, sendo alterado apenas o conte
 <br>
 
 <p>
- <img src="img/wireframes/template-pagina.png" width="180" hspace="40">
+ <img src="img\wireframes\Wireframe atulizado\Template.jpg" width="180" hspace="40">
 </p>
 
 <br><br>
 
-## Menu
-Rodapé onde estão dispostos os botões 'Lista' para listar pontos de coleta, 'Mapa' para visualizar pontos de coleta no mapa e 'Menu' para acessar o menu da aplicação.
-<br>
-
-<p>
- <img src="img/wireframes/template-menu.png" width="180" hspace="40">
-</p>
 
