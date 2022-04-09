@@ -9,6 +9,7 @@ import {
   NavigatorScreenParams,
 } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import pathConstants from "./services/pathConstants";
 
 declare global {
   namespace ReactNavigation {
@@ -21,7 +22,16 @@ export type RootStackParamList = {
   Modal: undefined;
   NotFound: undefined;
   Login: undefined;
+  BIKES: undefined;
+  [pathConstants.RESERVATIONS]: { userId: string } | undefined;
+  [pathConstants.USER]: undefined;
+  [pathConstants.USERS]: { userId: string } | undefined;
+  [pathConstants.LOGIN]: undefined;
+  [pathConstants.SIGNUP]: undefined;
+  [pathConstants.BIKES_BY_DATES]: undefined;
+  [pathConstants.RATING]: undefined;
 };
+export type RootProps = NativeStackScreenProps<RootStackParamList, "Root">;
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
   NativeStackScreenProps<RootStackParamList, Screen>;
