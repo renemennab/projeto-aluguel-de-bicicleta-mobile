@@ -10,9 +10,9 @@ import {
   SubmitPressable,
 } from "../../common/styled";
 import UserInfo from "../../common/userInfo";
-import { ROUTES } from "../../common/utils";
 import Colors from "../../constants/Colors";
 import { defaultPadding } from "../../constants/Layout";
+import pathConstants from "../../services/pathConstants";
 import { RootStackScreenProps } from "../../types";
 
 function Login({ navigation }: RootStackScreenProps<"Login">): JSX.Element {
@@ -46,7 +46,7 @@ function Login({ navigation }: RootStackScreenProps<"Login">): JSX.Element {
       ) : null}
       <StyledSignupLink
         style={{ color: Colors.light["dark-blue"], fontSize: 15 }}
-        onPress={() => navigation.replace(ROUTES.SIGNUP)}
+        onPress={() => navigation.navigate(pathConstants.SIGNUP)}
       >
         Need to create an account? Sign up here!
       </StyledSignupLink>

@@ -7,9 +7,10 @@ import { USERS_REDUCER_OPTIONS } from "../reducers/usersReducer";
 import { SELECTED_USER_REDUCER_OPTIONS } from "../reducers/selectedUserReducer";
 import { SEARCH_FILTERS_REDUCER_OPTIONS } from "../reducers/searchFiltersReducer";
 import setGlobalNotification from "./globalNotificationActions";
-import { handleErrors, ROUTES } from "../common/utils";
-import { RootStackParamList } from "../types";
+import { handleErrors } from "../common/utils";
+import { RootProps, RootStackParamList } from "../types";
 import { setLoggedInUser } from "../services/loggedInServices";
+import pathConstants from "../services/pathConstants";
 
 export const loginUser =
   (
@@ -56,11 +57,11 @@ export const createUser =
         navigation.replace("Root");
         setGlobalNotification(
           dispatch,
-          `Welcome ${data.result.firstName}`,
+          `Welcome ${data.result?.firstName}`,
           "success"
         );
       } else {
-        navigation.replace(ROUTES.USERS);
+        navigation.navigate(pathConstants.USERS);
         setGlobalNotification(dispatch, `User created sucessfuly`, "success");
       }
     } catch (error) {
@@ -94,10 +95,7 @@ export const fetchUser =
   };
 
 export const updateUser =
-  (
-    updatedUser: IUpdateUserParams,
-    navigation: NativeStackNavigationProp<RootStackParamList, "Login">
-  ) =>
+  (updatedUser: IUpdateUserParams, navigation: RootProps["navigation"]) =>
   async (dispatch: Dispatch): Promise<void> => {
     try {
       const { data } = await api.updateUser(updatedUser);
@@ -106,7 +104,7 @@ export const updateUser =
         type: SELECTED_USER_REDUCER_OPTIONS.SET_SELECTED_USER,
         payload: data,
       });
-      navigation.replace(`${ROUTES.USERS}/${updatedUser.userId}`);
+      navigation.navigate(pathConstants.USERS, { userId: updatedUser.userId });
       setGlobalNotification(dispatch, `User updated sucessfuly`, "success");
     } catch (error) {
       handleErrors(dispatch, error as AxiosError);

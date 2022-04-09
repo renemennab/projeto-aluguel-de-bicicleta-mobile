@@ -1,12 +1,12 @@
 import { AxiosError } from "axios";
 import { Dispatch } from "redux";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import * as api from "../services/api";
-import { handleErrors, ROUTES } from "../common/utils";
+import { handleErrors } from "../common/utils";
 import { RESERVATION_REDUCER_OPTIONS } from "../reducers/reservationsReducer";
 import { SELECTED_RESERVATION_REDUCER_OPTIONS } from "../reducers/selectedReservationReducer";
 import setGlobalNotification from "./globalNotificationActions";
-import { RootStackParamList } from "../types";
+import { RootProps } from "../types";
+import pathConstants from "../services/pathConstants";
 
 export const getReservations =
   () =>
@@ -47,7 +47,7 @@ export const createReservation =
   (
     newReservation: PostReservation,
     bikeInfo: IBike,
-    navigation: NativeStackNavigationProp<RootStackParamList, "Login">
+    navigation: RootProps["navigation"]
   ) =>
   async (dispatch: Dispatch): Promise<void> => {
     try {
@@ -56,7 +56,7 @@ export const createReservation =
         type: RESERVATION_REDUCER_OPTIONS.CREATE,
         payload: [{ ...data, bikeInfo }],
       });
-      navigation.replace(ROUTES.RESERVATIONS);
+      navigation.replace(pathConstants.RESERVATIONS);
       setGlobalNotification(
         dispatch,
         `Reservation created sucessfuly`,
