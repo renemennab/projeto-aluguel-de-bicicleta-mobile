@@ -1,5 +1,6 @@
 import styled from "styled-components/native";
 import Colors from "../constants/Colors";
+import { defaultPadding } from "../constants/Layout";
 
 export const ListCard = styled.View<{ unavailable: boolean }>`
   padding: 20px;
@@ -21,7 +22,7 @@ export const CardLink = styled.Pressable`
 export const CardHeading = styled.Text`
   font-size: 14px;
   margin-bottom: 15px;
-  color: var(--dark-blue);
+  color: ${Colors.light["dark-blue"]};
   text-transform: capitalize;
   font-weight: 700;
   font-size: 18px;
@@ -38,7 +39,7 @@ export const CardSpan = styled.Text`
  * use o arquivo optionsList como referencia
  */
 export const ListOfCards = styled.View`
-  padding: var(--padding);
+  padding: ${defaultPadding};
   flex-grow: 1;
   width: 100%;
   list-style: none;
