@@ -26,6 +26,9 @@ export function handleErrors(dispatch: Dispatch, error: AxiosError): void {
 
 const baseUrl = "/";
 
+/**
+ * Deprecated: ao invés de usar o routes, use o pathConstants
+ */
 export const ROUTES = {
   LOGIN: `${baseUrl}login`,
   SIGNUP: `${baseUrl}signup`,
