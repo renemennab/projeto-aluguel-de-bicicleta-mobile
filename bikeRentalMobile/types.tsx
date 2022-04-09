@@ -21,10 +21,10 @@ export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
   Modal: undefined;
   NotFound: undefined;
-  [pathConstants.BIKES]: undefined;
-  [pathConstants.RESERVATIONS]: { userId: string } | undefined;
+  [pathConstants.BIKES]: { id: string; edit: boolean } | undefined;
+  [pathConstants.RESERVATIONS]: { id: string } | undefined;
   [pathConstants.USER]: undefined;
-  [pathConstants.USERS]: { userId: string } | undefined;
+  [pathConstants.USERS]: { id: string; edit: boolean } | undefined;
   [pathConstants.LOGIN]: undefined;
   [pathConstants.SIGNUP]: undefined;
   [pathConstants.BIKES_BY_DATES]: undefined;
