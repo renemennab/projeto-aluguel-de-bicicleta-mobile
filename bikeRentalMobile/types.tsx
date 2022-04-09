@@ -21,8 +21,7 @@ export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
   Modal: undefined;
   NotFound: undefined;
-  Login: undefined;
-  BIKES: undefined;
+  [pathConstants.BIKES]: undefined;
   [pathConstants.RESERVATIONS]: { userId: string } | undefined;
   [pathConstants.USER]: undefined;
   [pathConstants.USERS]: { userId: string } | undefined;
@@ -30,6 +29,9 @@ export type RootStackParamList = {
   [pathConstants.SIGNUP]: undefined;
   [pathConstants.BIKES_BY_DATES]: undefined;
   [pathConstants.RATING]: undefined;
+  [pathConstants.PROFILE]: undefined;
+  [pathConstants.NEW_BIKE]: undefined;
+  [pathConstants.NEW_USER]: undefined;
 };
 export type RootProps = NativeStackScreenProps<RootStackParamList, "Root">;
 

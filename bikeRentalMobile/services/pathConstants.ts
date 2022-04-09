@@ -7,4 +7,7 @@ export default {
   SIGNUP: "signup",
   BIKES_BY_DATES: "bikesByDates",
   RATING: "rating",
+  PROFILE: "profile",
+  NEW_BIKE: `newBike`,
+  NEW_USER: `newUser`,
 } as const;
