@@ -1,6 +1,5 @@
 import { Dispatch } from "redux";
 import { AxiosError } from "axios";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import * as api from "../services/api";
 import { LOGGED_USER_REDUCER_OPTIONS } from "../reducers/loggedUser";
 import { USERS_REDUCER_OPTIONS } from "../reducers/usersReducer";
@@ -8,14 +7,14 @@ import { SELECTED_USER_REDUCER_OPTIONS } from "../reducers/selectedUserReducer";
 import { SEARCH_FILTERS_REDUCER_OPTIONS } from "../reducers/searchFiltersReducer";
 import setGlobalNotification from "./globalNotificationActions";
 import { handleErrors } from "../common/utils";
-import { RootProps, RootStackParamList } from "../types";
+import { RootProps } from "../types";
 import { setLoggedInUser } from "../services/loggedInServices";
 import pathConstants from "../services/pathConstants";
 
 export const loginUser =
   (
     params: ILoginParams,
-    navigation: NativeStackNavigationProp<RootStackParamList, "Login">,
+    navigation: RootProps["navigation"],
     setUserNotFound: (status: boolean) => void
   ) =>
   async (dispatch: Dispatch): Promise<void> => {
@@ -42,7 +41,7 @@ export const loginUser =
 export const createUser =
   (
     params: ISignupParams,
-    navigation: NativeStackNavigationProp<RootStackParamList, "Login">,
+    navigation: RootProps["navigation"],
     login?: boolean
   ) =>
   async (dispatch: Dispatch): Promise<void> => {

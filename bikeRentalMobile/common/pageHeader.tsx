@@ -1,13 +1,12 @@
 import { AntDesign } from "@expo/vector-icons";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React from "react";
 import styled from "styled-components/native";
 import Colors from "../constants/Colors";
-import { RootStackParamList } from "../types";
+import { RootProps } from "../types";
 
 interface IProps {
   pageName: string;
-  navigation: NativeStackNavigationProp<RootStackParamList, "Login">;
+  navigation: RootProps["navigation"];
 }
 
 function PageHeader({ pageName, navigation }: IProps): JSX.Element {

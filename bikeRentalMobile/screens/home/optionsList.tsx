@@ -12,11 +12,13 @@ import {
   logOutUser,
 } from "../../services/loggedInServices";
 import ConfirmationDialog from "../../common/confirmationDialog";
+import { RootStackParamList } from "../../types";
+import pathConstants from "../../services/pathConstants";
 
 interface ItemProps {
-  to: string;
+  to: keyof RootStackParamList;
   text: string;
-  icon: string;
+  icon: React.ComponentProps<typeof MaterialIcons>["name"];
 }
 function OptionsList(): JSX.Element {
   const [showDialog, setShowDialog] = useState(false);
@@ -65,17 +67,17 @@ function OptionsList(): JSX.Element {
   }
 
   let listData: ItemProps[] = [
-    { text: "My Profile", to: "profile", icon: "person" },
-    { text: "Bikes", to: "bikes", icon: "pedal-bike" },
+    { text: "My Profile", to: pathConstants.PROFILE, icon: "person" },
+    { text: "Bikes", to: pathConstants.BIKES, icon: "pedal-bike" },
   ];
 
   if (!userIsLogged) {
-    listData = [{ text: "Login", to: "Login", icon: "login" }];
+    listData = [{ text: "Login", to: pathConstants.LOGIN, icon: "login" }];
   } else if (userIsManager) {
     listData.push(
-      { text: "Users", to: "users", icon: "users" },
-      { text: "Add new Bike", to: "newBike", icon: "plus" },
-      { text: "Add new User", to: "newUser", icon: "plus" }
+      { text: "Users", to: pathConstants.USERS, icon: "group" },
+      { text: "Add new Bike", to: pathConstants.NEW_BIKE, icon: "add" },
+      { text: "Add new User", to: pathConstants.NEW_USER, icon: "add" }
     );
   } else {
     listData.push({

@@ -13,9 +13,9 @@ import UserInfo from "../../common/userInfo";
 import Colors from "../../constants/Colors";
 import { defaultPadding } from "../../constants/Layout";
 import pathConstants from "../../services/pathConstants";
-import { RootStackScreenProps } from "../../types";
+import { RootProps } from "../../types";
 
-function Login({ navigation }: RootStackScreenProps<"Login">): JSX.Element {
+function Login({ navigation }: RootProps): JSX.Element {
   const [email, setEmail] = useState("test@gmail.com");
   const [password, setPassword] = useState(`12345678`);
   const [userNotFound, setUserNotFound] = useState(false);
